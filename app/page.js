@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import Carousel from "@/components/Carousel";
 
@@ -73,7 +72,6 @@ export default function Home() {
     <div>
       <Carousel />
       <Faqs />
-      <Footer />
     </div>
   );
 }
