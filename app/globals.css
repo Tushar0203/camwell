@@ -1,22 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+@plugin "tailwindcss-animate";
+
 @import "tailwindcss";
-
-:root {
-  --backgroundColorDark: #f4f4f4;
-  --backgroundColor: #131418;
-  --theme-color: #2e75df;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "JetBrains Mono", monospace;
-  color: var(--backgroundColor);
-  scroll-behavior: smooth;
-  background-color: var(--backgroundColorDark);
-  -webkit-font-smoothing: antialiased;
-}
