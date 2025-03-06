@@ -3,3 +3,7 @@
 @plugin "tailwindcss-animate";
 
 @import "tailwindcss";
+
+body {
+    scroll-behavior: smooth;
+}

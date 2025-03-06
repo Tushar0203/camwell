@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 
 
+
 const Brochure = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -48,7 +49,7 @@ const Brochure = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden">
       
       <section className="relative min-h-[80vh] flex items-center py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-industrial-blue/90 to-blue-600/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#2B4162] to-blue-600/90"></div>
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -112,7 +113,7 @@ const Brochure = () => {
             >
               <Button 
                 size="lg"
-                className="bg-white text-industrial-blue hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden"
+                className="bg-white text-blue-700 hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden"
                 onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -163,18 +164,18 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-industrial-blue bg-blue-50 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-blue-700 bg-blue-50 rounded-full">
               Comprehensive Guide
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               <span className="relative inline-block">
                 Why Request Our 
                 <span className="relative ml-2">
-                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-industrial-blue to-blue-600">
+                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-blue-400">
                     Brochure?
                   </span>
                   <motion.span 
-                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-industrial-blue/40 to-blue-600/40"
+                    className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-100 to-blue-100"
                     initial={{ width: "0%" }}
                     whileInView={{ width: "100%" }}
                     transition={{ duration: 1, delay: 0.5 }}
@@ -277,7 +278,7 @@ const Brochure = () => {
           >
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-industrial-blue to-blue-600 hover:from-industrial-blue/90 hover:to-blue-600/90 text-white shadow-lg shadow-blue-600/20 rounded-full px-8"
+              className="bg-gradient-to-r from-[#2B4162] to-blue-600 hover:from-[#2B4162] hover:to-blue-500 text-white shadow-lg shadow-blue-600/20 rounded-full px-8"
               onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="flex items-center gap-2">
@@ -301,7 +302,7 @@ const Brochure = () => {
             className="max-w-5xl mx-auto glass-card shadow-2xl overflow-hidden rounded-3xl"
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="bg-gradient-to-br from-industrial-blue to-blue-700 p-10 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#2B4162] to-blue-700 p-10 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg width="100%" height="100%">
                     <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -433,7 +434,7 @@ const Brochure = () => {
                             id="fullName"
                             placeholder="John Doe"
                             required
-                            className="border-gray-300 focus:border-industrial-blue"
+                            className="border-gray-300 focus:border-blue-700"
                           />
                         </div>
                         
@@ -444,7 +445,7 @@ const Brochure = () => {
                             id="email"
                             placeholder="johndoe@example.com"
                             required
-                            className="border-gray-300 focus:border-industrial-blue"
+                            className="border-gray-300 focus:border-blue-700"
                           />
                         </div>
                       </div>
@@ -456,7 +457,7 @@ const Brochure = () => {
                             type="tel"
                             id="phone"
                             placeholder="+91 98765 43210"
-                            className="border-gray-300 focus:border-industrial-blue"
+                            className="border-gray-300 focus:border-blue-700"
                           />
                         </div>
                         
@@ -466,7 +467,7 @@ const Brochure = () => {
                             type="text"
                             id="company"
                             placeholder="ABC Corporation"
-                            className="border-gray-300 focus:border-industrial-blue"
+                            className="border-gray-300 focus:border-blue-700"
                           />
                         </div>
                       </div>
@@ -475,7 +476,7 @@ const Brochure = () => {
                         <Label htmlFor="interest" className="text-gray-700">Products of Interest</Label>
                         <select
                           id="interest"
-                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-industrial-blue focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200"
                         >
                           <option value="">Select Product</option>
                           <option value="weld-mesh">Weld Mesh Panels</option>
@@ -493,7 +494,7 @@ const Brochure = () => {
                         <textarea
                           id="message"
                           rows={3}
-                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-industrial-blue focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200"
                           placeholder="Tell us about any specific information you're looking for..."
                         ></textarea>
                       </div>
@@ -501,7 +502,7 @@ const Brochure = () => {
                       <div className="pt-4">
                         <Button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-industrial-blue to-blue-700 hover:from-industrial-blue/90 hover:to-blue-600 transition-all duration-300 h-12 text-lg shadow-lg shadow-blue-700/20"
+                          className="w-full text-white bg-gradient-to-r from-[#2B4162] to-blue-700 hover:from-[#2B4162] hover:to-blue-600 transition-all duration-300 h-12 text-lg shadow-lg shadow-blue-700/20"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (
@@ -543,14 +544,14 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="inline-block px-6 py-2 mb-6 text-sm font-medium text-industrial-blue bg-blue-50 rounded-full shadow-sm">
+            <span className="inline-block px-6 py-2 mb-6 text-sm font-medium text-blue-700 bg-blue-50 rounded-full shadow-sm">
               Trusted Partners
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
               <span className="relative inline-block">
                 Industry Leaders Trust Us
                 <motion.span 
-                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-industrial-blue to-blue-600 rounded-full"
+                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2B4162] to-blue-700 rounded-full"
                   initial={{ width: "0%" }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -608,7 +609,7 @@ const Brochure = () => {
                 viewport={{ once: true }}
                 className="relative group w-full max-w-[200px]"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-industrial-blue/5 to-blue-600/5 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
                 <div className="relative h-24 bg-white rounded-xl shadow-lg shadow-black/5 overflow-hidden border border-gray-100 backdrop-blur-sm group-hover:shadow-xl transition-all duration-300">
                   <img 
                     src={company.image} 
