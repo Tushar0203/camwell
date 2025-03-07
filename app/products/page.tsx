@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Lock, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -145,6 +147,22 @@ const Products = () => {
     }
   ];
 
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  // Function to handle smooth scrolling to products section
+  const scrollToProducts = () => {
+    if (productsRef.current) {
+      const yOffset = -20; // 20px offset to ensure heading is visible
+      const element = productsRef.current;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       
@@ -198,7 +216,10 @@ const Products = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-5 animate-fade-up" style={{animationDelay: "0.6s"}}>
-              <Button className="group 2xl glow bg-white px-8 py-8 bg-gradient-to-r from-[#3e7df5] to-[#4e4be6] text-white text-[18px]">
+              <Button 
+                className="group 2xl glow bg-white px-8 py-8 bg-gradient-to-r from-[#3e7df5] to-[#4e4be6] text-white text-[18px] cursor-pointer"
+                onClick={scrollToProducts}
+              >
                 <span>Browse Products</span>
                 <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
@@ -231,7 +252,7 @@ const Products = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">Security Solutions for Every Need</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4" ref={productsRef}>Security Solutions for Every Need</h2>
             <div className="w-24 h-1 bg-industrial-blue mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We offer a wide range of high-quality fencing and security products designed to meet various security requirements.
