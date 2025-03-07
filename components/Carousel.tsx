@@ -11,9 +11,9 @@ const Carousel: React.FC = () => {
 
   return (
     <section className="hero-section relative h-screen flex items-center justify-center bg-gradient-to-r from-charcoal to-industrial-blue overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-800 opacity-60 z-10"></div>
-    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-40"></div>
-    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 z-10"></div>
+    {/* Single dark overlay instead of multiple */}
+    <div className="absolute inset-0 bg-black opacity-70 z-10"></div>
+    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center"></div>
     
     <div className="relative z-20 container mx-auto px-4 text-center">
       <MotionDiv
