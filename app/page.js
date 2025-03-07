@@ -1,5 +1,4 @@
 import React from "react";
-import Faqs from "@/components/Faqs";
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
@@ -71,7 +70,6 @@ export default function Home() {
   return (
     <div>
       <Carousel />
-      <Faqs />
     </div>
   );
 }

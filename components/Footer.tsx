@@ -1,208 +1,207 @@
-import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, ArrowRight, ExternalLink, Clock } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-const MotionDiv = motion.div;
+import Image from 'next/image';
+import { 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Instagram, 
+  MapPin, 
+  Phone, 
+  Mail, 
+  Clock,
+  ArrowRight,
+  ExternalLink
+} from 'lucide-react';
 
 const Footer = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <div className="bg-gradient-to-b from-charcoal to-gray-900 text-white pt-24 pb-8 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-industrial-blue via-blue-400 to-industrial-blue"></div>
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-40 left-20 w-80 h-80 bg-industrial-blue/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-industrial-blue/5 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <MotionDiv 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-4 gap-12"
-        >
-          <motion.div variants={itemVariants}>
-            <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-industrial-blue rounded mr-2 flex items-center justify-center text-white font-bold">
-                C
+    <footer className="bg-gradient-to-b from-[#202122] to-[#131927] text-white pt-16 pb-8 md:pt-20 md:pb-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 xl:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
+          {/* Brand Section */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3">
+              <div className="bg-[#0066FF] text-white w-10 h-10 rounded flex items-center justify-center relative">
+                <span className="text-lg font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">C</span>
               </div>
-              <h3 className="text-2xl font-bold">CAMWELL</h3>
+              <span className="font-bold text-2xl tracking-wide text-white">CAMWELL</span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
-              Industry-leading security fencing solutions crafted with precision and innovation for over 18 years.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Industry-leading security fencing solutions crafted with precision and
+              innovation for over 18 years.
             </p>
             <div className="flex space-x-4">
-              {[
-                { icon: Facebook, href: "https://facebook.com", color: "hover:bg-blue-600" },
-                { icon: Twitter, href: "https://twitter.com", color: "hover:bg-blue-400" },
-                { icon: Linkedin, href: "https://linkedin.com", color: "hover:bg-blue-700" },
-                { icon: Instagram, href: "https://instagram.com", color: "hover:bg-gradient-to-tr hover:from-purple-600 hover:via-pink-600 hover:to-orange-500" },
-              ].map((social, index) => {
-                const Icon = social.icon;
-                return (
-                  <a 
-                    key={index}
-                    href={social.href}
-                    className={`
-                      relative group
-                      w-10 h-10
-                      flex items-center justify-center
-                      rounded-full
-                      bg-white/10 
-                      hover:bg-white/20
-                      transition-all duration-300
-                      overflow-hidden
-                      transform hover:scale-110
-                      hover:shadow-lg hover:shadow-black/20
-                    `}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span className={`
-                      absolute inset-0 
-                      opacity-0 group-hover:opacity-100
-                      transition-opacity duration-300
-                      ${social.color}
-                    `} />
-                    
-                    <Icon 
-                      size={18} 
-                      className="
-                        relative z-10 
-                        text-white/80 
-                        group-hover:text-white
-                        transition-transform duration-300
-                        group-hover:scale-110
-                      " 
-                    />
-                    
-                    <span className="
-                      absolute inset-0 
-                      bg-gradient-to-tr from-white/20 to-transparent 
-                      opacity-0 group-hover:opacity-20 
-                      transition-opacity duration-300
-                      rotate-180
-                    " />
-                  </a>
-                );
-              })}
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+                <Facebook size={18} className="text-gray-300 hover:text-white transition-colors" />
+              </Link>
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+                <Twitter size={18} className="text-gray-300 hover:text-white transition-colors" />
+              </Link>
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+                <Linkedin size={18} className="text-gray-300 hover:text-white transition-colors" />
+              </Link>
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+                <Instagram size={18} className="text-gray-300 hover:text-white transition-colors" />
+              </Link>
             </div>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold text-lg mb-6 border-b border-gray-700 pb-2">Quick Links</h4>
-            <ul className="space-y-3">
-              {[
-                { name: 'Home', path: '/' },
-                { name: 'About Us', path: '/about' },
-                { name: 'Products', path: '/products' },
-                { name: 'Request Brochure', path: '/brochure' },
-                { name: 'Warranty', path: '/warranty' },
-                { name: 'Contact Us', path: '/contact' },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    href={link.path}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
-                  >
-                    <ArrowRight size={14} className="mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold text-lg mb-6 border-b border-gray-700 pb-2">Products</h4>
-            <ul className="space-y-3">
-              {['Weld Mesh Panels', 'Fence Posts', 'Swing Gates', 'Sliding Gates', 'Security Spikes', 'Razor Wire'].map((product) => (
-                <li key={product}>
-                  <Link 
-                    href="/products" 
-                    className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
-                  >
-                    <ArrowRight size={14} className="mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
-                    {product}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <h4 className="font-semibold text-lg mb-6 border-b border-gray-700 pb-2">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start group">
-                <MapPin className="mr-3 mt-1 flex-shrink-0 text-industrial-blue group-hover:scale-110 transition-transform duration-300" size={20} />
-                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">B-12, Surajpur Industrial Area, Greater Noida, UP, India</span>
-              </li>
-              <li className="flex items-center group">
-                <Phone className="mr-3 flex-shrink-0 text-industrial-blue group-hover:scale-110 transition-transform duration-300" size={20} />
-                <a href="tel:+919971790831" className="text-gray-300 group-hover:text-white transition-colors duration-300">+91 9971790831</a>
-              </li>
-              <li className="flex items-center group">
-                <Mail className="mr-3 flex-shrink-0 text-industrial-blue group-hover:scale-110 transition-transform duration-300" size={20} />
-                <a href="mailto:info@Camwell.in" className="text-gray-300 group-hover:text-white transition-colors duration-300">info@Camwell.in</a>
-              </li>
-            </ul>
-            
-            <div className="mt-8 bg-industrial-blue/20 p-4 rounded-lg border border-industrial-blue/30">
-              <h5 className="font-medium mb-2 flex items-center">
-                <Clock className="mr-2" size={16} />
-                Business Hours
-              </h5>
-              <p className="text-gray-300 text-sm">Monday - Friday: 9:00 AM - 6:00 PM</p>
-              <p className="text-gray-300 text-sm">Saturday: 9:00 AM - 1:00 PM</p>
-              <p className="text-gray-300 text-sm">Sunday: Closed</p>
-            </div>
-          </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
-        >
-          <p className="text-center md:text-left text-gray-400 text-sm">
-            © {new Date().getFullYear()} Camwell Industries Pvt. Ltd. All rights reserved.
-          </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm hover:underline flex items-center">
-              Privacy Policy
-              <ExternalLink size={12} className="ml-1" />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm hover:underline flex items-center">
-              Terms of Service
-              <ExternalLink size={12} className="ml-1" />
-            </a>
           </div>
-        </motion.div>
+
+          {/* Quick Links */}
+          <div className="space-y-6">
+            <div className="border-b border-[#374151] pb-2">
+              <h3 className="font-semibold text-lg">Quick Links</h3>
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>About Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Products</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/brochure" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Request Brochure</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/warranty" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Warranty</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Contact Us</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Products */}
+          <div className="space-y-6">
+            <div className="border-b border-[#374151] pb-2">
+              <h3 className="font-semibold text-lg">Products</h3>
+            </div>
+            <ul className="space-y-3">
+              <li>
+                <Link href="/products/weld-mesh" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Weld Mesh Panels</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/fence-posts" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Fence Posts</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/swing-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Swing Gates</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/sliding-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Sliding Gates</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/security-spikes" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Security Spikes</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/razor-wire" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
+                  <span>Razor Wire</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div className="space-y-6">
+            <div className="border-b border-[#374151] pb-2">
+              <h3 className="font-semibold text-lg">Contact Us</h3>
+            </div>
+            <div className="space-y-4">
+              <p className="text-gray-400 flex items-start group hover:text-white transition-colors duration-200">
+                <MapPin className="mr-3 h-5 w-5 flex-shrink-0 text-blue-500" />
+                B-12, Surajpur Industrial Area, Greater Noida, UP, India
+              </p>
+              <p className="text-gray-400">
+                <Link href="tel:+919971790811" className="hover:text-white transition-colors duration-200 flex items-center group">
+                  <Phone className="mr-3 h-5 w-5 text-blue-500" />
+                  +91 9971790811
+                </Link>
+              </p>
+              <p className="text-gray-400">
+                <Link href="mailto:info@Camwell.in" className="hover:text-white transition-colors duration-200 flex items-center group">
+                  <Mail className="mr-3 h-5 w-5 text-blue-500" />
+                  info@Camwell.in
+                </Link>
+              </p>
+              <div className="pt-4 sm:pt-6">
+                <div className="bg-[#1e2432] border border-[#212c42] rounded-lg p-3 sm:p-4 space-y-2 max-w-sm">
+                  <h4 className="flex items-center text-white text-base font-medium">
+                    <Clock className="mr-2 h-5 w-5 text-gray-400" />
+                    Business Hours
+                  </h4>
+                  <div className="space-y-1.5">
+                    <p className="text-gray-400 text-sm">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-gray-400 text-sm">Saturday: 9:00 AM - 1:00 PM</p>
+                    <p className="text-gray-400 text-sm">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-[#1f2937] mt-12 md:mt-16 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm text-center md:text-left">
+              © {new Date().getFullYear()} Camwell Industries Pvt. Ltd. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-4 mt-4 md:mt-0">
+              <Link 
+                href="/privacy-policy" 
+                className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
+              >
+                Privacy Policy
+                <ExternalLink className="ml-1 w-3 h-3" />
+              </Link>
+              <Link 
+                href="/terms-of-service" 
+                className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
+              >
+                Terms of Service
+                <ExternalLink className="ml-1 w-3 h-3" />
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default Footer;  
