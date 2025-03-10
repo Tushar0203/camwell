@@ -672,7 +672,7 @@
       opacity: 0;
       transform: translateY(-100%);
     }
-  }
+  } 
   
   @keyframes progress {
     from {
