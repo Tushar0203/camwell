@@ -305,7 +305,7 @@ const WarrantyPage = () => {
                       <div className="text-center">
                         <h3 className="text-xl font-bold text-gray-900 mb-3">3. Resolution</h3>
                         <p className="text-gray-600">
-                          We'll promptly repair or replace covered components according to your warranty terms.
+                          We&apos;ll promptly repair or replace covered components according to your warranty terms.
                         </p>
                       </div>
                     </div>

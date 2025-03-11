@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
-import { Download, Send, Check, ChevronRight, FileText, Image, Wrench, Star } from 'lucide-react';
+import { Download, Send, Check, ChevronRight, FileText, Wrench, Star } from 'lucide-react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -201,7 +202,7 @@ const Brochure = () => {
               {
                 title: "Visual Showcase",
                 description: "See high-quality images of our products installed in various environments.",
-                icon: <Image className="w-8 h-8 text-white" alt="Visual showcase icon" />,
+                icon: <FileText className="w-8 h-8 text-white" />,
                 gradient: "from-emerald-500 via-emerald-600 to-teal-600",
                 delay: 0.2,
               },
@@ -611,12 +612,13 @@ const Brochure = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
                 <div className="relative h-24 bg-white rounded-xl shadow-lg shadow-black/5 overflow-hidden border border-gray-100 backdrop-blur-sm group-hover:shadow-xl transition-all duration-300">
-                  <img 
+                  <Image 
                     src={company.image} 
                     alt={company.name}
                     width={300}
                     height={96}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/20 mix-blend-overlay"></div>
                 </div>
