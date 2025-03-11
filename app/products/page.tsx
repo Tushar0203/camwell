@@ -1,9 +1,8 @@
 'use client';
-
-import React, { useEffect, useRef } from 'react';
-import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Lock, Shield } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 // Custom ProductCard component with improved design
 const ProductCard = ({ name, description, features, icon }: { 

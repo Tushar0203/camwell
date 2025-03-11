@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import "../styles/contact.css";
 import { FiCheck } from 'react-icons/fi';
 
@@ -228,11 +229,11 @@ const ContactPage = () => {
                   <span>Shoot us an email</span>
                 </a>
                 <a href="#" className="method-link">
-                  <img
+                  <Image
                     src="/images/icons/twitter.svg"
                     alt="X (Twitter) icon"
-                    width="20"
-                    height="20"
+                    width={20}
+                    height={20}
                     className="social-icon"
                   />
                   <span>Message us on X</span>

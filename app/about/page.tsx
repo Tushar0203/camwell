@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle, FaUsers, FaBullseye, FaClock } from 'react-icons/fa';
-import Image from 'next/image';
 
 // Define types for bubble properties
 interface BubblePosition {

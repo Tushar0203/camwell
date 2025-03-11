@@ -22,10 +22,6 @@ const ProductPart = ({ data }) => {
         _('demo').innerHTML =  cards + cardContents
         _('slide-numbers').innerHTML =  sildeNumbers
         
-        const range = (n) =>
-          Array(n)
-            .fill(0)
-            .map((i, j) => i + j);
         const set = gsap.set;
         
         function getCard(index) {
@@ -159,7 +155,7 @@ const ProductPart = ({ data }) => {
           });
         
           // Add click events for cards to enable slide clicking
-          rest.forEach((i, index) => {
+          rest.forEach((i) => {
             document.querySelector(getCard(i)).addEventListener('click', () => {
               if (!clicks) {
                 // Calculate the position of the clicked card in the current order
@@ -333,13 +329,6 @@ const ProductPart = ({ data }) => {
           });
         }
         
-        async function loop() {
-          await animate(".indicator", 2, { x: 0 });
-          await animate(".indicator", 0.8, { x: window.innerWidth, delay: 0.3 });
-          set(".indicator", { x: -window.innerWidth });
-          await step();
-          loop();
-        }
         
         async function loadImage(src) {
           return new Promise((resolve, reject) => {

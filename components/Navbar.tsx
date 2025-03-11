@@ -1,9 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useIsMobile } from '@/hooks/use-mobile';
+import { motion } from 'framer-motion';
 import {
   Sheet,
   SheetContent,
@@ -14,7 +13,6 @@ import { usePathname } from 'next/navigation';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname() || '/';
-  const isMobile = useIsMobile();
 
   const navItems = [
     { name: 'Home', path: '/' },
