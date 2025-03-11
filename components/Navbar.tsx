@@ -80,9 +80,11 @@ const Navbar = () => {
                   href={item.path}
                   className={`relative px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive 
-                      ? 'bg-industrial-blue text-white transform scale-105' 
+                      ? scrolled
+                        ? 'text-blue-900 transform scale-105'
+                        : 'text-white transform scale-105'
                       : scrolled
-                        ? 'text-charcoal hover:bg-industrial-blue/10'
+                        ? 'text-charcoal hover:bg-blue-900/10'
                         : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -90,7 +92,7 @@ const Navbar = () => {
                   {isActive && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-white mx-4"
+                      className={`absolute bottom-0 left-0 right-0 h-0.5 mx-4 ${scrolled ? 'bg-blue-900' : 'bg-white'}`}
                       transition={{ type: "spring", duration: 0.6 }}
                     />
                   )}
@@ -136,7 +138,7 @@ const Navbar = () => {
                       </button>
                     </SheetTrigger>
                   </div>
-                  <div className="px-1 flex flex-col h-full overflow-y-auto">
+                  <div className="pt-8 flex flex-col items-center h-full overflow-y-auto">
                     {navItems.map((item) => {
                       const isActive = pathname === item.path || 
                                      (item.path === '/' && pathname === '/');
@@ -145,11 +147,11 @@ const Navbar = () => {
                         <SheetTrigger asChild key={item.name}>
                           <Link
                             href={item.path}
-                            className={`px-6 py-4 text-lg font-medium transition-all duration-300 my-1 rounded-lg ${
+                            className={`px-6 py-4 text-lg font-medium transition-all duration-300 my-1 rounded-lg w-[85%] text-center ${
                               isActive 
-                                ? 'bg-industrial-blue text-white' 
+                                ? 'text-blue-900 bg-blue-50' 
                                 : scrolled
-                                  ? 'text-charcoal hover:bg-industrial-blue/10'
+                                  ? 'text-charcoal hover:bg-blue-50'
                                   : 'text-white/90 hover:text-white hover:bg-white/20'
                             }`}
                           >
