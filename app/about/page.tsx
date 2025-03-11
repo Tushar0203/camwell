@@ -431,7 +431,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Customer Focus</h3>
                 <p className="text-gray-600 text-center flex-grow">
-                  Our customers' needs and satisfaction are at the core of everything we do, driving our decisions and innovations.
+                  Our customers&apos; needs and satisfaction are at the core of everything we do, driving our decisions and innovations.
                 </p>
               </div>
             </motion.div>
@@ -492,7 +492,7 @@ export default function AboutPage() {
             <div className="w-20 h-1 bg-indigo-600 mx-auto mb-10"></div>
             <p className="text-gray-700 leading-relaxed mb-12 text-lg">
               Since our establishment, Camwell Industries has been at the forefront of security fencing innovation in India. 
-              We've grown from a small local provider to one of the most trusted names in high-security fencing solutions, 
+              We&apos;ve grown from a small local provider to one of the most trusted names in high-security fencing solutions, 
               serving government, defense, and commercial clients across the country.
             </p>
             <motion.div 
