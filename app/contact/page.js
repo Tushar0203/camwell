@@ -75,7 +75,7 @@ const ContactPage = () => {
             <h1 className="contact-title">Contact our team</h1>
             <p className="contact-description">
               Got any questions about the product or scaling on our platform?
-              We're here to help. Chat to our friendly team 24/7 and get onboard
+              We&apos;re here to help. Chat to our friendly team 24/7 and get onboard
               in less than 5 minutes.
             </p>
 
@@ -305,7 +305,7 @@ const ContactPage = () => {
             </div>
             <div className="success-text-content">
               <h3>Message sent successfully!</h3>
-              <p>We'll get back to you within 24 hours.</p>
+              <p>We&apos;ll get back to you within 24 hours.</p>
             </div>
           </div>
           <div className="progress-bar"></div>

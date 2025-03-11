@@ -201,7 +201,7 @@ const Brochure = () => {
               {
                 title: "Visual Showcase",
                 description: "See high-quality images of our products installed in various environments.",
-                icon: <Image className="w-8 h-8 text-white" />,
+                icon: <Image className="w-8 h-8 text-white" alt="Visual showcase icon" />,
                 gradient: "from-emerald-500 via-emerald-600 to-teal-600",
                 delay: 0.2,
               },
@@ -413,7 +413,7 @@ const Brochure = () => {
                       >
                         <h4 className="text-2xl font-bold text-charcoal mb-2">Thank You!</h4>
                         <p className="text-gray-600 mb-6">
-                          Your brochure request has been received. We'll send it to your email shortly.
+                          Your brochure request has been received. We&apos;ll send it to your email shortly.
                         </p>
                         <Button 
                           onClick={() => setSubmitted(false)}
@@ -614,6 +614,8 @@ const Brochure = () => {
                   <img 
                     src={company.image} 
                     alt={company.name}
+                    width={300}
+                    height={96}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/20 mix-blend-overlay"></div>

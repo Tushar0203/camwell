@@ -329,7 +329,7 @@ const WarrantyPage = () => {
               className="text-center mb-16"
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What's Covered
+                What&apos;s Covered
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Our comprehensive warranty covers all critical components of your security fencing system
@@ -422,7 +422,7 @@ const WarrantyPage = () => {
                   <div className="px-6 pb-6 text-gray-600">
                     <p>
                       All Camwell products are automatically registered for warranty coverage upon purchase and installation. 
-                      You'll receive a warranty certificate by email or with your physical documentation package.
+                      You&apos;ll receive a warranty certificate by email or with your physical documentation package.
                     </p>
                   </div>
                 </details>
@@ -437,7 +437,7 @@ const WarrantyPage = () => {
               >
                 <details className="group">
                   <summary className="flex justify-between items-center cursor-pointer bg-white p-6">
-                    <h3 className="text-lg font-medium text-gray-900">What's not covered by the warranty?</h3>
+                    <h3 className="text-lg font-medium text-gray-900">What&apos;s not covered by the warranty?</h3>
                     <span className="flex-shrink-0 ml-1.5 p-1.5 text-gray-400 bg-gray-50 rounded-md group-open:rotate-180 transition-transform">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

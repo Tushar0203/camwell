@@ -280,7 +280,7 @@ const Products = () => {
               <h2 className="text-3xl font-bold text-charcoal mb-4">Custom Security Solutions</h2>
               <div className="w-16 h-1 bg-industrial-blue mb-6"></div>
               <p className="text-gray-700 mb-4 text-lg">
-                Don't see exactly what you need? We specialize in creating custom security solutions tailored to your specific requirements.
+                Don&apos;t see exactly what you need? We specialize in creating custom security solutions tailored to your specific requirements.
               </p>
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-3">
