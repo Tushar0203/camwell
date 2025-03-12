@@ -82,7 +82,7 @@ const ProductCard = ({ name, description, features, icon }: {
           variant="default" 
           className="w-full bg-[#2B4162] text-white hover:bg-industrial-blue/90 group-hover:bg-industrial-blue group-hover:text-white transition-colors duration-300 flex items-center justify-center"
         >
-          <span>Enquire Now</span>
+          <span>Know more</span>
           <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
       </CardFooter>
@@ -105,7 +105,7 @@ const Products = () => {
     },
     {
       name: 'Fence Swing Gate',
-      description: 'Robust posts designed for optimal support and longevity.',
+      description: 'Robust posts designed for optimal support, connectivity and longevity.',
       features: [
         'Heavy-duty galvanized steel',
         'Various height options',

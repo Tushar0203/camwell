@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { BorderFenceSpecs, SpecItem } from './fence-swing-specs';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -80,36 +79,24 @@ const ComponentCard = ({ title, description, specs, index }: ComponentCardProps)
 // First, let's organize components into logical categories
 const categorizedComponents = {
   "Primary Structure": [
-    "WELD MESH PANEL",
-    "FENCE (CHS) POST",
-    "ANCHOR ROD",
-    "STRUT (CHS) POST",
+    "A. GATE POST",
+    "B. GATE FRAME",
+    "C. WICKET GATE FRAME",
+    "D. WELD MESH PANEL FOR GATE INFILL",
+    "E. COIL SUPPORT FRAME",
   ],
   "Fastening System": [
-    "OMEGA CLAMP WITH PROFILE COVER PLATE",
-    "INTERMEDIATE PANEL (IP) BINDER",
-    "CORNER CLAMP",
+    "H. TOP AND BOTTOM HINGES",
+    "I. LOCK/HANDLE /ALDROP",
   ],
   "Security Enhancement": [
-    "STRAINING Y ARM",
-    "INTERMEDIATE Y-ARM",
-    "PTCC PUNCHED TAPE CONCERTINA COIL",
-    "RAZOR WIRE TAPE",
-    "HOG RINGS",
-  ],
-  "Hardware & Accessories": [
-    "TIE WIRE FOR RAZOR TAPE",
-    "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER",
+    "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE",
+    "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE",
   ],
 };
 
 interface Component {
   title: string;
-  description: string;
-  specs: string[];
 }
 
 interface PartModalProps {
@@ -121,14 +108,6 @@ interface PartModalProps {
 // Fix the PartModal component definition to resolve the static flag issue
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   if (!component) return null;
-  
-  // Get component-specific technical specifications from the BorderFenceSpecs component
-  const getComponentSpecs = (title: string): SpecItem[] => {
-    return BorderFenceSpecs[title] || BorderFenceSpecs["DEFAULT"];
-  };
-  
-  // Get the appropriate technical specifications based on the component title
-  const technicalSpecs = getComponentSpecs(component.title);
   
   // State for tracking expanded specification items on mobile
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
@@ -219,155 +198,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               </div>
               
               {/* Content - improved scrolling and spacing for mobile */}
-              <div className="p-4 sm:p-6 overflow-y-auto flex-grow scrollbar-hide">
-                <div className="bg-blue-50/50 p-4 sm:p-5 rounded-xl mb-4 sm:mb-6 border border-blue-100">
-                  <h4 className="text-blue-800 font-medium mb-2 flex items-center">
-                    <span className="bg-blue-100 p-1 rounded-md mr-2">
-                      <Package className="w-4 h-4 text-blue-700" />
-                    </span>
-                    Overview
-                  </h4>
-                  <p className="text-gray-700 text-sm sm:text-base">{component.description}</p>
-                </div>
-                
-                <div className="mb-4 sm:mb-6">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
-                    <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-blue-700" />
-                    </span>
-                    Key Features
-                  </h4>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 sm:mb-6">
-                    {component.specs.map((spec, idx) => (
-                      <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-white p-3 sm:p-4 rounded-lg border border-blue-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
-                      >
-                        <div className="flex-shrink-0">
-                          <div className="h-7 w-7 rounded-full bg-blue-100/80 flex items-center justify-center">
-                            <Check className="h-3.5 w-3.5 text-blue-500" />
-                          </div>
-                        </div>
-                        <span className="text-sm font-medium text-blue-800 group-hover:text-blue-900 transition-colors duration-300">{spec}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Technical Specifications Table - improved for mobile with accordion */}
-                <div className="mb-6 sm:mb-8">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
-                    <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                      <ArrowUpRight className="w-3.5 h-3.5 text-blue-700" />
-                    </span>
-                    Technical Specifications
-                  </h4>
-                  
-                  <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                    {technicalSpecs.map((spec: SpecItem, idx: number) => (
-                      <div 
-                        key={idx} 
-                        className={`border-b border-gray-200 last:border-b-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/70'} hover:bg-blue-50/30 transition-colors duration-300`}
-                      >
-                        {/* Desktop view - regular table layout */}
-                        <div className="hidden sm:flex sm:flex-row">
-                          <div className="w-1/3 p-4 border-r border-gray-200">
-                            <span className="font-medium text-base text-blue-800">{spec.category}</span>
-                          </div>
-                          <div className="w-2/3 p-4 text-sm text-gray-700">
-                            {spec.detail}
-                          </div>
-                        </div>
-                        
-                        {/* Mobile view - accordion style */}
-                        <div className="sm:hidden">
-                          <button 
-                            onClick={() => toggleItem(idx)}
-                            className="w-full p-3 flex items-center justify-between text-left focus:outline-none active:bg-blue-50/50 transition-colors"
-                          >
-                            <span className="font-medium text-sm text-blue-800">{spec.category}</span>
-                            <div className={`transition-transform duration-200 ${expandedItems.includes(idx) ? 'rotate-90' : ''}`}>
-                              <ChevronRight className="h-4 w-4 text-blue-600" />
-                            </div>
-                          </button>
-                          
-                          <AnimatePresence>
-                            {expandedItems.includes(idx) && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="p-3 pt-0 pb-4 text-xs text-gray-700 border-t border-gray-100 bg-blue-50/30">
-                                  {spec.detail}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 gap-4 mb-4 sm:mb-6 md:grid-cols-2">
-                  <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-blue-800 font-medium mb-3 flex items-center">
-                      <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
-                      </span>
-                      Compatible With
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {["Primary Structure", "Fastening System", "Security Enhancement"].map((tag, idx) => (
-                        <motion.span 
-                          key={tag}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: idx * 0.1 }}
-                          className="bg-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-blue-700 border border-blue-200 shadow-sm hover:shadow hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 cursor-pointer flex items-center gap-1"
-                        >
-                          <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-blue-800 font-medium mb-3 flex items-center">
-                      <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
-                      </span>
-                      Key Benefits
-                    </h4>
-                    <ul className="space-y-3">
-                      {["Enhanced security performance", "Long-term durability", "Easy installation and maintenance"].map((benefit, idx) => (
-                        <motion.li 
-                          key={idx} 
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: idx * 0.1 }}
-                          className="flex items-center gap-3"
-                        >
-                          <div className="flex-shrink-0">
-                            <div className="h-7 w-7 rounded-full bg-blue-100/80 flex items-center justify-center">
-                              <Check className="h-3.5 w-3.5 text-blue-500" />
-                            </div>
-                          </div>
-                          <span className="text-sm text-gray-700">{benefit}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              
               
               {/* Footer - improved for mobile */}
               <div className="border-t border-gray-100 p-3 sm:p-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-3">
@@ -406,10 +237,9 @@ interface CategorySectionProps {
   isOpen: boolean;
   onToggle: () => void;
   components: Component[];
-  onComponentClick: (component: Component) => void;
 }
 
-const CategorySection = ({ title, items, isOpen, onToggle, components, onComponentClick }: CategorySectionProps) => (
+const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => (
   <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
     isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
   }`}>
@@ -465,8 +295,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
-                    onClick={() => onComponentClick(component)}
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100"
                   >
                     <div className="border-l-[6px] border-blue-600 pl-3 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center">
                       <h4 className="text-blue-900 font-bold text-sm sm:text-lg line-clamp-1">{component.title}</h4>
@@ -476,40 +305,6 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                       </div>
                     </div>
                     
-                    <div className="p-4 sm:p-6">
-                      <p className="text-gray-700 text-xs sm:text-base mb-4 sm:mb-8 leading-relaxed">{component.description}</p>
-                      
-                      <div className="grid grid-cols-1 gap-2 sm:gap-3 relative">
-                        {component.specs.slice(0, 3).map((spec, specIdx) => (
-                          <div 
-                            key={`${component.title}-spec-${specIdx}`}
-                            className="flex items-center gap-2 sm:gap-3 bg-blue-50 p-2 sm:p-3 rounded-lg border border-blue-100 hover:bg-blue-100/50 hover:-translate-y-1 transition-all duration-300 group"
-                          >
-                            <div className="flex-shrink-0">
-                              <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                                <Check className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600 group-hover:text-blue-700" />
-                              </div>
-                            </div>
-                            <span className="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-blue-800 transition-colors">{spec}</span>
-                          </div>
-                        ))}
-                        {component.specs.length > 3 && (
-                          <div className="text-xs sm:text-sm text-blue-600 font-medium mt-1 text-center">
-                            +{component.specs.length - 3} more features
-                          </div>
-                        )}
-                      </div>
-                      
-                      <div className="mt-6 sm:mt-8 flex justify-center">
-                        <Button 
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg transition-all duration-300 cursor-pointer text-xs sm:text-sm"
-                          onClick={() => onComponentClick(component)}
-                        >
-                          View Detailed Specifications
-                          <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        </Button>
-                      </div>
-                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -558,192 +353,32 @@ export default function BorderFencePage() {
 
   const components = [
     {
-      title: "WELD MESH PANEL",
-      description: "High-security welded mesh panels with advanced electrical resistance welding technology.",
-      specs: [
-        "High-strength galvanized steel",
-        "Precision welded configuration",
-        "Advanced corrosion protection",
-        "Standardized dimensions",
-        "Superior tensile strength"
-      ]
+      title: "A. GATE POST"
     },
     {
-      title: "FENCE (CHS) POST",
-      description: "Robust Circular Hollow Section posts engineered for optimal structural integrity.",
-      specs: [
-        "Hot-dip galvanized steel",
-        "Multiple height options",
-        "Superior load-bearing",
-        "Anti-corrosion treated",
-        "Compatible brackets"
-      ]
+      title: "B. GATE FRAME"
     },
     {
-      title: "ANCHOR ROD",
-      description: "High-grade anchor rods designed for secure concrete foundation mounting.",
-      specs: [
-        "Premium steel construction",
-        "Precise dimensions",
-        "Corrosion-resistant",
-        "Easy installation",
-        "Concrete compatible"
-      ]
+      title: "C. WICKET GATE FRAME"
     },
     {
-      title: "STRUT (CHS) POST",
-      description: "Reinforced support posts for enhanced corner and endpoint stability.",
-      specs: [
-        "Premium hollow design",
-        "Industrial-grade steel",
-        "Precise engineering",
-        "Enhanced support",
-        "Advanced galvanizing"
-      ]
+      title: "D. WELD MESH PANEL FOR GATE INFILL"
     },
     {
-      title: "OMEGA CLAMP WITH PROFILE COVER PLATE",
-      description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. The profile cover plate provide the necessary holding strength.",
-      specs: [
-        "Enhanced holding strength",
-        "Custom profile design",
-        "Secure fastening system",
-        "Weather-resistant coating",
-        "Easy installation"
-      ]
+      title: "E. COIL SUPPORT FRAME"
     },
     {
-      title: "INTERMEDIATE PANEL (IP) BINDER",
-      description: "Panel binders are used for connecting panel.",
-      specs: [
-        "Secure panel connection",
-        "Durable construction",
-        "Easy installation",
-        "Compatible design",
-        "Weather-resistant"
-      ]
+      title: "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE"
     },
     {
-      title: "CORNER CLAMP",
-      description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. These clamps are used where the angle between two adjacent fencepost is less than 180° angle.",
-      specs: [
-        "Angular adjustment capability",
-        "Secure fastening system",
-        "Durable construction",
-        "Weather-resistant coating",
-        "Easy installation"
-      ]
+      title: "H. TOP AND BOTTOM HINGES"
     },
     {
-      title: "STRAINING Y ARM",
-      description: "Straining Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One straining Y-Arm is installed at every 30 meters.",
-      specs: [
-        "30-meter interval installation",
-        "PTCC support capability",
-        "Durable construction",
-        "Strategic positioning",
-        "Weather-resistant finish"
-      ]
+      title: "I. LOCK/HANDLE /ALDROP"
     },
     {
-      title: "INTERMEDIATE Y-ARM",
-      description: "Intermediate Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One Intermediate Y arm is installed at every post except the posts with Straining Y arms.",
-      specs: [
-        "Regular post installation",
-        "PTCC support system",
-        "Durable construction",
-        "Complementary to Straining Y-arms",
-        "Weather-resistant finish"
-      ]
+      title: "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE"
     },
-    {
-      title: "PTCC PUNCHED TAPE CONCERTINA COIL",
-      description: "Advanced razor wire security system designed for superior perimeter protection and deterrence.",
-      specs: [
-        "High-tensile steel construction",
-        "Razor-sharp edge design",
-        "Corrosion-resistant coating",
-        "Easy deployment system",
-        "Long-lasting durability"
-      ]
-    },
-    {
-      title: "RAZOR WIRE TAPE",
-      description: "High-security razor wire tape supplied in convenient 100-meter rolls for efficient perimeter protection.",
-      specs: [
-        "100 meters per roll",
-        "High-grade steel construction",
-        "Sharp razor edges",
-        "Galvanized finish",
-        "Easy deployment system"
-      ]
-    },
-    {
-      title: "HOG RINGS",
-      description: "Specialized fastening rings designed to secure concertina coil and consecutive concertina coils for enhanced security.",
-      specs: [
-        "SS304/SS316 grade construction",
-        "3mm diameter precision rings",
-        "High tensile strength",
-        "Corrosion resistant",
-        "Easy installation"
-      ]
-    },
-    {
-      title: "TIE WIRE FOR RAZOR TAPE",
-      description: "Stainless-steel tie wire is used for knotting razor tape at straining Y arm at each eyebolt location.",
-      specs: [
-        "Stainless steel construction",
-        "Secure knotting capability",
-        "Corrosion-resistant material",
-        "Compatible with Y-arm eyebolts",
-        "Durable fastening solution"
-      ]
-    },
-    {
-      title: "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      description: "M8x120 mm mushroom head bolts with breakable head security nuts and washers are used to clamp Y arm to a fencing post. For each Y arm two sets of bolts are required.",
-      specs: [
-        "M8x120mm standard size",
-        "Breakable head security nuts",
-        "Two sets per Y arm",
-        "Anti-tamper design",
-        "Complete with washers"
-      ]
-    },
-    {
-      title: "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      description: "M8x75 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at four mesh overlap junctions.",
-      specs: [
-        "M8x75mm standard size",
-        "Breakable security head nuts",
-        "Four-point mesh junction fixing",
-        "Complete with washers",
-        "Anti-tampering design"
-      ]
-    },
-    {
-      title: "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      description: "M8x60 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at two mesh overlap junctions.",
-      specs: [
-        "SS304/SS316 material options",
-        "M8x60mm standard size",
-        "Weight: 0.031 Kg ± 8%",
-        "Two-point mesh junction fixing",
-        "Complete with security nuts and washers"
-      ]
-    },
-    {
-      title: "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      description: "M8x35 mm mushroom head bolts with breakable head security nuts and washers are used to clamp IP binder at center of two mesh overlap junctions to remove the gap and make it sturdy between two mesh.",
-      specs: [
-        "SS304/SS316 material options",
-        "M8x35mm standard size",
-        "Weight: 0.025 Kg ± 8%",
-        "3200 sets per kilometer",
-        "IP binder junction fixing"
-      ]
-    }
   ];
 
   return (

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { BorderFenceSpecs, SpecItem } from './border-fence-specs';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -121,14 +120,6 @@ interface PartModalProps {
 // Fix the PartModal component definition to resolve the static flag issue
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   if (!component) return null;
-  
-  // Get component-specific technical specifications from the BorderFenceSpecs component
-  const getComponentSpecs = (title: string): SpecItem[] => {
-    return BorderFenceSpecs[title] || BorderFenceSpecs["DEFAULT"];
-  };
-  
-  // Get the appropriate technical specifications based on the component title
-  const technicalSpecs = getComponentSpecs(component.title);
   
   // State for tracking expanded specification items on mobile
   const [expandedItems, setExpandedItems] = useState<number[]>([]);
@@ -258,63 +249,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                   </div>
                 </div>
                 
-                {/* Technical Specifications Table - improved for mobile with accordion */}
-                <div className="mb-6 sm:mb-8">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
-                    <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                      <ArrowUpRight className="w-3.5 h-3.5 text-blue-700" />
-                    </span>
-                    Technical Specifications
-                  </h4>
-                  
-                  <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                    {technicalSpecs.map((spec: SpecItem, idx: number) => (
-                      <div 
-                        key={idx} 
-                        className={`border-b border-gray-200 last:border-b-0 ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/70'} hover:bg-blue-50/30 transition-colors duration-300`}
-                      >
-                        {/* Desktop view - regular table layout */}
-                        <div className="hidden sm:flex sm:flex-row">
-                          <div className="w-1/3 p-4 border-r border-gray-200">
-                            <span className="font-medium text-base text-blue-800">{spec.category}</span>
-                          </div>
-                          <div className="w-2/3 p-4 text-sm text-gray-700">
-                            {spec.detail}
-                          </div>
-                        </div>
-                        
-                        {/* Mobile view - accordion style */}
-                        <div className="sm:hidden">
-                          <button 
-                            onClick={() => toggleItem(idx)}
-                            className="w-full p-3 flex items-center justify-between text-left focus:outline-none active:bg-blue-50/50 transition-colors"
-                          >
-                            <span className="font-medium text-sm text-blue-800">{spec.category}</span>
-                            <div className={`transition-transform duration-200 ${expandedItems.includes(idx) ? 'rotate-90' : ''}`}>
-                              <ChevronRight className="h-4 w-4 text-blue-600" />
-                            </div>
-                          </button>
-                          
-                          <AnimatePresence>
-                            {expandedItems.includes(idx) && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="p-3 pt-0 pb-4 text-xs text-gray-700 border-t border-gray-100 bg-blue-50/30">
-                                  {spec.detail}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                
                 
                 <div className="grid grid-cols-1 gap-4 mb-4 sm:mb-6 md:grid-cols-2">
                   <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
