@@ -24,9 +24,11 @@ export async function POST(req) {
     const mailOptions = {
       from: process.env.SMTP_USER,
       to: process.env.CONTACT_EMAIL,
-      subject: "New Message from Camwell Contact Form",
+      subject: data.message.includes('quote') 
+        ? "New Quote Request from Camwell Website" 
+        : "New Message from Camwell Contact Form",
       html: `
-        <h2>You've received a new message! 🎉</h2>
+        <h2>${data.message.includes('quote') ? 'New Quote Request! 💼' : 'You\'ve received a new message! 🎉'}</h2>
         <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Phone:</strong> ${data.phoneCode} ${data.phoneNumber}</p>

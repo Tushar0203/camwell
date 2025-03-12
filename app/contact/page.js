@@ -1,10 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../styles/contact.css";
 import { FiCheck } from 'react-icons/fi';
+import { useSearchParams } from 'next/navigation';
 
 const ContactPage = () => {
+  const searchParams = useSearchParams();
+  const productParam = searchParams.get('product');
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,6 +20,17 @@ const ContactPage = () => {
   });
   const [showPopup, setShowPopup] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Set the product in the message field when the component mounts
+  useEffect(() => {
+    if (productParam) {
+      setFormData(prev => ({
+        ...prev,
+        message: `I'm interested in getting a quote for the ${productParam} product.`,
+        services: [...prev.services, "Other"]
+      }));
+    }
+  }, [productParam]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

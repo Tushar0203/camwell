@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -11,6 +12,17 @@ const ProductCard = ({ name, description, features, icon }: {
   features: string[];
   icon: React.ReactNode;
 }) => {
+  const router = useRouter();
+  
+  const handleClick = () => {
+    if (name === "India's New Border Fence") {
+      router.push('/products/border-fence');
+    }
+    if (name === "Fence Swing Gate") {
+      router.push('/products/fence-swing-gate');
+    }
+  };
+
   const randomColors = [
     'from-blue-500 to-cyan-400',
     'from-indigo-500 to-purple-400',
@@ -25,7 +37,9 @@ const ProductCard = ({ name, description, features, icon }: {
   const gradientColor = randomColors[colorIndex];
 
   return (
-    <Card className="premium-card shine-effect overflow-hidden group hover:cursor-pointer border-0 shadow-lg h-full"
+    <Card 
+      className="premium-card shine-effect overflow-hidden group hover:cursor-pointer border-0 shadow-lg h-full"
+      onClick={handleClick}
       style={{
         "--accent-color-start": "var(--tw-gradient-from)",
         "--accent-color-end": "var(--tw-gradient-to)",
@@ -79,7 +93,7 @@ const ProductCard = ({ name, description, features, icon }: {
 const Products = () => {
   const products = [
     {
-      name: 'Weld Mesh Panels',
+      name: "India's New Border Fence",
       description: 'Premium quality welded mesh panels for high-security applications.',
       features: [
         'High tensile steel construction',
@@ -90,7 +104,7 @@ const Products = () => {
       icon: <Package size={36} strokeWidth={1.5} />
     },
     {
-      name: 'Fence Posts',
+      name: 'Fence Swing Gate',
       description: 'Robust posts designed for optimal support and longevity.',
       features: [
         'Heavy-duty galvanized steel',
