@@ -184,7 +184,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                           {component.title.includes("MESH") ? "Primary Structure" : 
                            component.title.includes("CLAMP") ? "Fastening System" :
                            component.title.includes("ARM") || component.title.includes("RAZOR") ? "Security Enhancement" :
-                           "Hardware & Accessories"}
+                           ""}
                         </span>
                       </div>
                       <h3 className="text-base sm:text-xl font-bold text-white line-clamp-2 sm:line-clamp-none">
@@ -255,7 +255,6 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
           {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Hardware & Accessories" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
         </div>
         <div>
           <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
@@ -502,7 +501,6 @@ export default function BorderFencePage() {
                 isOpen={openCategory === category}
                 onToggle={() => toggleCategory(category)}
                 components={components}
-                onComponentClick={handleComponentClick}
               />
             ))}
           </div>
