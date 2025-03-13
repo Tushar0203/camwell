@@ -18,13 +18,6 @@ const scrollbarHideStyles = `
   }
 `;
 
-interface ComponentCardProps {
-  title: string;
-  description: string;
-  specs: string[];
-  index: number;
-}
-
 // First, let's organize components into logical categories
 const categorizedComponents = {
   "Primary Structure": [
@@ -69,17 +62,6 @@ interface PartModalProps {
 // Fix the PartModal component definition to resolve the static flag issue
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   if (!component) return null;
-  
-  // State for tracking expanded specification items on mobile
-  const [expandedItems, setExpandedItems] = useState<number[]>([]);
-  
-  const toggleItem = (idx: number) => {
-    if (expandedItems.includes(idx)) {
-      setExpandedItems(expandedItems.filter(item => item !== idx));
-    } else {
-      setExpandedItems([...expandedItems, idx]);
-    }
-  };
   
   // Prevent background scrolling when modal is open
   useEffect(() => {

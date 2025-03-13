@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -18,13 +17,6 @@ const scrollbarHideStyles = `
     scrollbar-width: none;  /* Firefox */
   }
 `;
-
-interface ComponentCardProps {
-  title: string;
-  description: string;
-  specs: string[];
-  index: number;
-}
 
 // First, let's organize components into logical categories
 const categorizedComponents = {
@@ -58,9 +50,6 @@ interface PartModalProps {
 // Fix the PartModal component definition to resolve the static flag issue
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   if (!component) return null;
-  
-  // State for tracking expanded specification items on mobile
-  const [expandedItems, setExpandedItems] = useState<number[]>([]);
   
   // Prevent background scrolling when modal is open
   useEffect(() => {
