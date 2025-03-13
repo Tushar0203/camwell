@@ -61,8 +61,6 @@ interface PartModalProps {
 
 // Fix the PartModal component definition to resolve the static flag issue
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
-  if (!component) return null;
-  
   // Prevent background scrolling when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -78,6 +76,8 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
+
+  if (!component) return null;
   
   return (
     <AnimatePresence>
