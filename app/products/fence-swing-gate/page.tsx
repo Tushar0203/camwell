@@ -249,6 +249,8 @@ export default function BorderFencePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  setSelectedComponent(null); 
+
   const toggleCategory = (category: string) => {
     // Prevent toggling during animation
     if (isAnimating) return;
