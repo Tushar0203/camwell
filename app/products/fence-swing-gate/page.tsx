@@ -19,41 +19,41 @@ const scrollbarHideStyles = `
 `;
 
 // Client-side only component for animated particles
-const AnimatedParticles = () => {
-  const [isMounted, setIsMounted] = useState(false);
+// const AnimatedParticles = () => {
+//   const [isMounted, setIsMounted] = useState(false);
   
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+//   useEffect(() => {
+//     setIsMounted(true);
+//   }, []);
   
-  if (!isMounted) return null;
+//   if (!isMounted) return null;
   
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 rounded-full bg-blue-400/30"
-          initial={{ 
-            x: `${i * 15 + 10}%`, 
-            y: `${i * 15 + 5}%`,
-            opacity: 0.4
-          }}
-          animate={{ 
-            x: [null, `${(i * 20 + 30) % 100}%`, `${(i * 15 + 60) % 100}%`, `${(i * 25 + 20) % 100}%`],
-            y: [null, `${(i * 15 + 20) % 100}%`, `${(i * 25 + 30) % 100}%`, `${(i * 10 + 50) % 100}%`],
-            opacity: [null, 0.2, 0.8, 0.3]
-          }}
-          transition={{ 
-            duration: 30 + i * 5, 
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="absolute inset-0 overflow-hidden">
+//       {[...Array(6)].map((_, i) => (
+//         <motion.div
+//           key={i}
+//           className="absolute w-2 h-2 rounded-full bg-blue-400/30"
+//           initial={{ 
+//             x: `${i * 15 + 10}%`, 
+//             y: `${i * 15 + 5}%`,
+//             opacity: 0.4
+//           }}
+//           animate={{ 
+//             x: [null, `${(i * 20 + 30) % 100}%`, `${(i * 15 + 60) % 100}%`, `${(i * 25 + 20) % 100}%`],
+//             y: [null, `${(i * 15 + 20) % 100}%`, `${(i * 25 + 30) % 100}%`, `${(i * 10 + 50) % 100}%`],
+//             opacity: [null, 0.2, 0.8, 0.3]
+//           }}
+//           transition={{ 
+//             duration: 30 + i * 5, 
+//             repeat: Infinity,
+//             ease: "linear"
+//           }}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
 // First, let's organize components into logical categories
 const categorizedComponents = {
@@ -354,43 +354,21 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
           </motion.div>
           <div>
             <motion.h3 
-              className={`text-lg xs:text-xl sm:text-2xl font-bold transition-colors duration-300 ${
-                isOpen ? colorScheme.accentColor : 'text-gray-900'
-              }`}
-              animate={{ 
-                y: isOpen ? [0, -5, 0] : 0,
-              }}
-              transition={{ duration: 0.5 }}
+              className={`text-base xs:text-lg sm:text-xl font-semibold ${colorScheme.accentColor}`}
             >
               {title}
             </motion.h3>
-            <div className="flex items-center gap-2 mt-0.5 sm:mt-1">
-              <p className="text-xs xs:text-sm sm:text-base text-gray-500">{items.length} components</p>
-              {isOpen && (
-                <motion.span 
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: 'auto' }}
-                  className={`px-1.5 xs:px-2 py-0.5 rounded-full text-[10px] xs:text-xs ${colorScheme.lightBg} ${colorScheme.accentColor}`}
-                >
-                  Active
-                </motion.span>
-              )}
-            </div>
+            <p className="text-xs xs:text-sm text-gray-500 mt-0.5 sm:mt-1">{items.length} components</p>
           </div>
         </div>
-        <motion.div 
-          className={`transition-all duration-300 ${isOpen ? `${colorScheme.lightBg} p-2 xs:p-3 sm:p-4 rounded-full` : 'p-1.5 xs:p-2 sm:p-3'}`}
-          animate={{ 
-            rotate: isOpen ? 180 : 0
-          }}
-          transition={{ duration: 0.4 }}
-        >
+        {/* Plus/Minus icon container */}
+        <div className="p-1.5 xs:p-2 sm:p-3">
           {isOpen ? (
             <Minus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
           ) : (
             <Plus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
           )}
-        </motion.div>
+        </div>
       </button>
       
       <AnimatePresence>
@@ -608,8 +586,8 @@ export default function BorderFencePage() {
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-50/60 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-[0.015]"></div>
           
-          {/* Add animated particles for visual interest */}
-          <AnimatedParticles />
+          {/* Remove the AnimatedParticles component */}
+          {/* <AnimatedParticles /> */}
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
