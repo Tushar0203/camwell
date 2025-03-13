@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import "../styles/contact.css";
 import { FiCheck } from 'react-icons/fi';
 import { useSearchParams } from 'next/navigation';
 
-const ContactPage = () => {
+const ContactForm = () => {
   const searchParams = useSearchParams();
   const productParam = searchParams.get('product');
   
@@ -327,6 +327,14 @@ const ContactPage = () => {
         </div>
       )}
     </div>
+  );
+};
+
+const ContactPage = () => {
+  return (
+    <Suspense fallback={<div className="contact-container"><div className="contact-content"><div className="contact-main"><div className="contact-form-section"><h1>Loading...</h1></div></div></div></div>}>
+      <ContactForm />
+    </Suspense>
   );
 };
 
