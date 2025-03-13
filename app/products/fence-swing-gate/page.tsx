@@ -18,6 +18,43 @@ const scrollbarHideStyles = `
   }
 `;
 
+// Client-side only component for animated particles
+const AnimatedParticles = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
+  if (!isMounted) return null;
+  
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 rounded-full bg-blue-400/30"
+          initial={{ 
+            x: `${i * 15 + 10}%`, 
+            y: `${i * 15 + 5}%`,
+            opacity: 0.4
+          }}
+          animate={{ 
+            x: [null, `${(i * 20 + 30) % 100}%`, `${(i * 15 + 60) % 100}%`, `${(i * 25 + 20) % 100}%`],
+            y: [null, `${(i * 15 + 20) % 100}%`, `${(i * 25 + 30) % 100}%`, `${(i * 10 + 50) % 100}%`],
+            opacity: [null, 0.2, 0.8, 0.3]
+          }}
+          transition={{ 
+            duration: 30 + i * 5, 
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 // First, let's organize components into logical categories
 const categorizedComponents = {
   "Primary Structure": [
@@ -35,6 +72,64 @@ const categorizedComponents = {
     "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE",
     "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE",
   ],
+};
+
+// Add component descriptions and images for enhanced UI
+const componentDetails = {
+  "A. GATE POST": {
+    description: "Heavy-duty structural support designed to withstand extreme forces and environmental conditions.",
+    material: "High-tensile galvanized steel",
+    dimensions: "120mm x 120mm x 4mm",
+    icon: "PillarIcon"
+  },
+  "B. GATE FRAME": {
+    description: "Robust frame providing structural integrity and mounting points for security elements.",
+    material: "Galvanized steel tubing",
+    dimensions: "80mm x 40mm x 3mm",
+    icon: "FrameIcon"
+  },
+  "C. WICKET GATE FRAME": {
+    description: "Secondary access point integrated within the main gate structure for personnel entry.",
+    material: "Galvanized steel tubing",
+    dimensions: "60mm x 40mm x 3mm",
+    icon: "DoorIcon"
+  },
+  "D. WELD MESH PANEL FOR GATE INFILL": {
+    description: "High-security mesh providing visual barrier while maintaining structural integrity.",
+    material: "4mm wire diameter, anti-climb mesh",
+    dimensions: "76.2mm x 12.7mm aperture",
+    icon: "GridIcon"
+  },
+  "E. COIL SUPPORT FRAME": {
+    description: "Specialized framework designed to support and secure concertina coil deployments.",
+    material: "Galvanized steel",
+    dimensions: "Custom configurations available",
+    icon: "SupportIcon"
+  },
+  "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE": {
+    description: "Premium tactical concertina coil providing superior perimeter protection.",
+    material: "High-tensile galvanized steel with razor-sharp barbs",
+    dimensions: "850mm diameter, 16 loops per coil",
+    icon: "CoilIcon"
+  },
+  "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE": {
+    description: "Compressed concertina deployment for space-efficient high-security applications.",
+    material: "High-tensile galvanized steel",
+    dimensions: "610mm diameter, 10 loops per coil",
+    icon: "FlatCoilIcon"
+  },
+  "H. TOP AND BOTTOM HINGES": {
+    description: "Heavy-duty hinges engineered for smooth operation and maximum security.",
+    material: "Hardened steel with sealed bearings",
+    dimensions: "Adjustable mounting options",
+    icon: "HingeIcon"
+  },
+  "I. LOCK/HANDLE /ALDROP": {
+    description: "Multi-point locking system providing tamper-resistant security.",
+    material: "Stainless steel with hardened core",
+    dimensions: "Industrial-grade components",
+    icon: "LockIcon"
+  },
 };
 
 interface Component {
@@ -170,87 +265,202 @@ interface CategorySectionProps {
   components: Component[];
 }
 
-const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => (
-  <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
-    isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
-  }`}>
-    <button
-      onClick={onToggle}
-      className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
+const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => {
+  // Get the appropriate icon based on category
+  const getCategoryIcon = () => {
+    if (title === "Primary Structure") return <Package className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
+    if (title === "Fastening System") return <Shield className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
+    if (title === "Security Enhancement") return <ArrowUpRight className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
+    return <Package className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
+  };
+
+  // Get a color scheme based on category
+  const getCategoryColorScheme = () => {
+    if (title === "Primary Structure") return {
+      bgGradient: "from-blue-500 to-blue-600",
+      lightBg: "bg-blue-50",
+      accentColor: "text-blue-600",
+      hoverBg: "hover:bg-blue-50/80",
+      iconBg: isOpen ? "bg-blue-600" : "bg-blue-50",
+      iconColor: isOpen ? "text-white" : "text-blue-600",
+      ringColor: "ring-blue-200/50"
+    };
+    if (title === "Fastening System") return {
+      bgGradient: "from-indigo-500 to-indigo-600",
+      lightBg: "bg-indigo-50",
+      accentColor: "text-indigo-600",
+      hoverBg: "hover:bg-indigo-50/80",
+      iconBg: isOpen ? "bg-indigo-600" : "bg-indigo-50",
+      iconColor: isOpen ? "text-white" : "text-indigo-600",
+      ringColor: "ring-indigo-200/50"
+    };
+    if (title === "Security Enhancement") return {
+      bgGradient: "from-purple-500 to-purple-600",
+      lightBg: "bg-purple-50",
+      accentColor: "text-purple-600",
+      hoverBg: "hover:bg-purple-50/80",
+      iconBg: isOpen ? "bg-purple-600" : "bg-purple-50",
+      iconColor: isOpen ? "text-white" : "text-purple-600",
+      ringColor: "ring-purple-200/50"
+    };
+    return {
+      bgGradient: "from-blue-500 to-blue-600",
+      lightBg: "bg-blue-50",
+      accentColor: "text-blue-600",
+      hoverBg: "hover:bg-blue-50/80",
+      iconBg: isOpen ? "bg-blue-600" : "bg-blue-50",
+      iconColor: isOpen ? "text-white" : "text-blue-600",
+      ringColor: "ring-blue-200/50"
+    };
+  };
+
+  const colorScheme = getCategoryColorScheme();
+
+  return (
+    <motion.div 
+      layout
+      className={`border border-gray-200 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 bg-white transition-all duration-300 relative overflow-hidden ${
+        isOpen 
+          ? `shadow-xl ring-2 ${colorScheme.ringColor} transform scale-[1.01]` 
+          : 'hover:shadow-lg hover:border-blue-200/70'
+      }`}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
-      <div className="flex items-center gap-3 sm:gap-5">
-        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
-          ${isOpen 
-            ? 'bg-[#1F75B5] text-white shadow-lg shadow-blue-100 scale-110' 
-            : 'bg-blue-50 text-[#1F75B5] group-hover:bg-blue-100'}`}>
-          {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
-        </div>
-        <div>
-          <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
-            isOpen ? 'text-[#1a5d90]' : 'text-gray-900'
-          }`}>{title}</h3>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
-        </div>
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
+        <div className={`absolute -right-20 -top-20 w-40 h-40 rounded-full bg-gradient-to-br ${colorScheme.bgGradient} blur-3xl`}></div>
+        <div className={`absolute -left-20 -bottom-20 w-40 h-40 rounded-full bg-gradient-to-tr ${colorScheme.bgGradient} blur-3xl`}></div>
       </div>
-      <div className={`transition-all duration-300 ${isOpen ? 'bg-blue-50 p-2 sm:p-3 rounded-full' : 'p-1.5 sm:p-2'}`}>
-        {isOpen ? (
-          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
-        ) : (
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
-        )}
-      </div>
-    </button>
-    
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="overflow-hidden"
-        >
-          <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {items.map((item, index) => {
-                const component = components.find(c => c.title === item);
-                if (!component) return null;
-                
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group cursor-pointer bg-gray-50 hover:bg-blue-50/50 rounded-xl p-4 transition-all duration-300"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="text-sm font-medium text-gray-900 group-hover:text-[#1F75B5] transition-colors duration-300">
-                        {item}
-                      </h4>
-                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#1F75B5] transition-colors duration-300" />
-                    </div>
-                  </motion.div>
-                );
-              })}
+      
+      <button
+        onClick={onToggle}
+        className="w-full px-4 xs:px-5 sm:px-6 md:px-8 py-4 xs:py-5 sm:py-6 flex items-center justify-between text-left focus:outline-none group cursor-pointer relative z-10"
+      >
+        <div className="flex items-center gap-3 xs:gap-4 sm:gap-6">
+          <motion.div 
+            className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-500 ${colorScheme.iconBg}`}
+            animate={{ 
+              scale: isOpen ? 1.1 : 1,
+              boxShadow: isOpen ? '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' : '0 0 0 0 rgba(0, 0, 0, 0)'
+            }}
+            transition={{ duration: 0.4 }}
+          >
+            <div className={colorScheme.iconColor}>
+              {getCategoryIcon()}
+            </div>
+          </motion.div>
+          <div>
+            <motion.h3 
+              className={`text-lg xs:text-xl sm:text-2xl font-bold transition-colors duration-300 ${
+                isOpen ? colorScheme.accentColor : 'text-gray-900'
+              }`}
+              animate={{ 
+                y: isOpen ? [0, -5, 0] : 0,
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              {title}
+            </motion.h3>
+            <div className="flex items-center gap-2 mt-0.5 sm:mt-1">
+              <p className="text-xs xs:text-sm sm:text-base text-gray-500">{items.length} components</p>
+              {isOpen && (
+                <motion.span 
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: 'auto' }}
+                  className={`px-1.5 xs:px-2 py-0.5 rounded-full text-[10px] xs:text-xs ${colorScheme.lightBg} ${colorScheme.accentColor}`}
+                >
+                  Active
+                </motion.span>
+              )}
             </div>
           </div>
+        </div>
+        <motion.div 
+          className={`transition-all duration-300 ${isOpen ? `${colorScheme.lightBg} p-2 xs:p-3 sm:p-4 rounded-full` : 'p-1.5 xs:p-2 sm:p-3'}`}
+          animate={{ 
+            rotate: isOpen ? 180 : 0
+          }}
+          transition={{ duration: 0.4 }}
+        >
+          {isOpen ? (
+            <Minus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
+          ) : (
+            <Plus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
+          )}
         </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-);
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 xs:px-5 sm:px-6 md:px-8 pb-4 xs:pb-5 sm:pb-6 md:pb-8 pt-1 sm:pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
+                {items.map((item, index) => {
+                  const component = components.find(c => c.title === item);
+                  const details = componentDetails[item as keyof typeof componentDetails];
+                  
+                  if (!component) return null;
+                  
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1, duration: 0.4 }}
+                      className={`group ${colorScheme.lightBg} rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 border border-transparent`}
+                    >
+                      <div className="p-3 xs:p-4 sm:p-5 md:p-6">
+                        <div className="flex items-start justify-between mb-2 sm:mb-3">
+                          <div className="flex-1">
+                            <h4 className={`text-sm xs:text-base sm:text-lg font-semibold ${colorScheme.accentColor} mb-0.5 sm:mb-1`}>
+                              {item}
+                            </h4>
+                            {details && (
+                              <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 line-clamp-2">
+                                {details.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        
+                        {details && (
+                          <div className="mt-2 xs:mt-3 pt-2 xs:pt-3 border-t border-blue-100/50">
+                            <div className="flex flex-wrap gap-1.5 xs:gap-2">
+                              <span className="text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5 xs:py-1 bg-white/80 rounded-full text-gray-700">
+                                {details.material}
+                              </span>
+                              <span className="text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5 xs:py-1 bg-white/80 rounded-full text-gray-700">
+                                {details.dimensions}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 export default function BorderFencePage() {
   const [openCategory, setOpenCategory] = useState<string>('');
-  const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-
-  setSelectedComponent(null); 
-
+  
   const toggleCategory = (category: string) => {
     // Prevent toggling during animation
     if (isAnimating) return;
@@ -269,10 +479,6 @@ export default function BorderFencePage() {
     setTimeout(() => {
       setIsAnimating(false);
     }, 400); // Match this with the animation duration
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   const components = [
@@ -395,49 +601,85 @@ export default function BorderFencePage() {
       </section>
 
       {/* Core Components Section - improved for mobile */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-blue-50/50 relative overflow-hidden">
+      <section className="py-10 xs:py-12 sm:py-16 md:py-20 lg:py-24 px-3 xs:px-4 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-100/40 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-50/60 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-[0.015]"></div>
+          
+          {/* Add animated particles for visual interest */}
+          <AnimatedParticles />
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-            <span className="bg-blue-50 text-[#1F75B5] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
-              System Components
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+          <motion.div 
+            className="max-w-2xl mx-auto text-center mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center justify-center mb-3 xs:mb-4">
+              <span className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 xs:px-4 py-1 xs:py-1.5 rounded-full text-xs sm:text-sm font-medium shadow-md">
+                System Components
+              </span>
+            </div>
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 xs:mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-blue-900">
               Advanced Security Elements
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto px-2">
+            <p className="text-sm xs:text-base sm:text-lg text-gray-600 max-w-xl mx-auto px-2 leading-relaxed">
               Each component is engineered to the highest standards, ensuring maximum security 
               and seamless integration within the complete system.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            {Object.entries(categorizedComponents).map(([category, items]) => (
-              <CategorySection
+          <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto">
+            {Object.entries(categorizedComponents).map(([category, items], index) => (
+              <motion.div
                 key={category}
-                title={category}
-                items={items}
-                isOpen={openCategory === category}
-                onToggle={() => toggleCategory(category)}
-                components={components}
-              />
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <CategorySection
+                  title={category}
+                  items={items}
+                  isOpen={openCategory === category}
+                  onToggle={() => toggleCategory(category)}
+                  components={components}
+                />
+              </motion.div>
             ))}
+            
+            {/* Add a call-to-action card at the end */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl sm:rounded-2xl p-4 xs:p-6 sm:p-8 md:p-10 text-white shadow-xl mt-6 sm:mt-8 overflow-hidden relative"
+            >
+              <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-10"></div>
+              <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
+                <div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-1 xs:mb-2 text-center sm:text-left">Need Custom Components?</h3>
+                  <p className="text-xs xs:text-sm sm:text-base text-blue-100 max-w-md text-center sm:text-left">
+                    Our engineering team can design and manufacture custom security solutions for your specific requirements.
+                  </p>
+                </div>
+                <Button className="bg-white text-blue-700 hover:bg-blue-50 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-3 sm:py-4 md:py-6 text-xs xs:text-sm sm:text-base rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap mt-3 sm:mt-0 w-full sm:w-auto">
+                  Request Custom Solution
+                  <ArrowRight className="ml-1 xs:ml-2 h-3 w-3 xs:h-4 xs:w-4 sm:h-5 sm:w-5" />
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Part Detail Modal */}
-      <PartModal 
-        component={selectedComponent}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
 
       {/* Technical Specifications Section - improved for mobile */}
       <section className="py-16 sm:py-20 md:py-24 bg-gray-50 relative overflow-hidden">
