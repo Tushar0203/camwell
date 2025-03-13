@@ -198,51 +198,48 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
         {isOpen ? (
           <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
         ) : (
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
         )}
       </div>
     </button>
     
-    <div className="overflow-hidden">
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            key={`${title}-content`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ 
-              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
-              opacity: { duration: 0.2 }
-            }}
-          >
-            <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-2">
-              <div className="h-px w-full bg-gradient-to-r from-blue-100 via-gray-200 to-blue-100 my-4 sm:my-5"></div>
-              <div className="space-y-4 sm:space-y-6">
-                {components.filter(comp => items.includes(comp.title)).map((component, idx) => (
-                  <motion.div 
-                    key={`${title}-${component.title}`}
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="overflow-hidden"
+        >
+          <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {items.map((item, index) => {
+                const component = components.find(c => c.title === item);
+                if (!component) return null;
+                
+                return (
+                  <motion.div
+                    key={index}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100"
+                    transition={{ delay: index * 0.1 }}
+                    className="group cursor-pointer bg-gray-50 hover:bg-blue-50/50 rounded-xl p-4 transition-all duration-300"
                   >
-                    <div className="border-l-[6px] border-[#1F75B5] pl-3 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center">
-                      <h4 className="text-[#1a5d90] font-bold text-sm sm:text-lg line-clamp-1">{component.title}</h4>
-                      <div className="ml-auto mr-3 sm:mr-4 flex items-center gap-1 text-[#1F75B5]">
-                        <span className="text-[10px] sm:text-xs font-medium">Details</span>
-                        <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                      </div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-medium text-gray-900 group-hover:text-[#1F75B5] transition-colors duration-300">
+                        {item}
+                      </h4>
+                      <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#1F75B5] transition-colors duration-300" />
                     </div>
-                    
                   </motion.div>
-                ))}
-              </div>
+                );
+              })}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </div>
 );
 
