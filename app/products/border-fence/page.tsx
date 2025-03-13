@@ -1,9 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X, ExternalLink } from 'lucide-react';
+import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -25,56 +24,6 @@ interface ComponentCardProps {
   specs: string[];
   index: number;
 }
-
-const ComponentCard = ({ title, description, specs, index }: ComponentCardProps) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="h-full"
-  >
-    <Card className="h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
-      <div className="bg-[#1F75B5] p-4 relative overflow-hidden">
-        <div className="relative z-10">
-          <h3 className="text-lg font-semibold text-white tracking-wide">
-            {title}
-          </h3>
-          <div className="h-0.5 w-8 bg-white/30 mt-2 rounded-full"></div>
-        </div>
-      </div>
-      
-      <CardContent className="p-4 flex-grow">
-        <p className="text-gray-600 text-sm leading-relaxed mb-4 min-h-[60px]">
-          {description}
-        </p>
-        
-        <div className="space-y-2">
-          {specs.map((spec, i) => (
-            <div key={i} className="flex items-start gap-2">
-              <div className="flex-shrink-0 mt-1">
-                <div className="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center">
-                  <Check className="h-2.5 w-2.5 text-[#1F75B5]" />
-                </div>
-              </div>
-              <span className="text-gray-600 text-sm">{spec}</span>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-      
-      <CardFooter className="p-4 pt-0">
-        <Button 
-          variant="default" 
-          className="w-full bg-[#1F75B5] hover:bg-[#1a5d90] text-white text-sm py-2"
-        >
-          Learn More
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
-      </CardFooter>
-    </Card>
-  </motion.div>
-);
 
 // First, let's organize components into logical categories
 const categorizedComponents = {
@@ -719,7 +668,7 @@ export default function BorderFencePage() {
                 </span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight">
-              India's New Border Fence
+              India&aposs New Border Fence
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
                 Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.
