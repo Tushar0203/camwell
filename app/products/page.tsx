@@ -80,7 +80,7 @@ const ProductCard = ({ name, description, features, icon }: {
       <CardFooter className="px-6 pb-6 pt-0">
         <Button 
           variant="default" 
-          className="w-full bg-[#2B4162] text-white hover:bg-industrial-blue/90 group-hover:bg-industrial-blue group-hover:text-white transition-colors duration-300 flex items-center justify-center"
+          className="w-full bg-[#1F75B5] text-white hover:bg-industrial-blue/90 group-hover:bg-industrial-blue group-hover:text-white transition-colors duration-300 flex items-center justify-center cursor-pointer"
         >
           <span>Know more</span>
           <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
@@ -182,7 +182,7 @@ const Products = () => {
       {/* Enhanced Hero Section with 3D elements and animated background */}
       <section className="relative py-32 overflow-hidden">
         {/* Dynamic background with gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-indigo-900">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]">
           {/* Animated security mesh pattern */}
           <div className="absolute inset-0 opacity-10" 
                style={{
@@ -230,7 +230,7 @@ const Products = () => {
             
             <div className="flex flex-wrap justify-center gap-5 animate-fade-up" style={{animationDelay: "0.6s"}}>
               <Button 
-                className="group 2xl glow bg-white px-8 py-8 bg-gradient-to-r from-[#3e7df5] to-[#4e4be6] text-white text-[18px] cursor-pointer"
+                className="group 2xl glow bg-white px-8 py-8 bg-gradient-to-r from-[#1a5d90] to-[#1a5d90] text-white text-[18px] cursor-pointer"
                 onClick={scrollToProducts}
               >
                 <span>Browse Products</span>
@@ -257,7 +257,7 @@ const Products = () => {
         </div>
         
         {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-r from-blue-900/10 to-indigo-900/10 backdrop-blur-sm"></div>
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] backdrop-blur-sm"></div>
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-300/30 to-transparent"></div>
       </section>
 
@@ -326,7 +326,7 @@ const Products = () => {
                 </div>
               </div>
             </div>
-            <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-xl card-3d h-80 md:h-96 bg-gradient-to-br from-blue-300 to-blue-800 relative">
+            <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-xl card-3d h-80 md:h-96 bg-gradient-to-br from-blue-300 to-[#1F75B5] relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-center p-8">
                   <h3 className="text-2xl md:text-3xl font-bold mb-4">Built to Your Specifications</h3>
