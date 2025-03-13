@@ -20,7 +20,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="bg-[#0066FF] text-white w-10 h-10 rounded flex items-center justify-center relative">
+              <div className="bg-[#1F75B5] text-white w-10 h-10 rounded flex items-center justify-center relative">
                 <span className="text-lg font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">C</span>
               </div>
               <span className="font-bold text-2xl tracking-wide text-white">CAMWELL</span>
@@ -30,16 +30,16 @@ const Footer = () => {
               innovation for over 18 years.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
                 <Facebook size={18} className="text-gray-300 hover:text-white transition-colors" />
               </Link>
-              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
                 <Twitter size={18} className="text-gray-300 hover:text-white transition-colors" />
               </Link>
-              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
                 <Linkedin size={18} className="text-gray-300 hover:text-white transition-colors" />
               </Link>
-              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-blue-600 hover:to-blue-500 transition-all duration-300 shadow-lg">
+              <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
                 <Instagram size={18} className="text-gray-300 hover:text-white transition-colors" />
               </Link>
             </div>
@@ -142,18 +142,18 @@ const Footer = () => {
             </div>
             <div className="space-y-4">
               <p className="text-gray-400 flex items-start group hover:text-white transition-colors duration-200">
-                <MapPin className="mr-3 h-5 w-5 flex-shrink-0 text-blue-500" />
+                <MapPin className="mr-3 h-5 w-5 flex-shrink-0 text-[#1a5d90]" />
                 B-12, Surajpur Industrial Area, Greater Noida, UP, India
               </p>
               <p className="text-gray-400">
                 <Link href="tel:+919971790811" className="hover:text-white transition-colors duration-200 flex items-center group">
-                  <Phone className="mr-3 h-5 w-5 text-blue-500" />
+                  <Phone className="mr-3 h-5 w-5 text-[#1a5d90]" />
                   +91 9971790811
                 </Link>
               </p>
               <p className="text-gray-400">
                 <Link href="mailto:info@Camwell.in" className="hover:text-white transition-colors duration-200 flex items-center group">
-                  <Mail className="mr-3 h-5 w-5 text-blue-500" />
+                  <Mail className="mr-3 h-5 w-5 text-[#1a5d90]" />
                   info@Camwell.in
                 </Link>
               </p>

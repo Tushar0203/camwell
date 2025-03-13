@@ -102,8 +102,8 @@ export default function AboutPage() {
     const generateBubbles = () => {
       const newBubbles: BubbleData[] = [];
       const colors = [
-        'bg-blue-400', 'bg-blue-300', 'bg-indigo-400', 
-        'bg-indigo-300', 'bg-sky-300', 'bg-blue-200',
+        'bg-[#1F75B5]', 'bg-[#1F75B5]', 'bg-[#1F75B5]', 
+        'bg-[#1F75B5]', 'bg-sky-300', 'bg-[#1F75B5]',
         'bg-purple-300', 'bg-cyan-300'
       ];
       
@@ -179,7 +179,7 @@ export default function AboutPage() {
       
       const newPulsingBubbles = [];
       const colors = [
-        'bg-blue-400', 'bg-indigo-400', 'bg-sky-400', 'bg-purple-400'
+        'bg-[#1F75B5]', 'bg-[#1F75B5]', 'bg-sky-400', 'bg-purple-400'
       ];
       
       for (let i = 0; i < 6; i++) {
@@ -230,8 +230,8 @@ export default function AboutPage() {
       {/* Hero Section - Premium Design */}
       <section className="relative h-[80vh] min-h-[600px] flex items-center">
         {/* Background with overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 z-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(25,25,112,0.3)_1px,transparent_1px)] bg-[length:20px_20px] opacity-40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] via-[#1F75B5] to-[#1F75B5] z-0">
+          <div className="absolute inset-0 bg-[#1F75B5] bg-[#1F75B5] opacity-40"></div>
         </div>
         
         {/* Pulsing Background Bubbles - Only show on larger screens */}
@@ -265,8 +265,8 @@ export default function AboutPage() {
         )}
         
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-blue-500/10 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-indigo-600/10 to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-[#1F75B5]/10 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[#1F75B5]/10 to-transparent"></div>
         
         {/* Content */}
         <div className="container mx-auto px-6 relative z-10">
@@ -282,7 +282,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mb-6 inline-block"
             >
-              <span className="px-4 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-blue-200 text-sm font-medium tracking-wider uppercase">
+              <span className="px-4 py-1 bg-[#1F75B5]/20 backdrop-blur-sm rounded-full text-white text-sm font-medium tracking-wider uppercase">
                 About Us
               </span>
             </motion.div>
@@ -300,14 +300,14 @@ export default function AboutPage() {
               initial={{ width: 0 }}
               animate={{ width: "120px" }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="h-1 bg-blue-400 mx-auto mb-10"
+              className="h-1 bg-[#1F75B5] mx-auto mb-10"
             ></motion.div>
             
             <motion.p 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-xl md:text-2xl text-blue-100/90 leading-relaxed max-w-3xl mx-auto"
+              className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto"
             >
               Leading provider of high-quality security fencing solutions in India, 
               committed to excellence and innovation.
@@ -335,12 +335,12 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-10 w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center z-10">
-                <span className="text-blue-600 text-4xl font-bold">01</span>
+              <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center z-10">
+                <span className="text-white text-4xl font-bold">01</span>
               </div>
-              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-blue-600 hover:shadow-[0_20px_50px_rgba(8,112,184,0.2)] transition-all duration-500">
+              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1F75B5] hover:shadow-[0_20px_50px_rgba(8,112,184,0.2)] transition-all duration-500">
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Mission</h2>
-                <div className="w-16 h-1 bg-blue-600 mb-8"></div>
+                <div className="w-16 h-1 bg-[#1F75B5] mb-8"></div>
                 <p className="text-gray-700 leading-relaxed text-lg mb-6">
                   To provide innovative, high-quality security fencing solutions that enhance safety and
                   security for our customers while delivering exceptional value and service.
@@ -357,12 +357,12 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-10 w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center z-10">
-                <span className="text-indigo-600 text-4xl font-bold">02</span>
+              <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center z-10">
+                <span className="text-white text-4xl font-bold">02</span>
               </div>
-              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-indigo-600 hover:shadow-[0_20px_50px_rgba(79,70,229,0.2)] transition-all duration-500">
+              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1F75B5] hover:shadow-[0_20px_50px_rgba(79,70,229,0.2)] transition-all duration-500">
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Vision</h2>
-                <div className="w-16 h-1 bg-indigo-600 mb-8"></div>
+                <div className="w-16 h-1 bg-[#1F75B5] mb-8"></div>
                 <p className="text-gray-700 leading-relaxed text-lg mb-6">
                   To be the most trusted and preferred provider of security fencing solutions in India,
                   recognized for our commitment to quality, innovation, and customer satisfaction.
@@ -387,11 +387,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-24"
           >
-            <span className="px-4 py-1 bg-blue-100 rounded-full text-blue-600 text-sm font-medium tracking-wider uppercase mb-6 inline-block">
+            <span className="px-4 py-1 bg-[#1F75B5] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
               What Drives Us
             </span>
             <h2 className="text-5xl font-bold text-gray-800 mb-8">Our Core Values</h2>
-            <div className="w-24 h-1 bg-blue-600 mx-auto mb-10"></div>
+            <div className="w-24 h-1 bg-[#1F75B5] mx-auto mb-10"></div>
             <p className="text-gray-700 text-xl max-w-3xl mx-auto">
               These principles guide everything we do at Camwell Industries.
             </p>
@@ -409,8 +409,8 @@ export default function AboutPage() {
               variants={fadeIn}
               className="group"
             >
-              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-blue-600 h-full flex flex-col">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
+              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#1F75B5] h-full flex flex-col">
+                <div className="bg-gradient-to-br from-[#1F75B5] to-[#1F75B5] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
                   <FaCheckCircle className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Quality</h3>
@@ -425,8 +425,8 @@ export default function AboutPage() {
               variants={fadeIn}
               className="group"
             >
-              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-indigo-600 h-full flex flex-col">
-                <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
+              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#1F75B5] h-full flex flex-col">
+                <div className="bg-gradient-to-br from-[#1F75B5] to-[#1F75B5] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
                   <FaUsers className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Customer Focus</h3>
@@ -485,11 +485,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="px-4 py-1 bg-indigo-100 rounded-full text-indigo-600 text-sm font-medium tracking-wider uppercase mb-6 inline-block">
+            <span className="px-4 py-1 bg-[#1F75B5] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
               Our Story
             </span>
             <h2 className="text-5xl font-bold text-gray-800 mb-8">Our Journey</h2>
-            <div className="w-20 h-1 bg-indigo-600 mx-auto mb-10"></div>
+            <div className="w-20 h-1 bg-[#1F75B5] mx-auto mb-10"></div>
             <p className="text-gray-700 leading-relaxed mb-12 text-lg">
               Since our establishment, Camwell Industries has been at the forefront of security fencing innovation in India. 
               We&apos;ve grown from a small local provider to one of the most trusted names in high-security fencing solutions, 
@@ -502,8 +502,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="inline-block"
             >
-              <button className="relative overflow-hidden group bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-5 px-10 rounded-lg shadow-lg">
-                <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <button className="relative overflow-hidden group bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] text-white font-semibold py-5 px-10 rounded-lg shadow-lg">
+                <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative z-10 flex items-center">
                   Learn More About Our History
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -35,7 +35,7 @@ const ComponentCard = ({ title, description, specs, index }: ComponentCardProps)
     className="h-full"
   >
     <Card className="h-full flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
-      <div className="bg-blue-600 p-4 relative overflow-hidden">
+      <div className="bg-[#1F75B5] p-4 relative overflow-hidden">
         <div className="relative z-10">
           <h3 className="text-lg font-semibold text-white tracking-wide">
             {title}
@@ -54,7 +54,7 @@ const ComponentCard = ({ title, description, specs, index }: ComponentCardProps)
             <div key={i} className="flex items-start gap-2">
               <div className="flex-shrink-0 mt-1">
                 <div className="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center">
-                  <Check className="h-2.5 w-2.5 text-blue-600" />
+                  <Check className="h-2.5 w-2.5 text-[#1F75B5]" />
                 </div>
               </div>
               <span className="text-gray-600 text-sm">{spec}</span>
@@ -66,7 +66,7 @@ const ComponentCard = ({ title, description, specs, index }: ComponentCardProps)
       <CardFooter className="p-4 pt-0">
         <Button 
           variant="default" 
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm py-2"
+          className="w-full bg-[#1F75B5] hover:bg-[#1a5d90] text-white text-sm py-2"
         >
           Learn More
           <ArrowRight className="ml-2 h-4 w-4" />
@@ -177,7 +177,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
             >
               {/* Header - improved for mobile */}
               <div className="relative">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 sm:p-6">
+                <div className="bg-gradient-to-r from-[#1F75B5] to-[#1a5d90] p-4 sm:p-6">
                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
                     <button 
                       onClick={onClose}
@@ -212,9 +212,9 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               {/* Content - improved scrolling and spacing for mobile */}
               <div className="p-4 sm:p-6 overflow-y-auto flex-grow scrollbar-hide">
                 <div className="bg-blue-50/50 p-4 sm:p-5 rounded-xl mb-4 sm:mb-6 border border-blue-100">
-                  <h4 className="text-blue-800 font-medium mb-2 flex items-center">
+                  <h4 className="text-[#1F75B5] font-medium mb-2 flex items-center">
                     <span className="bg-blue-100 p-1 rounded-md mr-2">
-                      <Package className="w-4 h-4 text-blue-700" />
+                      <Package className="w-4 h-4 text-[#1a5d90]" />
                     </span>
                     Overview
                   </h4>
@@ -224,7 +224,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 <div className="mb-4 sm:mb-6">
                   <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
                     <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-blue-700" />
+                      <Check className="w-3.5 h-3.5 text-[#1a5d90]" />
                     </span>
                     Key Features
                   </h4>
@@ -243,7 +243,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                             <Check className="h-3.5 w-3.5 text-blue-500" />
                           </div>
                         </div>
-                        <span className="text-sm font-medium text-blue-800 group-hover:text-blue-900 transition-colors duration-300">{spec}</span>
+                        <span className="text-sm font-medium text-[#1F75B5] group-hover:text-[#1a5d90] transition-colors duration-300">{spec}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -253,9 +253,9 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 
                 <div className="grid grid-cols-1 gap-4 mb-4 sm:mb-6 md:grid-cols-2">
                   <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-blue-800 font-medium mb-3 flex items-center">
+                    <h4 className="text-[#1F75B5] font-medium mb-3 flex items-center">
                       <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
+                        <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1F75B5]" />
                       </span>
                       Compatible With
                     </h4>
@@ -266,7 +266,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: idx * 0.1 }}
-                          className="bg-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-blue-700 border border-blue-200 shadow-sm hover:shadow hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 cursor-pointer flex items-center gap-1"
+                          className="bg-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-[#1a5d90] border border-blue-200 shadow-sm hover:shadow hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 cursor-pointer flex items-center gap-1"
                         >
                           <div className="h-2 w-2 rounded-full bg-blue-400"></div>
                           {tag}
@@ -276,9 +276,9 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                   </div>
                   
                   <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-blue-800 font-medium mb-3 flex items-center">
+                    <h4 className="text-[#1F75B5] font-medium mb-3 flex items-center">
                       <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
+                        <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1F75B5]" />
                       </span>
                       Key Benefits
                     </h4>
@@ -315,7 +315,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                   Close
                 </Button>
                 <Button 
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
+                  className="bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
                   onClick={() => {
                     // Close the modal first
                     onClose();
@@ -355,8 +355,8 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
       <div className="flex items-center gap-3 sm:gap-5">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
           ${isOpen 
-            ? 'bg-blue-600 text-white shadow-lg shadow-blue-100 scale-110' 
-            : 'bg-blue-50 text-blue-600 group-hover:bg-blue-100'}`}>
+            ? 'bg-[#1F75B5] text-white shadow-lg shadow-blue-100 scale-110' 
+            : 'bg-blue-50 text-[#1F75B5] group-hover:bg-blue-100'}`}>
           {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
@@ -364,16 +364,16 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
         </div>
         <div>
           <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
-            isOpen ? 'text-blue-900' : 'text-gray-900'
+            isOpen ? 'text-[#1a5d90]' : 'text-gray-900'
           }`}>{title}</h3>
           <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
         </div>
       </div>
       <div className={`transition-all duration-300 ${isOpen ? 'bg-blue-50 p-2 sm:p-3 rounded-full' : 'p-1.5 sm:p-2'}`}>
         {isOpen ? (
-          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
+          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
         ) : (
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-blue-600" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]" />
         )}
       </div>
     </button>
@@ -403,9 +403,9 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                     className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
                     onClick={() => onComponentClick(component)}
                   >
-                    <div className="border-l-[6px] border-blue-600 pl-3 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center">
-                      <h4 className="text-blue-900 font-bold text-sm sm:text-lg line-clamp-1">{component.title}</h4>
-                      <div className="ml-auto mr-3 sm:mr-4 flex items-center gap-1 text-blue-600">
+                    <div className="border-l-[6px] border-[#1F75B5] pl-3 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center">
+                      <h4 className="text-[#1a5d90] font-bold text-sm sm:text-lg line-clamp-1">{component.title}</h4>
+                      <div className="ml-auto mr-3 sm:mr-4 flex items-center gap-1 text-[#1F75B5]">
                         <span className="text-[10px] sm:text-xs font-medium">Details</span>
                         <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                       </div>
@@ -422,14 +422,14 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                           >
                             <div className="flex-shrink-0">
                               <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                                <Check className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600 group-hover:text-blue-700" />
+                                <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#1F75B5] group-hover:text-[#1a5d90]" />
                               </div>
                             </div>
-                            <span className="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-blue-800 transition-colors">{spec}</span>
+                            <span className="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-[#1F75B5] transition-colors">{spec}</span>
                           </div>
                         ))}
                         {component.specs.length > 3 && (
-                          <div className="text-xs sm:text-sm text-blue-600 font-medium mt-1 text-center">
+                          <div className="text-xs sm:text-sm text-[#1F75B5] font-medium mt-1 text-center">
                             +{component.specs.length - 3} more features
                           </div>
                         )}
@@ -437,7 +437,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                       
                       <div className="mt-6 sm:mt-8 flex justify-center">
                         <Button 
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg transition-all duration-300 cursor-pointer text-xs sm:text-sm"
+                          className="bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg transition-all duration-300 cursor-pointer text-xs sm:text-sm"
                           onClick={() => onComponentClick(component)}
                         >
                           View Detailed Specifications
@@ -695,7 +695,7 @@ export default function BorderFencePage() {
       
       {/* Hero Section - improved for mobile */}
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950 to-blue-800">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1F75B5] to-[#1F75B5]">
           <div className="absolute inset-0 bg-black/40 z-10"></div>
           {/* Improved pattern overlay with better opacity and scaling */}
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20"></div>
@@ -725,7 +725,7 @@ export default function BorderFencePage() {
                 Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-blue-900 hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
+                <Button className="bg-white text-[#1a5d90] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
                   <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Download Specifications
                 </Button>
@@ -761,7 +761,7 @@ export default function BorderFencePage() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-1 sm:mb-2">{stat.value}</h3>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1F75B5] mb-1 sm:mb-2">{stat.value}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -781,7 +781,7 @@ export default function BorderFencePage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-            <span className="bg-blue-50 text-blue-600 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
+            <span className="bg-blue-50 text-[#1F75B5] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
               System Components
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
@@ -833,7 +833,7 @@ export default function BorderFencePage() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-blue-50 text-blue-600 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#1F75B5] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   Military-Grade Protection
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -862,7 +862,7 @@ export default function BorderFencePage() {
                     >
                       <div className="flex-shrink-0">
                         <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                          <Check size={16} className="text-blue-600 h-3 w-3 sm:h-4 sm:w-4" />
+                          <Check size={16} className="text-[#1F75B5] h-3 w-3 sm:h-4 sm:w-4" />
                         </div>
                       </div>
                       <span className="text-xs sm:text-sm md:text-base text-gray-700">{feature}</span>
@@ -870,7 +870,7 @@ export default function BorderFencePage() {
                   ))}
                 </div>
                 
-                <Button className="mt-6 sm:mt-10 bg-blue-600 hover:bg-blue-700 text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
+                <Button className="mt-6 sm:mt-10 bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
                   View Complete Specifications
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -885,7 +885,7 @@ export default function BorderFencePage() {
               >
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   {/* Replace with actual technical diagram */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-blue-800">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1F75B5] to-[#1a5d90]">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
                     </div>
@@ -911,7 +911,7 @@ export default function BorderFencePage() {
                   {[1, 2, 3].map((badge) => (
                     <div key={badge} className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center">
                       <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                        <Shield size={14} className="text-blue-600 sm:h-5 sm:w-5" />
+                        <Shield size={14} className="text-[#1a5d90] sm:h-5 sm:w-5" />
                       </div>
                     </div>
                   ))}
@@ -923,7 +923,7 @@ export default function BorderFencePage() {
       </section>
       
       {/* Call to Action Section - improved for mobile */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-900 to-blue-800 relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1F75B5] to-[#1F75B5] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
         
@@ -942,7 +942,7 @@ export default function BorderFencePage() {
                 Connect with our security experts to design a custom border fence solution that meets your specific requirements.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-blue-900 hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Button className="bg-white text-[#1F75B5] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   Request a Consultation
                 </Button>
                 <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">
