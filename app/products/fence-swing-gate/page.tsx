@@ -497,8 +497,8 @@ export default function BorderFencePage() {
       
       {/* Hero Section - improved for mobile */}
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950 to-[#1F75B5]">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-[url('/images/fence-swing-gates.png')] bg-cover bg-center">
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
           {/* Improved pattern overlay with better opacity and scaling */}
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20"></div>
           

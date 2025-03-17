@@ -69,7 +69,7 @@ const Brochure = () => {
               variants={itemVariants}
               className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
             >
-              Your Complete <span className="text-blue-200 underline decoration-blue-400/30 decoration-4 underline-offset-8">Product Guide</span>
+              Your Complete <span className="text-blue-200 decoration-blue-400/30 decoration-4 underline-offset-8">Product Guide</span>
             </motion.h1>
             
             <motion.p 
@@ -85,7 +85,7 @@ const Brochure = () => {
             >
               <Button 
                 size="lg"
-                className="bg-white text-blue-700 hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden"
+                className="bg-white text-blue-700 hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden cursor-pointer"
                 onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <span className="relative z-10 flex items-center gap-2 text-[#1F75B5]">
@@ -98,7 +98,7 @@ const Brochure = () => {
               <Button 
                 variant="outline"
                 size="lg"
-                className="bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white rounded-full px-8"
+                className="bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white rounded-full px-8 cursor-pointer"
                 onClick={() => window.open('#', '_blank')}
               >
                 <span className="flex items-center gap-2">
@@ -495,105 +495,6 @@ const Brochure = () => {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <span className="inline-block px-6 py-2 mb-6 text-sm font-medium text-[#1F75B5] bg-blue-50 rounded-full shadow-sm">
-              Trusted Partners
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
-              <span className="relative inline-block">
-                Industry Leaders Trust Us
-                <motion.span 
-                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] rounded-full"
-                  initial={{ width: "0%" }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  viewport={{ once: true }}
-                />
-              </span>
-            </h2>
-            <p className="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">
-              Join the ranks of leading companies who rely on our premium security solutions
-            </p>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center"
-          >
-            {[
-              {
-                name: "TechCorp",
-                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
-                  <rect x="10" y="10" width="30" height="20" rx="2" className="fill-blue-600" />
-                  <circle cx="60" cy="20" r="10" className="fill-blue-400" />
-                  <path d="M75 15 L85 25 L65 25 Z" className="fill-blue-500" />
-                </svg>
-              },
-              {
-                name: "InnovatePro",
-                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
-                  <path d="M20 10 Q50 0 80 10 L80 30 Q50 40 20 30 Z" className="fill-blue-500" />
-                  <circle cx="50" cy="20" r="8" className="fill-white" />
-                </svg>
-              },
-              {
-                name: "GlobalTech",
-                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
-                  <circle cx="50" cy="20" r="15" className="fill-none stroke-blue-600 stroke-2" />
-                  <path d="M40 20 H60 M50 10 V30" className="stroke-blue-600 stroke-2" />
-                </svg>
-              },
-              {
-                name: "SecureNet",
-                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
-                  <path d="M30 10 H70 V25 Q50 35 30 25 Z" className="fill-blue-500" />
-                  <rect x="45" y="15" width="10" height="10" rx="2" className="fill-white" />
-                </svg>
-              },
-              {
-                name: "SmartSolutions",
-                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
-                  <path d="M20 20 Q50 0 80 20 Q50 40 20 20" className="fill-blue-400" />
-                  <circle cx="50" cy="20" r="5" className="fill-white" />
-                </svg>
-              }
-            ].map((company, i) => (
-              
-                
-                
-                  <div className="w-32 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 text-gray-600" key={i}>
-                    {company.logo}
-                  </div>
-                  
-
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="mt-20 text-center"
-          >
-            <div className="inline-flex items-center gap-3 text-gray-600 bg-gray-50/80 px-6 py-3 rounded-full backdrop-blur-sm shadow-sm hover:bg-gray-50 transition-colors">
-              <Star size={20} className="text-yellow-500 fill-yellow-500" />
-              <span className="text-lg font-medium whitespace-nowrap">
-                500+ Companies Trust Us
-              </span>
-            </div>
-          </motion.div>
-        </div>
         
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
