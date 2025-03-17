@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, Truck, Shield } from 'lucide-react';
+import { ShieldCheck, Zap, Truck } from 'lucide-react';
 import { FaCheckCircle, FaUsers, FaBullseye, FaClock } from 'react-icons/fa';
 
 export default function AboutPage() {
