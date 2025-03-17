@@ -48,8 +48,8 @@ const ProductCard = ({ name, description, features, icon }: {
         "--icon-color": "#fff"
       } as React.CSSProperties}>
       
-      <div className={`bg-gradient-to-r ${gradientColor} w-full h-48 relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+      <div className={`w-full h-58 relative overflow-hidden ${name === "India's New Border Fence" ? 'bg-[url("/products/image.png")] bg-cover bg-center' : name === "Fence Swing Gate" ? 'bg-[url("/products/image2.png")] bg-cover bg-center' : `bg-gradient-to-r ${gradientColor}`}`}>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 p-6 flex flex-col justify-center items-center text-white">
           <div className="card-icon-wrapper bg-white/20 backdrop-blur-md rounded-full p-4 mb-3">
             {icon}
@@ -114,50 +114,50 @@ const Products = () => {
       ],
       icon: <Zap size={36} strokeWidth={1.5} />
     },
-    {
-      name: 'Swing Gates',
-      description: 'Secure and reliable access control solutions for any perimeter.',
-      features: [
-        'Smooth operation mechanism',
-        'Customizable dimensions',
-        'Compatible with automation systems',
-        'Industrial-grade hinges'
-      ],
-      icon: <Truck size={36} strokeWidth={1.5} />
-    },
-    {
-      name: 'Sliding Gates',
-      description: 'Space-efficient security solutions for controlled entry points.',
-      features: [
-        'Sturdy construction',
-        'Low maintenance design',
-        'Smooth tracking system',
-        'Manual and automatic options'
-      ],
-      icon: <ShieldCheck size={36} strokeWidth={1.5} />
-    },
-    {
-      name: 'Security Spikes',
-      description: 'Additional security features for fence tops to prevent intrusion.',
-      features: [
-        'Sharp, deterrent design',
-        'Weather-resistant materials',
-        'Easy installation on existing fences',
-        'Various length options'
-      ],
-      icon: <Zap size={36} strokeWidth={1.5} />
-    },
-    {
-      name: 'Razor Wire',
-      description: 'Maximum security solution for high-risk areas and facilities.',
-      features: [
-        'High tensile steel core',
-        'Sharp razor-edged barbs',
-        'Galvanized finish for longevity',
-        'Various configurations available'
-      ],
-      icon: <Package size={36} strokeWidth={1.5} />
-    }
+    // {
+    //   name: 'Swing Gates',
+    //   description: 'Secure and reliable access control solutions for any perimeter.',
+    //   features: [
+    //     'Smooth operation mechanism',
+    //     'Customizable dimensions',
+    //     'Compatible with automation systems',
+    //     'Industrial-grade hinges'
+    //   ],
+    //   icon: <Truck size={36} strokeWidth={1.5} />
+    // },
+    // {
+    //   name: 'Sliding Gates',
+    //   description: 'Space-efficient security solutions for controlled entry points.',
+    //   features: [
+    //     'Sturdy construction',
+    //     'Low maintenance design',
+    //     'Smooth tracking system',
+    //     'Manual and automatic options'
+    //   ],
+    //   icon: <ShieldCheck size={36} strokeWidth={1.5} />
+    // },
+    // {
+    //   name: 'Security Spikes',
+    //   description: 'Additional security features for fence tops to prevent intrusion.',
+    //   features: [
+    //     'Sharp, deterrent design',
+    //     'Weather-resistant materials',
+    //     'Easy installation on existing fences',
+    //     'Various length options'
+    //   ],
+    //   icon: <Zap size={36} strokeWidth={1.5} />
+    // },
+    // {
+    //   name: 'Razor Wire',
+    //   description: 'Maximum security solution for high-risk areas and facilities.',
+    //   features: [
+    //     'High tensile steel core',
+    //     'Sharp razor-edged barbs',
+    //     'Galvanized finish for longevity',
+    //     'Various configurations available'
+    //   ],
+    //   icon: <Package size={36} strokeWidth={1.5} />
+    // }
   ];
 
   const productsRef = useRef<HTMLDivElement>(null);
@@ -272,7 +272,7 @@ const Products = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id='products'>
+          <div className="flex flex-wrap justify-center gap-8 mx-auto max-w-7xl px-4" id='products'>
             {products.map((product, index) => (
               <ProductCard
                 key={index}

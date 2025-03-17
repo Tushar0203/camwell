@@ -650,7 +650,7 @@ export default function BorderFencePage() {
                 </span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight">
-              India&aposs New Border Fence
+              {"India's New Border Fence"}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
                 Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.

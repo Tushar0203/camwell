@@ -630,31 +630,6 @@ export default function BorderFencePage() {
                 />
               </motion.div>
             ))}
-            
-            {/* Add a call-to-action card at the end */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl sm:rounded-2xl p-4 xs:p-6 sm:p-8 md:p-10 text-white shadow-xl mt-6 sm:mt-8 overflow-hidden relative"
-            >
-              <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-10"></div>
-              <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-white/10 rounded-full blur-3xl"></div>
-              
-              <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
-                <div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl font-bold mb-1 xs:mb-2 text-center sm:text-left">Need Custom Components?</h3>
-                  <p className="text-xs xs:text-sm sm:text-base text-blue-100 max-w-md text-center sm:text-left">
-                    Our engineering team can design and manufacture custom security solutions for your specific requirements.
-                  </p>
-                </div>
-                <Button className="bg-white text-blue-700 hover:bg-blue-50 px-4 xs:px-5 sm:px-6 md:px-8 py-2 xs:py-3 sm:py-4 md:py-6 text-xs xs:text-sm sm:text-base rounded-lg sm:rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap mt-3 sm:mt-0 w-full sm:w-auto">
-                  Request Custom Solution
-                  <ArrowRight className="ml-1 xs:ml-2 h-3 w-3 xs:h-4 xs:w-4 sm:h-5 sm:w-5" />
-                </Button>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>

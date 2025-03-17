@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Shield } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 import { FaCheckCircle, FaUsers, FaBullseye, FaClock } from 'react-icons/fa';
 
 // Define types for bubble properties
@@ -227,101 +229,73 @@ export default function AboutPage() {
 
   return (
     <div className="bg-white min-h-screen overflow-hidden">
-      {/* Hero Section - Premium Design */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center">
-        {/* Background with overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] via-[#1F75B5] to-[#1F75B5] z-0">
-          <div className="absolute inset-0 bg-[#1F75B5] bg-[#1F75B5] opacity-40"></div>
+      {/* Enhanced Hero Section with 3D elements and animated background */}
+      <section className="relative py-32 overflow-hidden">
+        {/* Dynamic background with gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]">
+          {/* Animated security mesh pattern */}
+          <div className="absolute inset-0 opacity-10" 
+               style={{
+                 backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.25'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+               }}
+          ></div>
         </div>
         
-        {/* Pulsing Background Bubbles - Only show on larger screens */}
-        {!isSmallScreen && (
-          <div className="absolute inset-0 overflow-hidden">
-            {pulsingBubbles.map((bubble) => (
-              <PulsingBubble
-                key={`pulse-${bubble.id}`}
-                size={bubble.size}
-                position={bubble.position}
-                color={bubble.color}
-              />
-            ))}
-          </div>
-        )}
+        {/* Moving security particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="security-particle absolute h-2 w-2 bg-blue-300 rounded-full opacity-70" style={{top: '15%', left: '10%', animation: 'float 8s infinite'}}></div>
+          <div className="security-particle absolute h-3 w-3 bg-indigo-300 rounded-full opacity-60" style={{top: '25%', left: '85%', animation: 'float 12s infinite'}}></div>
+          <div className="security-particle absolute h-2 w-2 bg-white rounded-full opacity-50" style={{top: '65%', left: '30%', animation: 'float 10s infinite'}}></div>
+          <div className="security-particle absolute h-4 w-4 bg-blue-200 rounded-full opacity-40" style={{top: '70%', left: '80%', animation: 'float 15s infinite'}}></div>
+          <div className="security-particle absolute h-3 w-3 bg-indigo-200 rounded-full opacity-30" style={{top: '40%', left: '60%', animation: 'float 13s infinite'}}></div>
+        </div>
         
-        {/* Animated Bubbles - Only show on larger screens */}
-        {!isSmallScreen && (
-          <div className="absolute inset-0 overflow-hidden z-[1]">
-            {bubbles.map((bubble) => (
-              <Bubble
-                key={`bubble-${bubble.id}`}
-                size={bubble.size}
-                position={bubble.position}
-                delay={bubble.delay}
-                duration={bubble.duration}
-                color={bubble.color}
-              />
-            ))}
+        {/* Shield icon backdrop */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+          <Shield size={500} strokeWidth={0.5} className="text-white" />
+        </div>
+        
+        {/* Content container */}
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-xl animate-fade-down">
+              <span className="inline-block relative">
+                About <span className="text-blue-300">Camwell</span> Industries
+                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-300 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></span>
+              </span>
+            </h1>
+            
+            <div className="flex justify-center mb-6">
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-300"></div>
+            </div>
+            
+            <p className="text-xl text-blue-50 max-w-3xl mx-auto mb-12 animate-fade-up opacity-90" style={{animationDelay: "0.4s", lineHeight: "1.6"}}>
+            Leading provider of high-quality security fencing solutions in India, committed to excellence and innovation.
+            </p>
+            
+            {/* Trust indicators */}
+            <div className="flex justify-center gap-8 mt-16 opacity-85">
+              <div className="flex items-center text-blue-100 gap-2">
+                <ShieldCheck size={18} />
+                <span className="text-sm font-medium">Certified Quality</span>
+              </div>
+              <div className="flex items-center text-blue-100 gap-2">
+                <Truck size={18} />
+                <span className="text-sm font-medium">Nationwide Delivery</span>
+              </div>
+              <div className="flex items-center text-blue-100 gap-2">
+                <Zap size={18} />
+                <span className="text-sm font-medium">Expert Installation</span>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
         
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-bl from-[#1F75B5]/10 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-[#1F75B5]/10 to-transparent"></div>
-        
-        {/* Content */}
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-6 inline-block"
-            >
-              <span className="px-4 py-1 bg-[#1F75B5]/20 backdrop-blur-sm rounded-full text-white text-sm font-medium tracking-wider uppercase">
-                About Us
-              </span>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl font-bold mb-8 leading-tight"
-            >
-              About <span className="text-blue-300">Camwell</span> Industries
-            </motion.h1>
-            
-            <motion.div 
-              initial={{ width: 0 }}
-              animate={{ width: "120px" }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="h-1 bg-[#1F75B5] mx-auto mb-10"
-            ></motion.div>
-            
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto"
-            >
-              Leading provider of high-quality security fencing solutions in India, 
-              committed to excellence and innovation.
-            </motion.p>
-          </motion.div>
-        </div>
-        
-        {/* Bottom wave */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="text-white fill-current">
-            <path d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-          </svg>
-        </div>
+        <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] backdrop-blur-sm"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-300/30 to-transparent"></div>
       </section>
+
 
       {/* Mission & Vision Section - Premium Design */}
       <section className="py-24 px-6">
@@ -335,7 +309,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center z-10">
+              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center z-10">
                 <span className="text-white text-4xl font-bold">01</span>
               </div>
               <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1F75B5] hover:shadow-[0_20px_50px_rgba(8,112,184,0.2)] transition-all duration-500">
@@ -357,7 +331,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-10 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center z-10">
+              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#1F75B5] rounded-full flex items-center justify-center">
                 <span className="text-white text-4xl font-bold">02</span>
               </div>
               <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1F75B5] hover:shadow-[0_20px_50px_rgba(79,70,229,0.2)] transition-all duration-500">
@@ -495,23 +469,6 @@ export default function AboutPage() {
               We&apos;ve grown from a small local provider to one of the most trusted names in high-security fencing solutions, 
               serving government, defense, and commercial clients across the country.
             </p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-block"
-            >
-              <button className="relative overflow-hidden group bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] text-white font-semibold py-5 px-10 rounded-lg shadow-lg">
-                <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                <span className="relative z-10 flex items-center">
-                  Learn More About Our History
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </button>
-            </motion.div>
           </motion.div>
         </div>
       </section>

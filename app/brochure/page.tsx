@@ -50,35 +50,7 @@ const Brochure = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden">
       
       <section className="relative min-h-[80vh] flex items-center py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2B4162] to-blue-600/90"></div>
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'saturate(0.8) contrast(1.1)',
-          }}
-        ></div>
-        
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute rounded-full bg-white/20 backdrop-blur-sm"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                width: `${Math.random() * 100 + 20}px`,
-                height: `${Math.random() * 100 + 20}px`,
-                opacity: Math.random() * 0.5 + 0.1,
-                animationDuration: `${Math.random() * 30 + 10}s`,
-                animationDelay: `${Math.random() * 2}s`,
-                animation: `float ${Math.random() * 20 + 10}s linear infinite`
-              }}
-            />
-          ))}
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]"></div>
         
         <div className="relative z-10 container mx-auto px-4">
           <motion.div 
@@ -117,7 +89,7 @@ const Brochure = () => {
                 className="bg-white text-blue-700 hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden"
                 onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <span className="relative z-10 flex items-center gap-2">
+                <span className="relative z-10 flex items-center gap-2 text-[#1F75B5]">
                   Get Your Free Copy
                   <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </span>
@@ -139,19 +111,6 @@ const Brochure = () => {
           </motion.div>
         </div>
         
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg 
-            viewBox="0 0 1200 120" 
-            preserveAspectRatio="none" 
-            className="relative block w-full h-[100px]" 
-            style={{ transform: 'rotateY(180deg)' }}
-          >
-            <path 
-              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
-              className="fill-white"
-            ></path>
-          </svg>
-        </div>
       </section>
 
       <section className="py-24 bg-white relative">
@@ -165,14 +124,14 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-blue-700 bg-blue-50 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#1F75B5] bg-blue-50 rounded-full">
               Comprehensive Guide
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               <span className="relative inline-block">
                 Why Request Our 
                 <span className="relative ml-2">
-                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-blue-400">
+                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-[#1F75B5]">
                     Brochure?
                   </span>
                   <motion.span 
@@ -279,7 +238,7 @@ const Brochure = () => {
           >
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-[#2B4162] to-blue-600 hover:from-[#2B4162] hover:to-blue-500 text-white shadow-lg shadow-blue-600/20 rounded-full px-8"
+              className="bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] text-white shadow-lg shadow-blue-600/20 rounded-full px-8"
               onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="flex items-center gap-2">
@@ -303,7 +262,7 @@ const Brochure = () => {
             className="max-w-5xl mx-auto glass-card shadow-2xl overflow-hidden rounded-3xl"
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="bg-gradient-to-br from-[#2B4162] to-blue-700 p-10 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1F75B5] p-10 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg width="100%" height="100%">
                     <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -503,7 +462,7 @@ const Brochure = () => {
                       <div className="pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#2B4162] to-blue-700 hover:from-[#2B4162] hover:to-blue-600 transition-all duration-300 h-12 text-lg shadow-lg shadow-blue-700/20"
+                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-12 text-lg shadow-lg shadow-blue-700/20"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (
@@ -545,14 +504,14 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <span className="inline-block px-6 py-2 mb-6 text-sm font-medium text-blue-700 bg-blue-50 rounded-full shadow-sm">
+            <span className="inline-block px-6 py-2 mb-6 text-sm font-medium text-[#1F75B5] bg-blue-50 rounded-full shadow-sm">
               Trusted Partners
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-charcoal mb-6">
               <span className="relative inline-block">
                 Industry Leaders Trust Us
                 <motion.span 
-                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-[#2B4162] to-blue-700 rounded-full"
+                  className="absolute -bottom-3 left-0 right-0 h-1.5 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] rounded-full"
                   initial={{ width: "0%" }}
                   whileInView={{ width: "100%" }}
                   transition={{ duration: 1, delay: 0.5 }}
@@ -575,54 +534,49 @@ const Brochure = () => {
             {[
               {
                 name: "TechCorp",
-                image: "https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=800&auto=format&fit=crop&q=60",
+                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
+                  <rect x="10" y="10" width="30" height="20" rx="2" className="fill-blue-600" />
+                  <circle cx="60" cy="20" r="10" className="fill-blue-400" />
+                  <path d="M75 15 L85 25 L65 25 Z" className="fill-blue-500" />
+                </svg>
               },
               {
                 name: "InnovatePro",
-                image: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&auto=format&fit=crop&q=60",
+                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
+                  <path d="M20 10 Q50 0 80 10 L80 30 Q50 40 20 30 Z" className="fill-blue-500" />
+                  <circle cx="50" cy="20" r="8" className="fill-white" />
+                </svg>
               },
               {
                 name: "GlobalTech",
-                image: "https://images.unsplash.com/photo-1629429408209-1f912961dbd8?w=800&auto=format&fit=crop&q=60",
+                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
+                  <circle cx="50" cy="20" r="15" className="fill-none stroke-blue-600 stroke-2" />
+                  <path d="M40 20 H60 M50 10 V30" className="stroke-blue-600 stroke-2" />
+                </svg>
               },
               {
                 name: "SecureNet",
-                image: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=800&auto=format&fit=crop&q=60",
+                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
+                  <path d="M30 10 H70 V25 Q50 35 30 25 Z" className="fill-blue-500" />
+                  <rect x="45" y="15" width="10" height="10" rx="2" className="fill-white" />
+                </svg>
               },
               {
                 name: "SmartSolutions",
-                image: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=800&auto=format&fit=crop&q=60",
+                logo: <svg viewBox="0 0 100 40" className="w-full h-12">
+                  <path d="M20 20 Q50 0 80 20 Q50 40 20 20" className="fill-blue-400" />
+                  <circle cx="50" cy="20" r="5" className="fill-white" />
+                </svg>
               }
             ].map((company, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  filter: "brightness(1.1)",
-                  transition: { duration: 0.2 }
-                }}
-                transition={{ 
-                  duration: 0.5,
-                  delay: i * 0.1 
-                }}
-                viewport={{ once: true }}
-                className="relative group w-full max-w-[200px]"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
-                <div className="relative h-24 bg-white rounded-xl shadow-lg shadow-black/5 overflow-hidden border border-gray-100 backdrop-blur-sm group-hover:shadow-xl transition-all duration-300">
-                  <Image 
-                    src={company.image} 
-                    alt={company.name}
-                    width={300}
-                    height={96}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white/20 mix-blend-overlay"></div>
-                </div>
-              </motion.div>
+              
+                
+                
+                  <div className="w-32 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300 text-gray-600" key={i}>
+                    {company.logo}
+                  </div>
+                  
+
             ))}
           </motion.div>
 
