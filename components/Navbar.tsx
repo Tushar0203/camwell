@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
@@ -12,6 +12,8 @@ import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [showMegaMenu, setShowMegaMenu] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname() || '/';
 
   const navItems = [
@@ -22,6 +24,49 @@ const Navbar = () => {
     { name: 'Request Brochure', path: '/brochure' },
     { name: 'Contact Us', path: '/contact' },
   ];
+
+  // Restructured product categories to match the hierarchical structure in the image
+  const productCategories = [
+    {
+      name: 'Weld Mesh Fence',
+      path: '/products/weld-mesh-fence',
+      subcategories: [
+        {
+          name: 'Modular Fence',
+          path: '/products/border-fence',
+          description: 'Customizable modular fencing systems'
+        },
+        {
+          name: 'Freight Corridor',
+          path: '/products/freight-corridor',
+          description: 'Secure corridor solutions for freight transport'
+        }
+      ]
+    },
+    {
+      name: 'Gates',
+      path: '/products/gates',
+      subcategories: [
+        {
+          name: 'Fence Swing Gates',
+          path: '/products/fence-swing-gate',
+          description: 'Durable and secure swing gate options'
+        }
+      ]
+    }
+  ];
+
+  const handleMouseEnter = () => {
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    setShowMegaMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowMegaMenu(false);
+    }, 300); // Small delay to prevent accidental closing
+    setHoverTimeout(timeout);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +82,12 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+    };
+  }, [hoverTimeout]);
 
   return (
     <nav 
@@ -71,31 +122,186 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-2">
             {navItems.map((item) => {
               const isActive = pathname === item.path || 
-                             (item.path === '/' && pathname === '/');
+                             (item.path === '/' && pathname === '/') ||
+                             (item.path === '/products' && pathname.startsWith('/products'));
               
               return (
-                <Link
+                <div 
                   key={item.name}
-                  href={item.path}
-                  className={`relative px-3 lg:px-5 py-2.5 rounded-lg text-[11px] lg:text-sm font-medium transition-all duration-300 ${
-                    isActive 
-                      ? scrolled
-                        ? 'text-[#1F75B5] transform scale-105'
-                        : 'text-white transform scale-105'
-                      : scrolled
-                        ? 'text-charcoal hover:bg-[#1F75B5]/10'
-                        : 'text-white/90 hover:text-white hover:bg-white/5'
-                  }`}
+                  className="relative"
+                  onMouseEnter={item.name === 'Products' ? handleMouseEnter : undefined}
+                  onMouseLeave={item.name === 'Products' ? handleMouseLeave : undefined}
                 >
-                  {item.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className={`absolute bottom-0 left-0 right-0 h-0.5 mx-4 ${scrolled ? 'bg-[#1F75B5]' : 'bg-white'}`}
-                      transition={{ type: "spring", duration: 0.6 }}
-                    />
+                  <Link
+                    href={item.path}
+                    className={`relative px-3 lg:px-5 py-2.5 rounded-lg text-[11px] lg:text-sm font-medium transition-all duration-300 ${
+                      isActive 
+                        ? scrolled
+                          ? 'text-[#1F75B5] transform scale-105'
+                          : 'text-white transform scale-105'
+                        : scrolled
+                          ? 'text-charcoal hover:bg-[#1F75B5]/10'
+                          : 'text-white/90 hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className={`absolute bottom-0 left-0 right-0 h-0.5 mx-4 ${scrolled ? 'bg-[#1F75B5]' : 'bg-white'}`}
+                        transition={{ type: "spring", duration: 0.6 }}
+                      />
+                    )}
+                  </Link>
+
+                  {/* Invisible hover bridge to prevent menu from closing */}
+                  {item.name === 'Products' && showMegaMenu && (
+                    <div className="absolute left-0 w-full h-8" style={{ top: '100%' }}></div>
                   )}
-                </Link>
+
+                  {/* Mega Menu for Products */}
+                  {item.name === 'Products' && showMegaMenu && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-1/2 transform -translate-x-1/2 w-[800px] rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-[#0c1524] to-[#111827] border border-blue-900/30"
+                      style={{ marginTop: '20px', zIndex: 50 }}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <div className="relative">
+                        {/* Triangle pointer */}
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-[#0c1524] rotate-45 border-t border-l border-blue-900/30"></div>
+                        
+                        {/* Decorative elements */}
+                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+                          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
+                        </div>
+                        
+                        <div className="p-8 relative z-10">
+                          <div className="flex items-center justify-between mb-6">
+                            <h3 className="text-2xl font-bold text-white tracking-tight">
+                              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+                                Our Products
+                              </span>
+                            </h3>
+                            <Link 
+                              href="/products" 
+                              className="text-sm font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group bg-white/5 px-4 py-2 rounded-full transition-all duration-200 hover:bg-white/10"
+                            >
+                              <span>View all products</span>
+                              <motion.span 
+                                className="ml-1"
+                                animate={{ x: [0, 3, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+                              >
+                                →
+                              </motion.span>
+                            </Link>
+                          </div>
+                          
+                          <div className="grid grid-cols-2 gap-6">
+                            {productCategories.map((category, idx) => {
+                              const isCategoryActive = pathname === category.path || 
+                                pathname.startsWith(category.path + '/') ||
+                                category.subcategories.some(subcat => 
+                                  pathname === subcat.path || pathname.startsWith(subcat.path + '/')
+                                );
+                              
+                              return (
+                                <motion.div 
+                                  key={category.name} 
+                                  className="relative"
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ duration: 0.3, delay: idx * 0.1 }}
+                                >
+                                  <div className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-blue-500/20">
+                                    {/* Main Category */}
+                                    <div className="block cursor-default">
+                                      <div className={`p-5 border-b border-white/10 transition-all duration-200 hover:bg-blue-900/20 ${
+                                        isCategoryActive
+                                          ? 'bg-gradient-to-r from-blue-900/30 to-blue-800/20'
+                                          : ''
+                                      }`}>
+                                        <div className="flex items-center justify-between">
+                                          <h4 className={`text-xl font-bold transition-colors duration-200 ${
+                                            isCategoryActive
+                                              ? 'text-blue-400'
+                                              : 'text-white'
+                                          } hover:text-blue-400`}>
+                                            {category.name}
+                                          </h4>
+                                          <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                                            isCategoryActive
+                                              ? 'bg-blue-500/20 text-blue-400'
+                                              : 'bg-white/10 text-white/70'
+                                          } hover:bg-blue-500/20 hover:text-blue-400`}>
+                                            <ChevronRight size={16} />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    {/* Subcategories */}
+                                    <div className="p-4">
+                                      {category.subcategories.map((subcat, subIdx) => {
+                                        const isSubcatActive = pathname === subcat.path || pathname.startsWith(subcat.path + '/');
+                                        
+                                        return (
+                                          <motion.div
+                                            key={subcat.name}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ duration: 0.3, delay: (idx * 0.1) + (subIdx * 0.05) + 0.1 }}
+                                          >
+                                            <Link 
+                                              href={subcat.path}
+                                              className={`group block py-3 px-4 my-1 rounded-lg transition-all duration-200 ${
+                                                isSubcatActive 
+                                                  ? 'bg-blue-500/10' 
+                                                  : 'hover:bg-white/5'
+                                              }`}
+                                            >
+                                              <div className="flex items-center">
+                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-all duration-200 ${
+                                                  isSubcatActive
+                                                    ? 'bg-blue-500/20 text-blue-400'
+                                                    : 'bg-white/10 text-white/70'
+                                                } group-hover:bg-blue-500/20 group-hover:text-blue-400`}>
+                                                  <ChevronRight size={12} />
+                                                </div>
+                                                <div className="flex flex-col">
+                                                  <span className={`text-base font-medium transition-colors duration-200 ${
+                                                    isSubcatActive 
+                                                      ? 'text-blue-400' 
+                                                      : 'text-white'
+                                                  } group-hover:text-blue-400`}>
+                                                    {subcat.name}
+                                                  </span>
+                                                  <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-200 mt-0.5">
+                                                    {subcat.description}
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </Link>
+                                          </motion.div>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -150,23 +356,26 @@ const Navbar = () => {
                   <div className="pt-8 flex flex-col items-center h-full overflow-y-auto">
                     {navItems.map((item) => {
                       const isActive = pathname === item.path || 
-                                     (item.path === '/' && pathname === '/');
+                                     (item.path === '/' && pathname === '/') ||
+                                     (item.path === '/products' && pathname.startsWith('/products'));
                       
                       return (
-                        <SheetTrigger asChild key={item.name}>
-                          <Link
-                            href={item.path}
-                            className={`px-6 py-4 text-lg font-medium transition-all duration-300 my-1 rounded-lg w-[85%] text-center ${
-                              isActive 
-                                ? 'text-[#1F75B5] bg-blue-50' 
-                                : scrolled
-                                  ? 'text-charcoal hover:bg-blue-50'
-                                  : 'text-white/90 hover:text-white hover:bg-white/20'
-                            }`}
-                          >
-                            {item.name}
-                          </Link>
-                        </SheetTrigger>
+                        <React.Fragment key={item.name}>
+                          <SheetTrigger asChild>
+                            <Link
+                              href={item.path}
+                              className={`px-6 py-4 text-lg font-medium transition-all duration-300 my-1 rounded-lg w-[85%] text-center ${
+                                isActive 
+                                  ? 'text-[#1F75B5] bg-blue-50' 
+                                  : scrolled
+                                    ? 'text-charcoal hover:bg-blue-50'
+                                    : 'text-white/90 hover:text-white hover:bg-white/20'
+                              }`}
+                            >
+                              {item.name}
+                            </Link>
+                          </SheetTrigger>
+                        </React.Fragment>
                       );
                     })}
                   </div>
