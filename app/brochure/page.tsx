@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Download, Send, Check, ChevronRight, FileText, Wrench, Star } from 'lucide-react';
+import { Download, Send, Check, ChevronRight, FileText, Wrench } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
