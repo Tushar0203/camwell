@@ -1,7 +1,7 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X } from 'lucide-react';
+import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Custom styles for hiding scrollbars
@@ -134,12 +134,6 @@ const componentDetails = {
 
 interface Component {
   title: string;
-}
-
-interface PartModalProps {
-  component: Component | null;
-  isOpen: boolean;
-  onClose: () => void;
 }
 
 // Fix the PartModal component definition to resolve the static flag issue
