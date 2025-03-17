@@ -143,119 +143,119 @@ interface PartModalProps {
 }
 
 // Fix the PartModal component definition to resolve the static flag issue
-const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
-  // Prevent background scrolling when modal is open
-  useEffect(() => {
-    if (isOpen) {
-      // Disable scrolling on the body when modal is open
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Re-enable scrolling when modal is closed
-      document.body.style.overflow = 'auto';
-    }
+// const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
+//   // Prevent background scrolling when modal is open
+//   useEffect(() => {
+//     if (isOpen) {
+//       // Disable scrolling on the body when modal is open
+//       document.body.style.overflow = 'hidden';
+//     } else {
+//       // Re-enable scrolling when modal is closed
+//       document.body.style.overflow = 'auto';
+//     }
     
-    // Cleanup function to re-enable scrolling when component unmounts
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
+//     // Cleanup function to re-enable scrolling when component unmounts
+//     return () => {
+//       document.body.style.overflow = 'auto';
+//     };
+//   }, [isOpen]);
 
-  if (!component) return null;
+//   if (!component) return null;
   
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop with blur effect */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
-            onClick={onClose}
-          />
+//   return (
+//     <AnimatePresence>
+//       {isOpen && (
+//         <>
+//           {/* Backdrop with blur effect */}
+//           <motion.div 
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//             transition={{ duration: 0.2 }}
+//             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
+//             onClick={onClose}
+//           />
           
-          {/* Modal - improved mobile responsiveness */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-20"
-            onClick={onClose}
-          >
-            <div 
-              className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header - improved for mobile */}
-              <div className="relative">
-                <div className="bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] p-4 sm:p-6">
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
-                    <button 
-                      onClick={onClose}
-                      className="rounded-full p-2 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="bg-white/10 p-2 sm:p-3 rounded-xl">
-                      <Package className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">
-                          {component.title.includes("MESH") ? "Primary Structure" : 
-                           component.title.includes("CLAMP") ? "Fastening System" :
-                           component.title.includes("ARM") || component.title.includes("RAZOR") ? "Security Enhancement" :
-                           ""}
-                        </span>
-                      </div>
-                      <h3 className="text-base sm:text-xl font-bold text-white line-clamp-2 sm:line-clamp-none">
-                        {component.title}
-                      </h3>
-                      <div className="h-0.5 w-12 bg-blue-400/30 mt-1 sm:mt-2"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/5 to-transparent"></div>
-              </div>
+//           {/* Modal - improved mobile responsiveness */}
+//           <motion.div
+//             initial={{ opacity: 0, scale: 0.95, y: 20 }}
+//             animate={{ opacity: 1, scale: 1, y: 0 }}
+//             exit={{ opacity: 0, scale: 0.95, y: 20 }}
+//             transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
+//             className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-20"
+//             onClick={onClose}
+//           >
+//             <div 
+//               className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
+//               onClick={(e) => e.stopPropagation()}
+//             >
+//               {/* Header - improved for mobile */}
+//               <div className="relative">
+//                 <div className="bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] p-4 sm:p-6">
+//                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+//                     <button 
+//                       onClick={onClose}
+//                       className="rounded-full p-2 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+//                     >
+//                       <X className="w-5 h-5" />
+//                     </button>
+//                   </div>
+//                   <div className="flex items-center gap-3 sm:gap-4">
+//                     <div className="bg-white/10 p-2 sm:p-3 rounded-xl">
+//                       <Package className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+//                     </div>
+//                     <div>
+//                       <div className="flex items-center gap-2 mb-1">
+//                         <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">
+//                           {component.title.includes("MESH") ? "Primary Structure" : 
+//                            component.title.includes("CLAMP") ? "Fastening System" :
+//                            component.title.includes("ARM") || component.title.includes("RAZOR") ? "Security Enhancement" :
+//                            ""}
+//                         </span>
+//                       </div>
+//                       <h3 className="text-base sm:text-xl font-bold text-white line-clamp-2 sm:line-clamp-none">
+//                         {component.title}
+//                       </h3>
+//                       <div className="h-0.5 w-12 bg-blue-400/30 mt-1 sm:mt-2"></div>
+//                     </div>
+//                   </div>
+//                 </div>
+//                 <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/5 to-transparent"></div>
+//               </div>
               
-              {/* Content - improved scrolling and spacing for mobile */}
+//               {/* Content - improved scrolling and spacing for mobile */}
               
               
-              {/* Footer - improved for mobile */}
-              <div className="border-t border-gray-100 p-3 sm:p-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-3">
-                <Button 
-                  variant="outline" 
-                  onClick={onClose} 
-                  className="gap-2 border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-700 hover:text-gray-900 transition-all duration-300 cursor-pointer px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto"
-                >
-                  <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                  Close
-                </Button>
-                <Button 
-                  className="bg-[#1F75B5] hover:bg-[#1F75B5] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
-                  onClick={() => {
-                    // Close the modal first
-                    onClose();
-                    // Use window.location to navigate to the contact page
-                    window.location.href = "/contact?product=" + encodeURIComponent(component.title);
-                  }}
-                >
-                  Request Quote
-                  <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
-  );
-};
+//               {/* Footer - improved for mobile */}
+//               <div className="border-t border-gray-100 p-3 sm:p-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-3">
+//                 <Button 
+//                   variant="outline" 
+//                   onClick={onClose} 
+//                   className="gap-2 border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-700 hover:text-gray-900 transition-all duration-300 cursor-pointer px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto"
+//                 >
+//                   <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+//                   Close
+//                 </Button>
+//                 <Button 
+//                   className="bg-[#1F75B5] hover:bg-[#1F75B5] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
+//                   onClick={() => {
+//                     // Close the modal first
+//                     onClose();
+//                     // Use window.location to navigate to the contact page
+//                     window.location.href = "/contact?product=" + encodeURIComponent(component.title);
+//                   }}
+//                 >
+//                   Request Quote
+//                   <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
+//                 </Button>
+//               </div>
+//             </div>
+//           </motion.div>
+//         </>
+//       )}
+//     </AnimatePresence>
+//   );
+// };
 
 interface CategorySectionProps {
   title: string;
