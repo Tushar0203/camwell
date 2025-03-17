@@ -208,7 +208,7 @@ const Products = () => {
         {/* Content container */}
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-xl animate-fade-down">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-xl animate-fade-down">
               <span className="inline-block relative">
                 Secure Your Perimeter
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-300 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></span>
@@ -219,7 +219,7 @@ const Products = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-300"></div>
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-light mb-6 text-blue-100 animate-fade-down" style={{animationDelay: "0.2s"}}>
+            <h2 className="text-2xl md:text-3xl font-light mb-6 text-blue-100 animate-fade-down" style={{animationDelay: "0.2s"}}>
               With Premium Security Products
             </h2>
             

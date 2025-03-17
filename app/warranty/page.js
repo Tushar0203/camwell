@@ -47,7 +47,7 @@ const WarrantyPage = () => {
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight">
               Camwell <span className="text-white">Warranty</span><br />
               <span className="text-blue-300">Program</span>
             </h1>

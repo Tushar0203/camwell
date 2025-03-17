@@ -43,20 +43,15 @@ export default function AboutPage() {
           <div className="security-particle absolute h-3 w-3 bg-indigo-200 rounded-full opacity-30" style={{top: '40%', left: '60%', animation: 'float 13s infinite'}}></div>
         </div>
         
-        {/* Shield icon backdrop */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <Shield size={500} strokeWidth={0.5} className="text-white" />
-        </div>
         
         {/* Content container */}
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-xl animate-fade-down">
-              <span className="inline-block relative">
-                About <span className="text-blue-300">Camwell</span> Industries
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-300 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></span>
-              </span>
-            </h1>
+          <motion.h1 
+              className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
+            >
+              About <span className="text-blue-200 decoration-blue-400/30 decoration-4 underline-offset-8">Camwell</span> Industries
+            </motion.h1>
             
             <div className="flex justify-center mb-6">
               <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-300"></div>
