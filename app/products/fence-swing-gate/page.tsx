@@ -271,39 +271,39 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
   // Get a color scheme based on category
   const getCategoryColorScheme = () => {
     if (title === "Primary Structure") return {
-      bgGradient: "from-blue-500 to-blue-600",
+      bgGradient: "black",
       lightBg: "bg-blue-50",
-      accentColor: "text-blue-600",
+      accentColor: "text-black",
       hoverBg: "hover:bg-blue-50/80",
-      iconBg: isOpen ? "bg-blue-600" : "bg-blue-50",
-      iconColor: isOpen ? "text-white" : "text-blue-600",
+      iconBg: isOpen ? "bg-blue-100" : "bg-blue-50",
+      iconColor: isOpen ? "text-blue-600" : "text-black",
       ringColor: "ring-blue-200/50"
     };
     if (title === "Fastening System") return {
       bgGradient: "from-indigo-500 to-indigo-600",
       lightBg: "bg-indigo-50",
-      accentColor: "text-indigo-600",
+      accentColor: "text-black",
       hoverBg: "hover:bg-indigo-50/80",
-      iconBg: isOpen ? "bg-indigo-600" : "bg-indigo-50",
-      iconColor: isOpen ? "text-white" : "text-indigo-600",
+      iconBg: isOpen ? "bg-indigo-100" : "bg-indigo-50",
+      iconColor: isOpen ? "text-indigo-600" : "text-black",
       ringColor: "ring-indigo-200/50"
     };
     if (title === "Security Enhancement") return {
       bgGradient: "from-purple-500 to-purple-600",
       lightBg: "bg-purple-50",
-      accentColor: "text-purple-600",
+      accentColor: "text-black",
       hoverBg: "hover:bg-purple-50/80",
-      iconBg: isOpen ? "bg-purple-600" : "bg-purple-50",
-      iconColor: isOpen ? "text-white" : "text-purple-600",
+      iconBg: isOpen ? "bg-purple-100" : "bg-purple-50",
+      iconColor: isOpen ? "text-purple-600" : "text-black",
       ringColor: "ring-purple-200/50"
     };
     return {
       bgGradient: "from-blue-500 to-blue-600",
       lightBg: "bg-blue-50",
-      accentColor: "text-blue-600",
+      accentColor: "text-black",
       hoverBg: "hover:bg-blue-50/80",
-      iconBg: isOpen ? "bg-blue-600" : "bg-blue-50",
-      iconColor: isOpen ? "text-white" : "text-blue-600",
+      iconBg: isOpen ? "bg-blue-50" : "bg-blue-50",
+      iconColor: isOpen ? "text-blue-600" : "text-black",
       ringColor: "ring-blue-200/50"
     };
   };
@@ -593,7 +593,7 @@ export default function BorderFencePage() {
             transition={{ duration: 0.6 }}
           >
             <div className="inline-flex items-center justify-center mb-3 xs:mb-4">
-              <span className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 xs:px-4 py-1 xs:py-1.5 rounded-full text-xs sm:text-sm font-medium shadow-md">
+              <span className="bg-gradient-to-r from-blue-50 to-blue-50 text-[#1F75B5] px-3 xs:px-4 py-1 xs:py-1.5 rounded-full text-xs sm:text-sm font-medium shadow-md">
                 System Components
               </span>
             </div>
