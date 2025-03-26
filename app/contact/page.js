@@ -1,9 +1,9 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
-import "../styles/contact.css";
-import { FiCheck } from 'react-icons/fi';
 import { useSearchParams } from 'next/navigation';
+import { Suspense, useEffect, useState } from "react";
+import { FiCheck } from 'react-icons/fi';
+import "../styles/contact.css";
 
 const ContactForm = () => {
   const searchParams = useSearchParams();
@@ -170,17 +170,25 @@ const ContactForm = () => {
               </div>
 
               <div className="form-group">
-                <label className="services-label">Services</label>
+                <label className="services-label">Services Interested In</label>
                 <div className="services-grid">
                   {[
-                    "Website design",
-                    "Content creation",
-                    "UX design",
-                    "Strategy & consulting",
-                    "User research",
-                    "Other",
+                    "High-Security Fencing",
+                    "Perimeter Security",
+                    "Access Control Systems",
+                    "Security Gates",
+                    "Anti-Climb Solutions",
+                    "Hostile Vehicle Mitigation",
+                    "Security Consulting",
+                    "Maintenance Services",
+                    "Other"
                   ].map((service) => (
-                    <label key={service} className="service-checkbox">
+                    <label 
+                      key={service} 
+                      className={`service-checkbox ${
+                        formData.services.includes(service) ? 'selected' : ''
+                      }`}
+                    >
                       <input
                         type="checkbox"
                         checked={formData.services.includes(service)}

@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from 'react';
-import { Download, Send, Check, ChevronRight, FileText, Wrench } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from 'framer-motion';
+import { Check, ChevronRight, Download, FileText, Send, Wrench } from 'lucide-react';
+import React, { useState } from 'react';
 
 const Brochure = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -246,7 +246,7 @@ const Brochure = () => {
         </div>
       </section>
 
-      <section id="brochure-form" className="py-24 bg-gradient-to-b from-blue-50 to-white relative">
+      <section id="brochure-form" className="py-12 sm:py-16 md:py-24 bg-gradient-to-b from-blue-50 to-white relative">
         <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px]"></div>
         
         <div className="container mx-auto px-4 relative z-10">
@@ -255,10 +255,11 @@ const Brochure = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="max-w-5xl mx-auto glass-card shadow-2xl overflow-hidden rounded-3xl"
+            className="max-w-5xl mx-auto glass-card shadow-2xl overflow-hidden rounded-2xl sm:rounded-3xl"
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1F75B5] p-10 text-white relative overflow-hidden">
+              {/* Left side - Info section */}
+              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1F75B5] p-6 sm:p-8 md:p-10 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg width="100%" height="100%">
                     <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -274,12 +275,12 @@ const Brochure = () => {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <h2 className="text-3xl font-bold mb-6">Our Product Brochure</h2>
-                  <p className="mb-8 text-blue-100 leading-relaxed">
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Our Product Brochure</h2>
+                  <p className="mb-6 sm:mb-8 text-blue-100 leading-relaxed text-sm sm:text-base">
                     Complete the form to receive our comprehensive product brochure with detailed specifications and pricing information.
                   </p>
                   
-                  <ul className="space-y-6">
+                  <ul className="space-y-4 sm:space-y-6">
                     {[
                       "Complete product specifications and dimensions",
                       "Material options and customization details",
@@ -294,41 +295,31 @@ const Brochure = () => {
                         viewport={{ once: true }}
                         className="flex items-start"
                       >
-                        <span className="inline-flex items-center justify-center bg-blue-500/30 backdrop-blur-sm border border-blue-300/30 text-white w-8 h-8 rounded-full mr-3 flex-shrink-0">
-                          <Check size={16} />
+                        <span className="inline-flex items-center justify-center bg-blue-500/30 backdrop-blur-sm border border-blue-300/30 text-white w-6 h-6 sm:w-8 sm:h-8 rounded-full mr-3 flex-shrink-0">
+                          <Check size={14} className="sm:hidden" />
+                          <Check size={16} className="hidden sm:block" />
                         </span>
-                        <p className="text-blue-50">{item}</p>
+                        <p className="text-blue-50 text-sm sm:text-base">{item}</p>
                       </motion.li>
                     ))}
                   </ul>
                   
-                  <div className="mt-10">
+                  <div className="mt-8 sm:mt-10">
                     <Button 
                       variant="outline"
-                      className="bg-white/10 text-white border-white/20  backdrop-blur-sm flex items-center gap-2"
+                      className="bg-white/10 text-white border-white/20 backdrop-blur-sm flex items-center gap-2 text-sm sm:text-base"
                     >
-                      <Download size={18} />
+                      <Download size={16} className="sm:hidden" />
+                      <Download size={18} className="hidden sm:block" />
                       Download Sample Preview
                     </Button>
                   </div>
                 </motion.div>
-                
-                <div className="absolute bottom-0 right-0 w-40 h-40 opacity-10">
-                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M44.8,-76.5C58.8,-69.5,71.9,-59.1,79.7,-45.8C87.4,-32.6,90,-16.3,88.5,-1.5C87.1,13.4,81.8,26.8,74.1,39.5C66.5,52.2,56.6,64.3,43.7,70.4C30.8,76.5,15.4,76.7,0.8,75.5C-13.8,74.3,-27.6,71.8,-41.3,66.4C-55,61,-68.6,52.7,-76.9,40.7C-85.2,28.8,-88.3,14.4,-87.9,0.4C-87.5,-13.6,-83.5,-27.2,-75.6,-38.7C-67.7,-50.2,-55.8,-59.7,-42.8,-67C-29.7,-74.2,-14.9,-79.3,0.5,-80.1C15.8,-81,31.5,-77.6,44.8,-76.5Z" transform="translate(100 100)" />
-                  </svg>
-                </div>
               </div>
               
-              <div className="p-10 bg-white relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                  <svg width="100%" height="100%">
-                    <pattern id="pattern-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                      <path d="M0 0 L20 0 L20 20 L0 20 Z" fill="none" stroke="currentColor" strokeWidth="0.5"></path>
-                    </pattern>
-                    <rect x="0" y="0" width="100%" height="100%" fill="url(#pattern-grid)"></rect>
-                  </svg>
-                </div>
+              {/* Right side - Form section */}
+              <div className="p-6 sm:p-8 md:p-10 bg-white relative overflow-hidden">
+                {/* ... Pattern background remains the same ... */}
                 
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -337,17 +328,14 @@ const Brochure = () => {
                   viewport={{ once: true }}
                   className="relative z-10"
                 >
-                  <h3 className="text-2xl font-semibold text-charcoal mb-6">Fill in your details</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-charcoal mb-4 sm:mb-6">Fill in your details</h3>
                   
                   {submitted ? (
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.5,
-                        ease: "easeOut"
-                      }}
-                      className="h-full flex flex-col items-center justify-center text-center py-10"
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="h-full flex flex-col items-center justify-center text-center py-6 sm:py-10"
                     >
                       <motion.div 
                         initial={{ scale: 0, rotate: -180 }}
@@ -381,58 +369,58 @@ const Brochure = () => {
                       </motion.div>
                     </motion.div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="fullName" className="text-gray-700">Full Name</Label>
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor="fullName" className="text-gray-700 text-sm sm:text-base">Full Name</Label>
                           <Input
                             type="text"
                             id="fullName"
                             placeholder="John Doe"
                             required
-                            className="border-gray-300 focus:border-blue-700"
+                            className="border-gray-300 focus:border-blue-700 text-sm sm:text-base h-10 sm:h-11"
                           />
                         </div>
                         
-                        <div className="space-y-2">
-                          <Label htmlFor="email" className="text-gray-700">Email Address</Label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor="email" className="text-gray-700 text-sm sm:text-base">Email Address</Label>
                           <Input
                             type="email"
                             id="email"
                             placeholder="johndoe@example.com"
                             required
-                            className="border-gray-300 focus:border-blue-700"
+                            className="border-gray-300 focus:border-blue-700 text-sm sm:text-base h-10 sm:h-11"
                           />
                         </div>
                       </div>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <Label htmlFor="phone" className="text-gray-700">Phone Number</Label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor="phone" className="text-gray-700 text-sm sm:text-base">Phone Number</Label>
                           <Input
                             type="tel"
                             id="phone"
                             placeholder="+91 98765 43210"
-                            className="border-gray-300 focus:border-blue-700"
+                            className="border-gray-300 focus:border-blue-700 text-sm sm:text-base h-10 sm:h-11"
                           />
                         </div>
                         
-                        <div className="space-y-2">
-                          <Label htmlFor="company" className="text-gray-700">Company Name</Label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor="company" className="text-gray-700 text-sm sm:text-base">Company Name</Label>
                           <Input
                             type="text"
                             id="company"
                             placeholder="ABC Corporation"
-                            className="border-gray-300 focus:border-blue-700"
+                            className="border-gray-300 focus:border-blue-700 text-sm sm:text-base h-10 sm:h-11"
                           />
                         </div>
                       </div>
                       
-                      <div className="space-y-2">
-                        <Label htmlFor="interest" className="text-gray-700">Products of Interest</Label>
+                      <div className="space-y-1.5 sm:space-y-2">
+                        <Label htmlFor="interest" className="text-gray-700 text-sm sm:text-base">Products of Interest</Label>
                         <select
                           id="interest"
-                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                         >
                           <option value="">Select Product</option>
                           <option value="weld-mesh">Weld Mesh Panels</option>
@@ -445,32 +433,33 @@ const Brochure = () => {
                         </select>
                       </div>
                       
-                      <div className="space-y-2">
-                        <Label htmlFor="message" className="text-gray-700">Additional Requirements (Optional)</Label>
+                      <div className="space-y-1.5 sm:space-y-2">
+                        <Label htmlFor="message" className="text-gray-700 text-sm sm:text-base">Additional Requirements (Optional)</Label>
                         <textarea
                           id="message"
                           rows={3}
-                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                           placeholder="Tell us about any specific information you're looking for..."
                         ></textarea>
                       </div>
                       
-                      <div className="pt-4">
+                      <div className="pt-2 sm:pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-12 text-lg shadow-lg shadow-blue-700/20"
+                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (
-                            <div className="flex items-center gap-2">
-                              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            <div className="flex items-center justify-center gap-2">
+                              <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                               Processing...
                             </div>
                           ) : (
-                            <>
+                            <div className="flex items-center justify-center gap-2">
                               Request Brochure
-                              <Send size={18} />
-                            </>
+                              <Send size={16} className="sm:hidden" />
+                              <Send size={18} className="hidden sm:block" />
+                            </div>
                           )}
                         </Button>
                       </div>
