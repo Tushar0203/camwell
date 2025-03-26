@@ -1,20 +1,30 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { X, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { motion } from 'framer-motion';
+import { ChevronRight, X } from 'lucide-react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname() || '/';
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile();
+
+  // Add this effect to handle sheet state on breakpoint changes
+  useEffect(() => {
+    if (!isMobile) {
+      setIsOpen(false);
+    }
+  }, [isMobile]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -107,8 +117,12 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <div className="w-12 h-12 bg-industrial-blue rounded-lg mr-3 flex items-center justify-center text-white font-bold shadow-lg">
-                C
+              <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg mr-2 sm:mr-3 flex items-center justify-center text-white font-bold shadow-lg transition-all duration-300 ${
+                scrolled 
+                  ? 'bg-[#1F75B5]'
+                  : 'bg-white/20 backdrop-blur-sm'
+              }`}>
+                <span className="text-base sm:text-lg md:text-xl">C</span>
               </div>
               <span className={`transition-colors duration-300 ${
                 scrolled ? 'text-charcoal' : 'text-white font-semibold'
@@ -308,7 +322,7 @@ const Navbar = () => {
 
           {/* Mobile Navigation with Sheet */}
           <div className="lg:hidden">
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
                   className={`rounded-lg transition-colors duration-300 ${
@@ -331,14 +345,23 @@ const Navbar = () => {
                   </svg>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="p-0 w-3/4 sm:max-w-sm border-l-0">
+              <SheetContent 
+                side="right" 
+                className="p-0 w-3/4 sm:max-w-sm border-l-0"
+                onInteractOutside={() => setIsOpen(false)}
+                onEscapeKeyDown={() => setIsOpen(false)}
+              >
                 <div className={`h-full flex flex-col py-4 ${
                   scrolled ? 'bg-white' : 'bg-gray-900 backdrop-blur-md'
                 }`}>
                   <div className="px-6 py-2 flex justify-between items-center">
                     <Link href="/" className="text-xl font-bold flex items-center">
-                      <div className="w-10 h-10 bg-industrial-blue rounded-lg mr-3 flex items-center justify-center text-white font-bold shadow-lg">
-                        C
+                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg mr-2 sm:mr-3 flex items-center justify-center text-white font-bold shadow-lg ${
+                        scrolled 
+                          ? 'bg-[#1F75B5]'
+                          : 'bg-white/20 backdrop-blur-sm'
+                      }`}>
+                        <span className="text-base sm:text-lg">C</span>
                       </div>
                       <span className={scrolled ? 'text-charcoal' : 'text-white font-semibold'}>
                         CAMWELL
