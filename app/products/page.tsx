@@ -1,9 +1,37 @@
 'use client';
-import React, { useRef } from 'react';
-import { useRouter } from 'next/navigation';
-import { ArrowRight, Package, ShieldCheck, Zap, Tags, Truck, Shield } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { motion, Variants } from 'framer-motion';
+import { ArrowRight, Package, Shield, ShieldCheck, Tags, Truck, Zap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React, { useRef } from 'react';
+
+const containerVariants: Variants = {
+  hidden: { 
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { 
+    y: 20, 
+    opacity: 0 
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    }
+  }
+};
 
 // Custom ProductCard component with improved design
 const ProductCard = ({ name, description, features, icon }: { 
@@ -114,50 +142,7 @@ const Products = () => {
       ],
       icon: <Zap size={36} strokeWidth={1.5} />
     },
-    // {
-    //   name: 'Swing Gates',
-    //   description: 'Secure and reliable access control solutions for any perimeter.',
-    //   features: [
-    //     'Smooth operation mechanism',
-    //     'Customizable dimensions',
-    //     'Compatible with automation systems',
-    //     'Industrial-grade hinges'
-    //   ],
-    //   icon: <Truck size={36} strokeWidth={1.5} />
-    // },
-    // {
-    //   name: 'Sliding Gates',
-    //   description: 'Space-efficient security solutions for controlled entry points.',
-    //   features: [
-    //     'Sturdy construction',
-    //     'Low maintenance design',
-    //     'Smooth tracking system',
-    //     'Manual and automatic options'
-    //   ],
-    //   icon: <ShieldCheck size={36} strokeWidth={1.5} />
-    // },
-    // {
-    //   name: 'Security Spikes',
-    //   description: 'Additional security features for fence tops to prevent intrusion.',
-    //   features: [
-    //     'Sharp, deterrent design',
-    //     'Weather-resistant materials',
-    //     'Easy installation on existing fences',
-    //     'Various length options'
-    //   ],
-    //   icon: <Zap size={36} strokeWidth={1.5} />
-    // },
-    // {
-    //   name: 'Razor Wire',
-    //   description: 'Maximum security solution for high-risk areas and facilities.',
-    //   features: [
-    //     'High tensile steel core',
-    //     'Sharp razor-edged barbs',
-    //     'Galvanized finish for longevity',
-    //     'Various configurations available'
-    //   ],
-    //   icon: <Package size={36} strokeWidth={1.5} />
-    // }
+   
   ];
 
   const productsRef = useRef<HTMLDivElement>(null);
@@ -181,54 +166,66 @@ const Products = () => {
       
       {/* Enhanced Hero Section with 3D elements and animated background */}
       <section className="relative py-32 overflow-hidden">
-        {/* Dynamic background with gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]">
-          {/* Animated security mesh pattern */}
-          <div className="absolute inset-0 opacity-10" 
-               style={{
-                 backgroundImage: "url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.25'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
-               }}
-          ></div>
-        </div>
-        
-        {/* Moving security particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="security-particle absolute h-2 w-2 bg-blue-300 rounded-full opacity-70" style={{top: '15%', left: '10%', animation: 'float 8s infinite'}}></div>
-          <div className="security-particle absolute h-3 w-3 bg-indigo-300 rounded-full opacity-60" style={{top: '25%', left: '85%', animation: 'float 12s infinite'}}></div>
-          <div className="security-particle absolute h-2 w-2 bg-white rounded-full opacity-50" style={{top: '65%', left: '30%', animation: 'float 10s infinite'}}></div>
-          <div className="security-particle absolute h-4 w-4 bg-blue-200 rounded-full opacity-40" style={{top: '70%', left: '80%', animation: 'float 15s infinite'}}></div>
-          <div className="security-particle absolute h-3 w-3 bg-indigo-200 rounded-full opacity-30" style={{top: '40%', left: '60%', animation: 'float 13s infinite'}}></div>
-        </div>
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]" />
         
         {/* Shield icon backdrop */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 flex items-center justify-center"
+        >
           <Shield size={600} strokeWidth={0.5} className="text-white" />
-        </div>
+        </motion.div>
         
         {/* Content container */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-xl animate-fade-down">
-              <span className="inline-block relative">
+        <div className="relative z-10 container mx-auto px-4">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.div
+              variants={itemVariants}
+              className="inline-block mb-6 px-4 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20"
+            >
+              <span className="text-blue-100">Premium Security Solutions</span>
+            </motion.div>
+            
+            <motion.h1 
+              variants={itemVariants}
+              className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
+            >
+              <span className="inline-block">
                 Secure Your Perimeter
-                <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-indigo-300 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500"></span>
+                <span className="block text-blue-200 decoration-blue-400/30 decoration-4 underline-offset-8">
+                  With Excellence
+                </span>
               </span>
-            </h1>
+            </motion.h1>
             
-            <div className="flex justify-center mb-6">
+            <motion.div 
+              variants={itemVariants}
+              className="flex justify-center mb-6"
+            >
               <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-indigo-300"></div>
-            </div>
+            </motion.div>
             
-            <h2 className="text-2xl md:text-3xl font-light mb-6 text-blue-100 animate-fade-down" style={{animationDelay: "0.2s"}}>
-              With Premium Security Products
-            </h2>
-            
-            <p className="text-xl text-blue-50 max-w-3xl mx-auto mb-12 animate-fade-up opacity-90" style={{animationDelay: "0.4s", lineHeight: "1.6"}}>
+            <motion.p 
+              variants={itemVariants}
+              className="text-xl text-blue-50 max-w-3xl mx-auto mb-12 opacity-90"
+              style={{lineHeight: "1.6"}}
+            >
               Explore our comprehensive range of high-quality security fencing solutions
               engineered for maximum protection, durability, and performance in any environment.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-wrap justify-center gap-5 animate-fade-up" style={{animationDelay: "0.6s"}}>
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-wrap justify-center gap-5"
+            >
               <Button 
                 className="group 2xl glow bg-white px-8 py-8 bg-gradient-to-r from-[#1a5d90] to-[#1a5d90] text-white text-[18px] cursor-pointer"
                 onClick={scrollToProducts}
@@ -236,10 +233,12 @@ const Products = () => {
                 <span>Browse Products</span>
                 <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
-            </div>
-            
-            {/* Trust indicators */}
-            <div className="flex justify-center gap-8 mt-16 opacity-85">
+            </motion.div>
+
+            <motion.div 
+              variants={itemVariants}
+              className="flex justify-center gap-8 mt-16 opacity-85"
+            >
               <div className="flex items-center text-blue-100 gap-2">
                 <ShieldCheck size={18} />
                 <span className="text-sm font-medium">Certified Quality</span>
@@ -252,8 +251,8 @@ const Products = () => {
                 <Zap size={18} />
                 <span className="text-sm font-medium">Expert Installation</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
         
         {/* Decorative elements */}
