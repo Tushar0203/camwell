@@ -1,17 +1,16 @@
 "use client"
-import React from 'react'
 import { motion } from 'framer-motion'
-import { 
-  Shield, 
-  Award, 
-  CheckCircle, 
-  AlertTriangle, 
-  FileText, 
-  Clock, 
-  Download, 
+import {
+  AlertTriangle,
   ArrowRight,
+  Award,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  FileText,
   Phone,
-  Calendar
+  Shield
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -23,6 +22,15 @@ const WarrantyPage = () => {
       opacity: 1, 
       y: 0,
       transition: { duration: 0.6 } 
+    }
+  }
+
+  const heroVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2
+      }
     }
   }
 
@@ -39,25 +47,42 @@ const WarrantyPage = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-6">
+          <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={heroVariants}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.div 
+              variants={fadeIn}
+              className="mb-6"
+            >
               <div className="inline-flex items-center justify-center p-2 bg-[#1e293b]/70 rounded-full backdrop-blur-sm border border-[#1F75B5]/30">
                 <Shield className="w-5 h-5 text-[#1F75B5] mr-2" />
                 <span className="text-sm font-medium">Industry-Leading Protection</span>
               </div>
-            </div>
+            </motion.div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight">
+            <motion.h1 
+              variants={fadeIn}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight"
+            >
               Camwell <span className="text-white">Warranty</span><br />
               <span className="text-blue-300">Program</span>
-            </h1>
+            </motion.h1>
             
-            <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <motion.p 
+              variants={fadeIn}
+              className="text-lg md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed"
+            >
               We stand behind our products with comprehensive warranty coverage 
               designed to give you peace of mind.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-wrap gap-6 justify-center">
+            <motion.div 
+              variants={fadeIn}
+              className="flex flex-wrap gap-6 justify-center"
+            >
               <Link 
                 href="#standard-coverage" 
                 className="px-8 py-4 bg-[#1a5d90] text-white rounded-lg font-medium hover:bg-[#1a5d90] transition-colors"
@@ -70,8 +95,8 @@ const WarrantyPage = () => {
               >
                 Contact Support
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

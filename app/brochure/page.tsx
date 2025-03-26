@@ -307,7 +307,7 @@ const Brochure = () => {
                   <div className="mt-8 sm:mt-10">
                     <Button 
                       variant="outline"
-                      className="bg-white/10 text-white border-white/20 backdrop-blur-sm flex items-center gap-2 text-sm sm:text-base"
+                      className="bg-white/10 text-white border-white/20 backdrop-blur-sm flex items-center gap-2 text-sm sm:text-base cursor-pointer"
                     >
                       <Download size={16} className="sm:hidden" />
                       <Download size={18} className="hidden sm:block" />
@@ -438,7 +438,8 @@ const Brochure = () => {
                         <textarea
                           id="message"
                           rows={3}
-                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
+                          maxLength={500}
+                          className="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition-all duration-200 text-sm sm:text-base resize-none"
                           placeholder="Tell us about any specific information you're looking for..."
                         ></textarea>
                       </div>
@@ -446,7 +447,7 @@ const Brochure = () => {
                       <div className="pt-2 sm:pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20"
+                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (
