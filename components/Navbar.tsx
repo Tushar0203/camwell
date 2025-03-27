@@ -179,32 +179,25 @@ const Navbar = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 transform -translate-x-1/2 w-[800px] rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-[#0c1524] to-[#111827] border border-blue-900/30"
+                      className="absolute left-1/2 transform -translate-x-1/2 w-[500px] rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-[#0c1524] to-[#111827] border border-blue-900/30"
                       style={{ marginTop: '20px', zIndex: 50 }}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
                       <div className="relative">
                         {/* Triangle pointer */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-[#0c1524] rotate-45 border-t border-l border-blue-900/30"></div>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-3 h-3 bg-[#0c1524] rotate-45 border-t border-l border-blue-900/30"></div>
                         
-                        {/* Decorative elements */}
-                        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-                          <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
-                          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500/5 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
-                        </div>
-                        
-                        <div className="p-8 relative z-10">
-                          <div className="flex items-center justify-between mb-6">
-                            <h3 className="text-2xl font-bold text-white tracking-tight">
+                        <div className="p-6">
+                          <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-lg font-bold text-white tracking-tight">
                               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
                                 Our Products
                               </span>
                             </h3>
                             <Link 
                               href="/products" 
-                              className="text-sm font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group bg-white/5 px-4 py-2 rounded-full transition-all duration-200 hover:bg-white/10"
+                              className="text-sm font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group bg-white/5 px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-white/10"
                             >
                               <span>View all products</span>
                               <motion.span 
@@ -217,7 +210,7 @@ const Navbar = () => {
                             </Link>
                           </div>
                           
-                          <div className="grid grid-cols-2 gap-6">
+                          <div className="grid grid-cols-2 gap-4">
                             {productCategories.map((category, idx) => {
                               const isCategoryActive = pathname === category.path || 
                                 pathname.startsWith(category.path + '/') ||
@@ -233,35 +226,22 @@ const Navbar = () => {
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.3, delay: idx * 0.1 }}
                                 >
-                                  <div className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-blue-500/20">
-                                    {/* Main Category */}
-                                    <div className="block cursor-default">
-                                      <div className={`p-5 border-b border-white/10 transition-all duration-200 hover:bg-blue-900/20 ${
-                                        isCategoryActive
-                                          ? 'bg-gradient-to-r from-blue-900/30 to-blue-800/20'
-                                          : ''
+                                  <div className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden border border-white/10 hover:border-blue-500/20 transition-all duration-300">
+                                    <div className="block">
+                                      <div className={`p-4 border-b border-white/10 transition-all duration-200 hover:bg-blue-900/20 ${
+                                        isCategoryActive ? 'bg-gradient-to-r from-blue-900/30 to-blue-800/20' : ''
                                       }`}>
                                         <div className="flex items-center justify-between">
-                                          <h4 className={`text-xl font-bold transition-colors duration-200 ${
-                                            isCategoryActive
-                                              ? 'text-blue-400'
-                                              : 'text-white'
-                                          } hover:text-blue-400`}>
+                                          <h4 className={`text-base font-semibold ${
+                                            isCategoryActive ? 'text-blue-400' : 'text-white'
+                                          } hover:text-blue-400 transition-colors duration-200`}>
                                             {category.name}
                                           </h4>
-                                          <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                                            isCategoryActive
-                                              ? 'bg-blue-500/20 text-blue-400'
-                                              : 'bg-white/10 text-white/70'
-                                          } hover:bg-blue-500/20 hover:text-blue-400`}>
-                                            <ChevronRight size={16} />
-                                          </div>
                                         </div>
                                       </div>
                                     </div>
                                     
-                                    {/* Subcategories */}
-                                    <div className="p-4">
+                                    <div className="p-3">
                                       {category.subcategories.map((subcat, subIdx) => {
                                         const isSubcatActive = pathname === subcat.path || pathname.startsWith(subcat.path + '/');
                                         
@@ -274,31 +254,29 @@ const Navbar = () => {
                                           >
                                             <Link 
                                               href={subcat.path}
-                                              className={`group block py-3 px-4 my-1 rounded-lg transition-all duration-200 ${
-                                                isSubcatActive 
-                                                  ? 'bg-blue-500/10' 
-                                                  : 'hover:bg-white/5'
+                                              className={`group block py-2 px-3 rounded-md transition-all duration-200 ${
+                                                isSubcatActive ? 'bg-blue-500/10' : 'hover:bg-white/5'
                                               }`}
                                             >
                                               <div className="flex items-center">
-                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 transition-all duration-200 ${
-                                                  isSubcatActive
-                                                    ? 'bg-blue-500/20 text-blue-400'
-                                                    : 'bg-white/10 text-white/70'
-                                                } group-hover:bg-blue-500/20 group-hover:text-blue-400`}>
-                                                  <ChevronRight size={12} />
+                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
+                                                  isSubcatActive 
+                                                    ? 'bg-gradient-to-br from-blue-500/30 to-blue-400/10 text-blue-400 ring-1 ring-blue-500/20' 
+                                                    : 'bg-white/[0.06] text-white/70'
+                                                } group-hover:bg-gradient-to-br group-hover:from-blue-500/30 group-hover:to-blue-400/10 
+                                                  group-hover:text-blue-400 group-hover:ring-1 group-hover:ring-blue-500/20 
+                                                  transition-all duration-300 transform group-hover:scale-105`}>
+                                                  <ChevronRight size={14} className="transform translate-x-[1px]" />
                                                 </div>
-                                                <div className="flex flex-col">
-                                                  <span className={`text-base font-medium transition-colors duration-200 ${
-                                                    isSubcatActive 
-                                                      ? 'text-blue-400' 
-                                                      : 'text-white'
-                                                  } group-hover:text-blue-400`}>
+                                                <div>
+                                                  <span className={`text-sm font-medium ${
+                                                    isSubcatActive ? 'text-blue-400' : 'text-white'
+                                                  } group-hover:text-blue-400 transition-colors duration-200`}>
                                                     {subcat.name}
                                                   </span>
-                                                  <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-200 mt-0.5">
+                                                  <p className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-200 mt-0.5">
                                                     {subcat.description}
-                                                  </span>
+                                                  </p>
                                                 </div>
                                               </div>
                                             </Link>
