@@ -39,7 +39,6 @@ const Navbar = () => {
   const productCategories = [
     {
       name: 'Weld Mesh Fence',
-      path: '/products/weld-mesh-fence',
       subcategories: [
         {
           name: 'Modular Fence',
@@ -55,7 +54,6 @@ const Navbar = () => {
     },
     {
       name: 'Gates',
-      path: '/products/gates',
       subcategories: [
         {
           name: 'Fence Swing Gates',
@@ -179,30 +177,33 @@ const Navbar = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 transform -translate-x-1/2 w-[500px] rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-[#0c1524] to-[#111827] border border-blue-900/30"
+                      className="absolute left-1/2 transform -translate-x-1/2 w-[600px] rounded-xl shadow-2xl overflow-hidden bg-gradient-to-br from-[#0c1524] via-[#0f1a2b] to-[#111827] border border-blue-900/30 backdrop-blur-xl"
                       style={{ marginTop: '20px', zIndex: 50 }}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
                       <div className="relative">
-                        {/* Triangle pointer */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-3 h-3 bg-[#0c1524] rotate-45 border-t border-l border-blue-900/30"></div>
+                        {/* Improved triangle pointer */}
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-gradient-to-br from-[#0c1524] to-[#111827] rotate-45 border-t border-l border-blue-900/30"></div>
                         
                         <div className="p-6">
-                          <div className="flex items-center justify-between mb-4">
-                            <h3 className="text-lg font-bold text-white tracking-tight">
-                              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                                Our Products
-                              </span>
-                            </h3>
+                          <div className="flex items-center justify-between mb-5">
+                            <div>
+                              <h3 className="text-lg font-semibold text-white tracking-tight mb-1">
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+                                  Our Products
+                                </span>
+                              </h3>
+                              <p className="text-xs text-gray-400">Explore our range of security solutions</p>
+                            </div>
                             <Link 
                               href="/products" 
-                              className="text-sm font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group bg-white/5 px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-white/10"
+                              className="text-xs font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-white/5 border border-blue-500/20 hover:border-blue-500/40"
                             >
-                              <span>View all products</span>
+                              <span>View all</span>
                               <motion.span 
-                                className="ml-1"
-                                animate={{ x: [0, 3, 0] }}
+                                className="ml-1.5"
+                                animate={{ x: [0, 2, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
                               >
                                 →
@@ -212,72 +213,65 @@ const Navbar = () => {
                           
                           <div className="grid grid-cols-2 gap-4">
                             {productCategories.map((category, idx) => {
-                              const isCategoryActive = pathname === category.path || 
-                                pathname.startsWith(category.path + '/') ||
-                                category.subcategories.some(subcat => 
-                                  pathname === subcat.path || pathname.startsWith(subcat.path + '/')
-                                );
+                              const isCategoryActive = category.subcategories.some(subcat => 
+                                pathname === subcat.path || pathname.startsWith(subcat.path + '/')
+                              );
                               
                               return (
                                 <motion.div 
                                   key={category.name} 
-                                  className="relative"
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ duration: 0.3, delay: idx * 0.1 }}
+                                  className="group"
                                 >
-                                  <div className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden border border-white/10 hover:border-blue-500/20 transition-all duration-300">
-                                    <div className="block">
-                                      <div className={`p-4 border-b border-white/10 transition-all duration-200 hover:bg-blue-900/20 ${
-                                        isCategoryActive ? 'bg-gradient-to-r from-blue-900/30 to-blue-800/20' : ''
-                                      }`}>
-                                        <div className="flex items-center justify-between">
-                                          <h4 className={`text-base font-semibold ${
-                                            isCategoryActive ? 'text-blue-400' : 'text-white'
-                                          } hover:text-blue-400 transition-colors duration-200`}>
-                                            {category.name}
-                                          </h4>
-                                        </div>
-                                      </div>
+                                  <div className="bg-white/[0.02] rounded-lg overflow-hidden border border-white/5 hover:border-blue-500/20 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5">
+                                    {/* Removed Link wrapper, made it just a header */}
+                                    <div className={`p-3 border-b border-white/5 transition-all duration-200 group-hover:bg-blue-900/20 ${
+                                      isCategoryActive ? 'bg-gradient-to-r from-blue-900/30 to-blue-800/20' : ''
+                                    }`}>
+                                      <h4 className={`text-sm font-medium ${
+                                        isCategoryActive ? 'text-blue-400' : 'text-white'
+                                      } group-hover:text-blue-400 transition-colors duration-200`}>
+                                        {category.name}
+                                      </h4>
                                     </div>
                                     
-                                    <div className="p-3">
+                                    <div className="p-2 space-y-0.5">
                                       {category.subcategories.map((subcat, subIdx) => {
-                                        const isSubcatActive = pathname === subcat.path || pathname.startsWith(subcat.path + '/');
+                                        const isSubcatActive = pathname === subcat.path;
                                         
                                         return (
                                           <motion.div
                                             key={subcat.name}
-                                            initial={{ opacity: 0, x: -10 }}
+                                            initial={{ opacity: 0, x: -5 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ duration: 0.3, delay: (idx * 0.1) + (subIdx * 0.05) + 0.1 }}
+                                            transition={{ duration: 0.3, delay: (idx * 0.1) + (subIdx * 0.05) }}
                                           >
                                             <Link 
                                               href={subcat.path}
-                                              className={`group block py-2 px-3 rounded-md transition-all duration-200 ${
-                                                isSubcatActive ? 'bg-blue-500/10' : 'hover:bg-white/5'
+                                              className={`group flex items-center p-2 rounded-md transition-all duration-200 ${
+                                                isSubcatActive ? 'bg-blue-500/10' : 'hover:bg-white/[0.02]'
                                               }`}
                                             >
-                                              <div className="flex items-center">
-                                                <div className={`w-6 h-6 rounded-full flex items-center justify-center mr-3 ${
-                                                  isSubcatActive 
-                                                    ? 'bg-gradient-to-br from-blue-500/30 to-blue-400/10 text-blue-400 ring-1 ring-blue-500/20' 
-                                                    : 'bg-white/[0.06] text-white/70'
-                                                } group-hover:bg-gradient-to-br group-hover:from-blue-500/30 group-hover:to-blue-400/10 
-                                                  group-hover:text-blue-400 group-hover:ring-1 group-hover:ring-blue-500/20 
-                                                  transition-all duration-300 transform group-hover:scale-105`}>
-                                                  <ChevronRight size={14} className="transform translate-x-[1px]" />
-                                                </div>
-                                                <div>
-                                                  <span className={`text-sm font-medium ${
-                                                    isSubcatActive ? 'text-blue-400' : 'text-white'
-                                                  } group-hover:text-blue-400 transition-colors duration-200`}>
-                                                    {subcat.name}
-                                                  </span>
-                                                  <p className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors duration-200 mt-0.5">
-                                                    {subcat.description}
-                                                  </p>
-                                                </div>
+                                              <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-2 ${
+                                                isSubcatActive 
+                                                  ? 'bg-gradient-to-br from-blue-500/30 to-blue-400/10 text-blue-400 ring-1 ring-blue-500/20' 
+                                                  : 'bg-white/[0.03] text-white/50'
+                                              } group-hover:bg-gradient-to-br group-hover:from-blue-500/30 group-hover:to-blue-400/10 
+                                                group-hover:text-blue-400 group-hover:ring-1 group-hover:ring-blue-500/20 
+                                                transition-all duration-300`}>
+                                                <ChevronRight size={12} className="transform translate-x-[0.5px]" />
+                                              </div>
+                                              <div>
+                                                <span className={`text-xs font-medium ${
+                                                  isSubcatActive ? 'text-blue-400' : 'text-gray-300'
+                                                } group-hover:text-blue-400 transition-colors duration-200`}>
+                                                  {subcat.name}
+                                                </span>
+                                                <p className="text-[10px] text-gray-500 group-hover:text-gray-400 transition-colors duration-200">
+                                                  {subcat.description}
+                                                </p>
                                               </div>
                                             </Link>
                                           </motion.div>
