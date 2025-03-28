@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+// Ensure framer-motion import is correct
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Minus, Package, Plus, Shield } from 'lucide-react';
+import { useState } from 'react';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -21,31 +22,31 @@ const scrollbarHideStyles = `
 // Client-side only component for animated particles
 // const AnimatedParticles = () => {
 //   const [isMounted, setIsMounted] = useState(false);
-  
+
 //   useEffect(() => {
 //     setIsMounted(true);
 //   }, []);
-  
+
 //   if (!isMounted) return null;
-  
+
 //   return (
 //     <div className="absolute inset-0 overflow-hidden">
 //       {[...Array(6)].map((_, i) => (
 //         <motion.div
 //           key={i}
 //           className="absolute w-2 h-2 rounded-full bg-blue-400/30"
-//           initial={{ 
-//             x: `${i * 15 + 10}%`, 
+//           initial={{
+//             x: `${i * 15 + 10}%`,
 //             y: `${i * 15 + 5}%`,
 //             opacity: 0.4
 //           }}
-//           animate={{ 
+//           animate={{
 //             x: [null, `${(i * 20 + 30) % 100}%`, `${(i * 15 + 60) % 100}%`, `${(i * 25 + 20) % 100}%`],
 //             y: [null, `${(i * 15 + 20) % 100}%`, `${(i * 25 + 30) % 100}%`, `${(i * 10 + 50) % 100}%`],
 //             opacity: [null, 0.2, 0.8, 0.3]
 //           }}
-//           transition={{ 
-//             duration: 30 + i * 5, 
+//           transition={{
+//             duration: 30 + i * 5,
 //             repeat: Infinity,
 //             ease: "linear"
 //           }}
@@ -136,6 +137,13 @@ interface Component {
   title: string;
 }
 
+// Example Modal Props (if uncommenting modal)
+// interface PartModalProps {
+//   component: Component | null;
+//   isOpen: boolean;
+//   onClose: () => void;
+// }
+
 // Fix the PartModal component definition to resolve the static flag issue
 // const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
 //   // Prevent background scrolling when modal is open
@@ -147,7 +155,7 @@ interface Component {
 //       // Re-enable scrolling when modal is closed
 //       document.body.style.overflow = 'auto';
 //     }
-    
+
 //     // Cleanup function to re-enable scrolling when component unmounts
 //     return () => {
 //       document.body.style.overflow = 'auto';
@@ -155,13 +163,13 @@ interface Component {
 //   }, [isOpen]);
 
 //   if (!component) return null;
-  
+
 //   return (
 //     <AnimatePresence>
 //       {isOpen && (
 //         <>
 //           {/* Backdrop with blur effect */}
-//           <motion.div 
+//           <motion.div
 //             initial={{ opacity: 0 }}
 //             animate={{ opacity: 1 }}
 //             exit={{ opacity: 0 }}
@@ -169,7 +177,7 @@ interface Component {
 //             className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
 //             onClick={onClose}
 //           />
-          
+
 //           {/* Modal - improved mobile responsiveness */}
 //           <motion.div
 //             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -179,7 +187,7 @@ interface Component {
 //             className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-20"
 //             onClick={onClose}
 //           >
-//             <div 
+//             <div
 //               className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
 //               onClick={(e) => e.stopPropagation()}
 //             >
@@ -187,7 +195,7 @@ interface Component {
 //               <div className="relative">
 //                 <div className="bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] p-4 sm:p-6">
 //                   <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
-//                     <button 
+//                     <button
 //                       onClick={onClose}
 //                       className="rounded-full p-2 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
 //                     >
@@ -201,14 +209,14 @@ interface Component {
 //                     <div>
 //                       <div className="flex items-center gap-2 mb-1">
 //                         <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">
-//                           {component.title.includes("MESH") ? "Primary Structure" : 
-//                            component.title.includes("CLAMP") ? "Fastening System" :
-//                            component.title.includes("ARM") || component.title.includes("RAZOR") ? "Security Enhancement" :
+//                           {component?.title.includes("MESH") ? "Primary Structure" : // Added optional chaining
+//                            component?.title.includes("CLAMP") ? "Fastening System" :
+//                            component?.title.includes("ARM") || component?.title.includes("RAZOR") ? "Security Enhancement" :
 //                            ""}
 //                         </span>
 //                       </div>
 //                       <h3 className="text-base sm:text-xl font-bold text-white line-clamp-2 sm:line-clamp-none">
-//                         {component.title}
+//                         {component?.title} {/* Added optional chaining */}
 //                       </h3>
 //                       <div className="h-0.5 w-12 bg-blue-400/30 mt-1 sm:mt-2"></div>
 //                     </div>
@@ -216,27 +224,29 @@ interface Component {
 //                 </div>
 //                 <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/5 to-transparent"></div>
 //               </div>
-              
+
 //               {/* Content - improved scrolling and spacing for mobile */}
-              
-              
+
+
 //               {/* Footer - improved for mobile */}
 //               <div className="border-t border-gray-100 p-3 sm:p-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-3">
-//                 <Button 
-//                   variant="outline" 
-//                   onClick={onClose} 
+//                 <Button
+//                   variant="outline"
+//                   onClick={onClose}
 //                   className="gap-2 border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-700 hover:text-gray-900 transition-all duration-300 cursor-pointer px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto"
 //                 >
 //                   <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
 //                   Close
 //                 </Button>
-//                 <Button 
+//                 <Button
 //                   className="bg-[#1F75B5] hover:bg-[#1F75B5] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
 //                   onClick={() => {
 //                     // Close the modal first
 //                     onClose();
 //                     // Use window.location to navigate to the contact page
-//                     window.location.href = "/contact?product=" + encodeURIComponent(component.title);
+//                     if (component) { // Check if component is not null
+//                       window.location.href = "/contact?product=" + encodeURIComponent(component.title);
+//                     }
 //                   }}
 //                 >
 //                   Request Quote
@@ -257,53 +267,57 @@ interface CategorySectionProps {
   isOpen: boolean;
   onToggle: () => void;
   components: Component[];
+  // Removed onComponentClick prop
 }
 
-const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => {
-  // Get the appropriate icon based on category
+const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => { // Removed onComponentClick prop
+  // Using the original structure for getCategoryIcon from the initial file read, but with adjusted sizes
   const getCategoryIcon = () => {
-    if (title === "Primary Structure") return <Package className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
-    if (title === "Fastening System") return <Shield className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
-    if (title === "Security Enhancement") return <ArrowUpRight className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
-    return <Package className="w-5 h-5 xs:w-6 xs:h-6 sm:w-7 sm:h-7" />;
+    // Adjusted sizes to match reference
+    if (title === "Primary Structure") return <Package className="w-6 h-6 sm:w-7 sm:h-7" />;
+    if (title === "Fastening System") return <Shield className="w-6 h-6 sm:w-7 sm:h-7" />;
+    if (title === "Security Enhancement") return <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />;
+    return <Package className="w-6 h-6 sm:w-7 sm:h-7" />;
   };
 
   // Get a color scheme based on category
   const getCategoryColorScheme = () => {
     if (title === "Primary Structure") return {
-      bgGradient: "black",
+      bgGradient: "black", // Adjusted to match reference (though reference doesn't show gradient)
       lightBg: "bg-blue-50",
-      accentColor: "text-black",
-      hoverBg: "hover:bg-blue-50/80",
+      accentColor: "text-gray-900", // Adjusted to match reference
+      hoverBg: "hover:bg-blue-100", // Adjusted to match reference hover
       iconBg: isOpen ? "bg-blue-100" : "bg-blue-50",
-      iconColor: isOpen ? "text-blue-600" : "text-black",
+      iconColor: isOpen ? "text-blue-600" : "text-[#1F75B5]", // Adjusted to match reference icon color
       ringColor: "ring-blue-200/50"
     };
+    // Assuming similar adjustments for other categories based on Primary Structure reference
     if (title === "Fastening System") return {
       bgGradient: "from-indigo-500 to-indigo-600",
       lightBg: "bg-indigo-50",
-      accentColor: "text-black",
-      hoverBg: "hover:bg-indigo-50/80",
+      accentColor: "text-gray-900",
+      hoverBg: "hover:bg-indigo-100",
       iconBg: isOpen ? "bg-indigo-100" : "bg-indigo-50",
-      iconColor: isOpen ? "text-indigo-600" : "text-black",
+      iconColor: isOpen ? "text-indigo-600" : "text-[#1F75B5]", // Assuming similar color
       ringColor: "ring-indigo-200/50"
     };
     if (title === "Security Enhancement") return {
       bgGradient: "from-purple-500 to-purple-600",
       lightBg: "bg-purple-50",
-      accentColor: "text-black",
-      hoverBg: "hover:bg-purple-50/80",
+      accentColor: "text-gray-900",
+      hoverBg: "hover:bg-purple-100",
       iconBg: isOpen ? "bg-purple-100" : "bg-purple-50",
-      iconColor: isOpen ? "text-purple-600" : "text-black",
+      iconColor: isOpen ? "text-purple-600" : "text-[#1F75B5]", // Assuming similar color
       ringColor: "ring-purple-200/50"
     };
+    // Default fallback
     return {
       bgGradient: "from-blue-500 to-blue-600",
       lightBg: "bg-blue-50",
-      accentColor: "text-black",
-      hoverBg: "hover:bg-blue-50/80",
-      iconBg: isOpen ? "bg-blue-50" : "bg-blue-50",
-      iconColor: isOpen ? "text-blue-600" : "text-black",
+      accentColor: "text-gray-900",
+      hoverBg: "hover:bg-blue-100",
+      iconBg: isOpen ? "bg-blue-100" : "bg-blue-50",
+      iconColor: isOpen ? "text-blue-600" : "text-[#1F75B5]",
       ringColor: "ring-blue-200/50"
     };
   };
@@ -311,60 +325,67 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
   const colorScheme = getCategoryColorScheme();
 
   return (
-    <motion.div 
+    // Applying styles from reference HTML
+    <motion.div
       layout
-      className={`border border-gray-200 rounded-xl sm:rounded-2xl mb-4 sm:mb-8 bg-white transition-all duration-300 relative overflow-hidden ${
-        isOpen 
-          ? `shadow-xl ring-2 ${colorScheme.ringColor} transform scale-[1.01]` 
-          : 'hover:shadow-lg hover:border-blue-200/70'
+      className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative overflow-hidden ${
+        isOpen
+          ? `shadow-xl ring-2 ${colorScheme.ringColor} transform scale-[1.01]` // Keep open state distinct
+          : 'hover:shadow-md hover:border-blue-200/70' // Apply reference hover styles
       }`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      {/* Decorative background elements */}
+      {/* Decorative background elements (kept from previous state, adjust if needed) */}
       <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
         <div className={`absolute -right-20 -top-20 w-40 h-40 rounded-full bg-gradient-to-br ${colorScheme.bgGradient} blur-3xl`}></div>
         <div className={`absolute -left-20 -bottom-20 w-40 h-40 rounded-full bg-gradient-to-tr ${colorScheme.bgGradient} blur-3xl`}></div>
       </div>
-      
+
+      {/* Applying styles from reference HTML */}
       <button
         onClick={onToggle}
-        className="w-full px-4 xs:px-5 sm:px-6 md:px-8 py-4 xs:py-5 sm:py-6 flex items-center justify-between text-left focus:outline-none group cursor-pointer relative z-10"
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer" // Removed relative z-10 as it wasn't in ref
       >
-        <div className="flex items-center gap-3 xs:gap-4 sm:gap-6">
-          <motion.div 
-            className={`w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center transition-all duration-500 ${colorScheme.iconBg}`}
-            animate={{ 
-              scale: isOpen ? 1.1 : 1,
-              boxShadow: isOpen ? '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' : '0 0 0 0 rgba(0, 0, 0, 0)'
+        <div className="flex items-center gap-3 sm:gap-5"> {/* Adjusted gap */}
+          <motion.div
+            // Adjusted size and rounding, apply iconBg and hover from colorScheme
+            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 ${colorScheme.iconBg} ${colorScheme.iconColor} group-hover:bg-blue-100`}
+            animate={{
+              scale: isOpen ? 1.05 : 1,
+              // Removed boxShadow animation based on reference
             }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className={colorScheme.iconColor}>
+            <div > {/* Removed colorScheme.iconColor div wrapper */}
               {getCategoryIcon()}
             </div>
           </motion.div>
           <div>
-            <motion.h3 
-              className={`text-base xs:text-lg sm:text-xl font-semibold ${colorScheme.accentColor}`}
+            <motion.h3
+              // Adjusted text size and color
+              className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${colorScheme.accentColor}`}
             >
               {title}
             </motion.h3>
-            <p className="text-xs xs:text-sm text-gray-500 mt-0.5 sm:mt-1">{items.length} components</p>
+            {/* Adjusted margin and text color */}
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
           </div>
         </div>
-        {/* Plus/Minus icon container */}
-        <div className="p-1.5 xs:p-2 sm:p-3">
+        {/* Applying styles from reference HTML */}
+        <div className="transition-all duration-300 p-1.5 sm:p-2"> {/* Adjusted padding */}
           {isOpen ? (
-            <Minus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
+            // Adjusted size and color
+            <Minus className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]`} />
           ) : (
-            <Plus className={`w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6 ${colorScheme.accentColor}`} />
+            // Adjusted size and color
+            <Plus className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]`} />
           )}
         </div>
       </button>
-      
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -374,48 +395,28 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-4 xs:px-5 sm:px-6 md:px-8 pb-4 xs:pb-5 sm:pb-6 md:pb-8 pt-1 sm:pt-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 xs:gap-4 sm:gap-6">
+            {/* Adjusted padding */}
+            <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 pt-1 sm:pt-2">
+              <div className="space-y-4 sm:space-y-6">
                 {items.map((item, index) => {
                   const component = components.find(c => c.title === item);
-                  const details = componentDetails[item as keyof typeof componentDetails];
-                  
+                  // details are no longer used here
+
                   if (!component) return null;
-                  
+
                   return (
+                    // Adjusted styling to match the new reference image
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.4 }}
-                      className={`group ${colorScheme.lightBg} rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 border border-transparent`}
+                      transition={{ delay: index * 0.1, duration: 0.3 }}
+                      className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100" // Reverted rounding/shadow closer to original, kept border
                     >
-                      <div className="p-3 xs:p-4 sm:p-5 md:p-6">
-                        <div className="flex items-start justify-between mb-2 sm:mb-3">
-                          <div className="flex-1">
-                            <h4 className={`text-sm xs:text-base sm:text-lg font-semibold ${colorScheme.accentColor} mb-0.5 sm:mb-1`}>
-                              {item}
-                            </h4>
-                            {details && (
-                              <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 line-clamp-2">
-                                {details.description}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                        
-                        {details && (
-                          <div className="mt-2 xs:mt-3 pt-2 xs:pt-3 border-t border-blue-100/50">
-                            <div className="flex flex-wrap gap-1.5 xs:gap-2">
-                              <span className="text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5 xs:py-1 bg-white/80 rounded-full text-gray-700">
-                                {details.material}
-                              </span>
-                              <span className="text-[10px] xs:text-xs px-1.5 xs:px-2 py-0.5 xs:py-1 bg-white/80 rounded-full text-gray-700">
-                                {details.dimensions}
-                              </span>
-                            </div>
-                          </div>
-                        )}
+                      {/* Removed justify-between and the Details link */}
+                      <div className="border-l-[6px] border-[#1F75B5] pl-4 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center"> {/* Removed pr-4 and justify-between */}
+                        <h4 className="text-[#1a5d90] font-semibold text-sm sm:text-base line-clamp-1">{item}</h4> {/* Kept adjusted font weight and size */}
+                        {/* Removed Details link */}
                       </div>
                     </motion.div>
                   );
@@ -429,16 +430,17 @@ const CategorySection = ({ title, items, isOpen, onToggle, components }: Categor
   );
 };
 
-export default function BorderFencePage() {
+export default function BorderFencePage() { // Renaming this function might be good later, but keep for now to ensure match
   const [openCategory, setOpenCategory] = useState<string>('');
+  // Removed state and handlers related to modal
   const [isAnimating, setIsAnimating] = useState(false);
-  
+
   const toggleCategory = (category: string) => {
     // Prevent toggling during animation
     if (isAnimating) return;
-    
+
     setIsAnimating(true);
-    
+
     // If the same category is clicked, close it
     if (openCategory === category) {
       setOpenCategory('');
@@ -446,12 +448,14 @@ export default function BorderFencePage() {
       // If a different category is clicked, open it and close the previous one
       setOpenCategory(category);
     }
-    
+
     // Reset animation lock after animation completes
     setTimeout(() => {
       setIsAnimating(false);
     }, 400); // Match this with the animation duration
   };
+
+  // Removed closeModal handler
 
   const components = [
     {
@@ -487,26 +491,26 @@ export default function BorderFencePage() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Apply scrollbar hide styles */}
       <style jsx global>{scrollbarHideStyles}</style>
-      
+
       {/* Add smooth scroll behavior */}
       <style jsx global>{`
         html {
           scroll-behavior: smooth;
         }
       `}</style>
-      
+
       {/* Hero Section - improved for mobile */}
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/fence-swing-gates.png')] bg-cover bg-center">
           <div className="absolute inset-0 bg-black/60 z-10"></div>
           {/* Improved pattern overlay with better opacity and scaling */}
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20"></div>
-          
+
           {/* Animated gradient orbs */}
           <div className="absolute top-1/4 left-1/4 h-40 sm:h-64 w-40 sm:w-64 rounded-full bg-blue-400/20 blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/3 right-1/3 h-48 sm:h-80 w-48 sm:w-80 rounded-full bg-purple-400/10 blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-30">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -539,7 +543,7 @@ export default function BorderFencePage() {
             </motion.div>
           </div>
         </div>
-        
+
         {/* Decorative element */}
         <div className="absolute bottom-0 left-0 right-0 h-12 sm:h-20 bg-gradient-to-b from-transparent to-white/5 z-30"></div>
       </section>
@@ -579,13 +583,13 @@ export default function BorderFencePage() {
           <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-100/40 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-50/60 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-[0.015]"></div>
-          
+
           {/* Remove the AnimatedParticles component */}
           {/* <AnimatedParticles /> */}
         </div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
+          <motion.div
             className="max-w-2xl mx-auto text-center mb-8 xs:mb-10 sm:mb-12 md:mb-16 lg:mb-20"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -601,12 +605,13 @@ export default function BorderFencePage() {
               Advanced Security Elements
             </h2>
             <p className="text-sm xs:text-base sm:text-lg text-gray-600 max-w-xl mx-auto px-2 leading-relaxed">
-              Each component is engineered to the highest standards, ensuring maximum security 
+              Each component is engineered to the highest standards, ensuring maximum security
               and seamless integration within the complete system.
             </p>
           </motion.div>
 
-          <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-5xl mx-auto">
+          {/* Applied lg:max-w-4xl */}
+          <div className="max-w-xl xs:max-w-2xl sm:max-w-3xl md:max-w-4xl lg:max-w-4xl mx-auto">
             {Object.entries(categorizedComponents).map(([category, items], index) => (
               <motion.div
                 key={category}
@@ -621,12 +626,15 @@ export default function BorderFencePage() {
                   isOpen={openCategory === category}
                   onToggle={() => toggleCategory(category)}
                   components={components}
+                  // Removed onComponentClick prop passing
                 />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Removed commented out PartModal usage */}
 
       {/* Technical Specifications Section - improved for mobile */}
       <section className="py-16 sm:py-20 md:py-24 bg-gray-50 relative overflow-hidden">
@@ -635,7 +643,7 @@ export default function BorderFencePage() {
           <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-50 to-transparent rounded-full blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
@@ -652,8 +660,8 @@ export default function BorderFencePage() {
                   Technical Excellence in Every Detail
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
-                  Our border fence system meets and exceeds international security standards, 
-                  providing a robust defense against various threat scenarios while withstanding 
+                  Our border fence system meets and exceeds international security standards,
+                  providing a robust defense against various threat scenarios while withstanding
                   the harshest environmental conditions.
                 </p>
                 <div className="space-y-3 sm:space-y-5">
@@ -664,8 +672,8 @@ export default function BorderFencePage() {
                     "Weather-resistant in temperatures from -40°C to +70°C",
                     "Compliance with ISO 9001, ISO 14001, and BSI standards"
                   ].map((feature, index) => (
-                    <motion.div 
-                      key={index} 
+                    <motion.div
+                      key={index}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -681,14 +689,14 @@ export default function BorderFencePage() {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <Button className="mt-6 sm:mt-10 bg-[#1F75B5] hover:bg-[#1F75B5] text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
                   View Complete Specifications
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
@@ -701,10 +709,10 @@ export default function BorderFencePage() {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
                     </div>
-                    
+
                     {/* Grid overlay for technical feel */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:15px_15px] sm:bg-[size:20px_20px]"></div>
-                    
+
                     {/* Technical diagram elements (simplified) */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-3/4 h-3/4 relative">
@@ -717,7 +725,7 @@ export default function BorderFencePage() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Certification badges */}
                 <div className="absolute -right-4 -bottom-4 sm:-right-6 sm:-bottom-6 bg-white rounded-xl shadow-lg p-3 sm:p-4 flex gap-2 sm:gap-3">
                   {[1, 2, 3].map((badge) => (
@@ -733,12 +741,12 @@ export default function BorderFencePage() {
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action Section - improved for mobile */}
       <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1a5d90] to-[#1F75B5] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div

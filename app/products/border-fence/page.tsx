@@ -1,8 +1,8 @@
 'use client';
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Shield, Package, Check, ChevronRight, Download, ArrowUpRight, Plus, Minus, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Minus, Package, Plus, Shield, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -341,41 +341,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                         <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                       </div>
                     </div>
-                    
-                    <div className="p-4 sm:p-6">
-                      <p className="text-gray-700 text-xs sm:text-base mb-4 sm:mb-8 leading-relaxed">{component.description}</p>
-                      
-                      <div className="grid grid-cols-1 gap-2 sm:gap-3 relative">
-                        {component.specs.slice(0, 3).map((spec, specIdx) => (
-                          <div 
-                            key={`${component.title}-spec-${specIdx}`}
-                            className="flex items-center gap-2 sm:gap-3 bg-blue-50 p-2 sm:p-3 rounded-lg border border-blue-100 hover:bg-blue-100/50 hover:-translate-y-1 transition-all duration-300 group"
-                          >
-                            <div className="flex-shrink-0">
-                              <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-full bg-blue-100 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
-                                <Check className="h-3 w-3 sm:h-4 sm:w-4 text-[#1F75B5] group-hover:text-[#1a5d90]" />
-                              </div>
-                            </div>
-                            <span className="text-xs sm:text-sm font-medium text-gray-700 group-hover:text-[#1F75B5] transition-colors">{spec}</span>
-                          </div>
-                        ))}
-                        {component.specs.length > 3 && (
-                          <div className="text-xs sm:text-sm text-[#1F75B5] font-medium mt-1 text-center">
-                            +{component.specs.length - 3} more features
-                          </div>
-                        )}
-                      </div>
-                      
-                      <div className="mt-6 sm:mt-8 flex justify-center">
-                        <Button 
-                          className="bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg transition-all duration-300 cursor-pointer text-xs sm:text-sm"
-                          onClick={() => onComponentClick(component)}
-                        >
-                          View Detailed Specifications
-                          <ArrowRight className="ml-1 sm:ml-2 h-3 w-3 sm:h-4 sm:w-4" />
-                        </Button>
-                      </div>
-                    </div>
+                    {/* Removed the inner div containing the feature list */}
                   </motion.div>
                 ))}
               </div>
