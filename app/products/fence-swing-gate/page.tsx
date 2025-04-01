@@ -75,64 +75,6 @@ const categorizedComponents = {
   ],
 };
 
-// Add component descriptions and images for enhanced UI
-const componentDetails = {
-  "A. GATE POST": {
-    description: "Heavy-duty structural support designed to withstand extreme forces and environmental conditions.",
-    material: "High-tensile galvanized steel",
-    dimensions: "120mm x 120mm x 4mm",
-    icon: "PillarIcon"
-  },
-  "B. GATE FRAME": {
-    description: "Robust frame providing structural integrity and mounting points for security elements.",
-    material: "Galvanized steel tubing",
-    dimensions: "80mm x 40mm x 3mm",
-    icon: "FrameIcon"
-  },
-  "C. WICKET GATE FRAME": {
-    description: "Secondary access point integrated within the main gate structure for personnel entry.",
-    material: "Galvanized steel tubing",
-    dimensions: "60mm x 40mm x 3mm",
-    icon: "DoorIcon"
-  },
-  "D. WELD MESH PANEL FOR GATE INFILL": {
-    description: "High-security mesh providing visual barrier while maintaining structural integrity.",
-    material: "4mm wire diameter, anti-climb mesh",
-    dimensions: "76.2mm x 12.7mm aperture",
-    icon: "GridIcon"
-  },
-  "E. COIL SUPPORT FRAME": {
-    description: "Specialized framework designed to support and secure concertina coil deployments.",
-    material: "Galvanized steel",
-    dimensions: "Custom configurations available",
-    icon: "SupportIcon"
-  },
-  "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE": {
-    description: "Premium tactical concertina coil providing superior perimeter protection.",
-    material: "High-tensile galvanized steel with razor-sharp barbs",
-    dimensions: "850mm diameter, 16 loops per coil",
-    icon: "CoilIcon"
-  },
-  "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE": {
-    description: "Compressed concertina deployment for space-efficient high-security applications.",
-    material: "High-tensile galvanized steel",
-    dimensions: "610mm diameter, 10 loops per coil",
-    icon: "FlatCoilIcon"
-  },
-  "H. TOP AND BOTTOM HINGES": {
-    description: "Heavy-duty hinges engineered for smooth operation and maximum security.",
-    material: "Hardened steel with sealed bearings",
-    dimensions: "Adjustable mounting options",
-    icon: "HingeIcon"
-  },
-  "I. LOCK/HANDLE /ALDROP": {
-    description: "Multi-point locking system providing tamper-resistant security.",
-    material: "Stainless steel with hardened core",
-    dimensions: "Industrial-grade components",
-    icon: "LockIcon"
-  },
-};
-
 interface Component {
   title: string;
 }
