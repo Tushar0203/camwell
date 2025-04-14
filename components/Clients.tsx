@@ -71,7 +71,6 @@ const ClientCard = ({ client, index }: { client: typeof clients[0], index: numbe
             </div>
           </div>
           
-          {/* Text Content with enhanced styling */}
           <div className="text-center relative z-10">
             <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1F75B5] transition-colors duration-300">
               {client.name}
