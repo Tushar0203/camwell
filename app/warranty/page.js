@@ -100,26 +100,6 @@ const WarrantyPage = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-[#1F75B5] mb-2">10+</div>
-              <div className="text-gray-600">Years Coverage</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-[#1F75B5] mb-2">100%</div>
-              <div className="text-gray-600">Parts & Labor</div>
-            </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-[#1F75B5] mb-2">24/7</div>
-              <div className="text-gray-600">Support Available</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Coverage Details Section */}
       <section id="standard-coverage" className="py-20">
         <div className="container mx-auto px-4">
@@ -247,100 +227,6 @@ const WarrantyPage = () => {
         </div>
       </section>
 
-      {/* Claim Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.1
-                }
-              }
-            }}
-          >
-            <motion.div 
-              variants={fadeIn}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Simple Claim Process
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                We&apos;ve made filing a warranty claim straightforward and efficient
-              </p>
-            </motion.div>
-
-            <div className="max-w-5xl mx-auto">
-              <div className="relative">
-                {/* Progress line for desktop */}
-                <div className="hidden md:block absolute left-0 right-0 top-16 h-0.5 bg-gray-200">
-                  <div className="absolute left-0 top-0 bottom-0 w-1/2 bg-[#1F75B5]"></div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <motion.div 
-                    variants={fadeIn}
-                    className="relative z-10"
-                  >
-                    <div className="bg-white p-6 rounded-lg shadow-sm h-full">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 text-[#1F75B5] mx-auto mb-6">
-                        <Phone className="w-6 h-6" />
-                      </div>
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">1. Contact Us</h3>
-                        <p className="text-gray-600">
-                          Reach out via our support line or email with your warranty information and details about the issue.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-200 mx-auto my-2"></div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    variants={fadeIn}
-                    className="relative z-10"
-                  >
-                    <div className="bg-white p-6 rounded-lg shadow-sm h-full">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-[#1F75B5] mx-auto mb-6">
-                        <Calendar className="w-6 h-6" />
-                      </div>
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">2. Assessment</h3>
-                        <p className="text-gray-600">
-                          Our technical team will evaluate your claim and may schedule an on-site inspection if needed.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="md:hidden h-8 w-0.5 bg-gray-200 mx-auto my-2"></div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    variants={fadeIn}
-                    className="relative z-10"
-                  >
-                    <div className="bg-white p-6 rounded-lg shadow-sm h-full">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-100 text-green-600 mx-auto mb-6">
-                        <CheckCircle className="w-6 h-6" />
-                      </div>
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">3. Resolution</h3>
-                        <p className="text-gray-600">
-                          We&apos;ll promptly repair or replace covered components according to your warranty terms.
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* What's Covered Section */}
       <section className="py-20">

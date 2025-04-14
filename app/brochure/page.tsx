@@ -76,34 +76,6 @@ const Brochure = () => {
               Get our detailed product catalog with specifications, pricing, and installation guidelines delivered straight to your inbox.
             </motion.p>
             
-            <motion.div 
-              variants={itemVariants}
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-            >
-              <Button 
-                size="lg"
-                className="bg-white text-blue-700 hover:bg-blue-50 rounded-full px-8 group relative overflow-hidden cursor-pointer"
-                onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                <span className="relative z-10 flex items-center gap-2 text-[#1F75B5]">
-                  Get Your Free Copy
-                  <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              </Button>
-              
-              <Button 
-                variant="outline"
-                size="lg"
-                className="bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white rounded-full px-8 cursor-pointer"
-                onClick={() => window.open('#', '_blank')}
-              >
-                <span className="flex items-center gap-2">
-                  <Download size={18} />
-                  View Sample
-                </span>
-              </Button>
-            </motion.div>
           </motion.div>
         </div>
         
@@ -225,24 +197,6 @@ const Brochure = () => {
             ))}
           </div>
           
-          <motion.div 
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Button 
-              size="lg"
-              className="bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] text-white shadow-lg shadow-blue-600/20 rounded-full px-8"
-              onClick={() => document.getElementById('brochure-form')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <span className="flex items-center gap-2">
-                Get Your Free Brochure Now
-                <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </Button>
-          </motion.div>
         </div>
       </section>
 
@@ -304,16 +258,6 @@ const Brochure = () => {
                     ))}
                   </ul>
                   
-                  <div className="mt-8 sm:mt-10">
-                    <Button 
-                      variant="outline"
-                      className="bg-white/10 text-white border-white/20 backdrop-blur-sm flex items-center gap-2 text-sm sm:text-base cursor-pointer"
-                    >
-                      <Download size={16} className="sm:hidden" />
-                      <Download size={18} className="hidden sm:block" />
-                      Download Sample Preview
-                    </Button>
-                  </div>
                 </motion.div>
               </div>
               
