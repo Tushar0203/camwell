@@ -19,6 +19,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
 
+  // Add this function to close mega menu
+  const handleLinkClick = () => {
+    setShowMegaMenu(false);
+  };
+
   // Add this effect to handle sheet state on breakpoint changes
   useEffect(() => {
     if (!isMobile) {
@@ -199,6 +204,7 @@ const Navbar = () => {
                             <Link 
                               href="/products" 
                               className="text-xs font-medium text-blue-400 hover:text-blue-300 inline-flex items-center group px-3 py-1.5 rounded-full transition-all duration-200 hover:bg-white/5 border border-blue-500/20 hover:border-blue-500/40"
+                              onClick={handleLinkClick}
                             >
                               <span>View all</span>
                               <motion.span 
@@ -253,6 +259,7 @@ const Navbar = () => {
                                               className={`group flex items-center p-2 rounded-md transition-all duration-200 ${
                                                 isSubcatActive ? 'bg-blue-500/10' : 'hover:bg-white/[0.02]'
                                               }`}
+                                              onClick={handleLinkClick}
                                             >
                                               <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-2 ${
                                                 isSubcatActive 
