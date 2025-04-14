@@ -181,28 +181,6 @@ const Clients = () => {
   );
 };
 
-// Add this to your global CSS file
-const styles = `
-.bg-grid-pattern {
-  background-image: linear-gradient(to right, #666 1px, transparent 1px),
-    linear-gradient(to bottom, #666 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-`;
-
 export default Clients;
 
 
