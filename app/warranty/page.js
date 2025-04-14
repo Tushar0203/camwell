@@ -4,12 +4,10 @@ import {
   AlertTriangle,
   ArrowRight,
   Award,
-  Calendar,
   CheckCircle,
   Clock,
   Download,
   FileText,
-  Phone,
   Shield
 } from 'lucide-react'
 import Link from 'next/link'

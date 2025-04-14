@@ -123,7 +123,7 @@ const Clients = () => {
             "text-base md:text-lg leading-relaxed",
             "px-4 sm:px-6 md:px-0"
           )}>
-            Proudly serving India's most prestigious government and defense organizations 
+            Proudly serving India&apos;s most prestigious government and defense organizations 
             with cutting-edge security solutions.
           </p>
         </motion.div>
@@ -160,7 +160,7 @@ const Clients = () => {
                       Ready to Secure Your Perimeter?
                     </h3>
                     <p className="text-blue-50">
-                      Experience the same level of security trusted by India's elite institutions
+                      Experience the same level of security trusted by India&apos;s elite institutions
                     </p>
                   </div>
                   <button 

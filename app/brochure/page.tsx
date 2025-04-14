@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from 'framer-motion';
-import { Check, ChevronRight, Download, FileText, Send, Wrench } from 'lucide-react';
+import { Check, ChevronRight, FileText, Send, Wrench } from 'lucide-react';
 import React, { useState } from 'react';
 
 const Brochure = () => {
