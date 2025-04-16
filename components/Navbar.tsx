@@ -368,23 +368,18 @@ const Navbar = () => {
                         />
                       </div>
                     </Link>
-                    <SheetTrigger asChild>
-                      <button
-                        className="relative group p-2 rounded-lg transition-all duration-300"
-                        aria-label="Close menu"
-                      >
-                        {/* Background with hover effect */}
-                        <div className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
-                        
-                        {/* Custom X icon */}
-                        <div className="relative w-6 h-6 flex items-center justify-center">
-                          <div className="w-5 h-5 flex items-center justify-center">
-                            <span className="absolute w-[18px] h-[2px] bg-white/80 group-hover:bg-white rotate-45 transition-all duration-300" />
-                            <span className="absolute w-[18px] h-[2px] bg-white/80 group-hover:bg-white -rotate-45 transition-all duration-300" />
-                          </div>
-                        </div>
-                      </button>
-                    </SheetTrigger>
+                    
+                    {/* New element in top-right corner */}
+                    <div className="flex items-center gap-2">
+                      <div className="text-sm text-white/70">Menu</div>
+                      <SheetTrigger asChild>
+                        <button
+                          className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm hover:bg-blue-500/30 transition-all duration-300"
+                        >
+                          Close
+                        </button>
+                      </SheetTrigger>
+                    </div>
                   </div>
 
                   {/* Navigation Links */}
