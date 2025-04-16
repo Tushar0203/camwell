@@ -7,6 +7,7 @@ import {
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
 import { ChevronRight, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -103,35 +104,30 @@ const Navbar = () => {
   }, [hoverTimeout]);
 
   return (
-    <nav 
-      className={`fixed w-full transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white shadow-lg py-3' 
-          : 'bg-black/30 backdrop-blur-md py-4'
-      }`}
-      style={{ zIndex: 40 }}
-    >
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className={`fixed w-full transition-all duration-300 ${
+      scrolled 
+        ? 'bg-white shadow-lg py-3' 
+        : 'bg-black/30 backdrop-blur-md py-4'
+    }`}
+    style={{ zIndex: 40 }}>
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold flex items-center">
+          <Link href="/" className="flex items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center"
+              className="relative w-32 h-12 sm:w-40 sm:h-14"
             >
-              <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg mr-2 sm:mr-3 flex items-center justify-center text-white font-bold shadow-lg transition-all duration-300 ${
-                scrolled 
-                  ? 'bg-[#1F75B5]'
-                  : 'bg-white/20 backdrop-blur-sm'
-              }`}>
-                <span className="text-base sm:text-lg md:text-xl">C</span>
-              </div>
-              <span className={`transition-colors duration-300 ${
-                scrolled ? 'text-charcoal' : 'text-white font-semibold'
-              }`}>
-                CAMWELL
-              </span>
+              <Image
+                src="/images/camwell-logo.png"
+                alt="Camwell Industries Logo"
+                fill
+                className={`object-contain transition-all duration-300 ${
+                  scrolled ? '' : 'logo-light'
+                }`}
+                priority
+              />
             </motion.div>
           </Link>
 

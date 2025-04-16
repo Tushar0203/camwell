@@ -1,16 +1,17 @@
-import Link from 'next/link';
-import { 
-  Facebook, 
-  Twitter, 
-  Linkedin, 
-  Instagram, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock,
+import {
   ArrowRight,
-  ExternalLink
+  Clock,
+  ExternalLink,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Twitter
 } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -19,16 +20,21 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
           {/* Brand Section */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-3">
-              <div className="bg-[#1F75B5] text-white w-10 h-10 rounded flex items-center justify-center relative">
-                <span className="text-lg font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">C</span>
+            <div className="flex flex-col items-start">
+              <div className="relative w-40 h-14 sm:w-48 sm:h-16 mb-6 -ml-3">  {/* Changed from -ml-2 to -ml-3 */}
+                <Image
+                  src="/images/camwell-logo.png"
+                  alt="Camwell Industries Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="font-bold text-2xl tracking-wide text-white">CAMWELL</span>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+                Industry-leading security fencing solutions crafted with precision and
+                innovation for over 18 years.
+              </p>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Industry-leading security fencing solutions crafted with precision and
-              innovation for over 18 years.
-            </p>
             <div className="flex space-x-4">
               <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
                 <Facebook size={18} className="text-gray-300 hover:text-white transition-colors" />

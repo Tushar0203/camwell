@@ -1,0 +1,31 @@
+.modalHeader {
+  position: relative;
+}
+
+.modalHeader::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #1F75B5;
+}
+
+.modalHeaderTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1F75B5;
+  line-height: 1.2;
+}
+
+.modalHeaderSubtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+
+
+
