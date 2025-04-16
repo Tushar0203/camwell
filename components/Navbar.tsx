@@ -6,11 +6,19 @@ import {
 } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
-import { ChevronRight, X } from 'lucide-react';
+import {
+  ChevronRight,
+  FileText,
+  Home,
+  Package,
+  Phone,
+  Shield,
+  Users
+} from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -102,6 +110,26 @@ const Navbar = () => {
       if (hoverTimeout) clearTimeout(hoverTimeout);
     };
   }, [hoverTimeout]);
+
+  // Add this function to get icons for menu items
+  const getMenuIcon = (itemName: string) => {
+    switch (itemName.toLowerCase()) {
+      case 'home':
+        return <Home size={20} className="text-current" />;
+      case 'products':
+        return <Package size={20} className="text-current" />;
+      case 'about us':
+        return <Users size={20} className="text-current" />;
+      case 'warranty':
+        return <Shield size={20} className="text-current" />;
+      case 'request brochure':
+        return <FileText size={20} className="text-current" />;
+      case 'contact us':
+        return <Phone size={20} className="text-current" />;
+      default:
+        return <ChevronRight size={20} className="text-current" />;
+    }
+  };
 
   return (
     <nav className={`fixed w-full transition-all duration-300 ${
@@ -322,60 +350,111 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent 
                 side="right" 
-                className="p-0 w-3/4 sm:max-w-sm border-l-0"
+                className="p-0 w-full sm:w-80 border-l-0"
                 onInteractOutside={() => setIsOpen(false)}
                 onEscapeKeyDown={() => setIsOpen(false)}
               >
-                <div className={`h-full flex flex-col py-4 ${
-                  scrolled ? 'bg-white' : 'bg-gray-900 backdrop-blur-md'
-                }`}>
-                  <div className="px-6 py-2 flex justify-between items-center">
-                    <Link href="/" className="text-xl font-bold flex items-center">
-                      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg mr-2 sm:mr-3 flex items-center justify-center text-white font-bold shadow-lg ${
-                        scrolled 
-                          ? 'bg-[#1F75B5]'
-                          : 'bg-white/20 backdrop-blur-sm'
-                      }`}>
-                        <span className="text-base sm:text-lg">C</span>
+                <div className={`h-full flex flex-col bg-gradient-to-b from-[#0f172a] to-[#1e293b]`}>
+                  {/* Header */}
+                  <div className="px-6 py-4 flex justify-between items-center border-b border-white/10">
+                    <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
+                      <div className="relative w-32 h-12">
+                        <Image
+                          src="/images/camwell-logo.png"
+                          alt="Camwell Industries Logo"
+                          fill
+                          className="object-contain logo-light"
+                          priority
+                        />
                       </div>
-                      <span className={scrolled ? 'text-charcoal' : 'text-white font-semibold'}>
-                        CAMWELL
-                      </span>
                     </Link>
                     <SheetTrigger asChild>
                       <button
-                        className="text-white p-1"
+                        className="relative group p-2 rounded-lg transition-all duration-300"
                         aria-label="Close menu"
                       >
-                        <X size={28} className={scrolled ? 'text-charcoal' : 'text-white'} />
+                        {/* Background with hover effect */}
+                        <div className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
+                        
+                        {/* Custom X icon */}
+                        <div className="relative w-6 h-6 flex items-center justify-center">
+                          <div className="w-5 h-5 flex items-center justify-center">
+                            <span className="absolute w-[18px] h-[2px] bg-white/80 group-hover:bg-white rotate-45 transition-all duration-300" />
+                            <span className="absolute w-[18px] h-[2px] bg-white/80 group-hover:bg-white -rotate-45 transition-all duration-300" />
+                          </div>
+                        </div>
                       </button>
                     </SheetTrigger>
                   </div>
-                  <div className="pt-8 flex flex-col items-center h-full overflow-y-auto">
-                    {navItems.map((item) => {
-                      const isActive = pathname === item.path || 
-                                     (item.path === '/' && pathname === '/') ||
-                                     (item.path === '/products' && pathname.startsWith('/products'));
-                      
-                      return (
-                        <React.Fragment key={item.name}>
-                          <SheetTrigger asChild>
-                            <Link
-                              href={item.path}
-                              className={`px-6 py-4 text-lg font-medium transition-all duration-300 my-1 rounded-lg w-[85%] text-center ${
-                                isActive 
-                                  ? 'text-[#1F75B5] bg-blue-50' 
-                                  : scrolled
-                                    ? 'text-charcoal hover:bg-blue-50'
-                                    : 'text-white/90 hover:text-white hover:bg-white/20'
-                              }`}
-                            >
-                              {item.name}
-                            </Link>
-                          </SheetTrigger>
-                        </React.Fragment>
-                      );
-                    })}
+
+                  {/* Navigation Links */}
+                  <div className="flex-1 overflow-y-auto py-6 px-4">
+                    <div className="space-y-2">
+                      {navItems.map((item, index) => {
+                        const isActive = pathname === item.path || 
+                                       (item.path === '/' && pathname === '/') ||
+                                       (item.path === '/products' && pathname.startsWith('/products'));
+                        
+                        return (
+                          <motion.div
+                            key={item.name}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                          >
+                            <SheetTrigger asChild>
+                              <Link
+                                href={item.path}
+                                className={`
+                                  relative flex items-center gap-3 px-4 py-3.5 rounded-xl w-full
+                                  transition-all duration-300 group
+                                  ${isActive 
+                                    ? 'bg-gradient-to-r from-blue-500/20 to-blue-600/20 text-blue-400'
+                                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                                  }
+                                `}
+                              >
+                                {/* Icon based on menu item */}
+                                <div className={`
+                                  w-9 h-9 rounded-lg flex items-center justify-center
+                                  transition-all duration-300
+                                  ${isActive
+                                    ? 'bg-blue-500/20'
+                                    : 'bg-white/5 group-hover:bg-white/10'
+                                  }
+                                `}>
+                                  {getMenuIcon(item.name)}
+                                </div>
+                                
+                                <div className="flex-1">
+                                  <span className="font-medium">{item.name}</span>
+                                </div>
+                                
+                                {/* Active indicator */}
+                                {isActive && (
+                                  <div className="absolute right-3 w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                )}
+                              </Link>
+                            </SheetTrigger>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-auto p-6 border-t border-white/10">
+                    <div className="flex items-center justify-between text-white/60 text-sm">
+                      <span>© {new Date().getFullYear()} Camwell</span>
+                      <div className="flex items-center gap-4">
+                        <Link href="/privacy" className="hover:text-white transition-colors duration-200">
+                          Privacy
+                        </Link>
+                        <Link href="/terms" className="hover:text-white transition-colors duration-200">
+                          Terms
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
