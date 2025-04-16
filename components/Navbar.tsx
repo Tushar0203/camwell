@@ -155,6 +155,7 @@ const Navbar = () => {
                   scrolled ? '' : 'logo-light'
                 }`}
                 priority
+                sizes="128px"
               />
             </motion.div>
           </Link>
@@ -365,6 +366,7 @@ const Navbar = () => {
                           fill
                           className="object-contain logo-light"
                           priority
+                          sizes="128px"
                         />
                       </div>
                     </Link>

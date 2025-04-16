@@ -30,6 +30,7 @@ const Footer = () => {
                     fill
                     className="object-contain"
                     priority
+                    sizes="(max-width: 768px) 160px, 192px"
                   />
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
