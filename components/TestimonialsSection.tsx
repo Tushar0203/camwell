@@ -79,12 +79,6 @@ export const testimonials = [
   }
 ];
 
-interface TestimonialCardProps {
-  testimonial: typeof testimonials[0];
-  index: number;
-  className?: string;
-}
-
 const TestimonialCard = ({ 
   testimonial, 
   className 
@@ -101,7 +95,7 @@ const TestimonialCard = ({
       {/* Content */}
       <div className="relative mb-6">
         <p className="text-gray-700 text-sm sm:text-[15px] leading-relaxed italic">
-          "{testimonial.content}"
+        &quot;{testimonial.content}&quot;
         </p>
       </div>
 
@@ -237,7 +231,7 @@ const TestimonialsSection = () => {
           
           {/* Description */}
           <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            Proudly serving India's most prestigious government and defense organizations 
+            Proudly serving India&apos;s most prestigious government and defense organizations 
             with cutting-edge security solutions
           </p>
         </div>
