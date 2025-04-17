@@ -148,7 +148,7 @@ const Navbar = () => {
               className="relative w-32 h-12 sm:w-40 sm:h-14"
             >
               <Image
-                src="/images/camwell-logo.png"
+                src="/images/Camwell-Logo.png"
                 alt="Camwell Industries Logo"
                 fill
                 className={`object-contain transition-all duration-300 ${
