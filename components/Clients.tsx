@@ -59,7 +59,7 @@ const ClientCard = ({ client, index }: { client: typeof clients[0], index: numbe
             {/* Decorative rings */}
             <div className="absolute inset-[-4px] border-2 border-dashed border-[#1F75B5]/20 rounded-full animate-spin-slow" />
             
-            {/* Logo image */}
+            {/* Logo Image */}
             <div className="relative w-full h-full p-4 transform group-hover:scale-105 transition-transform duration-300">
               <Image
                 src={client.logo}
