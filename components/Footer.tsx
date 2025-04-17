@@ -174,7 +174,7 @@ const Footer = () => {
                     </h4>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Monday - Friday</span>
+                        <span className="text-gray-400">Mon - Fri</span>
                         <span className="text-white">9:00 AM - 6:00 PM</span>
                       </div>
                       <div className="flex justify-between text-sm">
