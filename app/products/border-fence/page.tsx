@@ -1,7 +1,18 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Minus, Package, Plus, Shield, X } from 'lucide-react';
+import { 
+  ArrowUpRight, 
+  Minus, 
+  Package, 
+  Plus, 
+  Shield, 
+  ArrowRight, 
+  Download,
+  ChevronRight,
+  X,
+  Check
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -22,29 +33,29 @@ const scrollbarHideStyles = `
 // First, let's organize components into logical categories
 const categorizedComponents = {
   "Primary Structure": [
-    "WELD MESH PANEL",
-    "FENCE (CHS) POST",
-    "ANCHOR ROD",
-    "STRUT (CHS) POST",
+    { name: "WELD MESH PANEL", imageUrl: "/products/border-fence/weld-mesh-panel.png" },
+    { name: "FENCE (CHS) POST", imageUrl: "/products/border-fence/fence-chs.png" },
+    { name: "ANCHOR ROD", imageUrl: "/products/border-fence/anchor-rod.png" },
+    { name: "STRUT (CHS) POST", imageUrl: "/products/border-fence/strut-chs.png" },
   ],
   "Fastening System": [
-    "OMEGA CLAMP WITH PROFILE COVER PLATE",
-    "INTERMEDIATE PANEL (IP) BINDER",
-    "CORNER CLAMP",
+    { name: "OMEGA CLAMP WITH PROFILE COVER PLATE", imageUrl: "/products/border-fence/omega-clamp.png" },
+    { name: "INTERMEDIATE PANEL (IP) BINDER", imageUrl: "/products/border-fence/intermediate-panel-binder.png" },
+    { name: "CORNER CLAMP", imageUrl: "/products/border-fence/corner-clamp.png" },
   ],
   "Security Enhancement": [
-    "STRAINING Y ARM",
-    "INTERMEDIATE Y-ARM",
-    "PTCC PUNCHED TAPE CONCERTINA COIL",
-    "RAZOR WIRE TAPE",
-    "HOG RINGS",
+    { name: "STRAINING Y ARM", imageUrl: "/products/border-fence/straining-y-arm.png" },
+    { name: "INTERMEDIATE Y-ARM", imageUrl: "/products/border-fence/intermediate-y-arm.png" },
+    { name: "PTCC PUNCHED TAPE CONCERTINA COIL", imageUrl: "/products/border-fence/ptcc-punched.png" },
+    { name: "RAZOR WIRE TAPE", imageUrl: "/products/border-fence/razor-wire-tape.png" },
+    { name: "HOG RINGS", imageUrl: "/products/border-fence/hog-rings.png" },
   ],
   "Hardware & Accessories": [
-    "TIE WIRE FOR RAZOR TAPE",
-    "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER",
-    "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER",
+    { name: "TIE WIRE FOR RAZOR TAPE", imageUrl: "/products/border-fence/tie-wire.png" },
+    { name: "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x120mm.png" },
+    { name: "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x75mm.png" },
+    { name: "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x60mm.png" },
+    { name: "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x35mm.png" },
   ],
 };
 
@@ -267,15 +278,19 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   );
 };
 
+interface CategoryItem {
+  name: string;
+  imageUrl: string;
+}
+
 interface CategorySectionProps {
   title: string;
-  items: string[];
+  items: CategoryItem[];
   isOpen: boolean;
   onToggle: () => void;
   components: Component[];
   onComponentClick: (component: Component) => void;
 }
-
 const CategorySection = ({ title, items, isOpen, onToggle, components, onComponentClick }: CategorySectionProps) => (
   <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
     isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
@@ -284,13 +299,6 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
       onClick={onToggle}
       className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
     >
-      {isOpen && <Image
-        src="/products/border-fence/eye-bolt.png"
-        alt="Eye Bolt"
-        width={100}
-        height={100}
-        className="absolute top-0 right-0 w-1/3 h-auto opacity-20"
-      />}
       <div className="flex items-center gap-3 sm:gap-5">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
           ${isOpen 
@@ -332,24 +340,38 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
           >
             <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-2">
               <div className="h-px w-full bg-gradient-to-r from-blue-100 via-gray-200 to-blue-100 my-4 sm:my-5"></div>
-              <div className="space-y-4 sm:space-y-6">
-                {components.filter(comp => items.includes(comp.title)).map((component, idx) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {items.map((item, idx) => (
                   <motion.div 
-                    key={`${title}-${component.title}`}
+                    key={`${title}-${item.name}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
-                    onClick={() => onComponentClick(component)}
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer h-[280px]"
+                    onClick={() => {
+                      const component = components.find(comp => comp.title === item.name);
+                      if (component) onComponentClick(component);
+                    }}
                   >
-                    <div className="border-l-[6px] border-[#1F75B5] pl-3 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center">
-                      <h4 className="text-[#1a5d90] font-bold text-sm sm:text-lg line-clamp-1">{component.title}</h4>
-                      <div className="ml-auto mr-3 sm:mr-4 flex items-center gap-1 text-[#1F75B5]">
-                        <span className="text-[10px] sm:text-xs font-medium">Details</span>
-                        <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                    <div className="h-[180px] relative">
+                      <Image
+                        src={item.imageUrl || '/placeholder-image.jpg'}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        priority={idx < 6}
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="text-[#1a5d90] font-medium text-sm line-clamp-2 group-hover:text-[#1F75B5]">
+                        {item.name}
+                      </h4>
+                      <div className="mt-2 flex items-center text-xs text-gray-500">
+                        <ArrowRight className="h-3 w-3 mr-1" />
+                        <span>View Details</span>
                       </div>
                     </div>
-                    {/* Removed the inner div containing the feature list */}
                   </motion.div>
                 ))}
               </div>
