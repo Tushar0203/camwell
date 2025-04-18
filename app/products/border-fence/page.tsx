@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Minus, Package, Plus, Shield, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -283,6 +284,13 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
       onClick={onToggle}
       className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
     >
+      {isOpen && <Image
+        src="/products/border-fence/eye-bolt.png"
+        alt="Eye Bolt"
+        width={100}
+        height={100}
+        className="absolute top-0 right-0 w-1/3 h-auto opacity-20"
+      />}
       <div className="flex items-center gap-3 sm:gap-5">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
           ${isOpen 
@@ -391,6 +399,7 @@ export default function BorderFencePage() {
   const components = [
     {
       title: "WELD MESH PANEL",
+      url: "/products/border-fence/weld-mesh-panel.png",
       description: "High-security welded mesh panels with advanced electrical resistance welding technology.",
       specs: [
         "High-strength galvanized steel",
@@ -402,6 +411,7 @@ export default function BorderFencePage() {
     },
     {
       title: "FENCE (CHS) POST",
+      url: "/products/border-fence/fence-chs.png",
       description: "Robust Circular Hollow Section posts engineered for optimal structural integrity.",
       specs: [
         "Hot-dip galvanized steel",
@@ -413,6 +423,7 @@ export default function BorderFencePage() {
     },
     {
       title: "ANCHOR ROD",
+      url: "/products/border-fence/anchor-rod.png",
       description: "High-grade anchor rods designed for secure concrete foundation mounting.",
       specs: [
         "Premium steel construction",
@@ -424,6 +435,7 @@ export default function BorderFencePage() {
     },
     {
       title: "STRUT (CHS) POST",
+      url: "/products/border-fence/strut-chs.png",
       description: "Reinforced support posts for enhanced corner and endpoint stability.",
       specs: [
         "Premium hollow design",
@@ -435,6 +447,7 @@ export default function BorderFencePage() {
     },
     {
       title: "OMEGA CLAMP WITH PROFILE COVER PLATE",
+      url: "/products/border-fence/omega-clamp.png",
       description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. The profile cover plate provide the necessary holding strength.",
       specs: [
         "Enhanced holding strength",
@@ -446,6 +459,7 @@ export default function BorderFencePage() {
     },
     {
       title: "INTERMEDIATE PANEL (IP) BINDER",
+      url: "/products/border-fence/ip-binder.png",
       description: "Panel binders are used for connecting panel.",
       specs: [
         "Secure panel connection",
@@ -457,6 +471,7 @@ export default function BorderFencePage() {
     },
     {
       title: "CORNER CLAMP",
+      url: "/products/border-fence/corner-clamp.png",
       description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. These clamps are used where the angle between two adjacent fencepost is less than 180° angle.",
       specs: [
         "Angular adjustment capability",
@@ -468,6 +483,7 @@ export default function BorderFencePage() {
     },
     {
       title: "STRAINING Y ARM",
+      url: "/products/border-fence/straining-y-arm.png",
       description: "Straining Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One straining Y-Arm is installed at every 30 meters.",
       specs: [
         "30-meter interval installation",
@@ -479,6 +495,7 @@ export default function BorderFencePage() {
     },
     {
       title: "INTERMEDIATE Y-ARM",
+      url: "/products/border-fence/intermediate-y-arm.png",
       description: "Intermediate Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One Intermediate Y arm is installed at every post except the posts with Straining Y arms.",
       specs: [
         "Regular post installation",
@@ -490,6 +507,7 @@ export default function BorderFencePage() {
     },
     {
       title: "PTCC PUNCHED TAPE CONCERTINA COIL",
+      url: "/products/border-fence/ptcc-punched.png",
       description: "Advanced razor wire security system designed for superior perimeter protection and deterrence.",
       specs: [
         "High-tensile steel construction",
@@ -501,6 +519,7 @@ export default function BorderFencePage() {
     },
     {
       title: "RAZOR WIRE TAPE",
+      url: "/products/border-fence/razor-wire-tape.png",
       description: "High-security razor wire tape supplied in convenient 100-meter rolls for efficient perimeter protection.",
       specs: [
         "100 meters per roll",
@@ -512,6 +531,7 @@ export default function BorderFencePage() {
     },
     {
       title: "HOG RINGS",
+      url: "/products/border-fence/hog-rings.png",
       description: "Specialized fastening rings designed to secure concertina coil and consecutive concertina coils for enhanced security.",
       specs: [
         "SS304/SS316 grade construction",
@@ -523,6 +543,7 @@ export default function BorderFencePage() {
     },
     {
       title: "TIE WIRE FOR RAZOR TAPE",
+      url: "/products/border-fence/tie-wire.png",
       description: "Stainless-steel tie wire is used for knotting razor tape at straining Y arm at each eyebolt location.",
       specs: [
         "Stainless steel construction",
@@ -534,6 +555,7 @@ export default function BorderFencePage() {
     },
     {
       title: "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER",
+      url: "/products/border-fence/m8x120mm.png",
       description: "M8x120 mm mushroom head bolts with breakable head security nuts and washers are used to clamp Y arm to a fencing post. For each Y arm two sets of bolts are required.",
       specs: [
         "M8x120mm standard size",
@@ -545,6 +567,7 @@ export default function BorderFencePage() {
     },
     {
       title: "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER",
+      url: "/products/border-fence/m8x75mm.png",
       description: "M8x75 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at four mesh overlap junctions.",
       specs: [
         "M8x75mm standard size",
@@ -556,6 +579,7 @@ export default function BorderFencePage() {
     },
     {
       title: "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER",
+      url: "/products/border-fence/m8x60mm.png",
       description: "M8x60 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at two mesh overlap junctions.",
       specs: [
         "SS304/SS316 material options",
@@ -567,6 +591,7 @@ export default function BorderFencePage() {
     },
     {
       title: "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER",
+      url: "/products/border-fence/m8x35mm.png",
       description: "M8x35 mm mushroom head bolts with breakable head security nuts and washers are used to clamp IP binder at center of two mesh overlap junctions to remove the gap and make it sturdy between two mesh.",
       specs: [
         "SS304/SS316 material options",
@@ -593,7 +618,7 @@ export default function BorderFencePage() {
       {/* Hero Section - improved for mobile */}
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/images/weld-mesh-fence.png')] bg-cover bg-center bg-no-repeat"></div>
+          <div className="absolute inset-0 bg-[url('/images/weld-mesh-fence.jpg')] bg-cover bg-center bg-no-repeat"></div>
           <div className="absolute inset-0 bg-black/50 z-10"></div>
           {/* Improved pattern overlay with better opacity and scaling */}
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20"></div>
