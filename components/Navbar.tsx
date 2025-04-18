@@ -135,7 +135,7 @@ const Navbar = () => {
     <nav className={`fixed w-full transition-all duration-300 ${
       scrolled 
         ? 'bg-white shadow-lg py-3' 
-        : 'bg-black/30 backdrop-blur-md py-4'
+        : 'bg-transparent py-4'
     }`}
     style={{ zIndex: 40 }}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
