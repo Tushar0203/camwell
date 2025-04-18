@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Check, ChevronRight, Download, Minus, Package, Plus, Shield } from 'lucide-react';
 import { useState } from 'react';
-
+import Image from 'next/image';
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -59,19 +59,19 @@ const scrollbarHideStyles = `
 // First, let's organize components into logical categories
 const categorizedComponents = {
   "Primary Structure": [
-    "A. GATE POST",
-    "B. GATE FRAME",
-    "C. WICKET GATE FRAME",
-    "D. WELD MESH PANEL FOR GATE INFILL",
-    "E. COIL SUPPORT FRAME",
+    { name: "A. GATE POST", imageUrl: "/products/swing-gate/gate-post.png" },
+    { name: "B. GATE FRAME", imageUrl: "/products/swing-gate/gate-frame.png" },
+    { name: "C. WICKET GATE FRAME", imageUrl: "/products/swing-gate/wicket-gate.png" },
+    { name: "D. WELD MESH PANEL FOR GATE INFILL", imageUrl: "/products/swing-gate/weld-mesh.png" },
+    { name: "E. COIL SUPPORT FRAME", imageUrl: "/products/swing-gate/coil-support.png" },
   ],
   "Fastening System": [
-    "H. TOP AND BOTTOM HINGES",
-    "I. LOCK/HANDLE /ALDROP",
+    { name: "H. TOP AND BOTTOM HINGES", imageUrl: "/products/swing-gate/top-and-bottom.png" },
+    { name: "I. LOCK/HANDLE /ALDROP", imageUrl: "/products/swing-gate/lock-handle.png" },
   ],
   "Security Enhancement": [
-    "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE",
-    "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE",
+    { name: "F. PTCC – 850 MM DIAMETER/16 LOOPS/3.5MM CORE WIRE", imageUrl: "/products/swing-gate/ptcc.png" },
+    { name: "G. FLAT WRAP (PTCC): 610 MM DIAMETER/10 LOOPS/3.50 MM CORE WIRE", imageUrl: "/products/swing-gate/flat-wrap.png" },
   ],
 };
 
@@ -203,174 +203,105 @@ interface Component {
 //   );
 // };
 
+interface CategoryItem {
+  name: string;
+  imageUrl: string;
+}
+
 interface CategorySectionProps {
   title: string;
-  items: string[];
+  items: CategoryItem[];
   isOpen: boolean;
   onToggle: () => void;
   components: Component[];
-  // Removed onComponentClick prop
 }
-
-const CategorySection = ({ title, items, isOpen, onToggle, components }: CategorySectionProps) => { // Removed onComponentClick prop
-  // Using the original structure for getCategoryIcon from the initial file read, but with adjusted sizes
-  const getCategoryIcon = () => {
-    // Adjusted sizes to match reference
-    if (title === "Primary Structure") return <Package className="w-6 h-6 sm:w-7 sm:h-7" />;
-    if (title === "Fastening System") return <Shield className="w-6 h-6 sm:w-7 sm:h-7" />;
-    if (title === "Security Enhancement") return <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />;
-    return <Package className="w-6 h-6 sm:w-7 sm:h-7" />;
-  };
-
-  // Get a color scheme based on category
-  const getCategoryColorScheme = () => {
-    if (title === "Primary Structure") return {
-      bgGradient: "black", // Adjusted to match reference (though reference doesn't show gradient)
-      lightBg: "bg-blue-50",
-      accentColor: "text-gray-900", // Adjusted to match reference
-      hoverBg: "hover:bg-blue-100", // Adjusted to match reference hover
-      iconBg: isOpen ? "bg-blue-100" : "bg-blue-50",
-      iconColor: isOpen ? "text-blue-600" : "text-[#1F75B5]", // Adjusted to match reference icon color
-      ringColor: "ring-blue-200/50"
-    };
-    // Assuming similar adjustments for other categories based on Primary Structure reference
-    if (title === "Fastening System") return {
-      bgGradient: "from-indigo-500 to-indigo-600",
-      lightBg: "bg-indigo-50",
-      accentColor: "text-gray-900",
-      hoverBg: "hover:bg-indigo-100",
-      iconBg: isOpen ? "bg-indigo-100" : "bg-indigo-50",
-      iconColor: isOpen ? "text-indigo-600" : "text-[#1F75B5]", // Assuming similar color
-      ringColor: "ring-indigo-200/50"
-    };
-    if (title === "Security Enhancement") return {
-      bgGradient: "from-purple-500 to-purple-600",
-      lightBg: "bg-purple-50",
-      accentColor: "text-gray-900",
-      hoverBg: "hover:bg-purple-100",
-      iconBg: isOpen ? "bg-purple-100" : "bg-purple-50",
-      iconColor: isOpen ? "text-purple-600" : "text-[#1F75B5]", // Assuming similar color
-      ringColor: "ring-purple-200/50"
-    };
-    // Default fallback
-    return {
-      bgGradient: "from-blue-500 to-blue-600",
-      lightBg: "bg-blue-50",
-      accentColor: "text-gray-900",
-      hoverBg: "hover:bg-blue-100",
-      iconBg: isOpen ? "bg-blue-100" : "bg-blue-50",
-      iconColor: isOpen ? "text-blue-600" : "text-[#1F75B5]",
-      ringColor: "ring-blue-200/50"
-    };
-  };
-
-  const colorScheme = getCategoryColorScheme();
-
-  return (
-    // Applying styles from reference HTML
-    <motion.div
-      layout
-      className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative overflow-hidden ${
-        isOpen
-          ? `shadow-xl ring-2 ${colorScheme.ringColor} transform scale-[1.01]` // Keep open state distinct
-          : 'hover:shadow-md hover:border-blue-200/70' // Apply reference hover styles
-      }`}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+const CategorySection = ({ title, items, isOpen, onToggle }: CategorySectionProps) => (
+  <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
+    isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
+  }`}>
+    <button
+      onClick={onToggle}
+      className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
     >
-      {/* Decorative background elements (kept from previous state, adjust if needed) */}
-      <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
-        <div className={`absolute -right-20 -top-20 w-40 h-40 rounded-full bg-gradient-to-br ${colorScheme.bgGradient} blur-3xl`}></div>
-        <div className={`absolute -left-20 -bottom-20 w-40 h-40 rounded-full bg-gradient-to-tr ${colorScheme.bgGradient} blur-3xl`}></div>
+      <div className="flex items-center gap-3 sm:gap-5">
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
+          ${isOpen 
+            ? 'bg-[#1F75B5] text-white shadow-lg shadow-blue-100 scale-110' 
+            : 'bg-blue-50 text-[#1F75B5] group-hover:bg-blue-100'}`}>
+          {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
+          {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
+          {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
+          {title === "Hardware & Accessories" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
+        </div>
+        <div>
+          <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
+            isOpen ? 'text-[#1a5d90]' : 'text-gray-900'
+          }`}>{title}</h3>
+          <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
+        </div>
       </div>
-
-      {/* Applying styles from reference HTML */}
-      <button
-        onClick={onToggle}
-        className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer" // Removed relative z-10 as it wasn't in ref
-      >
-        <div className="flex items-center gap-3 sm:gap-5"> {/* Adjusted gap */}
-          <motion.div
-            // Adjusted size and rounding, apply iconBg and hover from colorScheme
-            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 ${colorScheme.iconBg} ${colorScheme.iconColor} group-hover:bg-blue-100`}
-            animate={{
-              scale: isOpen ? 1.05 : 1,
-              // Removed boxShadow animation based on reference
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <div > {/* Removed colorScheme.iconColor div wrapper */}
-              {getCategoryIcon()}
-            </div>
-          </motion.div>
-          <div>
-            <motion.h3
-              // Adjusted text size and color
-              className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${colorScheme.accentColor}`}
-            >
-              {title}
-            </motion.h3>
-            {/* Adjusted margin and text color */}
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
-          </div>
-        </div>
-        {/* Applying styles from reference HTML */}
-        <div className="transition-all duration-300 p-1.5 sm:p-2"> {/* Adjusted padding */}
-          {isOpen ? (
-            // Adjusted size and color
-            <Minus className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]`} />
-          ) : (
-            // Adjusted size and color
-            <Plus className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]`} />
-          )}
-        </div>
-      </button>
-
-      <AnimatePresence>
+      <div className={`transition-all duration-300 ${isOpen ? 'bg-blue-50 p-2 sm:p-3 rounded-full' : 'p-1.5 sm:p-2'}`}>
+        {isOpen ? (
+          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
+        ) : (
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]" />
+        )}
+      </div>
+    </button>
+    
+    <div className="overflow-hidden">
+      <AnimatePresence mode="wait">
         {isOpen && (
           <motion.div
+            key={`${title}-content`}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="overflow-hidden"
+            transition={{ 
+              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
+              opacity: { duration: 0.2 }
+            }}
           >
-            {/* Adjusted padding */}
-            <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 pt-1 sm:pt-2">
-              <div className="space-y-4 sm:space-y-6">
-                {items.map((item, index) => {
-                  const component = components.find(c => c.title === item);
-                  // details are no longer used here
-
-                  if (!component) return null;
-
-                  return (
-                    // Adjusted styling to match the new reference image
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1, duration: 0.3 }}
-                      className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100" // Reverted rounding/shadow closer to original, kept border
-                    >
-                      {/* Removed justify-between and the Details link */}
-                      <div className="border-l-[6px] border-[#1F75B5] pl-4 sm:pl-5 py-3 sm:py-4 bg-gradient-to-r from-blue-50 to-white flex items-center"> {/* Removed pr-4 and justify-between */}
-                        <h4 className="text-[#1a5d90] font-semibold text-sm sm:text-base line-clamp-1">{item}</h4> {/* Kept adjusted font weight and size */}
-                        {/* Removed Details link */}
-                      </div>
-                    </motion.div>
-                  );
-                })}
+            <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-2">
+              <div className="h-px w-full bg-gradient-to-r from-blue-100 via-gray-200 to-blue-100 my-4 sm:my-5"></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {items.map((item, idx) => (
+                  <motion.div 
+                    key={`${title}-${item.name}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer h-[280px]"
+                  >
+                    <div className="h-[180px] relative">
+                      <Image
+                        src={item.imageUrl || '/placeholder-image.jpg'}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        priority={idx < 6}
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="text-[#1a5d90] font-medium text-sm line-clamp-2 group-hover:text-[#1F75B5]">
+                        {item.name}
+                      </h4>
+                      {/* <div className="mt-2 flex items-center text-xs text-gray-500">
+                        <ArrowRight className="h-3 w-3 mr-1" />
+                        <span>View Details</span>
+                      </div> */}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
-  );
-};
+    </div>
+  </div>
+);
 
 export default function BorderFencePage() { // Renaming this function might be good later, but keep for now to ensure match
   const [openCategory, setOpenCategory] = useState<string>('');
@@ -568,7 +499,6 @@ export default function BorderFencePage() { // Renaming this function might be g
                   isOpen={openCategory === category}
                   onToggle={() => toggleCategory(category)}
                   components={components}
-                  // Removed onComponentClick prop passing
                 />
               </motion.div>
             ))}
