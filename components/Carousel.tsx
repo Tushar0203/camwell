@@ -1,11 +1,19 @@
 "use client"
-import { motion } from 'framer-motion';
+import { motion, PanInfo } from 'framer-motion'; // Import PanInfo type
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-const slides = [
+interface Slide {
+  id: number;
+  image: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+const slides: Slide[] = [
   {
     id: 1,
     image: '/images/fence-1.jpg',
@@ -72,7 +80,7 @@ const Carousel: React.FC = () => {
   }, [isAutoPlaying]);
 
   // Optional: Add touch swipe support
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (info.offset.x > 100) {
       goToPrevSlide();
     } else if (info.offset.x < -100) {
