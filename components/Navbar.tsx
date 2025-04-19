@@ -181,22 +181,38 @@ const Navbar = () => {
                 >
                   <Link
                     href={item.path}
-                    className={`relative px-3 lg:px-5 py-2.5 rounded-lg text-[11px] lg:text-sm font-medium transition-all duration-300 ${
-                      isActive 
+                    className={`
+                      relative px-4 py-2 rounded-lg text-sm font-medium
+                      transition-all duration-300 group
+                      ${isActive 
                         ? scrolled
-                          ? 'text-[#1F75B5] transform scale-105'
-                          : 'text-white transform scale-105'
+                          ? 'bg-[#1F75B5]/10 text-[#1F75B5]'
+                          : 'bg-white/10 text-white'
                         : scrolled
-                          ? 'text-charcoal hover:bg-[#1F75B5]/10'
-                          : 'text-white/90 hover:text-white hover:bg-white/5'
-                    }`}
+                          ? 'text-charcoal hover:bg-[#1F75B5]/5 hover:text-[#1F75B5]'
+                          : 'text-white/90 hover:text-white hover:bg-white/10'
+                      }
+                    `}
                   >
-                    {item.name}
+                    <span className="relative z-10">
+                      {item.name}
+                    </span>
+                    
                     {isActive && (
                       <motion.div
-                        layoutId="navbar-indicator"
-                        className={`absolute bottom-0 left-0 right-0 h-0.5 mx-4 ${scrolled ? 'bg-[#1F75B5]' : 'bg-white'}`}
-                        transition={{ type: "spring", duration: 0.6 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className={`
+                          absolute inset-0 rounded-lg
+                          ${scrolled 
+                            ? 'bg-[#1F75B5]/10 border border-[#1F75B5]/20'
+                            : 'bg-white/10 border border-white/20'
+                          }
+                        `}
+                        transition={{ 
+                          duration: 0.2,
+                          ease: "easeOut"
+                        }}
                       />
                     )}
                   </Link>
