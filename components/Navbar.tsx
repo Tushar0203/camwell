@@ -353,15 +353,15 @@ const Navbar = () => {
               <SheetTrigger asChild>
                 <button
                   className={`rounded-lg transition-colors duration-300 ${
-                    scrolled 
-                      ? 'text-charcoal hover:bg-gray-100' 
+                    scrolled || pathname !== '/' 
+                      ? 'text-gray-900 hover:bg-gray-100' // Changed from text-charcoal to text-gray-900 for better visibility
                       : 'text-white hover:bg-white/20'
                   }`}
                   aria-label="Toggle menu"
                 >
                   <svg
                     viewBox="0 -0.5 25 25"
-                    fill="none"
+                    fill="currentColor" // Add this to ensure the SVG inherits the text color
                     xmlns="http://www.w3.org/2000/svg"
                     className="w-10 h-10"
                   >
