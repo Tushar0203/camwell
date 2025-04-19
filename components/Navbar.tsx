@@ -61,7 +61,7 @@ const Navbar = () => {
         },
         {
           name: 'Freight Corridor',
-          path: '/products/freight-corridor',
+          path: '/products',
           description: 'Secure corridor solutions for freight transport'
         }
       ]
