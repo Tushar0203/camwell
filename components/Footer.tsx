@@ -20,7 +20,7 @@ const Footer = () => {
       <footer className="bg-gradient-to-b from-[#202122] to-[#131927] text-white pt-16 pb-8 md:pt-20 md:pb-12 w-full">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-13">
-            {/* Brand Section */}
+
             <div className="space-y-6">
               <div className="flex flex-col items-start">
                 <div className="relative w-40 h-14 sm:w-48 sm:h-16 mb-6 -ml-3">  {/* Changed from -ml-2 to -ml-3 */}
