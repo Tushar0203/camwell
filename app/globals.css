@@ -38,3 +38,12 @@ body {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Optional: Add a smooth fade animation when changing slides */
+.fade-transition {
+  transition: opacity 0.4s ease-in-out;
+}
