@@ -106,7 +106,7 @@ const Footer = () => {
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/products/modular-fence" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href="/products/border-fence" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
                     <span>Modular Fence</span>
                   </Link>
@@ -118,7 +118,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/fence-swing-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href="/products/fence-swing-gate" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
                     <span>Fence Swing Gates</span>
                   </Link>
