@@ -106,39 +106,21 @@ const Footer = () => {
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/products/weld-mesh" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href="/products/modular-fence" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Weld Mesh Panels</span>
+                    <span>Modular Fence</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/fence-posts" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Fence Posts</span>
+                    <span>Freight Corridor</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/swing-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href="/products/fence-swing-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
                     <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Swing Gates</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/sliding-gates" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Sliding Gates</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/security-spikes" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Security Spikes</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/razor-wire" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Razor Wire</span>
+                    <span>Fence Swing Gates</span>
                   </Link>
                 </li>
               </ul>
