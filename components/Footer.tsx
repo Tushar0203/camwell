@@ -25,7 +25,7 @@ const Footer = () => {
               <div className="flex flex-col items-start">
                 <div className="relative w-40 h-14 sm:w-48 sm:h-16 mb-6 -ml-3">  {/* Changed from -ml-2 to -ml-3 */}
                   <Image
-                    src="/images/camwell-logo.png"
+                    src="/images/Camwell-Logo.png"
                     alt="Camwell Industries Logo"
                     fill
                     className="object-contain"
@@ -226,7 +226,7 @@ const Footer = () => {
               "@type": "Organization",
               "name": "Camwell Industries",
               "url": "https://www.camwell.in",
-              "logo": "https://www.camwell.in/images/camwell-logo.png",
+              "logo": "https://www.camwell.in/images/Camwell-Logo.png",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+919971790811",

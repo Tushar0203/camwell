@@ -384,7 +384,7 @@ const Navbar = () => {
                     <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
                       <div className="relative w-32 h-12">
                         <Image
-                          src="/images/camwell-logo.png"
+                          src="/images/Camwell-Logo.png"
                           alt="Camwell Industries Logo"
                           fill
                           className="object-contain logo-light"
