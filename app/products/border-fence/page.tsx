@@ -63,6 +63,7 @@ interface Component {
   title: string;
   description: string;
   specs: string[];
+  url: string;
 }
 
 interface PartModalProps {
