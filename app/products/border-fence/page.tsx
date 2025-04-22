@@ -120,8 +120,8 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
             >
               {/* Header - improved for mobile */}
               <div className="relative">
-                <div className="bg-gradient-to-r from-[#1F75B5] to-[#1a5d90] p-4 sm:p-6">
-                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4">
+                <div className="bg-gradient-to-r from-[#1F75B5] to-[#1a5d90] p-4">
+                  <div className="absolute top-3 right-3">
                     <button 
                       onClick={onClose}
                       className="rounded-full p-2 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
@@ -130,8 +130,15 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                     </button>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="bg-white/10 p-2 sm:p-3 rounded-xl">
-                      <Package className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                    <div className="bg-white p-2 sm:p-3 rounded-xl h-[70px] w-[70px] sm:h-[90px] sm:w-[90px] relative">
+                      <Image
+                        src={component.url || '/placeholder-image.jpg'}
+                        alt={component.title}
+                        fill
+                        className="object-contain"
+                        sizes="90px"
+                        priority
+                      />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -247,29 +254,6 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 </div>
               </div>
               
-              {/* Footer - improved for mobile */}
-              <div className="border-t border-gray-100 p-3 sm:p-4 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-3">
-                <Button 
-                  variant="outline" 
-                  onClick={onClose} 
-                  className="gap-2 border-gray-300 hover:bg-gray-100 hover:border-gray-400 text-gray-700 hover:text-gray-900 transition-all duration-300 cursor-pointer px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg w-full sm:w-auto"
-                >
-                  <X className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                  Close
-                </Button>
-                <Button 
-                  className="bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer w-full sm:w-auto"
-                  onClick={() => {
-                    // Close the modal first
-                    onClose();
-                    // Use window.location to navigate to the contact page
-                    window.location.href = "/contact?product=" + encodeURIComponent(component.title);
-                  }}
-                >
-                  Request Quote
-                  <ArrowRight className="ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                </Button>
-              </div>
             </div>
           </motion.div>
         </>
@@ -359,7 +343,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                         alt={item.name}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover"
+                        className="object-contain p-4" // Changed from object-cover to object-contain and added padding
                         priority={idx < 6}
                       />
                     </div>

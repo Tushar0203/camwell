@@ -16,7 +16,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     id: 1,
-    image: '/images/fence-1.jpg',
+    image: '/images/fence-swing-gates.jpg',
     title: 'Advanced Security',
     subtitle: 'Fortifying Boundaries',
     description: 'State-of-the-art fencing solutions for maximum security'
