@@ -1,9 +1,8 @@
 "use client"
-import { motion, PanInfo } from 'framer-motion'; // Import PanInfo type
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface Slide {
   id: number;
@@ -37,177 +36,114 @@ const slides: Slide[] = [
   }
 ];
 
-const Carousel: React.FC = () => {
+const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const goToNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-    // Remove this line to keep autoplay running after manual navigation
-    // setIsAutoPlaying(false);
   };
 
   const goToPrevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    // Remove this line to keep autoplay running after manual navigation
-    // setIsAutoPlaying(false);
   };
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft') {
-        goToPrevSlide();
-      } else if (event.key === 'ArrowRight') {
-        goToNextSlide();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, []);
 
   // Auto-play timer
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
     const timer = setInterval(goToNextSlide, 5000);
-
     return () => clearInterval(timer);
   }, [isAutoPlaying]);
 
-  // Optional: Add touch swipe support
-  const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x > 100) {
-      goToPrevSlide();
-    } else if (info.offset.x < -100) {
-      goToNextSlide();
-    }
-  };
-
-  // Modify the click handler for indicators
   const handleIndicatorClick = (index: number) => {
     setCurrentSlide(index);
-    // Optional: Pause briefly when manually selecting a slide
     setIsAutoPlaying(false);
-    // Resume autoplay after a short delay
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
 
   return (
-    <section className="relative h-[100svh] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <motion.div
-            key={slide.id}
-            initial={false}
-            animate={{ opacity: currentSlide === index ? 1 : 0 }}
-            transition={{ duration: 0.7 }}
-            className="absolute inset-0"
-            style={{ pointerEvents: currentSlide === index ? 'auto' : 'none' }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
-            onDragEnd={handleDragEnd}
-          >
-            <Image
-              src={slide.image}
-              alt={slide.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-          </motion.div>
-        ))}
-
-        {/* Content */}
-        <div className="relative z-20 container mx-auto px-6 h-full flex items-center">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl w-full"
-          >
-            <motion.h2 
-              className="text-blue-400 font-medium mb-3 text-sm sm:text-base md:text-lg tracking-wide"
-            >
-              {slides[currentSlide].subtitle}
-            </motion.h2>
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 leading-tight"
-            >
-              {slides[currentSlide].title}
-            </motion.h1>
-            <motion.p 
-              className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-md"
-            >
-              {slides[currentSlide].description}
-            </motion.p>
-            <div className="flex flex-col gap-3 w-full sm:w-auto sm:flex-row sm:gap-4">
-              <Link
-                href="/products"
-                className="group flex justify-center items-center gap-2 bg-white text-charcoal px-6 py-4 rounded-lg font-medium hover:bg-gray-100 transition-all duration-300 text-base w-full sm:w-auto"
-              >
-                View Products
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-              <Link
-                href="/contact"
-                className="group flex justify-center items-center gap-2 border-2 border-white text-white px-6 py-4 rounded-lg font-medium hover:bg-white/10 transition-all duration-300 text-base w-full sm:w-auto"
-              >
-                Contact Us
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
+    <div className="bg-[#0f172a] min-h-[85vh] md:min-h-screen">
+      <div className="container mx-auto px-3 pt-20 pb-4 md:pt-16 md:pb-12 lg:py-24">
+        {/* Carousel - optimized for mobile */}
+        <div className="relative mx-auto max-w-full sm:mx-0">
+          {/* Current slide */}
+          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-xl border border-gray-700">
+            {/* Taller aspect ratio for mobile */}
+            <div className="aspect-[2/3] xs:aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] w-full relative">
+              <Image
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].title}
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, 1200px"
+              />
+              {/* Improved gradient overlay for better text visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-[#0f172a]/10"></div>
             </div>
-          </motion.div>
+            
+            <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-5 sm:p-6 md:p-10">
+              <div className="max-w-xl">
+                <h3 className="inline-block text-blue-400 text-xs sm:text-sm font-medium tracking-wide mb-3 xs:mb-4 sm:mb-5 px-2 py-0.5 bg-black/30 backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] border-l-2 border-blue-500 -mt-6 sm:-mt-8 md:-mt-10">
+                  {slides[currentSlide].subtitle}
+                </h3>
+                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 xs:mb-3 sm:mb-3 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                  {slides[currentSlide].title}
+                </h2>
+                <p className="text-gray-300 text-sm md:text-base mb-3 xs:mb-4 sm:mb-6 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+                  {slides[currentSlide].description}
+                </p>
+                <div className="flex flex-wrap gap-2 xs:gap-3">
+                  <Link
+                    href="/products"
+                    className="group flex items-center gap-1 sm:gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 xs:px-5 xs:py-2.5 sm:px-5 sm:py-2.5 rounded-md font-medium transition-all duration-300 text-sm"
+                  >
+                    View Products
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Indicators - more compact on mobile */}
+          <div className="flex justify-center mt-3 xs:mt-4 sm:mt-6">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleIndicatorClick(index)}
+                className={`w-6 xs:w-7 sm:w-8 h-1 mx-0.5 sm:mx-1 rounded-full transition-all duration-300 ${
+                  currentSlide === index ? 'bg-blue-500' : 'bg-gray-600'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          {/* Thumbnails for larger screens - unchanged */}
+          <div className="hidden md:flex justify-center mt-6 gap-4">
+            {slides.map((slide, index) => (
+              <button
+                key={index}
+                onClick={() => handleIndicatorClick(index)}
+                className={`relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                  currentSlide === index ? 'ring-2 ring-blue-500' : 'opacity-70 hover:opacity-100'
+                }`}
+              >
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  className="object-cover"
+                  sizes="96px"
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
-        {slides.map((_, index) => (
-          <motion.button
-            key={index}
-            onClick={() => handleIndicatorClick(index)}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              currentSlide === index 
-                ? 'bg-white w-8 sm:w-10' 
-                : 'bg-white/40 w-3 hover:bg-white/60'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-    </section>
+    </div>
   );
 };
 
 export default Carousel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
