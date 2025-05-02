@@ -158,9 +158,7 @@ const Navbar = () => {
                 src="/images/Camwell-Logo.png"
                 alt="Camwell Industries Logo"
                 fill
-                className={`object-contain transition-all duration-300 ${
-                  pathname === '/' && !scrolled ? 'logo-light' : ''
-                }`}
+                className="object-contain transition-all duration-300"
                 priority
                 sizes="128px"
               />
@@ -241,9 +239,9 @@ const Navbar = () => {
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="relative bg-[#111827]">
+                      <div className="relative bg-[#0a101e]"> {/* Changed from #111827 to #0a101e for darker contrast */}
                         {/* Triangle pointer */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-[#111827] rotate-45"></div>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-[#0a101e] rotate-45"></div>
                         
                         {/* Header Section */}
                         <div className="p-6 border-b border-gray-800">
@@ -265,7 +263,7 @@ const Navbar = () => {
 
                         <div className="grid grid-cols-2 gap-px bg-gray-800">
                           {productCategories.map((category) => (
-                            <div key={category.name} className="bg-[#111827] p-6">
+                            <div key={category.name} className="bg-[#0a101e] p-6"> {/* Changed from #111827 to #0a101e */}
                               {/* Category Header */}
                               <div className="flex items-center gap-3 mb-4">
                                 <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
@@ -313,7 +311,7 @@ const Navbar = () => {
                         </div>
 
                         {/* Footer */}
-                        <div className="px-6 py-4 bg-gray-900/50 border-t border-gray-800">
+                        <div className="px-6 py-4 bg-[#070d19] border-t border-gray-800"> {/* Changed from gray-900/50 to #070d19 */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
                               <div className="flex items-center gap-2 text-sm text-gray-400">
