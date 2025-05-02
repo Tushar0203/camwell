@@ -1,20 +1,20 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
-import { 
-  ArrowUpRight, 
-  Minus, 
-  Package, 
-  Plus, 
-  Shield, 
-  ArrowRight, 
-  Download,
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
   ChevronRight,
-  X,
-  Check
+  Download,
+  Minus,
+  Package,
+  Plus,
+  Shield,
+  X
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -30,39 +30,14 @@ const scrollbarHideStyles = `
   }
 `;
 
-// First, let's organize components into logical categories
-const categorizedComponents = {
-  "Primary Structure": [
-    { name: "WELD MESH PANEL", imageUrl: "/products/border-fence/weld-mesh-panel.png" },
-    { name: "FENCE (CHS) POST", imageUrl: "/products/border-fence/fence-chs.png" },
-    { name: "ANCHOR ROD", imageUrl: "/products/border-fence/anchor-rod.png" },
-    { name: "STRUT (CHS) POST", imageUrl: "/products/border-fence/strut-chs.png" },
-  ],
-  "Fastening System": [
-    { name: "OMEGA CLAMP WITH PROFILE COVER PLATE", imageUrl: "/products/border-fence/omega-clamp.png" },
-    { name: "INTERMEDIATE PANEL (IP) BINDER", imageUrl: "/products/border-fence/intermediate-panel-binder.png" },
-    { name: "CORNER CLAMP", imageUrl: "/products/border-fence/corner-clamp.png" },
-  ],
-  "Security Enhancement": [
-    { name: "STRAINING Y ARM", imageUrl: "/products/border-fence/straining-y-arm.png" },
-    { name: "INTERMEDIATE Y-ARM", imageUrl: "/products/border-fence/intermediate-y-arm.png" },
-    { name: "PTCC PUNCHED TAPE CONCERTINA COIL", imageUrl: "/products/border-fence/ptcc-punched.png" },
-    { name: "RAZOR WIRE TAPE", imageUrl: "/products/border-fence/razor-wire-tape.png" },
-    { name: "HOG RINGS", imageUrl: "/products/border-fence/hog-rings.png" },
-  ],
-  "Hardware & Accessories": [
-    { name: "TIE WIRE FOR RAZOR TAPE", imageUrl: "/products/border-fence/tie-wire.png" },
-    { name: "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x120mm.png" },
-    { name: "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x75mm.png" },
-    { name: "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x60mm.png" },
-    { name: "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER", imageUrl: "/products/border-fence/m8x35mm.png" },
-  ],
-};
+// Import the component data from the external file
+import { borderFenceComponents, componentSpecifications } from '@/data/borderFenceComponents';
 
 interface Component {
   title: string;
   description: string;
-  specs: string[];
+  specs?: string[];
+  specifications?: { label: string; value: string }[];
   url: string;
 }
 
@@ -72,23 +47,75 @@ interface PartModalProps {
   onClose: () => void;
 }
 
-// Fix the PartModal component definition to resolve the static flag issue
+// Enhanced SpecificationsTable component with header and better styling
+const SpecificationsTable = ({ specs }: { specs: { label: string; value: string }[] }) => {
+  return (
+    <div className="overflow-hidden mt-6 rounded-lg shadow-md border border-gray-300">
+      <div className="bg-[#1a5d90]/10 py-3 px-4 border-b border-gray-300">
+        <h3 className="text-[#1a5d90] font-medium">Technical Specifications</h3>
+      </div>
+      <table className="w-full border-collapse">
+        <tbody>
+          {specs.map((spec, idx) => (
+            <tr 
+              key={idx} 
+              className={idx % 2 === 0 ? "bg-white" : "bg-blue-50/40 hover:bg-blue-50/60"}
+            >
+              <td className="py-3.5 px-4 text-sm font-medium text-[#1a5d90] border-b border-gray-300 w-1/3 border-r border-r-gray-300">
+                {spec.label}
+              </td>
+              <td className="py-3.5 px-4 text-sm text-gray-700 border-b border-gray-300">
+                {spec.value}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+// Update the PartModal component to better display specifications
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
-  // Prevent background scrolling when modal is open
+  // Reference to store the original scroll position
+  const originalScrollPosition = useRef(0);
+  
+  // Handle modal open/close effects
   useEffect(() => {
     if (isOpen) {
-      // Disable scrolling on the body when modal is open
+      // Store the current scroll position when opening
+      originalScrollPosition.current = window.pageYOffset;
+      
+      // Disable scrolling on the body
       document.body.style.overflow = 'hidden';
+      
+      // On mobile, scroll to top for better modal viewing
+      if (window.innerWidth < 640) {
+        window.scrollTo(0, 0);
+      }
     } else {
       // Re-enable scrolling when modal is closed
       document.body.style.overflow = 'auto';
+      
+      // Don't do any scrolling on close - let the page stay where it is
     }
     
-    // Cleanup function to re-enable scrolling when component unmounts
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isOpen]);
+
+  // Custom close handler to prevent scroll jumps
+  const handleClose = () => {
+    // Simply call onClose without changing scroll position
+    onClose();
+  };
+
+  // Extract the description from the component
+  const getDescriptionText = () => {
+    if (!component || !component.description) return "";
+    return component.description;
+  };
 
   if (!component) return null;
   
@@ -96,165 +123,107 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop with blur effect */}
+          {/* Backdrop */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50"
-            onClick={onClose}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+            onClick={handleClose}
           />
           
-          {/* Modal - improved mobile responsiveness */}
+          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-20"
-            onClick={onClose}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex items-center justify-center sm:p-4 md:p-6"
+            onClick={handleClose}
           >
             <div 
-              className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col"
+              className="bg-white rounded-none sm:rounded-xl shadow-2xl w-full h-full sm:h-auto sm:max-h-[90vh] sm:max-w-4xl overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Header - improved for mobile */}
-              <div className="relative">
-                <div className="bg-gradient-to-r from-[#1F75B5] to-[#1a5d90] p-4">
-                  <div className="absolute top-3 right-3">
-                    <button 
-                      onClick={onClose}
-                      className="rounded-full p-2 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-                    >
-                      <X className="w-5 h-5" />
-                    </button>
-                  </div>
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <div className="bg-white p-2 sm:p-3 rounded-xl h-[70px] w-[70px] sm:h-[90px] sm:w-[90px] relative">
-                      <Image
-                        src={component.url || '/placeholder-image.jpg'}
-                        alt={component.title}
-                        fill
-                        className="object-contain"
-                        sizes="90px"
-                        priority
-                      />
+              {/* Header */}
+              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
+                {/* Image thumbnail - only show on larger screens */}
+                <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
+                  {component.url ? (
+                    <img
+                      src={component.url}
+                      alt={component.title}
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center w-full h-full text-gray-400">
+                      <Package size={24} />
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="bg-white/20 text-white text-xs px-2 py-0.5 rounded-full">
-                          {component.title.includes("MESH") ? "Primary Structure" : 
-                           component.title.includes("CLAMP") ? "Fastening System" :
-                           component.title.includes("ARM") || component.title.includes("RAZOR") ? "Security Enhancement" :
-                           "Hardware & Accessories"}
-                        </span>
-                      </div>
-                      <h3 className="text-base sm:text-xl font-bold text-white line-clamp-2 sm:line-clamp-none">
-                        {component.title}
-                      </h3>
-                      <div className="h-0.5 w-12 bg-blue-400/30 mt-1 sm:mt-2"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white/5 to-transparent"></div>
-              </div>
-              
-              {/* Content - improved scrolling and spacing for mobile */}
-              <div className="p-4 sm:p-6 overflow-y-auto flex-grow scrollbar-hide">
-                <div className="bg-blue-50/50 p-4 sm:p-5 rounded-xl mb-4 sm:mb-6 border border-blue-100">
-                  <h4 className="text-[#1F75B5] font-medium mb-2 flex items-center">
-                    <span className="bg-blue-100 p-1 rounded-md mr-2">
-                      <Package className="w-4 h-4 text-[#1a5d90]" />
-                    </span>
-                    Overview
-                  </h4>
-                  <p className="text-gray-700 text-sm sm:text-base">{component.description}</p>
+                  )}
                 </div>
                 
-                <div className="mb-4 sm:mb-6">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4 flex items-center">
-                    <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                      <Check className="w-3.5 h-3.5 text-[#1a5d90]" />
-                    </span>
-                    Key Features
-                  </h4>
+                <div className="flex-1">
+                  {/* Category tag */}
+                  <div className="inline-block px-2.5 py-1 rounded-full bg-white/20 text-white text-xs mb-1.5">
+                    Primary Structure
+                  </div>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 sm:mb-6">
-                    {component.specs.map((spec, idx) => (
-                      <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: idx * 0.05 }}
-                        className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-white p-3 sm:p-4 rounded-lg border border-blue-100 hover:shadow-md hover:border-blue-200 transition-all duration-300 group"
-                      >
-                        <div className="flex-shrink-0">
-                          <div className="h-7 w-7 rounded-full bg-blue-100/80 flex items-center justify-center">
-                            <Check className="h-3.5 w-3.5 text-blue-500" />
-                          </div>
+                  {/* Title */}
+                  <h2 className="text-xl font-bold text-white leading-tight pr-8">
+                    {component.title}
+                  </h2>
+                </div>
+                
+                {/* Close button */}
+                <button 
+                  onClick={handleClose}
+                  className="absolute top-4 right-4 rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              
+              {/* Content - scrollable with no extra space */}
+              <div className="flex-1 overflow-y-auto">
+                <div className="p-4 sm:p-6">
+                  {/* Replace the Overview section with a combined Dimensions & Standards section */}
+                  <div className="mb-6">
+                    <h3 className="text-[#1a5d90] text-xl font-semibold mb-2">Dimensions & Standards:</h3>
+                    <p className="text-gray-700 text-sm sm:text-base mb-6">{getDescriptionText()}</p>
+                    
+                    {/* Specifications table */}
+                    {component.specifications && component.specifications.length > 0 ? (
+                      <div className="overflow-hidden rounded-lg shadow-sm border border-gray-300">
+                        <div className="overflow-x-auto">
+                          <table className="w-full border-collapse">
+                            <tbody>
+                              {component.specifications.map((spec, idx) => (
+                                <tr 
+                                  key={idx} 
+                                  className={idx % 2 === 0 ? "bg-white" : "bg-blue-50/40 hover:bg-blue-50/60"}
+                                >
+                                  <td className="py-3 px-4 text-sm font-medium text-[#1a5d90] border-b border-gray-300 w-1/3 border-r border-r-gray-300">
+                                    {spec.label}
+                                  </td>
+                                  <td className="py-3 px-4 text-sm text-gray-700 border-b border-gray-300">
+                                    {spec.value}
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         </div>
-                        <span className="text-sm font-medium text-[#1F75B5] group-hover:text-[#1a5d90] transition-colors duration-300">{spec}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                
-                
-                
-                <div className="grid grid-cols-1 gap-4 mb-4 sm:mb-6 md:grid-cols-2">
-                  <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-[#1F75B5] font-medium mb-3 flex items-center">
-                      <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1F75B5]" />
-                      </span>
-                      Compatible With
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {["Primary Structure", "Fastening System", "Security Enhancement"].map((tag, idx) => (
-                        <motion.span 
-                          key={tag}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: idx * 0.1 }}
-                          className="bg-white px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-[#1a5d90] border border-blue-200 shadow-sm hover:shadow hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 cursor-pointer flex items-center gap-1"
-                        >
-                          <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gradient-to-br from-blue-50 to-white p-4 sm:p-5 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all duration-300">
-                    <h4 className="text-[#1F75B5] font-medium mb-3 flex items-center">
-                      <span className="bg-blue-100 p-1.5 rounded-md mr-2 flex items-center justify-center">
-                        <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1F75B5]" />
-                      </span>
-                      Key Benefits
-                    </h4>
-                    <ul className="space-y-3">
-                      {["Enhanced security performance", "Long-term durability", "Easy installation and maintenance"].map((benefit, idx) => (
-                        <motion.li 
-                          key={idx} 
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: idx * 0.1 }}
-                          className="flex items-center gap-3"
-                        >
-                          <div className="flex-shrink-0">
-                            <div className="h-7 w-7 rounded-full bg-blue-100/80 flex items-center justify-center">
-                              <Check className="h-3.5 w-3.5 text-blue-500" />
-                            </div>
-                          </div>
-                          <span className="text-sm text-gray-700">{benefit}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
+                      </div>
+                    ) : (
+                      <div className="rounded-lg p-4 bg-gray-50 border border-gray-300 text-gray-500 text-sm italic">
+                        No specifications available
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              
             </div>
           </motion.div>
         </>
@@ -273,10 +242,9 @@ interface CategorySectionProps {
   items: CategoryItem[];
   isOpen: boolean;
   onToggle: () => void;
-  components: Component[];
-  onComponentClick: (component: Component) => void;
+  onComponentClick: (itemName: string) => void;
 }
-const CategorySection = ({ title, items, isOpen, onToggle, components, onComponentClick }: CategorySectionProps) => (
+const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: CategorySectionProps) => (
   <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
     isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
   }`}>
@@ -333,10 +301,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.05 }}
                     className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer h-[280px]"
-                    onClick={() => {
-                      const component = components.find(comp => comp.title === item.name);
-                      if (component) onComponentClick(component);
-                    }}
+                    onClick={() => onComponentClick(item.name)}
                   >
                     <div className="h-[180px] relative">
                       <Image
@@ -369,246 +334,49 @@ const CategorySection = ({ title, items, isOpen, onToggle, components, onCompone
 );
 
 export default function BorderFencePage() {
-  const [openCategory, setOpenCategory] = useState<string>('');
-  const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
+  const [openCategory, setOpenCategory] = useState<string | null>("Primary Structure");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const handleComponentClick = (component: Component) => {
-    setSelectedComponent(component);
-    setIsModalOpen(true);
-  };
+  const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
   const toggleCategory = (category: string) => {
-    // Prevent toggling during animation
-    if (isAnimating) return;
+    setOpenCategory(openCategory === category ? null : category);
+  };
+
+  const handleComponentClick = (itemName: string) => {
+    // Find the component specifications
+    const specs = Object.keys(componentSpecifications).includes(itemName)
+      ? componentSpecifications[itemName as keyof typeof componentSpecifications]
+      : undefined;
     
-    setIsAnimating(true);
+    // Find the image URL by searching through all categories
+    let imageUrl = '/placeholder-image.jpg';
     
-    // If the same category is clicked, close it
-    if (openCategory === category) {
-      setOpenCategory('');
-    } else {
-      // If a different category is clicked, open it and close the previous one
-      setOpenCategory(category);
-    }
+    // Search through all categories to find the matching component
+    Object.keys(borderFenceComponents).forEach(category => {
+      const items = borderFenceComponents[category as keyof typeof borderFenceComponents];
+      const foundItem = items.find(item => item.name === itemName);
+      if (foundItem && foundItem.imageUrl) {
+        imageUrl = foundItem.imageUrl;
+      }
+    });
     
-    // Reset animation lock after animation completes
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 400); // Match this with the animation duration
+    console.log("Component image URL:", imageUrl); // Add logging to debug
+    
+    // Create a component object with the specifications
+    const component: Component = {
+      title: itemName,
+      description: specs?.description || "No description available.",
+      specifications: specs?.specifications || [],
+      url: imageUrl
+    };
+    
+    setSelectedComponent(component);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
-  const components = [
-    {
-      title: "WELD MESH PANEL",
-      url: "/products/border-fence/weld-mesh-panel.png",
-      description: "High-security welded mesh panels with advanced electrical resistance welding technology.",
-      specs: [
-        "High-strength galvanized steel",
-        "Precision welded configuration",
-        "Advanced corrosion protection",
-        "Standardized dimensions",
-        "Superior tensile strength"
-      ]
-    },
-    {
-      title: "FENCE (CHS) POST",
-      url: "/products/border-fence/fence-chs.png",
-      description: "Robust Circular Hollow Section posts engineered for optimal structural integrity.",
-      specs: [
-        "Hot-dip galvanized steel",
-        "Multiple height options",
-        "Superior load-bearing",
-        "Anti-corrosion treated",
-        "Compatible brackets"
-      ]
-    },
-    {
-      title: "ANCHOR ROD",
-      url: "/products/border-fence/anchor-rod.png",
-      description: "High-grade anchor rods designed for secure concrete foundation mounting.",
-      specs: [
-        "Premium steel construction",
-        "Precise dimensions",
-        "Corrosion-resistant",
-        "Easy installation",
-        "Concrete compatible"
-      ]
-    },
-    {
-      title: "STRUT (CHS) POST",
-      url: "/products/border-fence/strut-chs.png",
-      description: "Reinforced support posts for enhanced corner and endpoint stability.",
-      specs: [
-        "Premium hollow design",
-        "Industrial-grade steel",
-        "Precise engineering",
-        "Enhanced support",
-        "Advanced galvanizing"
-      ]
-    },
-    {
-      title: "OMEGA CLAMP WITH PROFILE COVER PLATE",
-      url: "/products/border-fence/omega-clamp.png",
-      description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. The profile cover plate provide the necessary holding strength.",
-      specs: [
-        "Enhanced holding strength",
-        "Custom profile design",
-        "Secure fastening system",
-        "Weather-resistant coating",
-        "Easy installation"
-      ]
-    },
-    {
-      title: "INTERMEDIATE PANEL (IP) BINDER",
-      url: "/products/border-fence/ip-binder.png",
-      description: "Panel binders are used for connecting panel.",
-      specs: [
-        "Secure panel connection",
-        "Durable construction",
-        "Easy installation",
-        "Compatible design",
-        "Weather-resistant"
-      ]
-    },
-    {
-      title: "CORNER CLAMP",
-      url: "/products/border-fence/corner-clamp.png",
-      description: "These clamps are used to fix the mesh panels on the poles by using suitable fasteners. These clamps are used where the angle between two adjacent fencepost is less than 180° angle.",
-      specs: [
-        "Angular adjustment capability",
-        "Secure fastening system",
-        "Durable construction",
-        "Weather-resistant coating",
-        "Easy installation"
-      ]
-    },
-    {
-      title: "STRAINING Y ARM",
-      url: "/products/border-fence/straining-y-arm.png",
-      description: "Straining Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One straining Y-Arm is installed at every 30 meters.",
-      specs: [
-        "30-meter interval installation",
-        "PTCC support capability",
-        "Durable construction",
-        "Strategic positioning",
-        "Weather-resistant finish"
-      ]
-    },
-    {
-      title: "INTERMEDIATE Y-ARM",
-      url: "/products/border-fence/intermediate-y-arm.png",
-      description: "Intermediate Y-Arm are installed for supporting Punched Tape Concertina Coils (PTCC). One Intermediate Y arm is installed at every post except the posts with Straining Y arms.",
-      specs: [
-        "Regular post installation",
-        "PTCC support system",
-        "Durable construction",
-        "Complementary to Straining Y-arms",
-        "Weather-resistant finish"
-      ]
-    },
-    {
-      title: "PTCC PUNCHED TAPE CONCERTINA COIL",
-      url: "/products/border-fence/ptcc-punched.png",
-      description: "Advanced razor wire security system designed for superior perimeter protection and deterrence.",
-      specs: [
-        "High-tensile steel construction",
-        "Razor-sharp edge design",
-        "Corrosion-resistant coating",
-        "Easy deployment system",
-        "Long-lasting durability"
-      ]
-    },
-    {
-      title: "RAZOR WIRE TAPE",
-      url: "/products/border-fence/razor-wire-tape.png",
-      description: "High-security razor wire tape supplied in convenient 100-meter rolls for efficient perimeter protection.",
-      specs: [
-        "100 meters per roll",
-        "High-grade steel construction",
-        "Sharp razor edges",
-        "Galvanized finish",
-        "Easy deployment system"
-      ]
-    },
-    {
-      title: "HOG RINGS",
-      url: "/products/border-fence/hog-rings.png",
-      description: "Specialized fastening rings designed to secure concertina coil and consecutive concertina coils for enhanced security.",
-      specs: [
-        "SS304/SS316 grade construction",
-        "3mm diameter precision rings",
-        "High tensile strength",
-        "Corrosion resistant",
-        "Easy installation"
-      ]
-    },
-    {
-      title: "TIE WIRE FOR RAZOR TAPE",
-      url: "/products/border-fence/tie-wire.png",
-      description: "Stainless-steel tie wire is used for knotting razor tape at straining Y arm at each eyebolt location.",
-      specs: [
-        "Stainless steel construction",
-        "Secure knotting capability",
-        "Corrosion-resistant material",
-        "Compatible with Y-arm eyebolts",
-        "Durable fastening solution"
-      ]
-    },
-    {
-      title: "M8X120MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      url: "/products/border-fence/m8x120mm.png",
-      description: "M8x120 mm mushroom head bolts with breakable head security nuts and washers are used to clamp Y arm to a fencing post. For each Y arm two sets of bolts are required.",
-      specs: [
-        "M8x120mm standard size",
-        "Breakable head security nuts",
-        "Two sets per Y arm",
-        "Anti-tamper design",
-        "Complete with washers"
-      ]
-    },
-    {
-      title: "M8X75MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      url: "/products/border-fence/m8x75mm.png",
-      description: "M8x75 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at four mesh overlap junctions.",
-      specs: [
-        "M8x75mm standard size",
-        "Breakable security head nuts",
-        "Four-point mesh junction fixing",
-        "Complete with washers",
-        "Anti-tampering design"
-      ]
-    },
-    {
-      title: "M8X60MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      url: "/products/border-fence/m8x60mm.png",
-      description: "M8x60 mm mushroom head bolts with breakable head security nuts and washers are used to clamp omega and profile plate at two mesh overlap junctions.",
-      specs: [
-        "SS304/SS316 material options",
-        "M8x60mm standard size",
-        "Weight: 0.031 Kg ± 8%",
-        "Two-point mesh junction fixing",
-        "Complete with security nuts and washers"
-      ]
-    },
-    {
-      title: "M8X35MM MUSHROOM HEAD BOLT, NUT & WASHER",
-      url: "/products/border-fence/m8x35mm.png",
-      description: "M8x35 mm mushroom head bolts with breakable head security nuts and washers are used to clamp IP binder at center of two mesh overlap junctions to remove the gap and make it sturdy between two mesh.",
-      specs: [
-        "SS304/SS316 material options",
-        "M8x35mm standard size",
-        "Weight: 0.025 Kg ± 8%",
-        "3200 sets per kilometer",
-        "IP binder junction fixing"
-      ]
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -724,14 +492,13 @@ export default function BorderFencePage() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            {Object.entries(categorizedComponents).map(([category, items]) => (
+            {Object.entries(borderFenceComponents).map(([category, items]) => (
               <CategorySection
                 key={category}
                 title={category}
                 items={items}
                 isOpen={openCategory === category}
                 onToggle={() => toggleCategory(category)}
-                components={components}
                 onComponentClick={handleComponentClick}
               />
             ))}
