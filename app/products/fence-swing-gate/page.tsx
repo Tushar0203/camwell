@@ -332,7 +332,7 @@ export default function FenceSwingGatePage() {
       }
     });
     
-    console.log("Component image URL:", imageUrl); // Add logging to debug
+    // console.log("Component image URL:", imageUrl); // Add logging to debug
     
     // Create a component object with the specifications
     const component: Component = {
