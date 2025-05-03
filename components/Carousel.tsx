@@ -44,10 +44,6 @@ const Carousel = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
   // Auto-play timer
   useEffect(() => {
     if (!isAutoPlaying) return;

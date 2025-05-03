@@ -47,34 +47,6 @@ interface PartModalProps {
   onClose: () => void;
 }
 
-// Enhanced SpecificationsTable component with header and better styling
-const SpecificationsTable = ({ specs }: { specs: { label: string; value: string }[] }) => {
-  return (
-    <div className="overflow-hidden mt-6 rounded-lg shadow-md border border-gray-300">
-      <div className="bg-[#1a5d90]/10 py-3 px-4 border-b border-gray-300">
-        <h3 className="text-[#1a5d90] font-medium">Technical Specifications</h3>
-      </div>
-      <table className="w-full border-collapse">
-        <tbody>
-          {specs.map((spec, idx) => (
-            <tr 
-              key={idx} 
-              className={idx % 2 === 0 ? "bg-white" : "bg-blue-50/40 hover:bg-blue-50/60"}
-            >
-              <td className="py-3.5 px-4 text-sm font-medium text-[#1a5d90] border-b border-gray-300 w-1/3 border-r border-r-gray-300">
-                {spec.label}
-              </td>
-              <td className="py-3.5 px-4 text-sm text-gray-700 border-b border-gray-300">
-                {spec.value}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
 // Update the PartModal component to better display specifications
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   // Reference to store the original scroll position
