@@ -338,6 +338,7 @@ export default function BorderFencePage() {
     const component: Component = {
       title: itemName,
       description: specs?.description || "No description available.",
+      specifications: specs?.specifications || [],
       url: imageUrl
     };
     
