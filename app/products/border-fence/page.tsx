@@ -306,7 +306,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: C
 );
 
 export default function BorderFencePage() {
-  const [openCategory, setOpenCategory] = useState<string | null>("Primary Structure");
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 

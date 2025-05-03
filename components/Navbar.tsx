@@ -279,32 +279,38 @@ const Navbar = () => {
                               </div>
 
                               {/* Subcategories */}
-                              <div className="space-y-1">
-                                {category.subcategories.map((subcat) => (
-                                  <Link 
-                                    key={subcat.name}
-                                    href={subcat.path}
-                                    className="group block"
-                                    onClick={handleLinkClick}
-                                  >
-                                    <div className="relative p-3 rounded-lg group-hover:bg-gray-800/50 transition-all duration-300">
-                                      <div className="flex items-center justify-between">
-                                        <div>
-                                          <h5 className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors duration-300">
-                                            {subcat.name}
-                                          </h5>
-                                          <p className="text-xs text-gray-500 mt-0.5 group-hover:text-gray-400">
-                                            {subcat.description}
-                                          </p>
-                                        </div>
-                                        <div className="opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                                          <ChevronRight size={16} className="text-[#1F75B5]" />
-                                        </div>
+                              <div className="space-y-2">
+                                {category.subcategories.map((subcategory) => {
+                                  // More specific check for active state
+                                  const isActive = pathname === subcategory.path || 
+                                                  (subcategory.path !== '/products' && pathname.startsWith(subcategory.path));
+                                  
+                                  return (
+                                    <Link
+                                      key={subcategory.name}
+                                      href={subcategory.path}
+                                      onClick={handleLinkClick}
+                                      className={`
+                                        block relative rounded-md transition-all duration-200
+                                        ${isActive 
+                                          ? 'bg-[#0c1525] pl-4 pr-3 py-2.5' 
+                                          : 'hover:bg-[#0c1525] px-3 py-2.5'}
+                                      `}
+                                    >
+                                      {isActive && (
+                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#1F75B5] rounded-l-md"></div>
+                                      )}
+                                      <div>
+                                        <h5 className={`text-sm font-medium ${isActive ? 'text-white' : 'text-gray-300'}`}>
+                                          {subcategory.name}
+                                        </h5>
+                                        <p className="text-xs text-gray-500 mt-0.5">
+                                          {subcategory.description}
+                                        </p>
                                       </div>
-                                      <div className="absolute left-0 top-0 w-1 h-full rounded-l-lg bg-[#1F75B5] opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-                                    </div>
-                                  </Link>
-                                ))}
+                                    </Link>
+                                  );
+                                })}
                               </div>
                             </div>
                           ))}

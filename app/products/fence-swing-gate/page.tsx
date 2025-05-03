@@ -31,13 +31,13 @@ const scrollbarHideStyles = `
 `;
 
 // Import the component data from the external file
-import { fenceSwingGatesComponents, componentSpecifications } from '@/data/fenceSwingGatesComponents';
+import { componentSpecifications, fenceSwingGatesComponents } from '@/data/fenceSwingGatesComponents';
 
 interface Component {
   title: string;
   description: string;
   specs?: string[];
-  specifications?: { label: string; value: string }[];
+  specifications: { label: string; value: string }[]; // Not optional
   url: string;
 }
 
@@ -305,8 +305,8 @@ const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: C
   </div>
 );
 
-export default function BorderFencePage() {
-  const [openCategory, setOpenCategory] = useState<string | null>("Primary Structure");
+export default function FenceSwingGatePage() {
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
@@ -338,7 +338,8 @@ export default function BorderFencePage() {
     const component: Component = {
       title: itemName,
       description: specs?.description || "No description available.",
-      specifications: specs?.specifications || [],
+      // Filter out any undefined values and ensure we always have an array
+      specifications: specs?.specifications?.filter(spec => spec !== undefined) || [],
       url: imageUrl
     };
     

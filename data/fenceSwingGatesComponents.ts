@@ -26,19 +26,18 @@ export const componentSpecifications = {
       { label: "Height", value: "3600/3950mm." },
       { label: "Qty per Gate", value: "2 No.s" },
       { label: "Base Coating", value: "Hot dip galvanized coating, done as per IS:2629, shall have minimum mass of 360 GSM, as determined as per IS:6745. The coating conforms to IS 4759." },
-      { label: "Thermoplastic Powder Coating", value: "The galvanized posts shall subsequently be thermoplastic powder coated after welding with a thickness of minimum 250 μm for C4/400 μm for C5." },,
-      { label: "Color", value: "Green (RAL 6005) Coating Standard: IS 13871." }
+      { label: "Thermoplastic Powder Coating", value: "The galvanized posts shall subsequently be thermoplastic powder coated after welding with a thickness of minimum 250 μm for C4/400 μm for C5." }
     ]
   },
   "B. GATE FRAME": {
     description: "No description available.",
     specifications: [
-      { label: "Top, bottom, side and brace section", value: "50x50x3.2mm/80x80x3.2mm Mild steel Square Hollow section (SHS), conforming to IS 4923-2017 (Yst - 240MPa)." },,
+      { label: "Top, bottom, side and brace section", value: "50x50x3.2mm/80x80x3.2mm Mild steel Square Hollow section (SHS), conforming to IS 4923-2017 (Yst - 240MPa)." },
       { label: "Size", value: "2505mm x 2565mm / 2490mm x 2665mm." },
       { label: "Qty per Gate", value: "2 Nos." },
       { label: "Base Coating", value: "Hot dip galvanized coating, done as per IS:2629, shall have minimum mass of 360 GSM, as determined as per IS:6745. The coating conforms to IS 4759." },
       { label: "Thermoplastic Coating", value: "The galvanized frame shall subsequently have thermoplastic coating after welding with a thickness of minimum 250 μm for C4 / 400 μm for C5." },
-      { label: "Color", value: "Green (RAL 6005) Coating Standard: IS 13871." },
+      { label: "Color", value: "Green (RAL 6005) Coating Standard: IS 13871." }
     ]
   },
   "C. WICKET GATE FRAME": {
