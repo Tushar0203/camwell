@@ -80,7 +80,7 @@ const Carousel = () => {
             
             <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-5 sm:p-6 md:p-10">
               <div className="max-w-xl">
-                <h3 className="inline-block text-blue-400 text-xs sm:text-sm font-medium tracking-wide mb-3 xs:mb-4 sm:mb-5 px-2 py-0.5 bg-black/30 backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] border-l-2 border-blue-500 -mt-6 sm:-mt-8 md:-mt-10">
+                <h3 className="inline-block text-[#1576ae] text-xs sm:text-sm font-medium tracking-wide mb-3 xs:mb-4 sm:mb-5 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] border-l-2 border-[#1576ae] -mt-6 sm:-mt-8 md:-mt-10">
                   {slides[currentSlide].subtitle}
                 </h3>
                 <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 xs:mb-3 sm:mb-3 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
@@ -92,7 +92,7 @@ const Carousel = () => {
                 <div className="flex flex-wrap gap-2 xs:gap-3">
                   <Link
                     href="/products"
-                    className="group flex items-center gap-1 sm:gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 xs:px-5 xs:py-2.5 sm:px-5 sm:py-2.5 rounded-md font-medium transition-all duration-300 text-sm"
+                    className="group flex items-center gap-1 sm:gap-2 bg-[#1576ae] text-white px-4 py-2 xs:px-5 xs:py-2.5 sm:px-5 sm:py-2.5 rounded-md font-medium transition-all duration-300 text-sm"
                   >
                     View Products
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -109,7 +109,7 @@ const Carousel = () => {
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
                 className={`w-6 xs:w-7 sm:w-8 h-1 mx-0.5 sm:mx-1 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? 'bg-blue-500' : 'bg-gray-600'
+                  currentSlide === index ? 'bg-[#1576ae]' : 'bg-gray-600'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -123,7 +123,7 @@ const Carousel = () => {
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
                 className={`relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
-                  currentSlide === index ? 'ring-2 ring-blue-500' : 'opacity-70 hover:opacity-100'
+                  currentSlide === index ? 'ring-2 ring-[#1576ae]' : 'opacity-70 hover:opacity-100'
                 }`}
               >
                 <Image

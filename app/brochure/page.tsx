@@ -46,7 +46,17 @@ const Brochure = () => {
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden">
       
       <section className="relative min-h-[80vh] flex items-center py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1F75B5] to-[#1F75B5]"></div>
+        {/* Image background with overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/images/fence-1.jpg')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
+          
+          {/* Enhanced bottom blur gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent"></div>
+          
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px]"></div>
+        </div>
         
         <div className="relative z-10 container mx-auto px-4">
           <motion.div 
@@ -92,14 +102,14 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#1F75B5] bg-blue-50 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#1576ae] bg-blue-50 rounded-full">
               Comprehensive Guide
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               <span className="relative inline-block">
                 Why Request Our 
                 <span className="relative ml-2">
-                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-[#1F75B5]">
+                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-[#1576ae]">
                     Brochure?
                   </span>
                   <motion.span 
@@ -213,7 +223,7 @@ const Brochure = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Left side - Info section */}
-              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1F75B5] p-6 sm:p-8 md:p-10 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1576ae] p-6 sm:p-8 md:p-10 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg width="100%" height="100%">
                     <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -391,7 +401,7 @@ const Brochure = () => {
                       <div className="pt-2 sm:pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#1F75B5] to-[#1F75B5] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
+                          className="w-full text-white bg-gradient-to-r from-[#1576ae] to-[#1576ae] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (

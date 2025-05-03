@@ -227,8 +227,8 @@ const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: C
       <div className="flex items-center gap-3 sm:gap-5">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
           ${isOpen 
-            ? 'bg-[#1F75B5] text-white shadow-lg shadow-blue-100 scale-110' 
-            : 'bg-blue-50 text-[#1F75B5] group-hover:bg-blue-100'}`}>
+            ? 'bg-[#1576ae] text-white shadow-lg shadow-blue-100 scale-110' 
+            : 'bg-blue-50 text-[#1576ae] group-hover:bg-blue-100'}`}>
           {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
           {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
@@ -243,9 +243,9 @@ const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: C
       </div>
       <div className={`transition-all duration-300 ${isOpen ? 'bg-blue-50 p-2 sm:p-3 rounded-full' : 'p-1.5 sm:p-2'}`}>
         {isOpen ? (
-          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1F75B5]" />
+          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1576ae]" />
         ) : (
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1F75B5]" />
+          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1576ae]" />
         )}
       </div>
     </button>
@@ -286,7 +286,7 @@ const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: C
                       />
                     </div>
                     <div className="p-4">
-                      <h4 className="text-[#1a5d90] font-medium text-sm line-clamp-2 group-hover:text-[#1F75B5]">
+                      <h4 className="text-[#1a5d90] font-medium text-sm line-clamp-2 group-hover:text-[#1576ae]">
                         {item.name}
                       </h4>
                       <div className="mt-2 flex items-center text-xs text-gray-500">
@@ -430,7 +430,7 @@ export default function BorderFencePage() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1F75B5] mb-1 sm:mb-2">{stat.value}</h3>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1576ae] mb-1 sm:mb-2">{stat.value}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -450,7 +450,7 @@ export default function BorderFencePage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-            <span className="bg-blue-50 text-[#1F75B5] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
+            <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
               System Components
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
@@ -501,7 +501,7 @@ export default function BorderFencePage() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-blue-50 text-[#1F75B5] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   Military-Grade Protection
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -530,7 +530,7 @@ export default function BorderFencePage() {
                     >
                       <div className="flex-shrink-0">
                         <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                          <Check size={16} className="text-[#1F75B5] h-3 w-3 sm:h-4 sm:w-4" />
+                          <Check size={16} className="text-[#1576ae] h-3 w-3 sm:h-4 sm:w-4" />
                         </div>
                       </div>
                       <span className="text-xs sm:text-sm md:text-base text-gray-700">{feature}</span>
@@ -538,7 +538,7 @@ export default function BorderFencePage() {
                   ))}
                 </div>
                 
-                <Button className="mt-6 sm:mt-10 bg-[#1F75B5] hover:bg-[#1a5d90] text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
+                <Button className="mt-6 sm:mt-10 bg-[#1576ae] hover:bg-[#1a5d90] text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
                   View Complete Specifications
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -553,7 +553,7 @@ export default function BorderFencePage() {
               >
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   {/* Replace with actual technical diagram */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1F75B5] to-[#1a5d90]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1576ae] to-[#1a5d90]">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
                     </div>
@@ -591,7 +591,7 @@ export default function BorderFencePage() {
       </section>
       
       {/* Call to Action Section - improved for mobile */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1F75B5] to-[#1F75B5] relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1576ae] to-[#1576ae] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
         
@@ -610,7 +610,7 @@ export default function BorderFencePage() {
                 Connect with our security experts to design a custom border fence solution that meets your specific requirements.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-[#1F75B5] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Button className="bg-white text-[#1576ae] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   Request a Consultation
                 </Button>
                 <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">

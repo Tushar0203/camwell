@@ -72,7 +72,7 @@ const ClientCard = ({ client, index }: { client: typeof clients[0], index: numbe
           </div>
           
           <div className="text-center relative z-10">
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1F75B5] transition-colors duration-300">
+            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1576ae] transition-colors duration-300">
               {client.name}
             </h3>
             <p className="text-sm text-gray-600 line-clamp-2 group-hover:text-gray-800 transition-colors duration-300">
@@ -105,18 +105,18 @@ const Clients = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 md:mb-20 px-4"
         >
-          <span className="inline-block px-3 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium tracking-wide mb-6">
+          <span className="inline-block px-3 py-1.5 bg-blue-50 text-[#1576ae] rounded-full text-sm font-medium tracking-wide mb-6">
             TRUSTED BY INDUSTRY LEADERS
           </span>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Our Distinguished{' '}
-            <span className="text-[#1F75B5] relative">
+            <span className="text-[#1576ae] relative">
               Partners
             </span>
           </h2>
           
-          <div className="w-16 md:w-20 h-1 bg-[#1F75B5] mx-auto mb-6 rounded-full" />
+          <div className="w-16 md:w-20 h-1 bg-[#1576ae] mx-auto mb-6 rounded-full" />
           
           <p className={cn(
             "text-gray-600 max-w-[280px] xs:max-w-md md:max-w-2xl mx-auto",
@@ -148,7 +148,7 @@ const Clients = () => {
           className="mt-20"
         >
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-r from-[#1F75B5] to-[#2A8DD4] border-0 shadow-xl overflow-hidden">
+            <Card className="bg-gradient-to-r from-[#1576ae] to-[#1576ae] border-0 shadow-xl overflow-hidden">
               <CardContent className="p-8 sm:p-10 relative">
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16" />

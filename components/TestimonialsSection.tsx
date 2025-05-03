@@ -217,14 +217,14 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16 md:mb-20">
           {/* Badge */}
-          <span className="inline-block px-3 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium tracking-wide mb-6">
+          <span className="inline-block px-3 py-1.5 bg-blue-50 text-[#1576ae] rounded-full text-sm font-medium tracking-wide mb-6">
             TRUSTED BY INDUSTRY LEADERS
           </span>
           
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-[56px] font-bold text-gray-900 mb-8 tracking-tight">
             Our Distinguished{' '}
-            <span className="text-[#1F75B5]">
+            <span className="text-[#1576ae]">
               Testimonials
             </span>
           </h2>
@@ -253,7 +253,7 @@ const TestimonialsSection = () => {
             className="group inline-flex items-center justify-center 
             px-6 py-3 sm:px-6 sm:py-3
             max-sm:px-5 max-sm:py-2.5 max-sm:text-sm
-            bg-[#1F75B5] hover:bg-[#1864A1] text-white text-[15px] font-medium 
+            bg-[#1576ae] hover:bg-[#1864A1] text-white text-[15px] font-medium 
             rounded-full transition-all duration-300 shadow-sm hover:shadow-md
             sm:max-w-[280px] max-sm:max-w-[220px] w-full sm:w-auto cursor-pointer
             mx-auto"

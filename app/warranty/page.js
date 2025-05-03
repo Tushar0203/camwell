@@ -35,13 +35,22 @@ const WarrantyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#1F75B5] text-white pt-32 pb-24">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '24px 24px'
-          }}></div>
+      <section className="relative bg-[#1576ae] text-white pt-32 pb-24">
+        {/* Image background with overlay */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/images/fence-3.jpg')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
+          
+          {/* Enhanced bottom blur gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/70 to-transparent"></div>
+          
+          {/* Subtle background pattern - keep this for texture */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" style={{ 
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: '24px 24px'
+            }}></div>
+          </div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -55,8 +64,8 @@ const WarrantyPage = () => {
               variants={fadeIn}
               className="mb-6"
             >
-              <div className="inline-flex items-center justify-center p-2 bg-[#1e293b]/70 rounded-full backdrop-blur-sm border border-[#1F75B5]/30">
-                <Shield className="w-5 h-5 text-[#1F75B5] mr-2" />
+              <div className="inline-flex items-center justify-center p-2 bg-[#1e293b]/70 rounded-full backdrop-blur-sm border border-[#1576ae]/30">
+                <Shield className="w-5 h-5 text-[#1576ae] mr-2" />
                 <span className="text-sm font-medium">Industry-Leading Protection</span>
               </div>
             </motion.div>
@@ -83,13 +92,13 @@ const WarrantyPage = () => {
             >
               <Link 
                 href="#standard-coverage" 
-                className="px-8 py-4 bg-[#1a5d90] text-white rounded-lg font-medium hover:bg-[#1a5d90] transition-colors"
+                className="px-8 py-4 bg-[#1576ae] opacity-80 text-white rounded-lg font-medium hover:bg-[#1576ae]/90 transition-colors"
               >
                 View Coverage
               </Link>
               <Link 
                 href="/contact" 
-                className="px-8 py-4 bg-[#1e293b] text-white rounded-lg font-medium backdrop-blur-sm hover:bg-[#1e293b]/80 transition-colors border border-[#1F75B5]/20"
+                className="px-8 py-4 bg-[#1e293a] opacity-80 text-white rounded-lg font-medium backdrop-blur-sm hover:bg-[#1e293b]/80 transition-colors border border-[#1576ae]/20"
               >
                 Contact Support
               </Link>
@@ -132,7 +141,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="bg-[#1F75B5] text-white px-6 py-4">
+                <div className="bg-[#1576ae] text-white px-6 py-4">
                   <div className="flex items-center">
                     <Award className="w-6 h-6 mr-3" />
                     <h3 className="text-xl font-bold">Standard Warranty</h3>
@@ -166,7 +175,7 @@ const WarrantyPage = () => {
                   
                   <Link 
                     href="/contact" 
-                    className="inline-flex items-center text-[#1F75B5] hover:text-[#1F75B5] font-medium"
+                    className="inline-flex items-center text-[#1576ae] hover:text-[#1576ae]/80 font-medium"
                   >
                     Request Details
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -179,7 +188,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="bg-[#1F75B5] text-white px-6 py-4">
+                <div className="bg-[#1576ae] text-white px-6 py-4">
                   <div className="flex items-center">
                     <Shield className="w-6 h-6 mr-3" />
                     <h3 className="text-xl font-bold">Extended Warranty</h3>
@@ -213,7 +222,7 @@ const WarrantyPage = () => {
                   
                   <Link 
                     href="/contact" 
-                    className="inline-flex items-center text-[#1F75B5] hover:text-[#1F75B5] font-medium"
+                    className="inline-flex items-center text-[#1576ae] hover:text-[#1576ae]/80 font-medium"
                   >
                     Request Details
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -253,7 +262,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white p-6 rounded-lg border border-gray-200"
               >
-                <FileText className="w-10 h-10 text-[#1F75B5] mb-4" />
+                <FileText className="w-10 h-10 text-[#1576ae] mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Structural Components</h3>
                 <p className="text-gray-600">
                   All primary structural elements including posts, rails, and support structures.
@@ -267,7 +276,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white p-6 rounded-lg border border-gray-200"
               >
-                <Clock className="w-10 h-10 text-[#1F75B5] mb-4" />
+                <Clock className="w-10 h-10 text-[#1576ae] mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Gate Mechanisms</h3>
                 <p className="text-gray-600">
                   All mechanical and operational components of gates, including motors and hinges.
@@ -281,7 +290,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white p-6 rounded-lg border border-gray-200"
               >
-                <AlertTriangle className="w-10 h-10 text-[#1F75B5] mb-4" />
+                <AlertTriangle className="w-10 h-10 text-[#1576ae] mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Defect Protection</h3>
                 <p className="text-gray-600">
                   Protection against manufacturing defects that affect performance or safety.
@@ -392,7 +401,7 @@ const WarrantyPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#1F75B5]">
+      <section className="py-16 bg-[#1576ae]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
@@ -404,14 +413,14 @@ const WarrantyPage = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link 
                 href="/downloads/warranty-document.pdf" 
-                className="inline-flex items-center px-6 py-3 bg-white text-[#1F75B5] rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-white text-[#1576ae] rounded-lg font-medium hover:bg-gray-100 transition-colors"
               >
                 <Download className="w-5 h-5 mr-2" />
                 Download Warranty Terms
               </Link>
               <Link 
                 href="/contact" 
-                className="px-6 py-3 bg-[#1a5d90] text-white rounded-lg font-medium hover:bg-[#1a5d90] transition-colors"
+                className="px-6 py-3 bg-[#1e293a]/80 text-white rounded-lg font-medium hover:bg-[#1576ae]/70 transition-colors border border-white/20"
               >
                 Contact Support
               </Link>
