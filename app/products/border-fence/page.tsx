@@ -10,11 +10,13 @@ import {
   Minus,
   Package,
   Plus,
-  Shield,
-  X
+  Shield
 } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+
+// Import the new styled table component
+import SpecificationsTableStyled from "@/components/SpecificationsTableStyled";
 
 // Custom styles for hiding scrollbars
 const scrollbarHideStyles = `
@@ -47,7 +49,7 @@ interface PartModalProps {
   onClose: () => void;
 }
 
-// Update the PartModal component to better display specifications
+// Update the PartModal component to match the fence-swing-gate modal
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   // Reference to store the original scroll position
   const originalScrollPosition = useRef(0);
@@ -115,7 +117,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
             onClick={handleClose}
           >
             <div 
-              className="bg-white rounded-none sm:rounded-xl shadow-2xl w-full h-full sm:h-auto sm:max-h-[90vh] sm:max-w-4xl overflow-hidden flex flex-col"
+              className="bg-white rounded-none sm:rounded-xl shadow-2xl w-full h-full sm:h-auto sm:max-h-[90vh] sm:max-w-4xl overflow-hidden flex flex-col font-[Poppins]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -137,12 +139,12 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 
                 <div className="flex-1">
                   {/* Category tag */}
-                  <div className="inline-block px-2.5 py-1 rounded-full bg-white/20 text-white text-xs mb-1.5">
+                  <div className="inline-block px-2.5 py-1 rounded-full bg-white/20 text-white text-xs mb-1.5 font-[Poppins]">
                     Primary Structure
                   </div>
                   
                   {/* Title */}
-                  <h2 className="text-xl font-bold text-white leading-tight pr-8">
+                  <h2 className="text-xl font-bold text-white leading-tight pr-8 font-[Poppins]">
                     {component.title}
                   </h2>
                 </div>
@@ -150,10 +152,12 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 {/* Close button */}
                 <button 
                   onClick={handleClose}
-                  className="absolute top-4 right-4 rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  className="absolute top-4 right-4 rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
-                  <X className="w-5 h-5" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
               
@@ -161,38 +165,16 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               <div className="flex-1 overflow-y-auto">
                 <div className="p-4 sm:p-6">
                   {/* Replace the Overview section with a combined Dimensions & Standards section */}
-                  <div className="mb-6">
-                    <h3 className="text-[#1a5d90] text-xl font-semibold mb-2">Dimensions & Standards:</h3>
-                    <p className="text-gray-700 text-sm sm:text-base mb-6">{getDescriptionText()}</p>
+                  <div className="mb-4">
+                    <h3 className="text-gray-700 text-2xl font-semibold mb-2 font-[Poppins]">Dimensions & Standards:</h3>
+                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins]">{getDescriptionText()}</p>
                     
-                    {/* Specifications table */}
+                    {/* Specifications table with improved spacing */}
                     {component.specifications && component.specifications.length > 0 ? (
-                      <div className="overflow-hidden rounded-lg shadow-sm border border-gray-300">
-                        <div className="overflow-x-auto">
-                          <table className="w-full border-collapse">
-                            <tbody>
-                              {component.specifications.map((spec, idx) => (
-                                <tr 
-                                  key={idx} 
-                                  className={idx % 2 === 0 ? "bg-white" : "bg-blue-50/40 hover:bg-blue-50/60"}
-                                >
-                                  <td className="py-3 px-4 text-sm font-medium text-[#1a5d90] border-b border-gray-300 w-1/3 border-r border-r-gray-300">
-                                    {spec.label}
-                                  </td>
-                                  <td className="py-3 px-4 text-sm text-gray-700 border-b border-gray-300">
-                                    {spec.value}
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                      <div className="bg-white rounded-lg">
+                        <SpecificationsTableStyled specifications={component.specifications} />
                       </div>
-                    ) : (
-                      <div className="rounded-lg p-4 bg-gray-50 border border-gray-300 text-gray-500 text-sm italic">
-                        No specifications available
-                      </div>
-                    )}
+                    ) : null}
                   </div>
                 </div>
               </div>
