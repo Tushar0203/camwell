@@ -22,10 +22,10 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
           <div className="flex flex-col sm:flex-row">
             {/* Left column with label and its own line+dots */}
             <div className="w-full sm:w-1/3 pr-0 sm:pr-4 mb-2 sm:mb-0">
-              {/* Line with dots for label - darker line */}
+              {/* Line with dots for label - darker and bolder line */}
               <div className="flex items-center mb-1">
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
-                <div className="h-[1px] bg-gray-400 flex-grow mx-1"></div>
+                <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
               </div>
               <span className="text-[#1a9db8] font-medium text-sm sm:text-base font-[Poppins]">{spec.label}</span>
@@ -33,10 +33,10 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
             
             {/* Right column with value and its own line+dots */}
             <div className="w-full sm:w-2/3">
-              {/* Line with dots for value - darker line */}
+              {/* Line with dots for value - darker and bolder line */}
               <div className="flex items-center mb-1">
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
-                <div className="h-[1px] bg-gray-400 flex-grow mx-1"></div>
+                <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
               </div>
               <span className="text-gray-700 text-sm sm:text-base font-[Poppins]">{spec.value}</span>
@@ -49,6 +49,7 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
 };
 
 export default SpecificationsTableStyled;
+
 
 
 
