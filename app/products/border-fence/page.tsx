@@ -202,8 +202,8 @@ export default function BorderFencePage() {
     let imageUrl = '/placeholder-image.jpg';
     
     // Search through all categories to find the matching component
-    Object.keys(borderFenceComponents).forEach(category => {
-      const items = borderFenceComponents[category as keyof typeof borderFenceComponents];
+    Object.keys(borderFenceComponents).forEach(categoryKey => {
+      const items = borderFenceComponents[categoryKey as keyof typeof borderFenceComponents];
       const foundItem = items.find(item => item.name === itemName);
       if (foundItem && foundItem.imageUrl) {
         imageUrl = foundItem.imageUrl;

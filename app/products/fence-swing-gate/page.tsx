@@ -200,8 +200,8 @@ export default function FenceSwingGatePage() {
     let imageUrl = '/placeholder-image.jpg';
     
     // Search through all categories to find the matching component
-    Object.keys(fenceSwingGatesComponents).forEach(category => {
-      const items = fenceSwingGatesComponents[category as keyof typeof fenceSwingGatesComponents];
+    Object.keys(fenceSwingGatesComponents).forEach(categoryKey => {
+      const items = fenceSwingGatesComponents[categoryKey as keyof typeof fenceSwingGatesComponents];
       const foundItem = items.find(item => item.name === itemName);
       if (foundItem && foundItem.imageUrl) {
         imageUrl = foundItem.imageUrl;
