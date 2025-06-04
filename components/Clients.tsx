@@ -133,7 +133,7 @@ const Clients = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {clients.map((client, index) => (
             <ClientCard key={client.name} client={client} index={index} />
@@ -147,15 +147,15 @@ const Clients = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-20"
         >
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full mx-auto">
             <Card className="bg-gradient-to-r from-[#1576ae] to-[#1576ae] border-0 shadow-xl overflow-hidden">
               <CardContent className="p-8 sm:p-10 relative">
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16" />
                 <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12" />
                 
-                <div className="relative flex flex-col sm:flex-row items-center justify-between gap-6">
-                  <div className="text-left">
+                <div className="relative flex flex-col items-center w-full gap-6">
+                  <div className="text-center w-full">
                     <h3 className="text-2xl font-bold text-white mb-2">
                       Ready to Secure Your Perimeter?
                     </h3>
@@ -166,10 +166,10 @@ const Clients = () => {
                   <button 
                     className="whitespace-nowrap px-8 py-3 bg-white text-[#1F75B5] rounded-lg font-semibold 
                     hover:bg-blue-50 hover:scale-105 active:scale-95 
-                    transition-all duration-200 shadow-lg cursor-pointer"
+                    transition-all duration-200 shadow-lg cursor-pointer mt-4"
                     onClick={() => router.push('/contact')}
                   >
-                    Contact Us Today
+                    Contact Us
                   </button>
                 </div>
               </CardContent>

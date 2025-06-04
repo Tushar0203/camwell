@@ -239,10 +239,7 @@ const Navbar = () => {
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="relative bg-[#0a101e]"> {/* Changed from #111827 to #0a101e for darker contrast */}
-                        {/* Triangle pointer */}
-                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-2 w-4 h-4 bg-[#0a101e] rotate-45"></div>
-                        
+                      <div className="relative bg-[#0a101e]">
                         {/* Header Section */}
                         <div className="p-6 border-b border-gray-800">
                           <div className="flex items-center justify-between">
@@ -261,74 +258,84 @@ const Navbar = () => {
                           </div>
                         </div>
 
+                        {/* Content Grid - Two columns */}
                         <div className="grid grid-cols-2 gap-px bg-gray-800">
-                          {productCategories.map((category) => (
-                            <div key={category.name} className="bg-[#0a101e] p-6"> {/* Changed from #111827 to #0a101e */}
-                              {/* Category Header */}
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
-                                  {category.name === 'Gates' ? (
-                                    <Box size={20} className="text-[#1F75B5]" />
-                                  ) : category.name === 'Weld Mesh Fence' ? (
-                                    <Grid3X3 size={20} className="text-[#1F75B5]" />
-                                  ) : (
-                                    <Package size={20} className="text-[#1F75B5]" />
-                                  )}
-                                </div>
-                                <h4 className="text-base font-medium text-white">{category.name}</h4>
+                          {/* Weld Mesh Fence Column */}
+                          <div className="bg-[#0a101e] p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
+                                <Grid3X3 size={20} className="text-[#1F75B5]" />
                               </div>
-
-                              {/* Subcategories */}
-                              <div className="space-y-2">
-                                {category.subcategories.map((subcategory) => {
-                                  // More specific check for active state
-                                  const isActive = pathname === subcategory.path || 
-                                                  (subcategory.path !== '/products' && pathname.startsWith(subcategory.path));
-                                  
-                                  return (
-                                    <Link
-                                      key={subcategory.name}
-                                      href={subcategory.path}
-                                      onClick={handleLinkClick}
-                                      className={`
-                                        block relative rounded-md transition-all duration-200
-                                        ${isActive 
-                                          ? 'bg-[#0c1525] pl-4 pr-3 py-2.5' 
-                                          : 'hover:bg-[#0c1525] px-3 py-2.5'}
-                                      `}
-                                    >
-                                      {isActive && (
-                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#1F75B5] rounded-l-md"></div>
-                                      )}
-                                      <div>
-                                        <h5 className={`text-sm font-medium ${isActive ? 'text-white' : 'text-gray-300'}`}>
-                                          {subcategory.name}
-                                        </h5>
-                                        <p className="text-xs text-gray-500 mt-0.5">
-                                          {subcategory.description}
-                                        </p>
-                                      </div>
-                                    </Link>
-                                  );
-                                })}
+                              <h4 className="text-base font-medium text-white">Weld Mesh Fence</h4>
+                            </div>
+                            
+                            <div className="space-y-4">
+                              <div>
+                                <Link
+                                  href="/products/border-fence"
+                                  onClick={handleLinkClick}
+                                  className="block text-sm font-medium text-gray-300 hover:text-white"
+                                >
+                                  Modular Fence
+                                </Link>
+                                <p className="text-xs text-gray-500 mt-0.5">
+                                  Customizable modular fencing systems
+                                </p>
+                              </div>
+                              
+                              <div>
+                                <Link
+                                  href="/products"
+                                  onClick={handleLinkClick}
+                                  className="block text-sm font-medium text-gray-300 hover:text-white"
+                                >
+                                  Freight Corridor
+                                </Link>
+                                <p className="text-xs text-gray-500 mt-0.5">
+                                  Secure corridor solutions for freight transport
+                                </p>
                               </div>
                             </div>
-                          ))}
+                          </div>
+                          
+                          {/* Gates Column */}
+                          <div className="bg-[#0a101e] p-6">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
+                                <Box size={20} className="text-[#1F75B5]" />
+                              </div>
+                              <h4 className="text-base font-medium text-white">Gates</h4>
+                            </div>
+                            
+                            <div className="space-y-4">
+                              <div>
+                                <Link
+                                  href="/products/fence-swing-gate"
+                                  onClick={handleLinkClick}
+                                  className="block text-sm font-medium text-gray-300 hover:text-white"
+                                >
+                                  Fence Swing Gates
+                                </Link>
+                                <p className="text-xs text-gray-500 mt-0.5">
+                                  Durable and secure swing gate options
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
 
                         {/* Footer */}
-                        <div className="px-6 py-4 bg-[#070d19] border-t border-gray-800"> {/* Changed from gray-900/50 to #070d19 */}
+                        <div className="px-6 py-4 bg-[#070d19] border-t border-gray-800">
                           <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                              <div className="flex items-center gap-2 text-sm text-gray-400">
-                                <Shield size={16} className="text-[#1F75B5]" />
-                                <span>ISO 9001:2015 Certified</span>
-                              </div>
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
+                              <Shield size={16} className="text-[#1F75B5]" />
+                              <span>ISO 9001:2015 Certified</span>
                             </div>
                             <div className="flex items-center gap-6">
                               <Link 
                                 href="/brochure"
                                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors duration-300"
+                                onClick={handleLinkClick}
                               >
                                 <FileText size={16} className="text-[#1F75B5]" />
                                 Download Brochure
@@ -336,6 +343,7 @@ const Navbar = () => {
                               <Link 
                                 href="/contact"
                                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors duration-300"
+                                onClick={handleLinkClick}
                               >
                                 <Phone size={16} className="text-[#1F75B5]" />
                                 Contact Sales
