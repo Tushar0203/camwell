@@ -400,9 +400,9 @@ export default function FenceSwingGatePage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
               {[
-                { value: "99.8%", label: "Security Rating" },
-                { value: "25+ Years", label: "Durability" },
-                { value: "1,200 km", label: "Deployed" },
+               { value: "0 to 99.8%", label: "Security Rating" },
+                { value: "0 to 25+ Years", label: "Durability" },
+                { value: "0 to 1,200 km", label: "Deployed" },
                 { value: "ISO 9001", label: "Certified" }
               ].map((stat, index) => (
                 <motion.div
