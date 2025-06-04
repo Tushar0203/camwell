@@ -7,10 +7,8 @@ import {
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
 import {
-  Box,
   ChevronRight,
   FileText,
-  Grid3X3,
   Home,
   Package,
   Phone,
@@ -234,122 +232,37 @@ const Navbar = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 transform -translate-x-1/2 w-[800px] rounded-xl shadow-2xl overflow-hidden"
+                      className="absolute left-1/2 transform -translate-x-1/2 w-[600px] rounded-lg shadow-lg overflow-hidden"
                       style={{ marginTop: '20px', zIndex: 50 }}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="relative bg-[#0a101e]">
+                      <div className="relative bg-[#0F172A]">
                         {/* Header Section */}
-                        <div className="p-6 border-b border-gray-800">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h3 className="text-lg font-semibold text-white">Our Products</h3>
-                              <p className="text-sm text-gray-400">Explore our range of security solutions</p>
-                            </div>
-                            <Link 
-                              href="/products" 
-                              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1F75B5] text-white hover:bg-[#1F75B5]/90 transition-all duration-300"
-                              onClick={handleLinkClick}
-                            >
-                              View all products
-                              <ChevronRight size={16} />
-                            </Link>
-                          </div>
+                        <div className="p-4 border-b border-white/10">
+                          <h3 className="text-base font-medium text-white">Our Products</h3>
                         </div>
 
                         {/* Content Grid - Two columns */}
-                        <div className="grid grid-cols-2 gap-px bg-gray-800">
-                          {/* Weld Mesh Fence Column */}
-                          <div className="bg-[#0a101e] p-6">
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
-                                <Grid3X3 size={20} className="text-[#1F75B5]" />
-                              </div>
-                              <h4 className="text-base font-medium text-white">Weld Mesh Fence</h4>
+                        <div className="grid grid-cols-2 gap-4 p-4">
+                          {productCategories.map((category) => (
+                            <div key={category.name} className="space-y-3">
+                              <h4 className="text-sm font-medium text-white">{category.name}</h4>
+                              <ul className="space-y-2">
+                                {category.subcategories.map((subcategory) => (
+                                  <li key={subcategory.name}>
+                                    <Link
+                                      href={subcategory.path}
+                                      onClick={handleLinkClick}
+                                      className="block text-sm text-slate-300 hover:text-white"
+                                    >
+                                      {subcategory.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                            
-                            <div className="space-y-4">
-                              <div>
-                                <Link
-                                  href="/products/border-fence"
-                                  onClick={handleLinkClick}
-                                  className="block text-sm font-medium text-gray-300 hover:text-white"
-                                >
-                                  Modular Fence
-                                </Link>
-                                <p className="text-xs text-gray-500 mt-0.5">
-                                  Customizable modular fencing systems
-                                </p>
-                              </div>
-                              
-                              <div>
-                                <Link
-                                  href="/products"
-                                  onClick={handleLinkClick}
-                                  className="block text-sm font-medium text-gray-300 hover:text-white"
-                                >
-                                  Freight Corridor
-                                </Link>
-                                <p className="text-xs text-gray-500 mt-0.5">
-                                  Secure corridor solutions for freight transport
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          {/* Gates Column */}
-                          <div className="bg-[#0a101e] p-6">
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className="w-10 h-10 rounded-lg bg-[#1F75B5]/20 flex items-center justify-center">
-                                <Box size={20} className="text-[#1F75B5]" />
-                              </div>
-                              <h4 className="text-base font-medium text-white">Gates</h4>
-                            </div>
-                            
-                            <div className="space-y-4">
-                              <div>
-                                <Link
-                                  href="/products/fence-swing-gate"
-                                  onClick={handleLinkClick}
-                                  className="block text-sm font-medium text-gray-300 hover:text-white"
-                                >
-                                  Fence Swing Gates
-                                </Link>
-                                <p className="text-xs text-gray-500 mt-0.5">
-                                  Durable and secure swing gate options
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Footer */}
-                        <div className="px-6 py-4 bg-[#070d19] border-t border-gray-800">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2 text-sm text-gray-400">
-                              <Shield size={16} className="text-[#1F75B5]" />
-                              <span>ISO 9001:2015 Certified</span>
-                            </div>
-                            <div className="flex items-center gap-6">
-                              <Link 
-                                href="/brochure"
-                                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors duration-300"
-                                onClick={handleLinkClick}
-                              >
-                                <FileText size={16} className="text-[#1F75B5]" />
-                                Download Brochure
-                              </Link>
-                              <Link 
-                                href="/contact"
-                                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors duration-300"
-                                onClick={handleLinkClick}
-                              >
-                                <Phone size={16} className="text-[#1F75B5]" />
-                                Contact Sales
-                              </Link>
-                            </div>
-                          </div>
+                          ))}
                         </div>
                       </div>
                     </motion.div>
