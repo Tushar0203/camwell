@@ -1,7 +1,6 @@
 "use client"
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 interface Slide {

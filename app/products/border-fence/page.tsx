@@ -186,125 +186,13 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   );
 };
 
-interface CategoryItem {
-  name: string;
-  imageUrl: string;
-}
-
-interface CategorySectionProps {
-  title: string;
-  items: CategoryItem[];
-  isOpen: boolean;
-  onToggle: () => void;
-  onComponentClick: (itemName: string) => void;
-}
-const CategorySection = ({ title, items, isOpen, onToggle, onComponentClick }: CategorySectionProps) => (
-  <div className={`border border-gray-200 rounded-xl mb-6 bg-white transition-all duration-300 relative ${
-    isOpen ? 'shadow-xl ring-2 ring-blue-200/50 transform scale-[1.01]' : 'hover:shadow-md hover:border-blue-200/70'
-  }`}>
-    <button
-      onClick={onToggle}
-      className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none group cursor-pointer"
-    >
-      <div className="flex items-center gap-3 sm:gap-5">
-        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300
-          ${isOpen 
-            ? 'bg-[#1576ae] text-white shadow-lg shadow-blue-100 scale-110' 
-            : 'bg-blue-50 text-[#1576ae] group-hover:bg-blue-100'}`}>
-          {title === "Primary Structure" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Fastening System" && <Shield className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Security Enhancement" && <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7" />}
-          {title === "Hardware & Accessories" && <Package className="w-6 h-6 sm:w-7 sm:h-7" />}
-        </div>
-        <div>
-          <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${
-            isOpen ? 'text-[#1a5d90]' : 'text-gray-900'
-          }`}>{title}</h3>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">{items.length} components</p>
-        </div>
-      </div>
-      <div className={`transition-all duration-300 ${isOpen ? 'bg-blue-50 p-2 sm:p-3 rounded-full' : 'p-1.5 sm:p-2'}`}>
-        {isOpen ? (
-          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-[#1576ae]" />
-        ) : (
-          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#1576ae]" />
-        )}
-      </div>
-    </button>
-    
-    <div className="overflow-hidden">
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            key={`${title}-content`}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ 
-              height: { duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] },
-              opacity: { duration: 0.2 }
-            }}
-          >
-            <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-2">
-              <div className="h-px w-full bg-gradient-to-r from-blue-100 via-gray-200 to-blue-100 my-4 sm:my-5"></div>
-              <div className="flex flex-col space-y-4">
-                {items.map((item, idx) => (
-                  <motion.div 
-                    key={`${title}-${item.name}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: idx * 0.05 }}
-                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
-                    onClick={() => onComponentClick(item.name)}
-                  >
-                    <div className="flex flex-col sm:flex-row">
-                      <div className="w-full sm:w-1/3 h-[180px] relative">
-                        <Image
-                          src={item.imageUrl || '/placeholder-image.jpg'}
-                          alt={item.name}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-contain p-4"
-                          priority={idx < 6}
-                        />
-                      </div>
-                      <div className="w-full sm:w-2/3 p-4 flex flex-col justify-between">
-                        <div>
-                          <h4 className="text-[#1a5d90] font-medium text-lg group-hover:text-[#1576ae]">
-                            {item.name}
-                          </h4>
-                          <p className="text-gray-600 text-sm mt-2">
-                            High-quality component for enhanced security and durability.
-                          </p>
-                        </div>
-                        <div className="mt-4 flex items-center text-sm text-[#1576ae]">
-                          <ArrowRight className="h-4 w-4 mr-1" />
-                          <span>View Details</span>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  </div>
-);
 
 export default function BorderFencePage() {
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
   // Flatten all components into a single array
   const allComponents = Object.entries(borderFenceComponents).flatMap(([category, items]) => items);
-
-  const toggleCategory = (category: string) => {
-    setOpenCategory(openCategory === category ? null : category);
-  };
 
   const handleComponentClick = (itemName: string) => {
     // Find the component specifications
