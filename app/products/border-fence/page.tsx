@@ -189,8 +189,9 @@ export default function BorderFencePage() {
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
   // Flatten all components into a single array
-  const allComponents = Object.entries(borderFenceComponents).flatMap(([category, items]) => items);
-
+  const allComponents = Object.entries(borderFenceComponents).flatMap(([_, items]) => items);
+  
+  // Use _ instead of category since it's unused
   const handleComponentClick = (itemName: string) => {
     // Find the component specifications
     const specs = Object.keys(componentSpecifications).includes(itemName)
