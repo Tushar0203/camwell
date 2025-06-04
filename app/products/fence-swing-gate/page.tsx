@@ -188,7 +188,7 @@ export default function FenceSwingGatePage() {
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
   // Flatten all components into a single array
-  const allComponents = Object.entries(fenceSwingGatesComponents).flatMap(([_, items]) => items);
+  const allComponents = Object.values(fenceSwingGatesComponents).flat();
 
   const handleComponentClick = (itemName: string) => {
     // Find the component specifications
