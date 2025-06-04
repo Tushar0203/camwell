@@ -1,5 +1,5 @@
 "use client"
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -44,6 +44,10 @@ const Carousel = () => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+  };
+
   // Auto-play timer
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -53,6 +57,16 @@ const Carousel = () => {
 
   const handleIndicatorClick = (index: number) => {
     setCurrentSlide(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+  const handleArrowClick = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      goToPrevSlide();
+    } else {
+      goToNextSlide();
+    }
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 5000);
   };
@@ -78,26 +92,34 @@ const Carousel = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-[#0f172a]/10"></div>
             </div>
             
+            {/* Navigation Arrows */}
+            <button 
+              onClick={() => handleArrowClick('prev')}
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 focus:outline-none z-10 cursor-pointer"
+              aria-label="Previous slide"
+            >
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+            </button>
+            
+            <button 
+              onClick={() => handleArrowClick('next')}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-black/30 hover:bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all duration-300 focus:outline-none z-10 cursor-pointer"
+              aria-label="Next slide"
+            >
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+            </button>
+            
             <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-5 sm:p-6 md:p-10">
               <div className="max-w-xl">
-                <h3 className="inline-block text-[#1576ae] text-xs sm:text-sm font-medium tracking-wide mb-3 xs:mb-4 sm:mb-5 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] border-l-2 border-[#1576ae] -mt-6 sm:-mt-8 md:-mt-10">
+                <h3 className="inline-block text-[#1576ae] text-xs sm:text-sm md:text-base font-medium tracking-wide mb-2 xs:mb-3 sm:mb-4 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] border-l-2 border-[#1576ae] -mt-6 sm:-mt-8 md:-mt-10">
                   {slides[currentSlide].subtitle}
                 </h3>
-                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 xs:mb-3 sm:mb-3 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 xs:mb-3 sm:mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].title}
                 </h2>
-                <p className="text-gray-300 text-sm md:text-base mb-3 xs:mb-4 sm:mb-6 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 mb-3 xs:mb-4 sm:mb-5 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].description}
                 </p>
-                <div className="flex flex-wrap gap-2 xs:gap-3">
-                  <Link
-                    href="/products"
-                    className="group flex items-center gap-1 sm:gap-2 bg-[#1576ae] text-white px-4 py-2 xs:px-5 xs:py-2.5 sm:px-5 sm:py-2.5 rounded-md font-medium transition-all duration-300 text-sm"
-                  >
-                    View Products
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
@@ -108,8 +130,8 @@ const Carousel = () => {
               <button
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
-                className={`w-6 xs:w-7 sm:w-8 h-1 mx-0.5 sm:mx-1 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? 'bg-[#1576ae]' : 'bg-gray-600'
+                className={`w-6 xs:w-7 sm:w-8 h-1 mx-0.5 sm:mx-1 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentSlide === index ? 'bg-[#1576ae]' : 'bg-gray-600 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -122,7 +144,7 @@ const Carousel = () => {
               <button
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
-                className={`relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                className={`relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer ${
                   currentSlide === index ? 'ring-2 ring-[#1576ae]' : 'opacity-70 hover:opacity-100'
                 }`}
               >

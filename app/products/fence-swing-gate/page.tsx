@@ -291,6 +291,9 @@ export default function FenceSwingGatePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<Component | null>(null);
 
+  // Flatten all components into a single array
+  const allComponents = Object.entries(fenceSwingGatesComponents).flatMap(([category, items]) => items);
+
   const toggleCategory = (category: string) => {
     setOpenCategory(openCategory === category ? null : category);
   };
@@ -312,8 +315,6 @@ export default function FenceSwingGatePage() {
         imageUrl = foundItem.imageUrl;
       }
     });
-    
-    // console.log("Component image URL:", imageUrl); // Add logging to debug
     
     // Create a component object with the specifications
     const component: Component = {
@@ -422,7 +423,7 @@ export default function FenceSwingGatePage() {
         </div>
       </section>
 
-      {/* Core Components Section - improved for mobile */}
+      {/* Components Section - now showing all parts directly */}
       <section className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-b from-white to-blue-50/50 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
@@ -445,17 +446,48 @@ export default function FenceSwingGatePage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            {Object.entries(fenceSwingGatesComponents).map(([category, items]) => (
-              <CategorySection
-                key={category}
-                title={category}
-                items={items}
-                isOpen={openCategory === category}
-                onToggle={() => toggleCategory(category)}
-                onComponentClick={handleComponentClick}
-              />
-            ))}
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 gap-6">
+              {allComponents.map((item, idx) => (
+                <motion.div 
+                  key={item.name}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
+                  onClick={() => handleComponentClick(item.name)}
+                >
+                  <div className="flex flex-col sm:flex-row">
+                    <div className="w-full sm:w-1/4 h-[160px] relative">
+                      <Image
+                        src={item.imageUrl || '/placeholder-image.jpg'}
+                        alt={item.name}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        className="object-contain p-4"
+                        priority={idx < 6}
+                      />
+                    </div>
+                    <div className="w-full sm:w-3/4 p-4 sm:p-6 flex flex-col justify-between">
+                      <div>
+                        <h4 className="text-[#1a5d90] font-medium text-lg sm:text-xl group-hover:text-[#1576ae]">
+                          {item.name}
+                        </h4>
+                        <p className="text-gray-600 text-sm sm:text-base mt-2">
+                          High-quality component for enhanced security and durability.
+                        </p>
+                      </div>
+                      <div className="mt-4 flex items-center text-sm text-[#1576ae]">
+                        <Button variant="ghost" className="flex items-center text-[#1576ae] hover:text-[#1a5d90] p-0">
+                          <span>View Details</span>
+                          <ArrowRight className="h-4 w-4 ml-1" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -520,11 +552,6 @@ export default function FenceSwingGatePage() {
                     </motion.div>
                   ))}
                 </div>
-                
-                <Button className="mt-6 sm:mt-10 bg-[#1576ae] hover:bg-[#1a5d90] text-white px-5 sm:px-8 py-3 sm:py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
-                  View Complete Specifications
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
               </motion.div>
               
               <motion.div 
