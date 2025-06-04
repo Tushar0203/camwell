@@ -3,13 +3,10 @@ import { Button } from '@/components/ui/button';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   ArrowRight,
-  ArrowUpRight,
   Check,
   ChevronRight,
   Download,
-  Minus,
   Package,
-  Plus,
   Shield,
   X
 } from 'lucide-react';
