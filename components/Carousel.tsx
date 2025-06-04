@@ -73,8 +73,8 @@ const Carousel = () => {
   return (
     <div className="bg-[#0f172a] min-h-[85vh] md:min-h-screen">
       <div className="container mx-auto px-3 pt-20 pb-4 md:pt-16 md:pb-12 lg:py-24">
-        {/* Carousel - optimized for mobile */}
-        <div className="relative mx-auto max-w-full sm:mx-0">
+        {/* Carousel - wider container */}
+        <div className="relative mx-auto max-w-full w-full sm:mx-0">
           {/* Current slide */}
           <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-xl border border-gray-700">
             {/* Taller aspect ratio for mobile */}
@@ -116,7 +116,7 @@ const Carousel = () => {
                 <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 xs:mb-3 sm:mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].title}
                 </h2>
-                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-gray-300 mb-3 xs:mb-4 sm:mb-5 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+                <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-300 mb-3 xs:mb-4 sm:mb-5 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].description}
                 </p>
               </div>
