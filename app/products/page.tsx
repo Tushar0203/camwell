@@ -284,56 +284,143 @@ const Products = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Custom Solutions Section with improved visuals */}
-      <section className="py-20 bg-gray-50">
+      </section>      {/* Custom Security Solutions - Professional Clean Design */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-3xl font-bold text-charcoal mb-4">Custom Security Solutions</h2>
-              <div className="w-16 h-1 bg-industrial-blue mb-6"></div>
-              <p className="text-gray-700 mb-4 text-lg">
-                Don&apos;t see exactly what you need? We specialize in creating custom security solutions tailored to your specific requirements.
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-3">
-                  <div className="bg-industrial-blue/10 p-2 rounded-full">
-                    <ShieldCheck className="text-industrial-blue" size={20} />
+          {/* Section Header */}
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-block bg-industrial-blue/10 text-industrial-blue px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              Custom Solutions
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Tailored Security Solutions
+            </h2>
+            <div className="w-24 h-1 bg-industrial-blue mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Can&apos;t find exactly what you need? We design and manufacture custom security solutions 
+              to meet your specific requirements and site conditions.
+            </p>
+          </motion.div>
+
+          {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-8">
+                {/* Feature 1 */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-industrial-blue rounded-lg flex items-center justify-center">
+                    <ShieldCheck className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-industrial-blue">Expert Consultation</h3>
-                    <p className="text-gray-600">Our team of security experts will work with you to assess your needs</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert Consultation</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Our security specialists conduct comprehensive site surveys and provide 
+                      detailed technical recommendations tailored to your specific needs.
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="bg-industrial-blue/10 p-2 rounded-full">
-                    <Zap className="text-industrial-blue" size={20} />
+
+                {/* Feature 2 */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-industrial-blue rounded-lg flex items-center justify-center">
+                    <Zap className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-industrial-blue">Tailored Manufacturing</h3>
-                    <p className="text-gray-600">Custom-built products designed to your specifications</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Custom Manufacturing</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Advanced manufacturing capabilities allow us to create products to your exact 
+                      specifications, ensuring perfect fit and optimal performance.
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="bg-industrial-blue/10 p-2 rounded-full">
-                    <Truck className="text-industrial-blue" size={20} />
+
+                {/* Feature 3 */}
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-industrial-blue rounded-lg flex items-center justify-center">
+                    <Truck className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-industrial-blue">Professional Installation</h3>
-                    <p className="text-gray-600">Expert installation team to ensure perfect implementation</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional Installation</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      Our certified installation teams ensure proper setup and long-term reliability 
+                      with comprehensive project management from start to finish.
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="order-1 lg:order-2 rounded-2xl overflow-hidden shadow-xl card-3d h-80 md:h-96 bg-gradient-to-br from-blue-300 to-[#1576ae] relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white text-center p-8">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">Built to Your Specifications</h3>
-                  <p className="text-lg text-blue-100">Security solutions as unique as your needs</p>
+
+              {/* Statistics */}
+              <motion.div 
+                className="mt-12 grid grid-cols-2 gap-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-industrial-blue mb-1">15+</div>
+                  <div className="text-sm text-gray-600 font-medium">Years of Experience</div>
                 </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-industrial-blue mb-1">500+</div>
+                  <div className="text-sm text-gray-600 font-medium">Custom Projects Delivered</div>
+                </div>
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div 
+                className="mt-10"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                <Button className="bg-industrial-blue hover:bg-industrial-blue/90 text-white px-8 py-3 text-lg font-semibold">
+                  Request Custom Quote
+                  <ArrowRight size={18} className="ml-2" />
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative">
+                {/* Main Image Card */}
+                <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: "url('/images/weld-mesh-fence.jpg')" }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-industrial-blue/70 to-blue-900/60"></div>
+                  <div className="absolute inset-0 flex items-center justify-center text-center p-8">
+                    <div className="text-white">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                        Engineered for Excellence
+                      </h3>
+                      <p className="text-lg text-blue-100">
+                        Every solution built to your exact specifications
+                      </p>
+                    </div>
+                  </div>                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
