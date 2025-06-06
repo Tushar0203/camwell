@@ -1,19 +1,19 @@
 "use client"
 import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
+    Sheet,
+    SheetContent,
+    SheetTrigger,
 } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
 import {
-  ChevronRight,
-  FileText,
-  Home,
-  Package,
-  Phone,
-  Shield,
-  Users
+    ChevronRight,
+    FileText,
+    Home,
+    Package,
+    Phone,
+    Shield,
+    Users
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -135,22 +135,23 @@ const Navbar = () => {
         return <ChevronRight size={20} className="text-current" />;
     }
   };
-
-  return (
-    <nav className={`fixed w-full transition-all duration-300 ${
+  return (    <nav className={`fixed w-full transition-all duration-300 ${
       scrolled || pathname !== '/' 
-        ? 'bg-white shadow-lg py-3' 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' 
         : 'bg-transparent py-4'
     }`}
     style={{ zIndex: 40 }}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <Link href="/" className="flex items-center">
+        <div className="flex justify-between items-center">          <Link href="/" className="flex items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative w-32 h-12 sm:w-40 sm:h-14"
+              className={`relative w-32 h-12 sm:w-40 sm:h-14 px-4 py-2 rounded-lg transition-all duration-300 ${
+                scrolled || pathname !== '/' 
+                  ? 'bg-slate-900' 
+                  : ''
+              }`}
             >
               <Image
                 src="/images/Camwell-Logo.png"
@@ -184,16 +185,15 @@ const Navbar = () => {
                       if (item.name === 'Products') {
                         setShowMegaMenu(false);
                       }
-                    }}
-                    className={`
+                    }}                    className={`
                       relative px-4 py-2 rounded-lg text-sm font-medium
                       transition-all duration-300 group
                       ${isActive 
                         ? scrolled || pathname !== '/'
-                          ? 'bg-[#1F75B5]/10 text-[#1F75B5]'
+                          ? 'bg-blue-500/20 text-blue-600'
                           : 'bg-white/10 text-white'
                         : scrolled || pathname !== '/'
-                          ? 'text-charcoal hover:bg-[#1F75B5]/5 hover:text-[#1F75B5]'
+                          ? 'text-slate-700 hover:bg-blue-500/10 hover:text-blue-600'
                           : 'text-white/90 hover:text-white hover:bg-white/10'
                       }
                     `}
@@ -201,15 +201,13 @@ const Navbar = () => {
                     <span className="relative z-10">
                       {item.name}
                     </span>
-                    
-                    {isActive && (
+                      {isActive && (
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className={`
+                        animate={{ opacity: 1, scale: 1 }}                        className={`
                           absolute inset-0 rounded-lg
-                          ${scrolled 
-                            ? 'bg-[#1F75B5]/10 border border-[#1F75B5]/20'
+                          ${scrolled || pathname !== '/'
+                            ? 'bg-blue-500/20 border border-blue-400/50'
                             : 'bg-white/10 border border-white/20'
                           }
                         `}
@@ -265,16 +263,14 @@ const Navbar = () => {
                 </div>
               );
             })}
-          </div>
-
-          {/* Mobile Navigation with Sheet */}
+          </div>          {/* Mobile Navigation with Sheet */}
           <div className="lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
                   className={`rounded-lg transition-colors duration-300 ${
                     scrolled || pathname !== '/' 
-                      ? 'text-gray-900 hover:bg-gray-100' // Changed from text-charcoal to text-gray-900 for better visibility
+                      ? 'text-slate-700 hover:bg-slate-200' 
                       : 'text-white hover:bg-white/20'
                   }`}
                   aria-label="Toggle menu"

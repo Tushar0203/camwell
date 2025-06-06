@@ -165,11 +165,10 @@ const Products = () => {
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       
       {/* Enhanced Hero Section with 3D elements and animated background */}
-      <section className="relative py-32 overflow-hidden">
-        {/* Background image with overlay */}
+      <section className="relative py-32 overflow-hidden">        {/* Background image with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-3.jpg')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-blue-900/95"></div>
           
           {/* Pattern overlay */}
           <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px]"></div>
