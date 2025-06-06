@@ -238,13 +238,8 @@ const Navbar = () => {
                       onMouseLeave={handleMouseLeave}
                     >
                       <div className="relative bg-[#0F172A]">
-                        {/* Header Section */}
-                        <div className="p-4 border-b border-white/10">
-                          <h3 className="text-base font-medium text-white">Our Products</h3>
-                        </div>
-
                         {/* Content Grid - Two columns */}
-                        <div className="grid grid-cols-2 gap-4 p-4">
+                        <div className="grid grid-cols-2 gap-2 p-4">
                           {productCategories.map((category) => (
                             <div key={category.name} className="space-y-3">
                               <h4 className="text-sm font-medium text-white">{category.name}</h4>

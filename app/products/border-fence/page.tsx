@@ -50,6 +50,18 @@ interface PartModalProps {
 const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
   // Reference to store the original scroll position
   const originalScrollPosition = useRef(0);
+  const isMobile = useRef(false);
+  
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      isMobile.current = window.innerWidth < 640;
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Handle modal open/close effects
   useEffect(() => {
@@ -61,14 +73,12 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
       document.body.style.overflow = 'hidden';
       
       // On mobile, scroll to top for better modal viewing
-      if (window.innerWidth < 640) {
+      if (isMobile.current) {
         window.scrollTo(0, 0);
       }
     } else {
       // Re-enable scrolling when modal is closed
       document.body.style.overflow = 'auto';
-      
-      // Don't do any scrolling on close - let the page stay where it is
     }
     
     return () => {
@@ -78,7 +88,6 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
 
   // Custom close handler to prevent scroll jumps
   const handleClose = () => {
-    // Simply call onClose without changing scroll position
     onClose();
   };
 
@@ -158,18 +167,28 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                 </button>
               </div>
               
-              {/* Content - scrollable with no extra space */}
-              <div className="flex-1 overflow-y-auto">
+              {/* Content - scrollable with improved mobile spacing */}
+              <div className="flex-1 overflow-y-auto scrollbar-hide">
                 <div className="p-4 sm:p-6">
-                  {/* Replace the Overview section with a combined Dimensions & Standards section */}
+                  {/* Dimensions & Standards section with improved mobile spacing */}
                   <div className="mb-4">
-                    <h3 className="text-gray-700 text-2xl font-semibold mb-2 font-[Poppins]">Dimensions & Standards:</h3>
-                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins]">{getDescriptionText()}</p>
+                    <h3 className="text-gray-700 text-xl sm:text-2xl font-semibold mb-2 font-[Poppins]">Dimensions & Standards:</h3>
+                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins] leading-relaxed">{getDescriptionText()}</p>
                     
-                    {/* Specifications table with improved spacing */}
+                    {/* Specifications table with responsive design */}
                     {component.specifications && component.specifications.length > 0 ? (
                       <div className="bg-white rounded-lg">
-                        <SpecificationsTableStyled specifications={component.specifications} />
+                        <div className="hidden sm:block">
+                          <SpecificationsTableStyled specifications={component.specifications} />
+                        </div>
+                        <div className="sm:hidden space-y-4">
+                          {component.specifications.map((spec, index) => (
+                            <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
+                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-gray-700 text-sm">{spec.value}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     ) : null}
                   </div>

@@ -2,13 +2,9 @@ import {
   ArrowRight,
   Clock,
   ExternalLink,
-  Facebook,
-  Instagram,
-  Linkedin,
   Mail,
   MapPin,
   Phone,
-  Twitter
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -37,20 +33,6 @@ const Footer = () => {
                   Industry-leading security fencing solutions crafted with precision and
                   innovation for over 18 years.
                 </p>
-              </div>
-              <div className="flex space-x-4">
-                <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
-                  <Facebook size={18} className="text-gray-300 hover:text-white transition-colors" />
-                </Link>
-                <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
-                  <Twitter size={18} className="text-gray-300 hover:text-white transition-colors" />
-                </Link>
-                <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
-                  <Linkedin size={18} className="text-gray-300 hover:text-white transition-colors" />
-                </Link>
-                <Link href="#" className="p-2.5 bg-gradient-to-br from-gray-800 to-gray-700 rounded-full hover:from-[#1F75B5] hover:to-[#1a5d90] transition-all duration-300 shadow-lg">
-                  <Instagram size={18} className="text-gray-300 hover:text-white transition-colors" />
-                </Link>
               </div>
             </div>
 

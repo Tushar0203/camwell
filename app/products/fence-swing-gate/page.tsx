@@ -158,17 +158,27 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               </div>
               
               {/* Content - scrollable with no extra space */}
-              <div className="flex-1 overflow-y-auto">
+              <div className="flex-1 overflow-y-auto scrollbar-hide">
                 <div className="p-4 sm:p-6">
                   {/* Replace the Overview section with a combined Dimensions & Standards section */}
                   <div className="mb-4">
-                    <h3 className="text-gray-700 text-2xl font-semibold mb-2 font-[Poppins]">Dimensions & Standards:</h3>
-                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins]">{getDescriptionText()}</p>
+                    <h3 className="text-gray-700 text-xl sm:text-2xl font-semibold mb-2 font-[Poppins]">Dimensions & Standards:</h3>
+                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins] leading-relaxed">{getDescriptionText()}</p>
                     
-                    {/* Specifications table with improved spacing */}
+                    {/* Specifications table with responsive design */}
                     {component.specifications && component.specifications.length > 0 ? (
                       <div className="bg-white rounded-lg">
-                        <SpecificationsTableStyled specifications={component.specifications} />
+                        <div className="hidden sm:block">
+                          <SpecificationsTableStyled specifications={component.specifications} />
+                        </div>
+                        <div className="sm:hidden space-y-4">
+                          {component.specifications.map((spec, index) => (
+                            <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
+                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-gray-700 text-sm">{spec.value}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     ) : null}
                   </div>
