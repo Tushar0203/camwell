@@ -143,25 +143,30 @@ const Navbar = () => {
     style={{ zIndex: 40 }}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">          <Link href="/" className="flex items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className={`relative w-32 h-12 sm:w-40 sm:h-14 px-4 py-2 rounded-lg transition-all duration-300 ${
-                scrolled || pathname !== '/' 
-                  ? 'bg-slate-900' 
-                  : ''
-              }`}
-            >
-              <Image
-                src="/images/Camwell-Logo.png"
-                alt="Camwell Industries Logo"
-                fill
-                className="object-contain transition-all duration-300"
-                priority
-                sizes="128px"
-              />
-            </motion.div>
+            <div className={`relative transition-all duration-300 ${
+              scrolled || pathname !== '/' 
+                ? 'bg-[#0f172a]' 
+                : ''
+            }`} style={{ 
+              borderRadius: 0,
+              paddingRight: '3rem', // Increased padding on right side
+            }}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative w-36 h-10 sm:w-44 sm:h-12"
+              >
+                <Image
+                  src="/images/Camwell-Logo.png"
+                  alt="Camwell Industries Logo"
+                  fill
+                  className="object-contain object-left transition-all duration-300"
+                  priority
+                  sizes="176px"
+                />
+              </motion.div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
