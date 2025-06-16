@@ -2,9 +2,16 @@
 
 import { ArrowUp } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { Locale } from '@/lib/dictionary';
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  
+  // Get language for RTL detection
+  const params = useParams();
+  const lang = params?.lang as Locale || 'en';
+  const isRTL = lang === 'ar';
 
   useEffect(() => {
     const toggleVisibility = () => {

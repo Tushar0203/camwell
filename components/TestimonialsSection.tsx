@@ -2,11 +2,55 @@
 
 import { cn } from '@/lib/utils';
 import * as Dialog from '@radix-ui/react-dialog';
-import { ArrowRight, Building2, Calendar, X } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Building2, Calendar, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { Locale } from '@/lib/dictionary';
 import styles from './TestimonialsModal.module.css';
 
-export const testimonials = [
+// Default English dictionary
+const defaultDictionary = {
+  sectionTitle: "What Our Clients Say",
+  sectionDescription: "Discover why customers across the globe trust our fencing solutions.",
+  badge: "TRUSTED BY INDUSTRY LEADERS",
+  viewAll: "View All Testimonials",
+  modalTitle: "All Testimonials",
+  modalSubtitle: "What our clients say about us",
+  closeButton: "Close",
+  testimonialsList: [
+    {
+      date: "20/12/2021",
+      content: "I have inspected the factory along with senior officers of CPWD to check the processes involved in the fencing units. The Processes are overall maintained to achieve the desired products. Wish them all the best.",
+      author: "Ranjeet Kumar Singh",
+      position: "Additional Director General, Border, New Delhi",
+      organization: "Central Public Works Department"
+    },
+    {
+      date: "28/01/2022",
+      content: "I have seen the entire process of manufacturing. All the activities are being done in a systematic manner. I have given few suggestions for further improvement, which I hope will be done soon. Overall experience of the factory visit was very nice.",
+      author: "Dinesh Kumar",
+      position: "Superintending Engineer, Ferozepur, Punjab",
+      organization: "Central Public Works Department"
+    },
+    {
+      date: "05/09/2022",
+      content: "Inspected factory on 5/09/2023 Satisfied with the process of manufacturing & quality control. Best wishes for them.",
+      author: "Utpal Patowary",
+      position: "Assistant General Manager, Guwahati, Assam",
+      organization: "Engineering Projects (India) Limited"
+    },
+    {
+      date: "12/09/2022",
+      content: "Inspected the factory. The process is well designed to suit the requirement with further scope for improvement. Well dedicated team & maintained factory. Wish you all the best",
+      author: "Nitya Nand Bhramar",
+      position: "Superintending Engineer, Siliguri, West Bengal",
+      organization: "Central Public Works Department"
+    }
+  ]
+};
+
+// Original testimonials for fallback (full list)
+const fallbackTestimonials = [
   {
     date: "20/12/2021",
     content: "I have inspected the factory along with senior officers of CPWD to check the processes involved in the fencing units. The Processes are overall maintained to achieve the desired products. Wish them all the best.",
@@ -79,12 +123,22 @@ export const testimonials = [
   }
 ];
 
+type Testimonial = {
+  date: string;
+  content: string;
+  author: string;
+  position: string;
+  organization: string;
+};
+
 const TestimonialCard = ({ 
   testimonial, 
-  className 
+  className,
+  isRTL
 }: { 
-  testimonial: typeof testimonials[0];
+  testimonial: Testimonial;
   className?: string;
+  isRTL: boolean;
 }) => {
   return (
     <div className={cn(
@@ -100,7 +154,7 @@ const TestimonialCard = ({
       </div>
 
       {/* Divider */}
-      <div className="w-16 sm:w-24 h-[2px] bg-gradient-to-r from-[#1F75B5]/30 via-[#1F75B5]/10 to-transparent mb-4 group-hover:w-24 sm:group-hover:w-32 transition-all duration-500" />
+      <div className={`w-16 sm:w-24 h-[2px] ${isRTL ? 'bg-gradient-to-l ml-auto' : 'bg-gradient-to-r'} from-[#1F75B5]/30 via-[#1F75B5]/10 to-transparent mb-4 group-hover:w-24 sm:group-hover:w-32 transition-all duration-500`} />
 
       {/* Author Info and Date */}
       <div className="relative space-y-3 bg-gray-50/50 p-3 rounded-xl"> {/* Applied to all screen sizes */}
@@ -135,7 +189,23 @@ const TestimonialCard = ({
   );
 };
 
-const TestimonialsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const TestimonialsModal = ({ 
+  isOpen, 
+  onClose,
+  testimonials,
+  modalTitle,
+  modalSubtitle,
+  closeButtonText,
+  isRTL
+}: { 
+  isOpen: boolean; 
+  onClose: () => void;
+  testimonials: Testimonial[];
+  modalTitle: string;
+  modalSubtitle: string;
+  closeButtonText: string;
+  isRTL: boolean;
+}) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -160,16 +230,16 @@ const TestimonialsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
             sm:w-[90vw] sm:h-[85vh]
             max-sm:w-full max-sm:h-full max-sm:rounded-none max-sm:top-0 max-sm:left-0 max-sm:translate-x-0 max-sm:translate-y-0"
         >
-          <Dialog.Title className="sr-only">All Testimonials</Dialog.Title>
+          <Dialog.Title className="sr-only">{modalTitle}</Dialog.Title>
           
           {/* Header */}
           <div className={cn("bg-white border-b border-gray-100 max-sm:rounded-none rounded-t-xl", styles.modalHeader)}>
             <div className="px-8 py-6 flex items-center justify-between">
               <div>
                 <h2 className={styles.modalHeaderTitle}>
-                  All Testimonials
+                  {modalTitle}
                 </h2>
-                <p className={styles.modalHeaderSubtitle}>What our clients say about us</p>
+                <p className={styles.modalHeaderSubtitle}>{modalSubtitle}</p>
               </div>
               <Dialog.Close className="hidden lg:flex items-center justify-center text-gray-600 hover:text-gray-800 transition-colors w-10 h-10 hover:bg-gray-100 rounded-full cursor-pointer">
                 <X className="w-6 h-6" />
@@ -186,6 +256,7 @@ const TestimonialsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                     key={index}
                     testimonial={testimonial}
                     className="bg-white hover:bg-gray-50/50 max-sm:mx-[-8px]" // Added negative margin for small screens
+                    isRTL={isRTL}
                   />
                 ))}
               </div>
@@ -200,7 +271,7 @@ const TestimonialsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
               text-white text-sm font-medium rounded-lg transition-colors duration-200" 
               // Added text-sm, changed py-3.5 to py-3, changed rounded-xl to rounded-lg
             >
-              Close
+              {closeButtonText}
             </button>
           </div>
         </Dialog.Content>
@@ -209,8 +280,22 @@ const TestimonialsModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
   );
 };
 
-const TestimonialsSection = () => {
+const TestimonialsSection = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const params = useParams();
+  const lang = params?.lang as Locale || 'en';
+  const dict = dictionary || defaultDictionary;
+  
+  // Determine if we're in RTL mode
+  const isRTL = lang === 'ar';
+  
+  // Choose the appropriate arrow based on direction
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+  
+  // Get testimonials from dictionary or use fallback
+  const testimonialsList = dict.testimonialsList || fallbackTestimonials;
+  // Show only the first 4 testimonials in the main section
+  const displayedTestimonials = testimonialsList.slice(0, 4);
 
   return (
     <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white">
@@ -218,34 +303,31 @@ const TestimonialsSection = () => {
         <div className="text-center mb-16 md:mb-20">
           {/* Badge */}
           <span className="inline-block px-3 py-1.5 bg-blue-50 text-[#1576ae] rounded-full text-sm font-medium tracking-wide mb-6">
-            TRUSTED BY INDUSTRY LEADERS
+            {dict.badge}
           </span>
           
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-[56px] font-bold text-gray-900 mb-8 tracking-tight">
-            Our Distinguished{' '}
-            <span className="text-[#1576ae]">
-              Testimonials
-            </span>
+            {dict.sectionTitle}
           </h2>
           
           {/* Description */}
           <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-            Proudly serving India&apos;s most prestigious government and defense organizations 
-            with cutting-edge security solutions
+            {dict.sectionDescription}
           </p>
         </div>
-
+        
         {/* Testimonials Grid - Adjusted grid and gaps */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto mb-12 sm:mb-16 md:mb-20">
-          {testimonials.slice(0, 4).map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
+          {displayedTestimonials.map((testimonial, index) => (
+            <TestimonialCard 
+              key={index} 
               testimonial={testimonial}
+              isRTL={isRTL}
             />
           ))}
         </div>
-
+        
         {/* View All Button */}
         <div className="text-center max-sm:mt-[-12px]"> {/* Added negative margin top for small screens */}
           <button
@@ -258,14 +340,19 @@ const TestimonialsSection = () => {
             sm:max-w-[280px] max-sm:max-w-[220px] w-full sm:w-auto cursor-pointer
             mx-auto"
           >
-            <span>View All Testimonials</span>
-            <ArrowRight className="ml-2 w-4 h-4 max-sm:w-3.5 max-sm:h-3.5 group-hover:translate-x-1 transition-transform duration-300" />
+            <span>{dict.viewAll}</span>
+            <ArrowIcon className={`w-4 h-4 max-sm:w-3.5 max-sm:h-3.5 ${isRTL ? 'group-hover:-translate-x-1 mr-2' : 'group-hover:translate-x-1 ml-2'} transition-transform duration-300`} />
           </button>
         </div>
 
         <TestimonialsModal 
           isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
+          onClose={() => setIsModalOpen(false)}
+          testimonials={testimonialsList}
+          modalTitle={dict.modalTitle}
+          modalSubtitle={dict.modalSubtitle}
+          closeButtonText={dict.closeButton}
+          isRTL={isRTL}
         />
       </div>
     </section>

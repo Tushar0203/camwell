@@ -10,7 +10,6 @@ import {
     ChevronDown,
     ChevronRight,
     FileText,
-    Globe,
     Home,
     Package,
     Phone,
@@ -19,39 +18,28 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
+import { CSSProperties } from 'react';
+import { Locale } from '@/lib/dictionary';
+
+// Add CSS to force LTR on Navbar regardless of page language
+const navbarStyles: CSSProperties = {
+  direction: 'ltr',
+  textAlign: 'left'
+};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
-  const [showLangMenu, setShowLangMenu] = useState(false);
   const pathname = usePathname() || '/';
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
   const router = useRouter();
-
-  // Function to handle language change
-  const handleLanguageChange = (lang: string) => {
-    if (lang === 'ar') {
-      // If current path is in English, switch to Arabic
-      if (!pathname.startsWith('/ar')) {
-        const newPath = `/ar${pathname}`;
-        router.push(newPath);
-      }
-    } else {
-      // If current path is in Arabic, switch to English
-      if (pathname.startsWith('/ar')) {
-        const newPath = pathname.replace(/^\/ar/, '');
-        router.push(newPath || '/');
-      }
-    }
-    setShowLangMenu(false);
-  };
-
-  // Determine current language
-  const currentLang = pathname.startsWith('/ar') ? 'ar' : 'en';
+  const params = useParams();
+  const lang = params?.lang as Locale || 'en';
 
   // Add this function to close mega menu
   const handleLinkClick = () => {
@@ -66,38 +54,38 @@ const Navbar = () => {
   }, [isMobile]);
 
   const navItems = [
-    { name: currentLang === 'ar' ? 'الرئيسية' : 'Home', path: currentLang === 'ar' ? '/ar' : '/' },
-    { name: currentLang === 'ar' ? 'المنتجات' : 'Products', path: currentLang === 'ar' ? '/ar/products' : '/products' },
-    { name: currentLang === 'ar' ? 'من نحن' : 'About Us', path: currentLang === 'ar' ? '/ar/about' : '/about' },
-    { name: currentLang === 'ar' ? 'الضمان' : 'Warranty', path: currentLang === 'ar' ? '/ar/warranty' : '/warranty' },
-    { name: currentLang === 'ar' ? 'طلب كتيب' : 'Request Brochure', path: currentLang === 'ar' ? '/ar/brochure' : '/brochure' },
-    { name: currentLang === 'ar' ? 'اتصل بنا' : 'Contact Us', path: currentLang === 'ar' ? '/ar/contact' : '/contact' },
+    { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: `/${lang}` },
+    { name: lang === 'ar' ? 'المنتجات' : 'Products', path: `/${lang}/products` },
+    { name: lang === 'ar' ? 'من نحن' : 'About Us', path: `/${lang}/about` },
+    { name: lang === 'ar' ? 'الضمان' : 'Warranty', path: `/${lang}/warranty` },
+    { name: lang === 'ar' ? 'طلب كتيب' : 'Request Brochure', path: `/${lang}/brochure` },
+    { name: lang === 'ar' ? 'اتصل بنا' : 'Contact Us', path: `/${lang}/contact` },
   ];
 
   // Restructured product categories to match the hierarchical structure in the image
   const productCategories = [
     {
-      name: currentLang === 'ar' ? 'سياج شبكي ملحوم' : 'Weld Mesh Fence',
+      name: lang === 'ar' ? 'سياج شبكي ملحوم' : 'Weld Mesh Fence',
       subcategories: [
         {
-          name: currentLang === 'ar' ? 'سياج نمطي' : 'Modular Fence',
-          path: currentLang === 'ar' ? '/ar/products/border-fence' : '/products/border-fence',
-          description: currentLang === 'ar' ? 'أنظمة سياج نمطية قابلة للتخصيص' : 'Customizable modular fencing systems'
+          name: lang === 'ar' ? 'سياج نمطي' : 'Modular Fence',
+          path: `/${lang}/products/border-fence`,
+          description: lang === 'ar' ? 'أنظمة سياج نمطية قابلة للتخصيص' : 'Customizable modular fencing systems'
         },
         {
-          name: currentLang === 'ar' ? 'ممر الشحن' : 'Freight Corridor',
-          path: currentLang === 'ar' ? '/ar/products' : '/products',
-          description: currentLang === 'ar' ? 'حلول ممرات آمنة لنقل البضائع' : 'Secure corridor solutions for freight transport'
+          name: lang === 'ar' ? 'ممر الشحن' : 'Freight Corridor',
+          path: `/${lang}/products`,
+          description: lang === 'ar' ? 'حلول ممرات آمنة لنقل البضائع' : 'Secure corridor solutions for freight transport'
         }
       ]
     },
     {
-      name: currentLang === 'ar' ? 'البوابات' : 'Gates',
+      name: lang === 'ar' ? 'البوابات' : 'Gates',
       subcategories: [
         {
-          name: currentLang === 'ar' ? 'بوابات السياج المتأرجحة' : 'Fence Swing Gates',
-          path: currentLang === 'ar' ? '/ar/products/fence-swing-gate' : '/products/fence-swing-gate',
-          description: currentLang === 'ar' ? 'خيارات بوابات متأرجحة متينة وآمنة' : 'Durable and secure swing gate options'
+          name: lang === 'ar' ? 'بوابات السياج المتأرجحة' : 'Fence Swing Gates',
+          path: `/${lang}/products/fence-swing-gate`,
+          description: lang === 'ar' ? 'خيارات بوابات متأرجحة متينة وآمنة' : 'Durable and secure swing gate options'
         }
       ]
     }
@@ -112,18 +100,6 @@ const Navbar = () => {
     const timeout = setTimeout(() => {
       setShowMegaMenu(false);
     }, 300); // Small delay to prevent accidental closing
-    setHoverTimeout(timeout);
-  };
-
-  // Language menu handlers
-  const handleLangMouseEnter = () => {
-    setShowLangMenu(true);
-  };
-
-  const handleLangMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setShowLangMenu(false);
-    }, 300);
     setHoverTimeout(timeout);
   };
 
@@ -172,19 +148,13 @@ const Navbar = () => {
       return <ChevronRight size={20} className="text-current" />;
     }
   };
-  return (    <nav className={`fixed w-full transition-all duration-300 ${
-      scrolled || pathname !== '/' && pathname !== '/ar' 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' 
-        : 'bg-transparent py-4'
-    }`}
-    style={{ zIndex: 40 }}>
+
+  return (    <nav className={`fixed w-full transition-all duration-300 bg-[#0F172A] shadow-lg py-3`}
+    style={{ zIndex: 40, ...navbarStyles }}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">          <Link href={currentLang === 'ar' ? '/ar' : '/'} className="flex items-center">
-            <div className={`relative transition-all duration-300 ${
-              scrolled || (pathname !== '/' && pathname !== '/ar')
-                ? 'bg-[#0f172a]' 
-                : ''
-            }`} style={{ 
+        <div className="flex justify-between items-center">          
+          <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
+            <div className="relative bg-[#0f172a] transition-all duration-300" style={{ 
               borderRadius: 0,
               paddingRight: '3rem', // Increased padding on right side
             }}>
@@ -207,14 +177,9 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden lg:flex items-center space-x-2" style={{ direction: 'ltr' }}>
             {navItems.map((item) => {
-              const isActive = 
-                (pathname === item.path) || 
-                (item.path === '/' && pathname === '/') ||
-                (item.path === '/ar' && pathname === '/ar') ||
-                (item.path === '/products' && pathname.startsWith('/products') && !pathname.startsWith('/ar/')) ||
-                (item.path === '/ar/products' && pathname.startsWith('/ar/products'));
+              const isActive = pathname === item.path;
               
               return (
                 <div 
@@ -234,12 +199,8 @@ const Navbar = () => {
                       relative px-4 py-2 rounded-lg text-sm font-medium
                       transition-all duration-300 group
                       ${isActive 
-                        ? scrolled || (pathname !== '/' && pathname !== '/ar')
-                          ? 'bg-blue-500/20 text-blue-600'
-                          : 'bg-white/10 text-white'
-                        : scrolled || (pathname !== '/' && pathname !== '/ar')
-                          ? 'text-slate-700 hover:bg-blue-500/10 hover:text-blue-600'
-                          : 'text-white/90 hover:text-white hover:bg-white/10'
+                        ? 'bg-blue-500/20 text-blue-400'
+                        : 'text-slate-300 hover:bg-blue-500/10 hover:text-blue-400'
                       }
                     `}
                   >
@@ -251,10 +212,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}                        className={`
                           absolute inset-0 rounded-lg
-                          ${scrolled || (pathname !== '/' && pathname !== '/ar')
-                            ? 'bg-blue-500/20 border border-blue-400/50'
-                            : 'bg-white/10 border border-white/20'
-                          }
+                          bg-blue-500/20 border border-blue-400/50
                         `}
                         transition={{ 
                           duration: 0.2,
@@ -276,7 +234,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2 }}
                       className="absolute left-1/2 transform -translate-x-1/2 w-[600px] rounded-lg shadow-lg overflow-hidden"
-                      style={{ marginTop: '20px', zIndex: 50 }}
+                      style={{ marginTop: '20px', zIndex: 50, direction: 'ltr' }}
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
@@ -309,92 +267,21 @@ const Navbar = () => {
               );
             })}
 
-            {/* Language Selector */}
-            <div 
-              className="relative"
-              onMouseEnter={handleLangMouseEnter}
-              onMouseLeave={handleLangMouseLeave}
-            >
-              <button
-                className={`
-                  relative px-4 py-2 rounded-lg text-sm font-medium
-                  transition-all duration-300 group flex items-center gap-1
-                  ${scrolled || (pathname !== '/' && pathname !== '/ar')
-                    ? 'text-slate-700 hover:bg-blue-500/10 hover:text-blue-600'
-                    : 'text-white/90 hover:text-white hover:bg-white/10'
-                  }
-                `}
-              >
-                <Globe size={16} className="text-current" />
-                <span className="relative z-10">
-                  {currentLang === 'ar' ? 'العربية' : 'English'}
-                </span>
-                <ChevronDown size={14} className="text-current" />
-              </button>
-
-              {/* Language Menu */}
-              {showLangMenu && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute right-0 w-36 rounded-lg shadow-lg overflow-hidden"
-                  style={{ marginTop: '8px', zIndex: 50 }}
-                >
-                  <div className="relative bg-[#0F172A]">
-                    <ul className="py-2">
-                      <li>
-                        <button
-                          onClick={() => handleLanguageChange('en')}
-                          className={`block w-full text-left px-4 py-2 text-sm ${
-                            currentLang === 'en' 
-                              ? 'text-blue-400 bg-blue-500/10' 
-                              : 'text-slate-300 hover:text-white hover:bg-white/10'
-                          }`}
-                        >
-                          English
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          onClick={() => handleLanguageChange('ar')}
-                          className={`block w-full text-left px-4 py-2 text-sm ${
-                            currentLang === 'ar' 
-                              ? 'text-blue-400 bg-blue-500/10' 
-                              : 'text-slate-300 hover:text-white hover:bg-white/10'
-                          }`}
-                        >
-                          العربية
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </motion.div>
-              )}
+            {/* Language Switcher */}
+            <div className="relative">
+              <LanguageSwitcher />
             </div>
           </div>          {/* Mobile Navigation with Sheet */}
-          <div className="lg:hidden flex items-center gap-2">
-            {/* Mobile Language Selector */}
-            <button
-              onClick={() => handleLanguageChange(currentLang === 'en' ? 'ar' : 'en')}
-              className={`rounded-lg p-2 transition-colors duration-300 ${
-                scrolled || (pathname !== '/' && pathname !== '/ar')
-                  ? 'text-slate-700 hover:bg-slate-200' 
-                  : 'text-white hover:bg-white/20'
-              }`}
-              aria-label="Toggle language"
-            >
-              <Globe size={20} className="text-current" />
-            </button>
+          <div className="lg:hidden flex items-center gap-2" style={{ direction: 'ltr' }}>
+            {/* Mobile Language Switcher */}
+            <div className="relative">
+              <LanguageSwitcher />
+            </div>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
-                  className={`rounded-lg transition-colors duration-300 ${
-                    scrolled || (pathname !== '/' && pathname !== '/ar')
-                      ? 'text-slate-700 hover:bg-slate-200' 
-                      : 'text-white hover:bg-white/20'
-                  }`}
+                  className={`rounded-lg transition-colors duration-300 text-slate-300 hover:bg-blue-500/10 hover:text-blue-400`}
                   aria-label="Toggle menu"
                 >
                   <svg
@@ -410,10 +297,10 @@ const Navbar = () => {
                   </svg>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs">
+              <SheetContent side="right" className="w-full max-w-xs" style={{ direction: 'ltr' }}>
                 <div className="flex flex-col h-full">
                   <div className="py-6">
-                    <Link href={currentLang === 'ar' ? '/ar' : '/'} className="flex items-center" onClick={() => setIsOpen(false)}>
+                    <Link href={`/${lang}`} className="flex items-center" onClick={() => setIsOpen(false)}>
                       <div className="relative w-36 h-10">
                         <Image
                           src="/images/Camwell-Logo.png"
@@ -428,12 +315,7 @@ const Navbar = () => {
                   <div className="flex-1 overflow-y-auto">
                     <div className="space-y-1">
                       {navItems.map((item) => {
-                        const isActive = 
-                          (pathname === item.path) || 
-                          (item.path === '/' && pathname === '/') ||
-                          (item.path === '/ar' && pathname === '/ar') ||
-                          (item.path === '/products' && pathname.startsWith('/products') && !pathname.startsWith('/ar/')) ||
-                          (item.path === '/ar/products' && pathname.startsWith('/ar/products'));
+                        const isActive = pathname === item.path;
                         
                         return (
                           <Link

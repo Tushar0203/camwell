@@ -1,17 +1,7 @@
-import Carousel from "@/components/Carousel";
-import Clients from "@/components/Clients";
-import ProductsOverview from "@/components/ProductsOverview";
-import TestimonialsSection from "@/components/TestimonialsSection";
-
+// Just an empty page that will never be rendered
+// The middleware will handle the redirection
 export default function Home() {
-  return (
-    <div>
-      <Carousel />
-      <ProductsOverview />
-      <Clients />
-      <TestimonialsSection />
-    </div>
-  );
+  return null;
 }
 
 

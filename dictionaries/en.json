@@ -1,0 +1,429 @@
+{
+  "products": {
+    "sectionTitle": "Security Solutions for Every Need",
+    "sectionDescription": "We offer a wide range of high-quality fencing and security products designed to meet various security requirements.",
+    "borderFence": {
+      "name": "India's New Border Fence",
+      "description": "Premium quality welded mesh panels for high-security applications.",
+      "features": [
+        "High tensile steel construction",
+        "Anti-corrosion coating",
+        "Multiple mesh sizes available",
+        "Easy installation"
+      ],
+      "knowMore": "Know more"
+    },
+    "fenceSwingGate": {
+      "name": "Fence Swing Gate",
+      "description": "Robust posts designed for optimal support, connectivity and longevity.",
+      "features": [
+        "Heavy-duty galvanized steel",
+        "Various height options",
+        "Compatible with all fencing systems",
+        "Weather-resistant coating"
+      ],
+      "knowMore": "Know more"
+    },
+    "keyFeatures": "Key Features"
+  },
+  "carousel": {
+    "slides": [
+      {
+        "title": "Advanced Security",
+        "subtitle": "Fortifying Boundaries",
+        "description": "State-of-the-art fencing solutions for maximum security"
+      },
+      {
+        "title": "Military Grade",
+        "subtitle": "Defense Solutions",
+        "description": "Trusted by defense organizations across India"
+      },
+      {
+        "title": "Innovation First",
+        "subtitle": "Smart Security",
+        "description": "Cutting-edge technology meets robust protection"
+      }
+    ]
+  },
+  "testimonials": {
+    "sectionTitle": "What Our Clients Say",
+    "sectionDescription": "Discover why customers across the globe trust our fencing solutions.",
+    "badge": "TRUSTED BY INDUSTRY LEADERS",
+    "viewAll": "View All Testimonials",
+    "modalTitle": "All Testimonials",
+    "modalSubtitle": "What our clients say about us",
+    "closeButton": "Close",
+    "testimonialsList": [
+      {
+        "date": "20/12/2021",
+        "content": "I have inspected the factory along with senior officers of CPWD to check the processes involved in the fencing units. The Processes are overall maintained to achieve the desired products. Wish them all the best.",
+        "author": "Ranjeet Kumar Singh",
+        "position": "Additional Director General, Border, New Delhi",
+        "organization": "Central Public Works Department"
+      },
+      {
+        "date": "28/01/2022",
+        "content": "I have seen the entire process of manufacturing. All the activities are being done in a systematic manner. I have given few suggestions for further improvement, which I hope will be done soon. Overall experience of the factory visit was very nice.",
+        "author": "Dinesh Kumar",
+        "position": "Superintending Engineer, Ferozepur, Punjab",
+        "organization": "Central Public Works Department"
+      },
+      {
+        "date": "05/09/2022",
+        "content": "Inspected factory on 5/09/2023 Satisfied with the process of manufacturing & quality control. Best wishes for them.",
+        "author": "Utpal Patowary",
+        "position": "Assistant General Manager, Guwahati, Assam",
+        "organization": "Engineering Projects (India) Limited"
+      },
+      {
+        "date": "12/09/2022",
+        "content": "Inspected the factory. The process is well designed to suit the requirement with further scope for improvement. Well dedicated team & maintained factory. Wish you all the best",
+        "author": "Nitya Nand Bhramar",
+        "position": "Superintending Engineer, Siliguri, West Bengal",
+        "organization": "Central Public Works Department"
+      }
+    ]
+  },
+  "clients": {
+    "sectionTitle": "Our Trusted Clients",
+    "sectionDescription": "We're proud to work with leading organizations across various industries.",
+    "badge": "TRUSTED BY INDUSTRY LEADERS",
+    "clientsList": [
+      {
+        "name": "CPWD",
+        "description": "Central Public Works Department"
+      },
+      {
+        "name": "Ministry of Defense",
+        "description": "Government of India"
+      },
+      {
+        "name": "BSF",
+        "description": "Border Security Force"
+      },
+      {
+        "name": "NBCC",
+        "description": "A Navratna CPSE"
+      },
+      {
+        "name": "Indian Railways",
+        "description": "Ministry of Railways"
+      },
+      {
+        "name": "Border Roads Organisation",
+        "description": "Ministry of Defense"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Secure Your Perimeter?",
+    "description": "Experience the same level of security trusted by India's elite institutions",
+    "button": "Contact Us"
+  },
+  "footer": {
+    "companyDescription": "Industry-leading security fencing solutions crafted with precision and innovation for over 18 years.",
+    "quickLinks": "Quick Links",
+    "links": {
+      "home": "Home",
+      "about": "About Us",
+      "products": "Products",
+      "brochure": "Request Brochure",
+      "warranty": "Warranty",
+      "contact": "Contact Us"
+    },
+    "productLinks": {
+      "title": "Products",
+      "modularFence": "Modular Fence",
+      "freightCorridor": "Freight Corridor",
+      "fenceSwingGates": "Fence Swing Gates"
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "address": "B-12, Surajpur Industrial Area, Greater Noida, UP, India",
+      "phone": "+91 9971790811",
+      "email": "info@Camwell.in"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "weekdays": "Monday - Friday",
+      "weekdayHours": "9:00 AM - 6:00 PM",
+      "saturday": "Saturday",
+      "saturdayHours": "9:00 AM - 1:00 PM",
+      "sunday": "Sunday",
+      "sundayHours": "Closed"
+    },
+    "legal": {
+      "copyright": "© {year} Camwell Industries Pvt. Ltd. All rights reserved.",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
+    }
+  },
+  "warranty": {
+    "hero": {
+      "badge": "Industry-Leading Protection",
+      "title": "Camwell Warranty Program",
+      "titleCompany": "Camwell",
+      "titleMain": "Warranty",
+      "titleSub": "Program",
+      "description": "We stand behind our products with comprehensive warranty coverage designed to give you peace of mind.",
+      "viewCoverage": "View Coverage",
+      "contactSupport": "Contact Support"
+    },
+    "coverage": {
+      "title": "Our Warranty Coverage",
+      "description": "At Camwell Industries, we provide robust warranty options for our security fencing solutions",
+      "standard": {
+        "title": "Standard Warranty",
+        "duration": "10 Years",
+        "components": "Structural Components",
+        "features": [
+          "10-year warranty on all structural components",
+          "5-year warranty on gate mechanisms and moving parts",
+          "Coverage against manufacturing defects",
+          "Free replacement of defective parts"
+        ],
+        "requestDetails": "Request Details"
+      },
+      "extended": {
+        "title": "Extended Warranty",
+        "duration": "15 Years",
+        "components": "Structural Components",
+        "features": [
+          "15-year warranty on all structural components",
+          "10-year warranty on gate mechanisms",
+          "Priority service and maintenance visits",
+          "Annual inspection included for the first 3 years"
+        ],
+        "requestDetails": "Request Details"
+      }
+    },
+    "covered": {
+      "title": "What's Covered",
+      "description": "Our comprehensive coverage ensures protection for key elements of your fencing system.",
+      "items": [
+        {
+          "title": "Structural Components",
+          "description": "Covers all frames, panels, posts, and fasteners"
+        },
+        {
+          "title": "Gate Mechanisms",
+          "description": "Coverage for motors, hinges, and locks"
+        },
+        {
+          "title": "Paint & Finishes",
+          "description": "Protection against peeling, rusting, and corrosion"
+        },
+        {
+          "title": "Intrusion Detection System",
+          "description": "Warranties for cables, sensors, and alarms"
+        }
+      ]
+    },
+    "process": {
+      "title": "Warranty Claim Process",
+      "description": "A streamlined process to ensure you get the help you need quickly.",
+      "steps": [
+        {
+          "title": "Contact Us",
+          "description": "Report the issue via phone, email, or online form."
+        },
+        {
+          "title": "Assessment",
+          "description": "A technician will assess the reported issues."
+        },
+        {
+          "title": "Verification",
+          "description": "We confirm the issue is covered under your warranty."
+        },
+        {
+          "title": "Repair",
+          "description": "Prompt repair or replacement of defective components."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about Camwell's warranty.",
+      "questions": [
+        {
+          "question": "How long is the standard warranty?",
+          "answer": "Our standard warranty comes with 10 years of coverage for structural components and 5 years for moving parts."
+        },
+        {
+          "question": "Can I extend my warranty after purchase?",
+          "answer": "Yes, you can upgrade to an extended warranty plan within 30 days of purchase date."
+        },
+        {
+          "question": "Is the warranty transferable if I sell the property?",
+          "answer": "Yes, our warranty is fully transferable to new owners when property is sold."
+        },
+        {
+          "question": "What is not covered by the warranty?",
+          "answer": "The warranty does not cover damage from misuse, natural disasters, or deliberate vandalism."
+        },
+        {
+          "question": "How do I register my warranty?",
+          "answer": "All products are automatically registered at the time of installation, but you can ensure your information is recorded by filling out the online registration form."
+        }
+      ]
+    },
+    "resources": {
+      "title": "Warranty Resources",
+      "description": "Helpful documents and resources to help you understand your warranty coverage.",
+      "warrantyDoc": "Warranty Document",
+      "viewOnline": "View Online",
+      "download": "Download PDF",
+      "registrationForm": "Warranty Registration Form",
+      "claimForm": "Warranty Claim Form",
+      "maintenanceGuide": "Maintenance Guide"
+    },
+    "contact": {
+      "title": "Have Questions?",
+      "description": "Our warranty support team is here to help with any inquiries.",
+      "callUs": "Call Us",
+      "emailUs": "Email Us",
+      "visitCenter": "Visit Support Center"
+    }
+  },
+  "brochure": {
+    "tagline": "Get Everything You Need to Know",
+    "title": {
+      "first": "Your Complete",
+      "highlight": "Product Guide"
+    },
+    "subtitle": "Get our detailed product catalog with specifications, pricing, and installation guidelines delivered straight to your inbox.",
+    "comprehensive": "Comprehensive Guide",
+    "why": {
+      "first": "Why Request Our",
+      "highlight": "Brochure?"
+    },
+    "whyDescription": "Discover everything you need to know about our premium industrial fencing solutions in one comprehensive guide.",
+    "benefits": [
+      {
+        "title": "Comprehensive Details",
+        "description": "Get full specifications, dimensions, and material options for all our products."
+      },
+      {
+        "title": "Visual Showcase",
+        "description": "See high-quality images of our products installed in various environments."
+      },
+      {
+        "title": "Installation Guidelines",
+        "description": "Access easy-to-follow installation instructions and maintenance tips."
+      }
+    ],
+    "learnMore": "Learn more",
+    "form": {
+      "title": "Fill in your details",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "johndoe@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 98765 43210",
+      "company": "Company Name",
+      "companyPlaceholder": "ABC Corporation",
+      "products": "Products of Interest",
+      "selectProduct": "Select Product",
+      "productOptions": [
+        {
+          "value": "weld-mesh",
+          "label": "Weld Mesh Panels"
+        },
+        {
+          "value": "fence-posts",
+          "label": "Fence Posts"
+        },
+        {
+          "value": "swing-gates",
+          "label": "Swing Gates"
+        },
+        {
+          "value": "sliding-gates",
+          "label": "Sliding Gates"
+        },
+        {
+          "value": "security-spikes",
+          "label": "Security Spikes"
+        },
+        {
+          "value": "razor-wire",
+          "label": "Razor Wire"
+        },
+        {
+          "value": "all",
+          "label": "All Products"
+        }
+      ],
+      "requirements": "Additional Requirements (Optional)",
+      "requirementsPlaceholder": "Tell us about any specific information you're looking for...",
+      "processing": "Processing...",
+      "requestButton": "Request Brochure",
+      "thankYou": "Thank You!",
+      "confirmation": "Your brochure request has been received. We'll send it to your email shortly.",
+      "anotherRequest": "Submit Another Request"
+    }
+  },
+  "contact": {
+    "badge": "Get in Touch",
+    "title": "Contact Us",
+    "description": "Have questions about our products or services? Our team is here to help you.",
+    "infoTitle": "Contact Information",
+    "addressTitle": "Address",
+    "address": "B-12, Surajpur Industrial Area, Greater Noida, UP, India",
+    "phoneTitle": "Phone",
+    "phone": "+91 9971790811",
+    "emailTitle": "Email",
+    "email": "info@camwell.in",
+    "hoursTitle": "Business Hours",
+    "weekdays": "Monday - Friday",
+    "weekdayHours": "9:00 AM - 6:00 PM",
+    "saturday": "Saturday",
+    "saturdayHours": "9:00 AM - 1:00 PM",
+    "sunday": "Sunday",
+    "sundayHours": "Closed",
+    "formTitle": "Send us a Message",
+    "thankYou": "Thank You!",
+    "confirmation": "Your message has been received. We'll get back to you shortly.",
+    "sendAnother": "Send Another Message",
+    "mapTitle": "Find Us",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "johndoe@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+91 98765 43210",
+      "subject": "Subject",
+      "subjectPlaceholder": "Product Inquiry",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "processing": "Processing...",
+      "submit": "Send Message",
+      "firstName": "First name",
+      "firstNamePlaceholder": "First name",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Last name",
+      "services": "Services Interested In"
+    },
+    "services": {
+      "fencing": "High-Security Fencing",
+      "perimeter": "Perimeter Security",
+      "access": "Access Control Systems",
+      "gates": "Security Gates",
+      "antiClimb": "Anti-Climb Solutions",
+      "vehicle": "Hostile Vehicle Mitigation",
+      "consulting": "Security Consulting",
+      "maintenance": "Maintenance Services",
+      "other": "Other"
+    },
+    "chatTitle": "Chat with us",
+    "chatDescription": "Speak to our friendly team via live chat",
+    "whatsapp": "Chat on WhatsApp",
+    "callTitle": "Call us",
+    "callDescription": "Call our team Mon-Fri from 9am to 6pm IST",
+    "visitTitle": "Visit us",
+    "visitDescription": "Chat to us in person at our office",
+    "twitter": "Message us on X"
+  }
+} 

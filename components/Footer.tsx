@@ -1,3 +1,4 @@
+"use client";
 import {
   ArrowRight,
   Clock,
@@ -5,12 +6,68 @@ import {
   Mail,
   MapPin,
   Phone,
+  ArrowLeft,
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { Locale } from '@/lib/dictionary';
 import BackToTopButton from './BackToTopButton';
 
-const Footer = () => {
+// Default English dictionary for footer
+const defaultDictionary = {
+  companyDescription: "Industry-leading security fencing solutions crafted with precision and innovation for over 18 years.",
+  quickLinks: "Quick Links",
+  links: {
+    home: "Home",
+    about: "About Us",
+    products: "Products",
+    brochure: "Request Brochure",
+    warranty: "Warranty",
+    contact: "Contact Us"
+  },
+  productLinks: {
+    title: "Products",
+    modularFence: "Modular Fence",
+    freightCorridor: "Freight Corridor",
+    fenceSwingGates: "Fence Swing Gates"
+  },
+  contactUs: {
+    title: "Contact Us",
+    address: "B-12, Surajpur Industrial Area, Greater Noida, UP, India",
+    phone: "+91 9971790811",
+    email: "info@Camwell.in"
+  },
+  businessHours: {
+    title: "Business Hours",
+    weekdays: "Monday - Friday",
+    weekdayHours: "9:00 AM - 6:00 PM",
+    saturday: "Saturday",
+    saturdayHours: "9:00 AM - 1:00 PM",
+    sunday: "Sunday",
+    sundayHours: "Closed"
+  },
+  legal: {
+    copyright: "© {year} Camwell Industries Pvt. Ltd. All rights reserved.",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service"
+  }
+};
+
+const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
+  const params = useParams();
+  const lang = params?.lang as Locale || 'en';
+  const dict = dictionary || defaultDictionary;
+  
+  // Format copyright with current year
+  const formattedCopyright = dict.legal.copyright.replace('{year}', new Date().getFullYear().toString());
+  
+  // Determine if we're in RTL mode
+  const isRTL = lang === 'ar';
+  
+  // Choose the appropriate arrow based on direction
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+
   return (
     <>
       <footer className="bg-gradient-to-b bg-black text-white pt-16 pb-8 md:pt-20 md:pb-12 w-full">
@@ -19,7 +76,7 @@ const Footer = () => {
 
             <div className="space-y-6">
               <div className="flex flex-col items-start">
-                <div className="relative w-40 h-14 sm:w-48 sm:h-16 mb-6 -ml-3">  {/* Changed from -ml-2 to -ml-3 */}
+                <div className="relative w-40 h-14 sm:w-48 sm:h-16 mb-6 -ml-3">
                   <Image
                     src="/images/Camwell-Logo.png"
                     alt="Camwell Industries Logo"
@@ -30,8 +87,7 @@ const Footer = () => {
                   />
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-                  Industry-leading security fencing solutions crafted with precision and
-                  innovation for over 18 years.
+                  {dict.companyDescription}
                 </p>
               </div>
             </div>
@@ -39,43 +95,43 @@ const Footer = () => {
             {/* Quick Links */}
             <div className="space-y-6">
               <div className="border-b border-[#374151] pb-2">
-                <h3 className="font-semibold text-lg">Quick Links</h3>
+                <h3 className="font-semibold text-lg">{dict.quickLinks}</h3>
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Home</span>
+                  <Link href={`/${lang}`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.home}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>About Us</span>
+                  <Link href={`/${lang}/about`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.about}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Products</span>
+                  <Link href={`/${lang}/products`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.products}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/brochure" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Request Brochure</span>
+                  <Link href={`/${lang}/brochure`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.brochure}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/warranty" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Warranty</span>
+                  <Link href={`/${lang}/warranty`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.warranty}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Contact Us</span>
+                  <Link href={`/${lang}/contact`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.links.contact}</span>
                   </Link>
                 </li>
               </ul>
@@ -84,25 +140,25 @@ const Footer = () => {
             {/* Products */}
             <div className="space-y-6">
               <div className="border-b border-[#374151] pb-2">
-                <h3 className="font-semibold text-lg">Products</h3>
+                <h3 className="font-semibold text-lg">{dict.productLinks.title}</h3>
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/products/border-fence" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Modular Fence</span>
+                  <Link href={`/${lang}/products/border-fence`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.productLinks.modularFence}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Freight Corridor</span>
+                  <Link href={`/${lang}/products`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.productLinks.freightCorridor}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/fence-swing-gate" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-1 mr-1 group-hover:opacity-100 transition-all duration-200" />
-                    <span>Fence Swing Gates</span>
+                  <Link href={`/${lang}/products/fence-swing-gate`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.productLinks.fenceSwingGates}</span>
                   </Link>
                 </li>
               </ul>
@@ -111,43 +167,43 @@ const Footer = () => {
             {/* Contact Us */}
             <div className="space-y-6 2xl:w-[290px] xl:w-[290px] lg:w-[290px] md:w-full">
               <div className="border-b border-[#374151] pb-2">
-                <h3 className="font-semibold text-lg">Contact Us</h3>
+                <h3 className="font-semibold text-lg">{dict.contactUs.title}</h3>
               </div>
               <div className="space-y-4">
                 <p className="text-gray-400 flex items-start group hover:text-white transition-colors duration-200">
-                  <MapPin className="mr-3 h-5 w-5 flex-shrink-0 text-[#1a5d90]" />
-                  B-12, Surajpur Industrial Area, Greater Noida, UP, India
+                  <MapPin className={`h-5 w-5 flex-shrink-0 text-[#1a5d90] ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                  {dict.contactUs.address}
                 </p>
                 <p className="text-gray-400 group cursor-pointer">
-                  <Link href="tel:+919971790811" className="flex items-center hover:text-white transition-colors duration-200">
-                    <Phone className="mr-3 h-5 w-5 text-[#1a5d90] group-hover:text-[#1F75B5] transition-colors" />
-                    +91 9971790811
+                  <Link href={`tel:${dict.contactUs.phone}`} className="flex items-center hover:text-white transition-colors duration-200">
+                    <Phone className={`h-5 w-5 text-[#1a5d90] group-hover:text-[#1F75B5] transition-colors ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                    {dict.contactUs.phone}
                   </Link>
                 </p>
                 <p className="text-gray-400">
-                  <Link href="mailto:info@Camwell.in" className="hover:text-white transition-colors duration-200 flex items-center group">
-                    <Mail className="mr-3 h-5 w-5 text-[#1a5d90]" />
-                    info@Camwell.in
+                  <Link href={`mailto:${dict.contactUs.email}`} className="hover:text-white transition-colors duration-200 flex items-center group">
+                    <Mail className={`h-5 w-5 text-[#1a5d90] ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                    {dict.contactUs.email}
                   </Link>
                 </p>
                 <div className="pt-4 sm:pt-6">
                   <div className="bg-[#1e2432] border border-[#374151] rounded-lg p-4 space-y-3 hover:border-[#1F75B5] transition-colors duration-300">
                     <h4 className="flex items-center text-white text-base font-medium">
-                      <Clock className="mr-2 h-5 w-5 text-[#1F75B5]" />
-                      Business Hours
+                      <Clock className={`h-5 w-5 text-[#1F75B5] ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                      {dict.businessHours.title}
                     </h4>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Monday - Friday</span>
-                        <span className="text-white">9:00 AM - 6:00 PM</span>
+                        <span className="text-gray-400">{dict.businessHours.weekdays}</span>
+                        <span className="text-white">{dict.businessHours.weekdayHours}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Saturday</span>
-                        <span className="text-white">9:00 AM - 1:00 PM</span>
+                        <span className="text-gray-400">{dict.businessHours.saturday}</span>
+                        <span className="text-white">{dict.businessHours.saturdayHours}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">Sunday</span>
-                        <span className="text-white">Closed</span>
+                        <span className="text-gray-400">{dict.businessHours.sunday}</span>
+                        <span className="text-white">{dict.businessHours.sundayHours}</span>
                       </div>
                     </div>
                   </div>
@@ -160,22 +216,24 @@ const Footer = () => {
           <div className="border-t border-[#1f2937] mt-12 md:mt-16 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm text-center md:text-left">
-                © {new Date().getFullYear()} Camwell Industries Pvt. Ltd. All rights reserved.
+                {formattedCopyright}
               </p>
-              <div className="flex items-center space-x-4 mt-4 md:mt-0">
+              <div className={`flex items-center ${isRTL ? 'space-x-0 space-x-reverse space-x-4' : 'space-x-4'} mt-4 md:mt-0`}>
                 <Link 
-                  href="/privacy-policy" 
+                  href={`/${lang}/privacy-policy`} 
                   className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
                 >
-                  Privacy Policy
-                  <ExternalLink className="ml-1 w-3 h-3" />
+                  {isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
+                  {dict.legal.privacyPolicy}
+                  {!isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
                 </Link>
                 <Link 
-                  href="/terms-of-service" 
+                  href={`/${lang}/terms-of-service`} 
                   className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
                 >
-                  Terms of Service
-                  <ExternalLink className="ml-1 w-3 h-3" />
+                  {isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
+                  {dict.legal.termsOfService}
+                  {!isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
                 </Link>
               </div>
             </div>
@@ -193,10 +251,10 @@ const Footer = () => {
               "logo": "https://www.camwell.in/images/Camwell-Logo.png",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+919971790811",
+                "telephone": "${dict.contactUs.phone}",
                 "contactType": "sales",
                 "areaServed": "IN",
-                "availableLanguage": ["en", "hi"]
+                "availableLanguage": ["en", "hi", "ar"]
               },
               "address": {
                 "@type": "PostalAddress",
