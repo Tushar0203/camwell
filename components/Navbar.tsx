@@ -281,7 +281,7 @@ const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
-                  className={`rounded-lg transition-colors duration-300 text-slate-300 hover:bg-blue-500/10 hover:text-blue-400`}
+                  className="rounded-lg transition-colors duration-300 text-slate-300 hover:bg-blue-500/10 hover:text-blue-400"
                   aria-label="Toggle menu"
                 >
                   <svg
@@ -297,9 +297,10 @@ const Navbar = () => {
                   </svg>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs" style={{ direction: 'ltr' }}>
+              <SheetContent side="right" className="w-full max-w-xs p-0 bg-[#0F172A] border-l border-gray-800" style={{ direction: 'ltr' }}>
                 <div className="flex flex-col h-full">
-                  <div className="py-6">
+                  {/* Header with Logo/Close text */}
+                  <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
                     <Link href={`/${lang}`} className="flex items-center" onClick={() => setIsOpen(false)}>
                       <div className="relative w-36 h-10">
                         <Image
@@ -311,9 +312,16 @@ const Navbar = () => {
                         />
                       </div>
                     </Link>
+                    <button 
+                      onClick={() => setIsOpen(false)}
+                      className="text-white bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                    >
+                      Close
+                    </button>
                   </div>
-                  <div className="flex-1 overflow-y-auto">
-                    <div className="space-y-1">
+                  
+                  <div className="flex-1 overflow-y-auto py-4">
+                    <div className="space-y-1 px-4">
                       {navItems.map((item) => {
                         const isActive = pathname === item.path;
                         
@@ -323,18 +331,31 @@ const Navbar = () => {
                             href={item.path}
                             onClick={() => setIsOpen(false)}
                             className={`
-                              flex items-center gap-3 px-4 py-3 text-base font-medium rounded-lg
+                              flex items-center gap-3 px-4 py-4 text-base font-medium rounded-lg
                               ${isActive 
-                                ? 'bg-blue-500/10 text-blue-600' 
-                                : 'text-slate-700 hover:bg-slate-100'
+                                ? 'bg-blue-600/20 text-blue-400' 
+                                : 'text-slate-300 hover:bg-blue-500/10 hover:text-blue-400'
                               }
                             `}
                           >
-                            {getMenuIcon(item.name)}
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                              isActive ? 'bg-blue-600/20' : 'bg-[#1a2234]'
+                            }`}>
+                              {getMenuIcon(item.name)}
+                            </div>
                             {item.name}
+                            {isActive && <div className="ml-auto w-2 h-2 rounded-full bg-blue-400"></div>}
                           </Link>
                         );
                       })}
+                    </div>
+                  </div>
+                  
+                  <div className="mt-auto border-t border-gray-800 p-4 flex justify-between text-sm text-gray-400">
+                    <span>© 2025 Camwell</span>
+                    <div className="flex gap-4">
+                      <Link href={`/${lang}/privacy-policy`}>Privacy</Link>
+                      <Link href={`/${lang}/terms-of-service`}>Terms</Link>
                     </div>
                   </div>
                 </div>

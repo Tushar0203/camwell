@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // LocalStorage key for storing scroll position
 const SCROLL_POSITION_KEY = 'camwell_scroll_position';
@@ -22,6 +22,7 @@ const SCROLL_POSITION_KEY = 'camwell_scroll_position';
 export default function LanguageSwitcher() {
   const pathName = usePathname();
   const { lang: currentLocale } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
 
   // Language display info
   const languageInfo = {
@@ -47,6 +48,20 @@ export default function LanguageSwitcher() {
       window.scrollTo(0, parseInt(savedPosition));
       localStorage.removeItem(SCROLL_POSITION_KEY);
     }
+    
+    // Check if viewport width is under 400px
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 400);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
   // Handle language change and save scroll position
@@ -64,7 +79,9 @@ export default function LanguageSwitcher() {
           <span className="mr-1 text-sm font-medium">
             {languageInfo[validLocale].code}
           </span>
-          <span className="text-sm font-medium">{languageInfo[validLocale].name}</span>
+          {!isMobile && (
+            <span className="text-sm font-medium">{languageInfo[validLocale].name}</span>
+          )}
           <ChevronDown size={14} className="ml-1 opacity-80" />
         </Button>
       </DropdownMenuTrigger>
@@ -87,7 +104,9 @@ export default function LanguageSwitcher() {
               <span className="text-sm font-medium mr-1">
                 {languageInfo[locale].code}
               </span>
-              <span className="text-sm">{languageInfo[locale].name}</span>
+              {!isMobile && (
+                <span className="text-sm">{languageInfo[locale].name}</span>
+              )}
               
               {validLocale === locale && (
                 <Check size={14} className="ml-auto opacity-80" />
