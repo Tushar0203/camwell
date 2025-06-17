@@ -72,7 +72,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
     <>
       <footer className="bg-gradient-to-b bg-black text-white pt-16 pb-8 md:pt-20 md:pb-12 w-full">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-13">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-13 ${isRTL ? "flex-row-reverse" : ""}`} style={{ direction: isRTL ? 'ltr' : 'inherit' }}>
 
             <div className="space-y-6">
               <div className="flex flex-col items-start">
@@ -214,7 +214,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
           {/* Bottom Bar */}
           <div className="border-t border-[#1f2937] mt-12 md:mt-16 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className={`flex flex-col md:flex-row ${isRTL ? "md:flex-row-reverse" : ""} justify-between items-center`}>
               <p className="text-gray-400 text-sm text-center md:text-left">
                 {formattedCopyright}
               </p>
