@@ -32,43 +32,30 @@ export default function Products() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url('/images/fence-3.jpg')`,
-            filter: 'brightness(0.4)',
+            filter: 'brightness(0.7)', // Adjusted brightness for better text visibility
           }}
         ></div>
         
-        {/* Blue overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a2d69]/90 via-[#1a2d69]/70 to-[#1a2d69]/90"></div>
-        
-        {/* Large circle overlay */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div 
-            className="absolute w-[150%] h-[150%] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-[60px] border-[#2743a2]/30 rounded-full"
-          ></div>
-        </div>
-        
-        {/* Content container with blue gradient */}
+        {/* Content container */}
         <div className="container mx-auto px-4 relative z-10 py-32 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="mt-[-60px]"
           >
-            <div className="inline-block px-5 py-2 bg-[#2f54c8]/30 backdrop-blur-sm text-blue-100 rounded-full text-sm font-medium mb-10">
-              {isRTL ? "حلول أمنية ممتازة" : "Premium Security Solutions"}
+            <div className="inline-block px-6 py-3 bg-black/50 backdrop-blur-md rounded-full text-base font-medium mb-10 text-white shadow-lg">
+              {isRTL ? "منتجاتنا الأمنية" : "Welcome to Our Products"}
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8">
-              {isRTL ? "أمّن محيطك" : "Secure Your Perimeter"}
-              <br />
-              <span className="text-[#a1c4ff]">{isRTL ? "بتميّز" : "With Excellence"}</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              {isRTL ? "منتجاتنا" : "SECURITY PRODUCTS"}
             </h1>
             
-            <div className="max-w-4xl mx-auto mb-14">
-              <p className="text-lg md:text-xl text-blue-100/90 leading-relaxed">
+            <div className="max-w-3xl mx-auto mb-14">
+              <p className="text-lg md:text-xl text-white leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 {isRTL 
                   ? "استكشف مجموعتنا الشاملة من حلول سياج الأمان عالية الجودة المصممة لتوفير أقصى درجات الحماية والمتانة والأداء في أي بيئة."
-                  : "Explore our comprehensive range of high-quality security fencing solutions engineered for maximum protection, durability, and performance in any environment."}
+                  : "Leading provider of high-quality security fencing solutions, committed to excellence and innovation."}
               </p>
             </div>
             
@@ -80,7 +67,7 @@ export default function Products() {
             >
               <Button 
                 onClick={scrollToProducts}
-                className={`bg-[#0078ff] hover:bg-[#0066dd] text-white px-8 py-3 text-lg rounded-md shadow-md hover:shadow-lg flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                className={`bg-[#2563EB] hover:bg-[#1E40AF] text-white px-8 py-3 text-base font-medium rounded-full shadow-md flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
               >
                 <span>{isRTL ? "تصفح المنتجات" : "Browse Products"}</span>
                 <ArrowIcon className="h-5 w-5" />
@@ -90,18 +77,18 @@ export default function Products() {
         </div>
         
         {/* Bottom features bar */}
-        <div className="absolute bottom-0 left-0 right-0 bg-[#0c1a3d]/90 backdrop-blur-sm py-5">
-          <div className="container mx-auto flex flex-wrap justify-center md:justify-center gap-x-12 md:gap-x-24 gap-y-4 text-blue-100">
+        <div className="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm py-5">
+          <div className="container mx-auto flex flex-wrap justify-center md:justify-center gap-x-12 md:gap-x-24 gap-y-4 text-white">
             <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <Shield className="h-5 w-5 text-[#5d9fff]" />
+              <Shield className="h-5 w-5 text-white" />
               <span className="text-sm md:text-base">{isRTL ? "جودة معتمدة" : "Certified Quality"}</span>
             </div>
             <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <Truck className="h-5 w-5 text-[#5d9fff]" />
+              <Truck className="h-5 w-5 text-white" />
               <span className="text-sm md:text-base">{isRTL ? "توصيل لكافة المناطق" : "Nationwide Delivery"}</span>
             </div>
             <div className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-              <Zap className="h-5 w-5 text-[#5d9fff]" />
+              <Zap className="h-5 w-5 text-white" />
               <span className="text-sm md:text-base">{isRTL ? "تركيب احترافي" : "Expert Installation"}</span>
             </div>
           </div>
