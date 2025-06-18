@@ -16,13 +16,8 @@ export const getDictionary = async (locale: Locale) => {
 
 
 // Add proper type definitions
-type Dictionary = {
+export type Dictionary = {
   [key: string]: {
     [key: string]: string
   }
-}
-
-// Update your dictionary declarations with proper typing
-const dictionary: Dictionary = {
-  // ... existing dictionary content ...
 }

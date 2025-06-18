@@ -1,7 +1,7 @@
 module.exports = {
-  // ... other config
+  extends: ['next/core-web-vitals'],
   rules: {
-    '@typescript-eslint/no-explicit-any': 'warn', // or 'off' if you want to disable it completely
-    // ... other rules
-  }
-}
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+  },
+};

@@ -78,7 +78,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
     if (!isAutoPlaying) return;
     const timer = setInterval(goToNextSlide, 5000);
     return () => clearInterval(timer);
-  }, [isAutoPlaying]);
+  }, [isAutoPlaying, goToNextSlide]);
 
   const handleIndicatorClick = (index: number) => {
     setCurrentSlide(index);
