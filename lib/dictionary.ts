@@ -12,4 +12,17 @@ const dictionaries: Record<Locale, () => Promise<any>> = {
 
 export const getDictionary = async (locale: Locale) => {
   return dictionaries[locale]?.() ?? dictionaries.en()
-} 
+}
+
+
+// Add proper type definitions
+type Dictionary = {
+  [key: string]: {
+    [key: string]: string
+  }
+}
+
+// Update your dictionary declarations with proper typing
+const dictionary: Dictionary = {
+  // ... existing dictionary content ...
+}

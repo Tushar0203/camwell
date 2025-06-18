@@ -320,7 +320,7 @@ function translateSpecification(spec: { label: string; value: string }, isRTL: b
     "2667 mm × 955 mm (W x H), Tolerance of ± 2%.": "2667 مم × 955 مم (عرض × ارتفاع)، بتفاوت ± 2٪.",
     "76.2 mm × 3 mm × 12.7 mm × 2 mm (W × H).": "76.2 مم × 3 مم × 12.7 مم × 2 مم (عرض × ارتفاع).",
     "The average weld shear strength of 4 welds taken at random shall not be less than 50% of the breaking strength of the smallest wire (in this case the vertical wire).": "متوسط قوة قص اللحام لـ 4 لحامات تؤخذ عشوائيًا يجب ألا يقل عن 50٪ من قوة كسر السلك الأصغر (في هذه الحالة السلك العمودي).",
-    "Galvanized MS wire conforming to requirements of IS 280-2006 as well as IS:7887. Wire diameter 4.0 mm (± 0.05mm).": "سلك MS مجلفن يتوافق مع متطلبات IS 280-2006 وكذلك IS:7887. قطر السلك 4.0 مم (± 0.05 مم).",
+    "Galvanized MS wire conforming to requirements of IS 280-2006 as well as IS:7887. Wire diameter 4.0 mm (± 0.05mm).": "سلك MS مجلفن يتوافق مع متطلبات IS 280-2006 وكذلق IS:7887. قطر السلك 4.0 مم (± 0.05 مم).",
     "Min 550 N/sq.mm.": "الحد الأدنى 550 نيوتن/مم مربع.",
     "2 nos. per panel of depth 38 mm and width 107 mm and 100° angle.": "2 لكل لوحة بعمق 38 مم وعرض 107 مم وزاوية 100 درجة.",
     "75 mm overlap in horizontal direction and 167 mm overlap in vertical directions.": "تداخل بمقدار 75 مم في الاتجاه الأفقي و 167 مم تداخل في الاتجاه العمودي.",
@@ -724,26 +724,15 @@ export default function BorderFencePage() {
                 className="relative mt-8 lg:mt-0"
               >
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  {/* Replace with actual technical diagram */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1576ae] to-[#1a5d90]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
-                    </div>
-                    
-                    {/* Grid overlay for technical feel */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:15px_15px] sm:bg-[size:20px_20px]"></div>
-                    
-                    {/* Technical diagram elements (simplified) */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-3/4 h-3/4 relative">
-                        <div className="absolute top-1/2 left-0 right-0 h-1 bg-white/20"></div>
-                        <div className="absolute top-0 bottom-0 left-1/4 w-1 bg-white/20"></div>
-                        <div className="absolute top-0 bottom-0 right-1/4 w-1 bg-white/20"></div>
-                        <div className="absolute top-1/4 left-0 right-0 h-1 bg-white/10"></div>
-                        <div className="absolute top-3/4 left-0 right-0 h-1 bg-white/10"></div>
-                      </div>
-                    </div>
-                  </div>
+                  {/* Replace <img> tags with Next.js Image component
+                  <Image 
+                    src="/your-image-path.jpg"
+                    alt="Description"
+                    width={500}  // specify appropriate width
+                    height={300} // specify appropriate height
+                    priority={true} // for important above-the-fold images
+                  />
+                  */}
                 </div>
                 
                 {/* Certification badges */}

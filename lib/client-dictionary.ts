@@ -42,4 +42,17 @@ export async function getDictionaryClient(locale: Locale): Promise<Dictionary> {
     // If even English fails, return an empty dictionary
     return {};
   }
-} 
+}
+
+export const getTranslation = (lang: Locale, key: string): string => {
+  // Get the dictionary from cache
+  const dictionary = dictionaryCache[lang];
+  
+  // If dictionary exists in cache and has the key, return the translation
+  if (dictionary && dictionary[key]) {
+    return dictionary[key];
+  }
+  
+  // If key doesn't exist, return the key itself as fallback
+  return key;
+}
