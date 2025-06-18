@@ -296,7 +296,7 @@ const Navbar = () => {
                   </svg>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full max-w-xs p-0 bg-[#0F172A] border-l border-gray-800" style={{ direction: 'ltr' }}>
+              <SheetContent side="right" className="w-full sm:max-w-xs p-0 bg-[#0F172A] border-l border-gray-800" style={{ direction: 'ltr' }}>
                 <div className="flex flex-col h-full">
                   {/* Header with Logo/Close text */}
                   <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
@@ -313,7 +313,7 @@ const Navbar = () => {
                     </Link>
                     <button 
                       onClick={() => setIsOpen(false)}
-                      className="text-white bg-blue-600 px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+                      className="text-blue-400 font-medium"
                     >
                       Close
                     </button>
