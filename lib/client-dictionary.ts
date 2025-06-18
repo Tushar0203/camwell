@@ -12,10 +12,6 @@ const dictionaryCache: Record<Locale, Dictionary | null> = {
   'ar': null,
 };
 
-/**
- * Client-side dictionary loader
- * This is a client-side version of the dictionary loader that doesn't use server-only
- */
 export async function getDictionaryClient(locale: Locale): Promise<Dictionary> {
   // Return from cache if available
   if (dictionaryCache[locale]) {
