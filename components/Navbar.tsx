@@ -178,7 +178,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-2" style={{ direction: 'ltr' }}>
             {navItems.map((item) => {
-              const isActive = pathname === item.path;
+              const isActive = item.path === `/${lang}/products` 
+                ? pathname === item.path || pathname.startsWith(`/${lang}/products/`) 
+                : pathname === item.path;
               
               return (
                 <div 
@@ -322,7 +324,9 @@ const Navbar = () => {
                   <div className="flex-1 overflow-y-auto py-4">
                     <div className="space-y-1 px-4">
                       {navItems.map((item) => {
-                        const isActive = pathname === item.path;
+                        const isActive = item.path === `/${lang}/products` 
+                          ? pathname === item.path || pathname.startsWith(`/${lang}/products/`) 
+                          : pathname === item.path;
                         
                         return (
                           <Link

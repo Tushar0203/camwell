@@ -155,7 +155,7 @@ const ProductCard = ({
         <div className="absolute bottom-0 left-0 right-0 h-3 safety-stripes"></div>
       </div>
       
-      <CardContent className={`p-6 ${isRTL ? 'text-right' : ''} flex-1 flex flex-col bg-steel relative`}>
+      <CardContent className={`p-3 sm:p-6 ${isRTL ? 'text-right' : ''} flex-1 flex flex-col bg-steel relative`}>
         {/* Technical corner marker */}
         <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-blue clip-path-triangle"></div>
         
@@ -190,7 +190,7 @@ const ProductCard = ({
         </div>
       </CardContent>
       
-      <CardFooter className="px-6 pb-6 pt-0 bg-steel">
+      <CardFooter className="px-3 sm:px-6 pb-4 sm:pb-6 pt-0 bg-steel">
         <div className="w-full flex flex-col gap-3">
           <div className="flex justify-between text-xs tech-specs">
             <div className="flex items-center">
@@ -242,7 +242,7 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
       {/* Safety stripes at top */}
       <div className="absolute top-0 left-0 right-0 h-3 safety-stripes"></div>
       
-      <div className="container mx-auto px-4 relative pt-10">
+      <div className="container mx-auto px-1 sm:px-4 relative pt-10">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 border-4 border-industrial-blue">
           <Loader size={24} className="text-industrial-blue rotate-gear" />
         </div>
@@ -278,7 +278,7 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-7xl px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mx-auto max-w-full sm:max-w-7xl">
           {products.map((product, index) => (
             <ProductCard
               key={index}

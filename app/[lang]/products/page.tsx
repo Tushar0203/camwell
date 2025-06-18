@@ -1,14 +1,15 @@
 'use client';
 import ProductsOverview from '@/components/ProductsOverview';
 import { Locale } from '@/lib/dictionary';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Shield, Truck, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Shield, Truck, Zap, Wrench } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useRef } from 'react';
 
 export default function Products() {
   const params = useParams();
+  const router = useRouter();
   const lang = params?.lang as Locale || 'en';
   const isRTL = lang === 'ar';
   
@@ -100,108 +101,180 @@ export default function Products() {
       </div>
       
       {/* Custom Solutions Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-3">
+      <section className="py-16 md:py-24 bg-steel-50 relative">
+        {/* Industrial background with blueprint */}
+        <div className="absolute inset-0 bg-blueprint opacity-10"></div>
+        
+        {/* Safety stripes at top */}
+        <div className="absolute top-0 left-0 right-0 h-3 safety-stripes"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center mb-16">
+            <div className="inline-block bg-industrial-blue/90 px-4 py-1 text-white text-xs tracking-wider mb-4 uppercase tech-specs">
               {isRTL ? "حلول مخصصة" : "Custom Solutions"}
-            </h2>
-            <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-              {isRTL ? "حلول أمنية مخصصة" : "Tailored Security Solutions"}
-            </h3>
-            <p className="max-w-3xl mx-auto text-gray-600 text-lg">
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-steel-800 mb-4">{isRTL ? "حلول أمنية مخصصة" : "Tailored Security Solutions"}</h2>
+            <div className="industrial-ruler w-48 mx-auto mb-6"></div>
+            <p className="text-steel-600 max-w-3xl mx-auto industrial-border p-4">
               {isRTL 
                 ? "لا تجد بالضبط ما تحتاجه؟ نقوم بتصميم وتصنيع حلول أمنية مخصصة لتلبية متطلباتك المحددة وظروف الموقع."
                 : "Can't find exactly what you need? We design and manufacture custom security solutions to meet your specific requirements and site conditions."}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="space-y-10">
-                {/* Expert Consultation */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {isRTL ? "استشارات خبراء" : "Expert Consultation"}
-                  </h3>
-                  <p className="text-gray-600">
-                    {isRTL
-                      ? "يقوم متخصصو الأمان لدينا بإجراء مسوحات شاملة للموقع وتقديم توصيات فنية مفصلة مصممة وفقًا لاحتياجاتك المحددة."
-                      : "Our security specialists conduct comprehensive site surveys and provide detailed technical recommendations tailored to your specific needs."}
-                  </p>
-                </div>
-
-                {/* Custom Manufacturing */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {isRTL ? "تصنيع مخصص" : "Custom Manufacturing"}
-                  </h3>
-                  <p className="text-gray-600">
-                    {isRTL
-                      ? "تتيح لنا قدرات التصنيع المتقدمة إنشاء منتجات وفقًا لمواصفاتك الدقيقة، مما يضمن التناسب المثالي والأداء الأمثل."
-                      : "Advanced manufacturing capabilities allow us to create products to your exact specifications, ensuring perfect fit and optimal performance."}
-                  </p>
-                </div>
-
-                {/* Professional Installation */}
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {isRTL ? "تركيب احترافي" : "Professional Installation"}
-                  </h3>
-                  <p className="text-gray-600">
-                    {isRTL
-                      ? "تضمن فرق التركيب المعتمدة لدينا الإعداد المناسب والموثوقية على المدى الطويل مع إدارة شاملة للمشروع من البداية إلى النهاية."
-                      : "Our certified installation teams ensure proper setup and long-term reliability with comprehensive project management from start to finish."}
-                  </p>
-                </div>
-
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-8 pt-6">
-                  <div className="text-center">
-                    <p className="text-4xl md:text-5xl font-bold text-blue-600">15+</p>
-                    <p className="text-gray-600 mt-2">{isRTL ? "سنوات من الخبرة" : "Years of Experience"}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              {/* Expert Consultation */}
+              <div className="bg-steel p-5 border-l-4 border-industrial-blue shadow-md">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-steel-200 rounded-sm flex items-center justify-center border border-steel-300">
+                    <Shield className="text-industrial-blue" size={24} />
                   </div>
-                  <div className="text-center">
-                    <p className="text-4xl md:text-5xl font-bold text-blue-600">500+</p>
-                    <p className="text-gray-600 mt-2">{isRTL ? "مشاريع مخصصة منجزة" : "Custom Projects Delivered"}</p>
+                  <div>
+                    <h3 className="text-xl font-bold text-steel-800 mb-2 flex items-center gap-2">
+                      <span>{isRTL ? "استشارات خبراء" : "Expert Consultation"}</span>
+                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    </h3>
+                    <p className="text-steel-600">
+                      {isRTL
+                        ? "يقوم متخصصو الأمان لدينا بإجراء مسوحات شاملة للموقع وتقديم توصيات فنية مفصلة مصممة وفقًا لاحتياجاتك المحددة."
+                        : "Our security specialists conduct comprehensive site surveys and provide detailed technical recommendations tailored to your specific needs."}
+                    </p>
                   </div>
+                </div>
+              </div>
+
+              {/* Custom Manufacturing */}
+              <div className="bg-steel p-5 border-l-4 border-industrial-blue shadow-md">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-steel-200 rounded-sm flex items-center justify-center border border-steel-300">
+                    <Wrench className="text-industrial-blue" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-steel-800 mb-2 flex items-center gap-2">
+                      <span>{isRTL ? "تصنيع مخصص" : "Custom Manufacturing"}</span>
+                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    </h3>
+                    <p className="text-steel-600">
+                      {isRTL
+                        ? "تتيح لنا قدرات التصنيع المتقدمة إنشاء منتجات وفقًا لمواصفاتك الدقيقة، مما يضمن التناسب المثالي والأداء الأمثل."
+                        : "Advanced manufacturing capabilities allow us to create products to your exact specifications, ensuring perfect fit and optimal performance."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Professional Installation */}
+              <div className="bg-steel p-5 border-l-4 border-industrial-blue shadow-md">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-steel-200 rounded-sm flex items-center justify-center border border-steel-300">
+                    <Zap className="text-industrial-blue" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-steel-800 mb-2 flex items-center gap-2">
+                      <span>{isRTL ? "تركيب احترافي" : "Professional Installation"}</span>
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    </h3>
+                    <p className="text-steel-600">
+                      {isRTL
+                        ? "تضمن فرق التركيب المعتمدة لدينا الإعداد المناسب والموثوقية على المدى الطويل مع إدارة شاملة للمشروع من البداية إلى النهاية."
+                        : "Our certified installation teams ensure proper setup and long-term reliability with comprehensive project management from start to finish."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats with industrial design */}
+              <div className="grid grid-cols-2 gap-6 pt-4">
+                <div className="bg-steel-100 border border-steel-300 p-4">
+                  <div className="flex justify-between text-xs tech-specs mb-2">
+                    <span className="text-steel-600">EXPERIENCE</span>
+                    <span className="text-industrial-blue font-semibold">VALIDATED</span>
+                  </div>
+                  <p className="text-3xl font-bold text-industrial-blue mb-1">15+</p>
+                  <p className="text-steel-700 text-sm">{isRTL ? "سنوات من الخبرة" : "Years of Experience"}</p>
+                </div>
+                <div className="bg-steel-100 border border-steel-300 p-4">
+                  <div className="flex justify-between text-xs tech-specs mb-2">
+                    <span className="text-steel-600">PROJECTS</span>
+                    <span className="text-industrial-blue font-semibold">COMPLETED</span>
+                  </div>
+                  <p className="text-3xl font-bold text-industrial-blue mb-1">500+</p>
+                  <p className="text-steel-700 text-sm">{isRTL ? "مشاريع مخصصة منجزة" : "Custom Projects Delivered"}</p>
                 </div>
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="rounded-xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/images/fence-2.jpg" 
-                  alt={isRTL ? "حلول أمنية مخصصة" : "Custom Security Solutions"} 
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-8">
-                  <h3 className="text-white text-3xl font-bold mb-2">
+            <div className="flex h-full">
+              <div className="relative overflow-hidden border-4 border-steel-300 shadow-lg w-full flex flex-col">
+                {/* Tech spec overlay */}
+                <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-3 bg-black/50 z-10 tech-specs">
+                  <div className="text-white text-xs flex items-center">
+                    <span>MODEL: CS-5200</span>
+                  </div>
+                  <div className="text-white text-xs flex items-center">
+                    <span>SPEC: HEAVY-DUTY</span>
+                  </div>
+                </div>
+                
+                <div className="flex-1 relative min-h-[300px]">
+                  <img 
+                    src="/images/fence-2.jpg" 
+                    alt={isRTL ? "حلول أمنية مخصصة" : "Custom Security Solutions"} 
+                    className="w-full h-full object-cover absolute inset-0"
+                  />
+                </div>
+                
+                {/* Bottom panel */}
+                <div className="bg-black/70 p-4 mt-auto">
+                  <h3 className="text-white text-xl font-bold mb-1">
                     {isRTL ? "مصممة للتميز" : "Engineered for Excellence"}
                   </h3>
-                  <p className="text-white/90">
-                    {isRTL ? "كل حل مصمم وفقًا لمواصفاتك الدقيقة" : "Every solution built to your exact specifications"}
+                  <p className="text-white/80 text-sm">
+                    {isRTL ? "كل حل مصمم وفقًا لمواصفاتك الدقيقة" : "Each solution custom built to exact specifications"}
+                  </p>
+                </div>
+                
+                {/* Bottom diagonal caution stripes */}
+                <div className="h-2 safety-stripes"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA with industrial style */}
+          <div className="mt-16 max-w-5xl mx-auto border border-steel-300 bg-steel-50">
+            {/* Top technical bar */}
+            <div className="flex justify-between items-center px-4 py-2 bg-steel-100 border-b border-steel-300 tech-specs text-xs">
+              <span className="text-steel-600">INQUIRY TYPE: CONSULTATION</span>
+              <span className="text-industrial-blue font-mono">REF: CS-1001-A</span>
+            </div>
+            
+            {/* Main content with industrial styling */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-16 bg-industrial-blue"></div>
+                <div>
+                  <h3 className="text-xl font-bold text-steel-800 uppercase">
+                    {isRTL ? "جاهزون لتأمين موقعك؟" : "Ready to secure your site?"}
+                  </h3>
+                  <p className="text-steel-600 mt-2">
+                    {isRTL ? "اتصل بنا اليوم للحصول على استشارة مجانية" : "Contact us today for a free consultation and technical assessment."}
                   </p>
                 </div>
               </div>
-            </motion.div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-16 text-center">
-            <Button 
-              className={`bg-blue-500 hover:bg-blue-600 transition-colors text-white px-8 py-6 text-lg rounded-md shadow-lg hover:shadow-xl flex items-center gap-2 mx-auto ${isRTL ? 'flex-row-reverse' : ''}`}
-            >
-              <span>{isRTL ? "تواصل مع فريق الحلول المخصصة" : "Contact Our Custom Solutions Team"}</span>
-              <ArrowIcon className="h-5 w-5" />
-            </Button>
+              <div className="ml-0 md:ml-4">
+                <Button 
+                  onClick={() => router.push(`/${lang}/contact`)}
+                  className={`bg-[#FFD600] hover:bg-[#FFE44D] text-black font-bold px-6 py-4 text-base tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  <span className="uppercase">{isRTL ? "تواصل مع فريق الحلول المخصصة" : "Contact Our Team"}</span>
+                  <ArrowIcon className="h-5 w-5" strokeWidth={2.5} />
+                </Button>
+              </div>
+            </div>
+            
+            {/* Bottom safety stripe */}
+            <div className="h-2 safety-stripes"></div>
           </div>
         </div>
       </section>
