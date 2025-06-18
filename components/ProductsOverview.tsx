@@ -278,7 +278,7 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
           </div>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-8 mx-auto max-w-7xl px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-7xl px-4">
           {products.map((product, index) => (
             <ProductCard
               key={index}
