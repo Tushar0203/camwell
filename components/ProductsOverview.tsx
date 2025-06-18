@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { ArrowRight, ArrowLeft, Package, ShieldCheck, Tags, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Package, ShieldCheck, Tags, Zap, FileText, Wrench, Clipboard, Loader } from 'lucide-react';
 import { useRouter, useParams } from 'next/navigation';
 import React from 'react';
 import { Locale } from '@/lib/dictionary';
@@ -113,9 +113,12 @@ const ProductCard = ({
 
   const product = dictionary[productKey];
 
+  // Create a unique product ID
+  const productId = productKey === 'borderFence' ? 'BF-7540' : 'SG-3862';
+
   return (
     <Card 
-      className="premium-card shine-effect overflow-hidden group hover:cursor-pointer border-0 shadow-lg h-full w-full max-w-md flex flex-col"
+      className="card-industrial overflow-hidden group hover:cursor-pointer flex flex-col"
       onClick={handleClick}
     >
       <div className={`w-full h-58 relative overflow-hidden ${
@@ -125,44 +128,85 @@ const ProductCard = ({
           ? 'bg-[url("/images/fence-swing-gates.jpg")] bg-cover bg-center' 
           : ''
       }`}>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+        
+        {/* Top technical info */}
+        <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-3 bg-black/50 z-10 tech-specs">
+          <div className="text-white text-xs flex items-center">
+            <Clipboard size={12} className="mr-1" />
+            <span>MODEL: {productId}</span>
+          </div>
+          <div className="text-white text-xs flex items-center">
+            <FileText size={12} className="mr-1" />
+            <span>REV.2.6</span>
+          </div>
+        </div>
+        
         <div className="absolute inset-0 p-6 flex flex-col justify-center items-center text-white">
-          <div className="card-icon-wrapper bg-white/20 backdrop-blur-md rounded-full p-4 mb-3">
+          <div className="card-icon-wrapper backdrop-blur-md p-4 mb-3 relative border border-white/20 rounded-sm">
+            <div className="absolute top-[-3px] right-[-3px] w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-[-3px] left-[-3px] w-2 h-2 bg-green-500 rounded-full"></div>
             {icon}
           </div>
           <h3 className="text-xl font-bold mb-1 text-center">{product.name}</h3>
         </div>
+        
+        {/* Bottom diagonal caution stripes */}
+        <div className="absolute bottom-0 left-0 right-0 h-3 safety-stripes"></div>
       </div>
       
-      <CardContent className={`p-6 ${isRTL ? 'text-right' : ''} flex-1 flex flex-col`}>
-        <p className="text-gray-600 mb-5 min-h-[80px]">{product.description}</p>
+      <CardContent className={`p-6 ${isRTL ? 'text-right' : ''} flex-1 flex flex-col bg-steel relative`}>
+        {/* Technical corner marker */}
+        <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-blue clip-path-triangle"></div>
+        
+        <div className="industrial-ruler w-full mb-4"></div>
+        
+        {/* Specifications small table */}
+        <div className="mb-3 bg-steel-100 px-2 py-1 border border-steel-300">
+          <div className="flex justify-between text-xs tech-specs">
+            <span className="text-steel-600">DUTY CLASS</span>
+            <span className="text-industrial-blue font-semibold">HEAVY</span>
+          </div>
+          <div className="flex justify-between text-xs tech-specs">
+            <span className="text-steel-600">MATERIAL</span>
+            <span className="text-industrial-blue font-semibold">GALV. STEEL</span>
+          </div>
+        </div>
+        
+        <p className="text-steel-700 mb-5 min-h-[80px]">{product.description}</p>
         
         <div className="flex-1">
           <h4 className={`font-semibold text-industrial-blue mb-3 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <ShieldCheck size={18} />
+            <Wrench size={18} className="text-industrial-blue" />
             {dictionary.keyFeatures}
           </h4>
-          <ul className="space-y-2 mb-4">
+          <ul className="industrial-list space-y-2 mb-4">
             {product.features.map((feature, index) => (
-              <li key={index} className={`flex items-start gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <span className="text-industrial-blue mt-1">
-                  <Tags size={14} />
-                </span>
-                <span className="text-gray-600">{feature}</span>
+              <li key={index}>
+                <span className="text-steel-700">{feature}</span>
               </li>
             ))}
           </ul>
         </div>
       </CardContent>
       
-      <CardFooter className="px-6 pb-6 pt-0">
-        <Button 
-          variant="default" 
-          className={`w-full bg-[#1576ae] text-white hover:bg-industrial-blue/90 group-hover:bg-industrial-blue group-hover:text-white transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
-        >
-          <span>{product.knowMore}</span>
-          <ArrowIcon size={16} className={`${isRTL ? 'mr-2 group-hover:-translate-x-1' : 'ml-2 group-hover:translate-x-1'} transition-transform duration-300`} />
-        </Button>
+      <CardFooter className="px-6 pb-6 pt-0 bg-steel">
+        <div className="w-full flex flex-col gap-3">
+          <div className="flex justify-between text-xs tech-specs">
+            <div className="flex items-center">
+              <Loader size={10} className="mr-1 text-green-600 rotate-gear" />
+              <span className="text-green-600">STATUS: ACTIVE</span>
+            </div>
+            <span className="text-yellow-600">REF: {productId}</span>
+          </div>
+          <Button 
+            variant={productKey === 'borderFence' ? 'industrial' : 'warning'} 
+            className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-black`}
+          >
+            <span>{product.knowMore}</span>
+            <ArrowIcon size={16} className={`${isRTL ? 'mr-2 group-hover:-translate-x-1' : 'ml-2 group-hover:translate-x-1'} transition-transform duration-300`} />
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
@@ -182,23 +226,56 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
   const products = [
     {
       key: 'borderFence' as const,
-      icon: <Package size={36} strokeWidth={1.5} />
+      icon: <Package size={36} strokeWidth={1.5} className="text-white" />
     },
     {
       key: 'fenceSwingGate' as const,
-      icon: <Zap size={36} strokeWidth={1.5} />
+      icon: <Zap size={36} strokeWidth={1.5} className="text-white" />
     },
   ];
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
+    <section className="py-20 relative">
+      {/* Industrial background with blueprint */}
+      <div className="absolute inset-0 bg-blueprint opacity-20"></div>
+      
+      {/* Safety stripes at top */}
+      <div className="absolute top-0 left-0 right-0 h-3 safety-stripes"></div>
+      
+      <div className="container mx-auto px-4 relative pt-10">
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 border-4 border-industrial-blue">
+          <Loader size={24} className="text-industrial-blue rotate-gear" />
+        </div>
+        
+        {/* Large gear background elements */}
+        <div className="absolute top-1/4 right-10 bg-gear opacity-30" style={{ transform: 'scale(2)' }}></div>
+        <div className="absolute bottom-20 left-10 bg-gear opacity-30" style={{ transform: 'scale(1.5)' }}></div>
+        
         <div className={`text-center mb-16 ${lang === 'ar' ? 'rtl' : ''}`}>
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">{dict.sectionTitle}</h2>
-          <div className="w-24 h-1 bg-industrial-blue mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          {/* Technical section number */}
+          <div className="text-xs text-steel-500 mb-1 tech-specs">SECTION 02</div>
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-steel-800 mb-4">{dict.sectionTitle}</h2>
+          
+          <p className="text-steel-600 max-w-2xl mx-auto industrial-border p-4">
             {dict.sectionDescription}
           </p>
+          
+          {/* Technical specs */}
+          <div className="flex justify-center gap-6 mt-6 mb-8">
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 bg-industrial-blue"></div>
+              <span className="text-xs font-mono text-steel-600">MILITARY-GRADE</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 bg-green-600"></div>
+              <span className="text-xs font-mono text-steel-600">ISO 9001</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-3 h-3 bg-yellow-500"></div>
+              <span className="text-xs font-mono text-steel-600">WEATHER-RESISTANT</span>
+            </div>
+          </div>
         </div>
         
         <div className="flex flex-wrap justify-center gap-8 mx-auto max-w-7xl px-4">

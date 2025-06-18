@@ -55,7 +55,7 @@ export default async function RootLayout({
           <ScrollRestoration />
           <DirectionProvider />
           <Navbar />
-          <main>
+          <main className="w-full overflow-x-hidden">
             {children}
           </main>
           <Footer dictionary={dict.footer} />

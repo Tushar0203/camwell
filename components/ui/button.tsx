@@ -19,6 +19,10 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        industrial: 
+          "bg-gradient-to-b from-steel-100 to-steel-200 border border-steel-300 text-steel-800 shadow-md hover:from-steel-200 hover:to-steel-300 hover:border-steel-400 hover:text-industrial-blue active:from-steel-300 active:to-steel-400 font-mono relative after:content-[''] after:absolute after:left-0 after:top-0 after:h-full after:w-[3px] after:bg-industrial-blue",
+        warning:
+          "bg-steel-600 text-white shadow-md hover:bg-steel-700 border border-yellow-400 relative before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[2px] before:bg-yellow-400",
       },
       size: {
         default: "h-9 px-4 py-2",
