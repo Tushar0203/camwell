@@ -1,10 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { motion } from 'framer-motion';
-import { Check, ChevronRight, FileText, Send, Wrench } from 'lucide-react';
+import { Check, Send } from 'lucide-react';
 import React, { useState } from 'react';
 import { getDictionaryClient, Locale } from '@/lib/client-dictionary';
 import { useParams } from 'next/navigation';
@@ -12,7 +11,6 @@ import { useParams } from 'next/navigation';
 const Brochure = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [activeBrochureOption, setActiveBrochureOption] = useState("digital");
   const params = useParams();
   const lang = params.lang as Locale;
   const isRtl = lang === 'ar';

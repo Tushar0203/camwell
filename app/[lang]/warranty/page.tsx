@@ -157,10 +157,10 @@ const WarrantyPage = () => {
       try {
         // Only load translations for Arabic, use English as fallback
         if (lang === 'ar') {
-          const module = await import(`../../../dictionaries/${lang}.json`);
+          const moduel = await import(`../../../dictionaries/${lang}.json`);
           // The warranty object should exist in the JSON file
-          if (module.default.warranty) {
-            setTranslations(module.default.warranty);
+          if (moduel.default.warranty) {
+            setTranslations(moduel.default.warranty);
           }
         }
       } catch (error) {

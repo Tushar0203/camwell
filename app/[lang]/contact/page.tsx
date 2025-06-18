@@ -375,8 +375,6 @@ const ContactForm = () => {
 };
 
 const ContactPage = () => {
-  const params = useParams();
-  const lang = params.lang as Locale;
   
   return (
     <Suspense fallback={
