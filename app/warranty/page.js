@@ -1,16 +1,4 @@
 "use client"
-import { motion } from 'framer-motion'
-import {
-  AlertTriangle,
-  ArrowRight,
-  Award,
-  CheckCircle,
-  Clock,
-  Download,
-  FileText,
-  Shield
-} from 'lucide-react'
-import Link from 'next/link'
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 

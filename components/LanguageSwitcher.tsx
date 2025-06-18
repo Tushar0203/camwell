@@ -68,6 +68,7 @@ export default function LanguageSwitcher() {
   const handleLanguageChange = (locale: Locale) => {
     // Save current scroll position to localStorage
     localStorage.setItem(SCROLL_POSITION_KEY, window.scrollY.toString());
+    console.log(locale)
   };
 
   return (

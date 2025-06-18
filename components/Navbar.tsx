@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter, useParams } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { CSSProperties } from 'react';

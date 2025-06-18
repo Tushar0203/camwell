@@ -10,10 +10,8 @@ import {
   ChevronRight,
   Download,
   Package,
-  Shield,
   X
 } from 'lucide-react';
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Locale } from '@/lib/dictionary';

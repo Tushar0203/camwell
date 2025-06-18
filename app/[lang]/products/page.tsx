@@ -3,9 +3,8 @@ import ProductsOverview from '@/components/ProductsOverview';
 import { Locale } from '@/lib/dictionary';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Check, Shield, Truck, Zap } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Shield, Truck, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import { useRef } from 'react';
 
 export default function Products() {

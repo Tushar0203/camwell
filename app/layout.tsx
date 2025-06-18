@@ -1,5 +1,3 @@
-import { i18n } from '@/lib/i18n-config';
-import { redirect } from 'next/navigation';
 
 // Root layout for the non-localized routes
 // This shouldn't do anything except render children
