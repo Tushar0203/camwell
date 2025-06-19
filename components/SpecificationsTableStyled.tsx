@@ -26,12 +26,11 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
             {/* Left column with label and its own line+dots */}
             <div
               className={cn(
-                "w-full sm:w-1/3 mb-2 sm:mb-0",
-                isRTL ? "pl-0 sm:pl-4 text-right" : "pr-0 sm:pr-4"
+                "w-full sm:w-1/3 mb-2 sm:mb-0 pr-0 sm:pr-4"
               )}
             >
               {/* Line with dots for label */}
-              <div className={`flex items-center mb-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <div className="flex items-center mb-1">
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
                 <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
@@ -40,9 +39,9 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
             </div>
             
             {/* Right column with value and its own line+dots */}
-            <div className={`w-full sm:w-2/3 ${isRTL ? 'text-right' : ''}`}>
+            <div className="w-full sm:w-2/3">
               {/* Line with dots for value */}
-              <div className={`flex items-center mb-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
+              <div className="flex items-center mb-1">
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
                 <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>

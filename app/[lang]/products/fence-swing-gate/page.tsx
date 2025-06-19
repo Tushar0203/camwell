@@ -139,7 +139,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               {/* Header */}
               <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Image thumbnail - only show on larger screens */}
-                <div className={`hidden sm:block bg-white rounded-lg h-16 w-16 ${isRTL ? 'ml-4' : 'mr-4'} p-1 shadow-sm`}>
+                <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
                   {component.url ? (
                     <img
                       src={component.url}
@@ -153,22 +153,22 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                   )}
                 </div>
                 
-                <div className={`flex-1 ${isRTL ? 'text-right' : ''}`}>
+                <div className="flex-1">
                   {/* Category tag */}
                   <div className="inline-block px-2.5 py-1 rounded-full bg-white/20 text-white text-xs mb-1.5 font-[Poppins]">
                     {isRTL ? "الهيكل الأساسي" : "Primary Structure"}
                   </div>
                   
                   {/* Title */}
-                  <h2 className={`text-xl font-bold text-white leading-tight ${isRTL ? 'pl-8' : 'pr-8'} font-[Poppins]`}>
-                    {isRTL ? translateComponentName(component.title, isRTL) : component.title}
+                  <h2 className="text-xl font-bold text-white leading-tight pr-8 font-[Poppins]">
+                    {component.title}
                   </h2>
                 </div>
                 
                 {/* Close button */}
                 <button 
                   onClick={handleClose}
-                  className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer`}
+                  className="absolute top-4 right-4 rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
@@ -177,7 +177,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               
               {/* Content - scrollable with no extra space */}
               <div className="flex-1 overflow-y-auto scrollbar-hide">
-                <div className={`p-4 sm:p-6 ${isRTL ? 'text-right' : ''}`}>
+                <div className="p-4 sm:p-6">
                   {/* Replace the Overview section with a combined Dimensions & Standards section */}
                   <div className="mb-4">
                     <h3 className="text-gray-700 text-xl sm:text-2xl font-semibold mb-2 font-[Poppins]">
@@ -339,6 +339,49 @@ export default function FenceSwingGatePage() {
         </div>
       </section>
 
+      {/* Key Metrics Section */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            {[
+              {
+                valueEn: '0 TO 99.8%',
+                labelEn: 'SECURITY RATING',
+                valueAr: '0 إلى 99.8%',
+                labelAr: 'تصنيف الأمان'
+              },
+              {
+                valueEn: '0 TO 25+ YEARS',
+                labelEn: 'DURABILITY',
+                valueAr: '0 إلى 25+ سنة',
+                labelAr: 'المتانة'
+              },
+              {
+                valueEn: '0 TO 1,200 KM',
+                labelEn: 'DEPLOYED',
+                valueAr: '0 إلى 1,200 كم',
+                labelAr: 'تم النشر'
+              },
+              {
+                valueEn: 'ISO 9001',
+                labelEn: 'CERTIFIED',
+                valueAr: 'ISO 9001',
+                labelAr: 'معتمد'
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="space-y-2">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1576ae]">
+                  {isRTL ? item.valueAr : item.valueEn}
+                </h3>
+                <p className="text-gray-500 text-sm sm:text-base tracking-wide font-medium uppercase">
+                  {isRTL ? item.labelAr : item.labelEn}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Components Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4">
@@ -368,8 +411,8 @@ export default function FenceSwingGatePage() {
                       className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                       onClick={() => handleComponentClick(item.name)}
                     >
-                      <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                      <div className="flex items-center">
+                        <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                           {item.imageUrl ? (
                             <img 
                               src={item.imageUrl} 
@@ -382,11 +425,11 @@ export default function FenceSwingGatePage() {
                             </div>
                           )}
                         </div>
-                        <div className={isRTL ? 'text-right' : ''}>
+                        <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                            <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'ml-1' : 'mr-1'}`} />
+                            <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
                         </div>
                       </div>
@@ -407,8 +450,8 @@ export default function FenceSwingGatePage() {
                       className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                       onClick={() => handleComponentClick(item.name)}
                     >
-                      <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                      <div className="flex items-center">
+                        <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                           {item.imageUrl ? (
                             <img 
                               src={item.imageUrl} 
@@ -421,11 +464,11 @@ export default function FenceSwingGatePage() {
                             </div>
                           )}
                         </div>
-                        <div className={isRTL ? 'text-right' : ''}>
+                        <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                            <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'ml-1' : 'mr-1'}`} />
+                            <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
                         </div>
                       </div>
@@ -446,8 +489,8 @@ export default function FenceSwingGatePage() {
                       className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                       onClick={() => handleComponentClick(item.name)}
                     >
-                      <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                      <div className="flex items-center">
+                        <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                           {item.imageUrl ? (
                             <img 
                               src={item.imageUrl} 
@@ -460,11 +503,11 @@ export default function FenceSwingGatePage() {
                             </div>
                           )}
                         </div>
-                        <div className={isRTL ? 'text-right' : ''}>
+                        <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                            <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'ml-1' : 'mr-1'}`} />
+                            <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
                         </div>
                       </div>

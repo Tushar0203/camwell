@@ -153,7 +153,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
               {/* Header */}
               <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Image thumbnail - only show on larger screens */}
-                <div className={`hidden sm:block bg-white rounded-lg h-16 w-16 ${isRTL ? 'ml-4' : 'mr-4'} p-1 shadow-sm`}>
+                <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
                   {component.url ? (
                     <img
                       src={component.url}
@@ -174,7 +174,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                   </div>
                   
                   {/* Title */}
-                  <h2 className={`text-xl font-bold text-white leading-tight ${isRTL ? 'pl-8' : 'pr-8'} font-[Poppins]`}>
+                  <h2 className="text-xl font-bold text-white leading-tight pr-8 font-[Poppins]">
                     {component.title}
                   </h2>
                 </div>
@@ -182,7 +182,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                 {/* Close button */}
                 <button 
                   onClick={handleClose}
-                  className={`absolute top-4 ${isRTL ? 'left-4' : 'right-4'} rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer`}
+                  className="absolute top-4 right-4 rounded-full p-1.5 bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="h-5 w-5" />
@@ -194,10 +194,10 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                 <div className="p-4 sm:p-6">
                   {/* Dimensions & Standards section with improved mobile spacing */}
                   <div className="mb-4">
-                    <h3 className={`text-gray-700 text-xl sm:text-2xl font-semibold mb-2 font-[Poppins] ${isRTL ? "text-right" : ""}`}>
+                    <h3 className="text-gray-700 text-xl sm:text-2xl font-semibold mb-2 font-[Poppins]">
                       {isRTL ? "الأبعاد والمعايير:" : "Dimensions & Standards:"}
                     </h3>
-                    <p className={`text-gray-700 text-sm sm:text-base mb-4 font-[Poppins] leading-relaxed ${isRTL ? "text-right" : ""}`}>
+                    <p className="text-gray-700 text-sm sm:text-base mb-4 font-[Poppins] leading-relaxed">
                       {getDescriptionText()}
                     </p>
                     
@@ -210,8 +210,8 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                         <div className="sm:hidden space-y-4">
                           {component.specifications.map((spec, index) => (
                             <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                              <div className={`text-[#1a5d90] font-medium text-sm mb-1 ${isRTL ? "text-right" : ""}`}>{spec.label}</div>
-                              <div className={`text-gray-700 text-sm ${isRTL ? "text-right" : ""}`}>{spec.value}</div>
+                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-gray-700 text-sm">{spec.value}</div>
                             </div>
                           ))}
                         </div>
@@ -219,9 +219,9 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                     ) : null}
                     
                     {/* Back button - RTL aware */}
-                    <div className={`mt-6 w-full flex ${isRTL ? "justify-start" : "justify-end"}`}>
-                      <Button variant="ghost" className={`flex items-center text-sm text-[#1576ae] hover:text-[#1a5d90] p-0 ${isRTL ? "flex-row-reverse" : ""}`} onClick={handleClose}>
-                        <ArrowIcon className={`h-4 w-4 ${isRTL ? "ml-1" : "mr-1"}`} />
+                    <div className="mt-6 w-full flex justify-end">
+                      <Button variant="ghost" className="flex items-center text-sm text-[#1576ae] hover:text-[#1a5d90] p-0" onClick={handleClose}>
+                        <ArrowRight className="w-4 h-4 mr-1" />
                         <span>{isRTL ? "رجوع" : "Back"}</span>
                       </Button>
                     </div>
@@ -622,7 +622,7 @@ export default function BorderFencePage() {
             {/* Components organized by category */}
             <div className="mb-12">
               {/* PRIMARY STRUCTURE */}
-              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "الهيكل الأساسي" : "PRIMARY STRUCTURE"}
               </h3>
               
@@ -633,8 +633,8 @@ export default function BorderFencePage() {
                     onClick={() => handleComponentClick(item.name)}
                     className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                   >
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                         {item.imageUrl ? (
                           <img 
                             src={item.imageUrl} 
@@ -647,11 +647,11 @@ export default function BorderFencePage() {
                           </div>
                         )}
                       </div>
-                      <div className={isRTL ? 'text-right' : ''}>
+                      <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                          <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
                       </div>
                     </div>
@@ -660,7 +660,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* FASTENING SYSTEM */}
-              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "نظام التثبيت" : "FASTENING SYSTEM"}
               </h3>
               
@@ -671,8 +671,8 @@ export default function BorderFencePage() {
                     onClick={() => handleComponentClick(item.name)}
                     className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                   >
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                         {item.imageUrl ? (
                           <img 
                             src={item.imageUrl} 
@@ -685,11 +685,11 @@ export default function BorderFencePage() {
                           </div>
                         )}
                       </div>
-                      <div className={isRTL ? 'text-right' : ''}>
+                      <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                          <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
                       </div>
                     </div>
@@ -698,7 +698,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* SECURITY ENHANCEMENT */}
-              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "تعزيز الأمان" : "SECURITY ENHANCEMENT"}
               </h3>
               
@@ -709,8 +709,8 @@ export default function BorderFencePage() {
                     onClick={() => handleComponentClick(item.name)}
                     className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                   >
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                         {item.imageUrl ? (
                           <img 
                             src={item.imageUrl} 
@@ -723,11 +723,11 @@ export default function BorderFencePage() {
                           </div>
                         )}
                       </div>
-                      <div className={isRTL ? 'text-right' : ''}>
+                      <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                          <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
                       </div>
                     </div>
@@ -736,7 +736,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* HARDWARE & ACCESSORIES */}
-              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "الأجهزة والملحقات" : "HARDWARE & ACCESSORIES"}
               </h3>
               
@@ -747,8 +747,8 @@ export default function BorderFencePage() {
                     onClick={() => handleComponentClick(item.name)}
                     className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
                   >
-                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
                         {item.imageUrl ? (
                           <img 
                             src={item.imageUrl} 
@@ -761,11 +761,11 @@ export default function BorderFencePage() {
                           </div>
                         )}
                       </div>
-                      <div className={isRTL ? 'text-right' : ''}>
+                      <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                          <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
                       </div>
                     </div>
