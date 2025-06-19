@@ -668,50 +668,129 @@ export default function BorderFencePage() {
       </section>
 
       {/* Technical Excellence Section */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gray-50 relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-24 bg-gray-50 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-40">
           <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-blue-50 to-transparent rounded-full blur-3xl"></div>
         </div>
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center ${isRTL ? "lg:flex lg:flex-row-reverse" : ""}`}>
+            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-y-8 sm:gap-y-12 lg:gap-x-10 xl:gap-x-16 items-start ${isRTL ? "lg:flex lg:flex-row-reverse" : ""}`}>
               <motion.div
                 initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className={isRTL ? "text-right" : ""}
+                className={`${isRTL ? "text-right" : ""} lg:col-span-7`}
               >
-                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-6 inline-block">
                   {isRTL ? "حماية بمستوى عسكري" : "Military-Grade Protection"}
                 </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-6">
                   {isRTL ? "التميز التقني في كل التفاصيل" : "Technical Excellence in Every Detail"}
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-5 sm:mb-8 leading-relaxed">
                   {isRTL
                     ? "يلبي نظام السياج الحدودي لدينا ويتجاوز معايير الأمان الدولية، مما يوفر دفاعًا قويًا ضد مختلف سيناريوهات التهديد مع تحمل أقسى الظروف البيئية."
                     : "Our border fence system meets and exceeds international security standards, providing a robust defense against various threat scenarios while withstanding the harshest environmental conditions."
                   }
                 </p>
                 
-                <div className={`space-y-4 sm:space-y-5 ${isRTL ? "text-right" : ""}`}>
-                  {[
-                    isRTL ? "مطابق لمعايير الأمان الدولية" : "Compliant with international security standards",
-                    isRTL ? "مقاوم للاختراق والتسلق" : "Resistant to cutting and climbing attempts",
-                    isRTL ? "مقاوم للظروف الجوية القاسية" : "Withstands extreme weather conditions"
-                  ].map((feature, index) => (
-                    <div key={index} className={`flex items-center ${isRTL ? "flex-row-reverse" : ""}`}>
-                      <div className={`flex-shrink-0 ${isRTL ? "ml-3" : "mr-3"}`}>
-                        <div className="flex items-center justify-center h-6 w-6 rounded-full bg-[#1576ae]/10">
-                          <Check className="h-3.5 w-3.5 text-[#1576ae]" />
-                        </div>
+                <ul className={`space-y-4 mb-6 sm:mb-8 ${isRTL ? "text-right" : ""}`}>
+                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
-                      <p className="text-gray-700">{feature}</p>
                     </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium text-sm sm:text-base">
+                        {isRTL ? "تصميم مضاد للتسلق والقطع" : "Anti-Climb & Anti-Cut Design"}
+                      </h3>
+                      <p className="text-gray-700 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                        {isRTL 
+                          ? "نمط شبكي متخصص يمنع التسلق ويقاوم محاولات القطع، متوافق مع معايير ASTM F2781 للأمان"
+                          : "Specialized mesh pattern prevents climbing and withstands cutting attempts, ASTM F2781 compliance tested"}
+                      </p>
+                    </div>
+                  </li>
+                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium text-sm sm:text-base">
+                        {isRTL ? "تركيب سريع" : "Rapid Installation"}
+                      </h3>
+                      <p className="text-gray-700 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                        {isRTL 
+                          ? "تصميم وحدات يسمح بنشر سريع على أي تضاريس، معدل تركيب 150 متر في اليوم لكل فريق"
+                          : "Modular design allows for quick deployment in any terrain, 150 meters per day per team installation rate"}
+                      </p>
+                    </div>
+                  </li>
+                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium text-sm sm:text-base">
+                        {isRTL ? "مقاوم للعوامل الجوية" : "Weather Resistant"}
+                      </h3>
+                      <p className="text-gray-700 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                        {isRTL 
+                          ? "أداء مثالي في درجات حرارة قصوى من -40 درجة مئوية إلى 80 درجة مئوية، مع مقاومة للأشعة فوق البنفسجية وفقًا لمعيار ASTM G154"
+                          : "Performs optimally in extreme temperatures from -40°C to 80°C with ASTM G154 UV resistance testing"}
+                      </p>
+                    </div>
+                  </li>
+                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium text-sm sm:text-base">
+                        {isRTL ? "متانة طويلة المدى" : "Long-Term Durability"}
+                      </h3>
+                      <p className="text-gray-700 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                        {isRTL 
+                          ? "عمر خدمة يفوق 20 عامًا مع حد أدنى من متطلبات الصيانة، اختبار تآكل بمعيار ISO 9227 لمدة 1500+ ساعة"
+                          : "20+ year service life with minimal maintenance requirements, 1,500+ hours ISO 9227 corrosion testing"}
+                      </p>
+                    </div>
+                  </li>
+                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium text-sm sm:text-base">
+                        {isRTL ? "اختبار قوة التأثير" : "Impact Strength Testing"}
+                      </h3>
+                      <p className="text-gray-700 text-xs sm:text-sm mt-0.5 sm:mt-1">
+                        {isRTL 
+                          ? "يتجاوز اختبارات التأثير بمعيار EN 1627 مستوى RC4، ومقاومة للمركبات بوزن حتى 6.8 طن عند 40 كم/ساعة"
+                          : "Exceeds EN 1627 RC4 level impact tests and resists vehicle impacts up to 6.8 tons at 40 km/h"}
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+
+                <div className={`flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 ${isRTL ? "justify-end" : ""}`}>
+                  {['ISO 9001:2015', 'ISO 14001', 'ASTM F2781', 'CE', 'EN 1627'].map((cert, idx) => (
+                    <span key={idx} className="bg-white border border-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-xs font-medium text-gray-700 shadow-sm">
+                      {cert}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -721,29 +800,72 @@ export default function BorderFencePage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="relative mt-8 lg:mt-0"
+                className="relative mt-6 lg:mt-0 lg:col-span-5"
               >
-                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                  {/* Replace <img> tags with Next.js Image component
-                  <Image 
-                    src="/your-image-path.jpg"
-                    alt="Description"
-                    width={500}  // specify appropriate width
-                    height={300} // specify appropriate height
-                    priority={true} // for important above-the-fold images
+                <div className="relative rounded-xl overflow-hidden shadow-xl">
+                  <img
+                    src="/images/fence-3.jpg" 
+                    alt="Border Fence Technical Specifications" 
+                    className="w-full h-auto object-cover aspect-[4/3]"
                   />
-                  */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-white text-xs sm:text-sm font-medium">
+                    {isRTL ? "حل أمني متكامل مع ميزات متقدمة" : "Integrated security solution with advanced features"}
+                  </div>
+                  
+                  {/* Model and Spec labels */}
+                  <div className="absolute top-0 left-0 right-0 flex justify-between text-[10px] sm:text-xs text-white">
+                    <div className="bg-black/50 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 sm:py-1">
+                      {isRTL ? "الموديل: CS-5280" : "MODEL: CS-5280"}
+                    </div>
+                    <div className="bg-black/50 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 sm:py-1">
+                      {isRTL ? "المواصفات: درجة عسكرية" : "SPEC: HEAVY-DUTY"}
+                    </div>
+                  </div>
                 </div>
                 
-                {/* Certification badges */}
-                <div className={`absolute ${isRTL ? '-left-4 -bottom-4 sm:-left-6 sm:-bottom-6' : '-right-4 -bottom-4 sm:-right-6 sm:-bottom-6'} bg-white rounded-xl shadow-lg p-3 sm:p-4 flex gap-2 sm:gap-3`}>
-                  {[1, 2, 3].map((badge) => (
-                    <div key={badge} className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center">
-                      <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                        <Shield size={14} className="text-[#1a5d90] sm:h-5 sm:w-5" />
+                {/* Reference code label */}
+                <div className="w-full mt-3 sm:mt-4 bg-gray-100 border border-gray-200 rounded-lg p-1.5 sm:p-2 flex justify-between items-center text-[10px] sm:text-xs text-gray-500">
+                  <div>{isRTL ? "نوع الاستعلام: استشارة" : "INQUIRY TYPE: CONSULTATION"}</div>
+                  <div className="font-medium">{isRTL ? "المرجع: CS-1001-A" : "REF: CS-1001-A"}</div>
+                </div>
+                
+                {/* Features box */}
+                <div className="mt-4 sm:mt-6 grid grid-cols-2 gap-2 sm:gap-4">
+                  <div className="bg-white p-2 sm:p-4 rounded-lg shadow-md border border-gray-100">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 bg-gray-100 rounded-lg p-1.5 sm:p-2 mr-2 sm:mr-3">
+                        <div className="w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center">
+                          <span className="text-[#1576ae] text-sm sm:text-base font-medium">15+</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="uppercase text-[10px] sm:text-xs text-gray-500 font-medium mb-0.5 sm:mb-1">
+                          {isRTL ? "الخبرة" : "Experience"}
+                        </div>
+                        <div className="text-xs sm:text-sm font-medium">
+                          {isRTL ? "سنوات من الخبرة" : "Years of Experience"}
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="bg-white p-2 sm:p-4 rounded-lg shadow-md border border-gray-100">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 bg-gray-100 rounded-lg p-1.5 sm:p-2 mr-2 sm:mr-3">
+                        <div className="w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center">
+                          <span className="text-[#1576ae] text-sm sm:text-base font-medium">500+</span>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="uppercase text-[10px] sm:text-xs text-gray-500 font-medium mb-0.5 sm:mb-1">
+                          {isRTL ? "المشاريع" : "Projects"}
+                        </div>
+                        <div className="text-xs sm:text-sm font-medium">
+                          {isRTL ? "مشاريع مخصصة" : "Custom Projects"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>

@@ -288,12 +288,12 @@ export default function FenceSwingGatePage() {
   return (
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center">
+      <section className="relative min-h-[80vh] flex items-center bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center">
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/70"></div>
         
         {/* Content container */}
-        <div className="container mx-auto px-4 relative z-30">
+        <div className="container mx-auto px-4 relative z-30 py-16 sm:py-20">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -477,12 +477,13 @@ export default function FenceSwingGatePage() {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 items-center">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
+                className="lg:col-span-7"
               >
                 <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   {isRTL ? "حماية من الدرجة العسكرية" : "Military-Grade Protection"}
@@ -497,9 +498,9 @@ export default function FenceSwingGatePage() {
                 </p>
                 
                 {/* Feature List */}
-                <ul className="space-y-3 sm:space-y-4">
+                <ul className="space-y-3 sm:space-y-4 mb-8">
                   <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -508,13 +509,13 @@ export default function FenceSwingGatePage() {
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
                         {isRTL 
-                          ? "نمط شبكي متخصص يمنع التسلق ويتحمل محاولات القطع"
-                          : "Specialized mesh pattern prevents climbing and withstands cutting attempts"}
+                          ? "نمط شبكي متخصص يمنع التسلق ويتحمل محاولات القطع، اختبار مقاومة بمعيار ASTM F2781"
+                          : "Specialized mesh pattern prevents climbing and withstands cutting attempts, ASTM F2781 compliance tested"}
                       </p>
                     </div>
                   </li>
                   <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -523,13 +524,13 @@ export default function FenceSwingGatePage() {
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
                         {isRTL 
-                          ? "تصميم وحدات يسمح بالنشر السريع في أي تضاريس"
-                          : "Modular design allows for quick deployment in any terrain"}
+                          ? "تصميم وحدات يسمح بالنشر السريع في أي تضاريس، تركيب 150 متر في اليوم لكل فريق"
+                          : "Modular design allows for quick deployment in any terrain, 150 meters per day per team installation rate"}
                       </p>
                     </div>
                   </li>
                   <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -538,13 +539,13 @@ export default function FenceSwingGatePage() {
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
                         {isRTL 
-                          ? "يعمل بشكل مثالي في درجات حرارة قصوى من -40 درجة مئوية إلى 80 درجة مئوية"
-                          : "Performs optimally in extreme temperatures from -40°C to 80°C"}
+                          ? "يعمل بشكل مثالي في درجات حرارة قصوى من -40 درجة مئوية إلى 80 درجة مئوية، مع مقاومة للأشعة فوق البنفسجية بمعيار ASTM G154"
+                          : "Performs optimally in extreme temperatures from -40°C to 80°C with ASTM G154 UV resistance testing"}
                       </p>
                     </div>
                   </li>
                   <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'}`}>
+                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -553,12 +554,35 @@ export default function FenceSwingGatePage() {
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
                         {isRTL 
-                          ? "عمر خدمة يزيد عن 20 عامًا مع متطلبات صيانة قليلة"
-                          : "20+ year service life with minimal maintenance requirements"}
+                          ? "عمر خدمة يزيد عن 20 عامًا مع متطلبات صيانة قليلة، اختبار تآكل بمعيار ISO 9227 لمدة 1500+ ساعة"
+                          : "20+ year service life with minimal maintenance requirements, 1,500+ hours ISO 9227 corrosion testing"}
+                      </p>
+                    </div>
+                  </li>
+                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    </div>
+                    <div>
+                      <h3 className="text-gray-900 font-medium">
+                        {isRTL ? "اختبار قوة التأثير" : "Impact Strength Testing"}
+                      </h3>
+                      <p className="text-gray-600 text-sm sm:text-base">
+                        {isRTL 
+                          ? "يتجاوز اختبارات التأثير بمعيار EN 1627 مستوى RC4، ومقاومة للمركبات بوزن حتى 6.8 طن عند 40 كم/ساعة"
+                          : "Exceeds EN 1627 RC4 level impact tests and resists vehicle impacts up to 6.8 tons at 40 km/h"}
                       </p>
                     </div>
                   </li>
                 </ul>
+
+                <div className={`flex flex-wrap gap-2 sm:gap-3 ${isRTL ? 'justify-end' : ''}`}>
+                  {['ISO 9001:2015', 'ISO 14001', 'ASTM F2781', 'CE', 'EN 1627'].map((cert, idx) => (
+                    <span key={idx} className="bg-white border border-gray-200 px-2 py-1 rounded-md text-xs font-medium text-gray-700 shadow-sm">
+                      {cert}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
               
               <motion.div
@@ -566,13 +590,19 @@ export default function FenceSwingGatePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden shadow-xl lg:max-w-lg mx-auto lg:mx-0"
+                className="lg:col-span-5"
               >
-                <img 
-                  src="/images/fence-2.jpg" 
-                  alt="Fence Swing Gate Technical Specifications" 
-                  className="w-full h-auto"
-                />
+                <div className="relative rounded-xl overflow-hidden shadow-xl mx-auto lg:mx-0 max-w-md lg:max-w-full">
+                  <img 
+                    src="/images/fence-2.jpg" 
+                    alt="Fence Swing Gate Technical Specifications" 
+                    className="w-full h-auto object-cover aspect-[4/3]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white text-sm font-medium">
+                    {isRTL ? "حل أمني متكامل مع ميزات متقدمة" : "Integrated security solution with advanced features"}
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
