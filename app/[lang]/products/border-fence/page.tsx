@@ -90,20 +90,34 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
       // Store the current scroll position when opening
       originalScrollPosition.current = window.pageYOffset;
       
-      // Disable scrolling on the body
-      document.body.style.overflow = 'hidden';
+      // Disable body scroll by fixing its position
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${originalScrollPosition.current}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflowY = 'scroll';
       
       // On mobile, scroll to top for better modal viewing
       if (isMobile.current) {
         window.scrollTo(0, 0);
       }
     } else {
-      // Re-enable scrolling when modal is closed
-      document.body.style.overflow = 'auto';
+      // Restore body scroll
+      const y = originalScrollPosition.current;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflowY = '';
+      requestAnimationFrame(() => window.scrollTo(0, y));
     }
     
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflowY = '';
     };
   }, [isOpen]);
 
