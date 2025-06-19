@@ -119,7 +119,7 @@ const ContactForm = () => {
     <div className="contact-container" dir={isRtl ? "rtl" : "ltr"}>
       <div className="contact-content">
         <div className="contact-main">
-          <div className="contact-form-section">
+          <div className="contact-form-section" dir={isRtl ? "rtl" : "ltr"}>
             <h1 className="contact-title">{dictionary.contact?.title || "Contact our team"}</h1>
             <p className="contact-description">
               {dictionary.contact?.description || "Got any questions about the product or scaling on our platform? We're here to help."}
@@ -238,7 +238,7 @@ const ContactForm = () => {
             </form>
           </div>
 
-          <div className="contact-info-section">
+          <div className="contact-info-section" dir={isRtl ? "rtl" : "ltr"}>
             <div className="method-section">
               <h2>{dictionary.contact?.chatTitle || "Chat with us"}</h2>
               <p>{dictionary.contact?.chatDescription || "Speak to our friendly team via live chat."}</p>
