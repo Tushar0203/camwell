@@ -152,19 +152,11 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
             >
               {/* Header */}
               <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
-                {/* Image thumbnail - only show on larger screens */}
-                <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
-                  {component.url ? (
-                    <img
-                      src={component.url}
-                      alt={component.title}
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center w-full h-full text-gray-400">
-                      <Package size={24} />
-                    </div>
-                  )}
+                {/* Thumbnail */}
+                <div className="hidden sm:block ml-2 bg-white rounded-lg shadow-sm
+                              h-16 w-16 flex items-center justify-center overflow-hidden">
+                    <img src={component.url} alt={component.title}
+                         className="max-h-full max-w-full object-contain"/>
                 </div>
                 
                 <div className="flex-1">
