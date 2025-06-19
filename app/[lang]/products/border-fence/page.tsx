@@ -787,13 +787,13 @@ export default function BorderFencePage() {
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className={`grid grid-cols-1 lg:grid-cols-12 gap-y-8 sm:gap-y-12 lg:gap-x-10 xl:gap-x-16 items-start ${isRTL ? "lg:flex lg:flex-row-reverse" : ""}`}>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 sm:gap-y-12 lg:gap-x-10 xl:gap-x-16 items-start">
               <motion.div
                 initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className={`${isRTL ? "text-right" : ""} lg:col-span-7`}
+                className="lg:col-span-7"
               >
                 <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-6 inline-block">
                   {isRTL ? "حماية بمستوى عسكري" : "Military-Grade Protection"}
@@ -809,8 +809,8 @@ export default function BorderFencePage() {
                 </p>
                 
                 <ul className="space-y-4 mb-6 sm:mb-8">
-                  <li className="flex items-start">
-                      <div className="flex-shrink-0 mt-1 mr-3">
+                  <li className="flex items-start text-left">
+                    <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
@@ -826,7 +826,7 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
@@ -843,7 +843,7 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
@@ -860,7 +860,7 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
@@ -877,7 +877,7 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
@@ -896,7 +896,7 @@ export default function BorderFencePage() {
                   </li>
                 </ul>
 
-                <div className={`flex flex-wrap gap-1.5 sm:gap-2 md:gap-3 ${isRTL ? "justify-end" : ""}`}>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 md:gap-3">
                   {['ISO 9001:2015', 'ISO 14001', 'ASTM F2781', 'CE', 'EN 1627'].map((cert, idx) => (
                     <span key={idx} className="bg-white border border-gray-200 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-xs font-medium text-gray-700 shadow-sm">
                       {cert}

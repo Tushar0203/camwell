@@ -509,7 +509,7 @@ export default function FenceSwingGatePage() {
                 
                 {/* Feature List */}
                 <ul className="space-y-3 sm:space-y-4 mb-8">
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
@@ -524,7 +524,7 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
@@ -539,7 +539,7 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
@@ -554,7 +554,7 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
@@ -569,7 +569,7 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className="flex items-start">
+                  <li className="flex items-start text-left">
                     <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
@@ -586,7 +586,7 @@ export default function FenceSwingGatePage() {
                   </li>
                 </ul>
 
-                <div className={`flex flex-wrap gap-2 sm:gap-3 ${isRTL ? 'justify-end' : ''}`}>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {['ISO 9001:2015', 'ISO 14001', 'ASTM F2781', 'CE', 'EN 1627'].map((cert, idx) => (
                     <span key={idx} className="bg-white border border-gray-200 px-2 py-1 rounded-md text-xs font-medium text-gray-700 shadow-sm">
                       {cert}
