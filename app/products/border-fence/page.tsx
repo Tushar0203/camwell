@@ -360,47 +360,160 @@ export default function BorderFencePage() {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 gap-6">
-              {allComponents.map((item, idx) => (
-                <motion.div 
-                  key={item.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
-                  onClick={() => handleComponentClick(item.name)}
-                >
-                  <div className="flex flex-col sm:flex-row">
-                    <div className="w-full sm:w-1/4 h-[160px] relative">
-                      <Image
-                        src={item.imageUrl || '/placeholder-image.jpg'}
-                        alt={item.name}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-contain p-4"
-                        priority={idx < 6}
-                      />
-                    </div>
-                    <div className="w-full sm:w-3/4 p-4 sm:p-6 flex flex-col justify-between">
-                      <div>
-                        <h4 className="text-[#1a5d90] font-medium text-lg sm:text-xl group-hover:text-[#1576ae]">
-                          {item.name}
-                        </h4>
-                        <p className="text-gray-600 text-sm sm:text-base mt-2">
-                          High-quality component for enhanced security and durability.
-                        </p>
+          <div className="max-w-7xl mx-auto">
+            {/* Components organized by category */}
+            <div className="mb-12">
+              {/* PRIMARY STRUCTURE */}
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                PRIMARY STRUCTURE
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Primary Structure"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.name}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
                       </div>
-                      <div className="mt-4 flex items-center text-sm text-[#1576ae]">
-                        <Button variant="ghost" className="flex items-center text-[#1576ae] hover:text-[#1a5d90] p-0">
+                      <div>
+                        <h4 className="text-gray-900 font-medium">{item.name}</h4>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
                           <span>View Details</span>
-                          <ArrowRight className="h-4 w-4 ml-1" />
-                        </Button>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </button>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
+
+              {/* FASTENING SYSTEM */}
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                FASTENING SYSTEM
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Fastening System"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.name}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="text-gray-900 font-medium">{item.name}</h4>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <span>View Details</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* SECURITY ENHANCEMENT */}
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                SECURITY ENHANCEMENT
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Security Enhancement"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.name}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="text-gray-900 font-medium">{item.name}</h4>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <span>View Details</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* HARDWARE & ACCESSORIES */}
+              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                HARDWARE & ACCESSORIES
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+                {borderFenceComponents["Hardware & Accessories"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-16 h-16 mr-4 bg-white rounded-md p-1 shadow-sm overflow-hidden">
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={item.name}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        <h4 className="text-gray-900 font-medium">{item.name}</h4>
+                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <span>View Details</span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

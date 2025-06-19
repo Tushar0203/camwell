@@ -602,66 +602,176 @@ export default function BorderFencePage() {
           <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-[0.015]"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-            <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
-              {isRTL ? "مكونات النظام" : "System Components"}
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-              {isRTL ? "عناصر الأمان المتقدمة" : "Advanced Security Elements"}
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto px-2">
-              {isRTL 
-               ? "تم تصميم كل مكون وفقًا لأعلى المعايير، مما يضمن الحد الأقصى من الأمان والتكامل السلس داخل النظام الكامل."
-               : "Each component is engineered to the highest standards, ensuring maximum security and seamless integration within the complete system."
-              }
-            </p>
-          </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
+              <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
+                {isRTL ? "مكونات النظام" : "System Components"}
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+                {isRTL ? "عناصر الأمان المتقدمة" : "Advanced Security Elements"}
+              </h2>
+              <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto px-2">
+                {isRTL 
+                ? "تم تصميم كل مكون وفقًا لأعلى المعايير، مما يضمن الحد الأقصى من الأمان والتكامل السلس داخل النظام الكامل."
+                : "Each component is engineered to the highest standards, ensuring maximum security and seamless integration within the complete system."
+                }
+              </p>
+            </div>
 
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 gap-6">
-              {allComponents.map((item, idx) => (
-                <motion.div 
-                  key={item.name}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group relative border border-blue-100 cursor-pointer"
-                  onClick={() => handleComponentClick(item.name)}
-                >
-                  <div className={`flex flex-col sm:flex-row ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-                    <div className="w-full sm:w-1/4 h-[160px] relative">
-                      <Image
-                        src={item.imageUrl || '/placeholder-image.jpg'}
-                        alt={translateComponentName(item.name, isRTL)}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-contain p-4"
-                        priority={idx < 6}
-                      />
-                    </div>
-                    <div className={`w-full sm:w-3/4 p-4 sm:p-6 flex flex-col justify-between ${isRTL ? "text-right" : ""}`}>
-                      <div>
-                        <h4 className="text-[#1a5d90] font-medium text-lg sm:text-xl group-hover:text-[#1576ae]">
-                          {translateComponentName(item.name, isRTL)}
-                        </h4>
-                        <p className="text-gray-600 text-sm sm:text-base mt-2">
-                          {isRTL 
-                            ? "مكون عالي الجودة لتعزيز الأمن والمتانة."
-                            : "High-quality component for enhanced security and durability."
-                          }
-                        </p>
+            {/* Components organized by category */}
+            <div className="mb-12">
+              {/* PRIMARY STRUCTURE */}
+              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+                {isRTL ? "الهيكل الأساسي" : "PRIMARY STRUCTURE"}
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Primary Structure"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={translateComponentName(item.name, isRTL)}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
                       </div>
-                      <div className={`mt-4 w-full flex ${isRTL ? "justify-end" : ""}`}>
-                        <Button variant="ghost" className={`flex items-center text-sm text-[#1576ae] hover:text-[#1a5d90] p-0 ${isRTL ? "flex-row-reverse" : ""}`}>
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
-                          <ArrowIcon className={`h-4 w-4 ${isRTL ? "mr-1" : "ml-1"}`} />
-                        </Button>
+                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                        </button>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </div>
+
+              {/* FASTENING SYSTEM */}
+              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+                {isRTL ? "نظام التثبيت" : "FASTENING SYSTEM"}
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Fastening System"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={translateComponentName(item.name, isRTL)}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
+                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* SECURITY ENHANCEMENT */}
+              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+                {isRTL ? "تعزيز الأمان" : "SECURITY ENHANCEMENT"}
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-14">
+                {borderFenceComponents["Security Enhancement"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={translateComponentName(item.name, isRTL)}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
+                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* HARDWARE & ACCESSORIES */}
+              <h3 className={`text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200 ${isRTL ? "text-right" : ""}`}>
+                {isRTL ? "الأجهزة والملحقات" : "HARDWARE & ACCESSORIES"}
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+                {borderFenceComponents["Hardware & Accessories"].map((item, index) => (
+                  <div 
+                    key={index}
+                    onClick={() => handleComponentClick(item.name)}
+                    className="bg-gray-50 hover:bg-blue-50 rounded-lg p-4 cursor-pointer transition-all duration-300 shadow-sm hover:shadow-md"
+                  >
+                    <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <div className={`w-16 h-16 ${isRTL ? 'ml-4' : 'mr-4'} bg-white rounded-md p-1 shadow-sm overflow-hidden`}>
+                        {item.imageUrl ? (
+                          <img 
+                            src={item.imageUrl} 
+                            alt={translateComponentName(item.name, isRTL)}
+                            className="w-full h-full object-contain" 
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <Package size={28} />
+                          </div>
+                        )}
+                      </div>
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                        <button className={`text-[#1576ae] text-sm mt-1 flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
+                          <ArrowIcon className={`w-3.5 h-3.5 ${isRTL ? 'mr-1' : 'ml-1'}`} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -698,9 +808,9 @@ export default function BorderFencePage() {
                   }
                 </p>
                 
-                <ul className={`space-y-4 mb-6 sm:mb-8 ${isRTL ? "text-right" : ""}`}>
-                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                <ul className="space-y-4 mb-6 sm:mb-8">
+                  <li className="flex items-start">
+                      <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
@@ -716,8 +826,8 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
@@ -733,8 +843,8 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
@@ -750,8 +860,8 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>
@@ -767,8 +877,8 @@ export default function BorderFencePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <div className={`flex-shrink-0 mt-1 ${isRTL ? "ml-3" : "mr-3"}`}>
+                  <li className="flex items-start">
+                    <div className="flex-shrink-0 mt-1 mr-3">
                       <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
                         <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
                       </div>

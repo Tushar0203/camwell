@@ -16,8 +16,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Locale } from '@/lib/dictionary';
 
-// Custom styles for hiding scrollbars
-const scrollbarHideStyles = `
+// Custom styles for hiding scrollbars and adding text shadows
+const customStyles = `
   /* Hide scrollbar for Chrome, Safari and Opera */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -27,6 +27,16 @@ const scrollbarHideStyles = `
   .scrollbar-hide {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+  }
+  
+  /* Text shadow for better readability */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 4px 8px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Larger text shadow for headings */
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9), 0 6px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.7);
   }
 `;
 
@@ -289,8 +299,8 @@ export default function FenceSwingGatePage() {
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center">
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70"></div>
+        {/* Subtle overlay for better readability */}
+        <div className="absolute inset-0 bg-black/25"></div>
         
         {/* Content container */}
         <div className="container mx-auto px-4 relative z-30 py-16 sm:py-20">
@@ -302,14 +312,14 @@ export default function FenceSwingGatePage() {
               className="text-center"
             >
               <div className="flex items-center justify-center mb-4 sm:mb-6">
-                <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm text-blue-100 rounded-full text-xs sm:text-sm font-medium">
+                <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white/20 backdrop-blur-md text-white rounded-full text-xs sm:text-sm font-medium shadow-lg text-shadow">
                   {isRTL ? "الأمان من الجيل التالي" : "Next-Generation Security"}
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight text-shadow-lg">
                 {isRTL ? "بوابة السياج المتأرجحة" : "Fence Swing Gate"}
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
+              <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2 text-shadow">
                 {isRTL 
                   ? "حماية متقدمة للمحيط تجمع بين المواد المتطورة والتكنولوجيا الذكية لتوفير أمان لا مثيل له في أكثر البيئات تحديًا."
                   : "Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments."}
@@ -499,8 +509,8 @@ export default function FenceSwingGatePage() {
                 
                 {/* Feature List */}
                 <ul className="space-y-3 sm:space-y-4 mb-8">
-                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                  <li className="flex items-start">
+                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -514,8 +524,8 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                  <li className="flex items-start">
+                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -529,8 +539,8 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                  <li className="flex items-start">
+                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -544,8 +554,8 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                  <li className="flex items-start">
+                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -559,8 +569,8 @@ export default function FenceSwingGatePage() {
                       </p>
                     </div>
                   </li>
-                  <li className={`flex items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
-                    <div className={`bg-[#1576ae]/10 rounded-full p-1 mt-0.5 ${isRTL ? 'ml-3' : 'mr-3'} flex-shrink-0`}>
+                  <li className="flex items-start">
+                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
                       <Check className="w-4 h-4 text-[#1576ae]" />
                     </div>
                     <div>
@@ -652,7 +662,7 @@ export default function FenceSwingGatePage() {
       />
       
       {/* Add global styles */}
-      <style dangerouslySetInnerHTML={{ __html: scrollbarHideStyles }} />
+      <style dangerouslySetInnerHTML={{ __html: customStyles }} />
     </div>
   );
 }

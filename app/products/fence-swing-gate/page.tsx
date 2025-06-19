@@ -251,7 +251,8 @@ export default function FenceSwingGatePage() {
       <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center bg-no-repeat"></div>
-          <div className="absolute inset-0 bg-black/50 z-10"></div>
+          {/* Subtle overlay for better readability */}
+          <div className="absolute inset-0 bg-black/25 z-10"></div>
           {/* Improved pattern overlay with better opacity and scaling */}
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20"></div>
           
@@ -269,14 +270,14 @@ export default function FenceSwingGatePage() {
               className="text-center"
             >
               <div className="flex items-center justify-center mb-4 sm:mb-6">
-                <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white/10 backdrop-blur-sm text-blue-100 rounded-full text-xs sm:text-sm font-medium">
+                <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-white/20 backdrop-blur-md text-white rounded-full text-xs sm:text-sm font-medium shadow-lg text-shadow">
                   Next-Generation Security
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight text-shadow-lg">
               {"Fence Swing Gate"}
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
+              <p className="text-base sm:text-lg md:text-xl text-white max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2 text-shadow">
               Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">

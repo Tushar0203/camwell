@@ -176,7 +176,7 @@ const ProductCard = ({
         <p className="text-steel-700 mb-5 min-h-[80px]">{product.description}</p>
         
         <div className="flex-1">
-          <h4 className={`font-semibold text-industrial-blue mb-3 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+          <h4 className="font-semibold text-industrial-blue mb-3 flex items-center gap-2">
             <Wrench size={18} className="text-industrial-blue" />
             {dictionary.keyFeatures}
           </h4>
@@ -204,7 +204,7 @@ const ProductCard = ({
             className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-black`}
           >
             <span>{product.knowMore}</span>
-            <ArrowIcon size={16} className={`${isRTL ? 'mr-2 group-hover:-translate-x-1' : 'ml-2 group-hover:translate-x-1'} transition-transform duration-300`} />
+            <ArrowIcon size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </div>
       </CardFooter>

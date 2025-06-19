@@ -46,7 +46,6 @@ export default async function RootLayout({
   return (
     <html 
       lang={lang}
-      dir={lang === 'ar' ? 'rtl' : 'ltr'}
       suppressHydrationWarning 
       className={`${roboto.variable} ${montserrat.variable}`}
     >

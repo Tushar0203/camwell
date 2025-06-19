@@ -21,10 +21,16 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
     <div className={cn("w-full font-[Poppins]", className)}>
       {specifications.map((spec, idx) => (
         <div key={idx} className="mb-4 last:mb-2">
-          <div className={`flex flex-col sm:flex-row ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+          {/* Preserve column order; just change text alignment for RTL */}
+          <div className="flex flex-col sm:flex-row">
             {/* Left column with label and its own line+dots */}
-            <div className={`w-full sm:w-1/3 ${isRTL ? 'pl-0 sm:pl-4' : 'pr-0 sm:pr-4'} mb-2 sm:mb-0 ${isRTL ? 'text-right' : ''}`}>
-              {/* Line with dots for label - darker and bolder line */}
+            <div
+              className={cn(
+                "w-full sm:w-1/3 mb-2 sm:mb-0",
+                isRTL ? "pl-0 sm:pl-4 text-right" : "pr-0 sm:pr-4"
+              )}
+            >
+              {/* Line with dots for label */}
               <div className={`flex items-center mb-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
                 <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
@@ -35,7 +41,7 @@ const SpecificationsTableStyled: React.FC<SpecificationsTableStyledProps> = ({
             
             {/* Right column with value and its own line+dots */}
             <div className={`w-full sm:w-2/3 ${isRTL ? 'text-right' : ''}`}>
-              {/* Line with dots for value - darker and bolder line */}
+              {/* Line with dots for value */}
               <div className={`flex items-center mb-1 ${isRTL ? 'flex-row-reverse' : ''}`}>
                 <div className="flex-shrink-0 w-2 h-2 bg-gray-600 rounded-full"></div>
                 <div className="h-[1.5px] bg-gray-500 flex-grow mx-1"></div>
