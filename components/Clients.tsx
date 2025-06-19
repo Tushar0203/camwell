@@ -108,7 +108,6 @@ const ClientCard = ({ client, index }: {
             <h3 className="text-xl font-bold text-steel-800 mb-2 group-hover:text-industrial-blue transition-colors duration-300">
               {client.name}
             </h3>
-            <div className="gauge-meter mb-3 w-3/4 mx-auto"></div>
             <p className="text-sm text-steel-600 line-clamp-2 group-hover:text-steel-700 transition-colors duration-300 tech-specs">
               {client.description}
             </p>
@@ -151,11 +150,9 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
           className="text-center mb-16 md:mb-20 px-4"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <AlertTriangle size={16} className="text-industrial-blue" />
             <span className="inline-block px-3 py-1.5 bg-industrial-blue text-white text-sm font-medium tracking-wide">
               {dict.badge}
             </span>
-            <AlertTriangle size={16} className="text-industrial-blue" />
           </div>
           
           <div className="relative">
