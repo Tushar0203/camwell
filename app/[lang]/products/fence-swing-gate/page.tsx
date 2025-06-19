@@ -137,9 +137,9 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl overflow-hidden">
+              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Image thumbnail - only show on larger screens */}
-                <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
+                <div className="hidden sm:block bg-white rounded-lg h-14 w-14 ml-2 mr-4 p-1 shadow-sm overflow-hidden self-start">
                   {component.url ? (
                     <img
                       src={component.url}
