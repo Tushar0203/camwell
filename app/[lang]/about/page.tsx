@@ -130,7 +130,7 @@ export default function AboutPage() {
         {/* Image background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-2.jpg')] bg-cover bg-center"></div>
-          <div className="absolute inset-0 bg-black/70 backdrop-filter backdrop-brightness-50"></div>
+          <div className="absolute inset-0 bg-black/30 backdrop-filter backdrop-brightness-75"></div>
           {/* Industrial metal mesh pattern */}
           <motion.div 
             initial={{ opacity: 0 }}
