@@ -149,7 +149,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
+              <div className="bg-[#00a0dc] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Image thumbnail - only show on larger screens */}
                 <div className="hidden sm:block bg-white rounded-lg h-14 w-14 ml-2 mr-4 p-1 shadow-sm overflow-hidden self-start">
                   {component.url ? (
@@ -206,7 +206,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                         <div className="sm:hidden space-y-4">
                           {component.specifications.map((spec, index) => (
                             <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-[#00a0dc] font-medium text-sm mb-1">{spec.label}</div>
                               <div className="text-gray-700 text-sm">{spec.value}</div>
                             </div>
                           ))}
@@ -337,7 +337,7 @@ export default function FenceSwingGatePage() {
                   : "Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments."}
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Button className="bg-white text-[#1a5d90] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
                   <Download className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 w-4 sm:h-5 sm:w-5`} />
                   {isRTL ? "تحميل المواصفات" : "Download Specifications"}
                 </Button>
@@ -382,7 +382,7 @@ export default function FenceSwingGatePage() {
               }
             ].map((item, idx) => (
               <div key={idx} className="space-y-2">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1576ae]">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#00a0dc]">
                   {isRTL ? item.valueAr : item.valueEn}
                 </h3>
                 <p className="text-gray-500 text-sm sm:text-base tracking-wide font-medium uppercase">
@@ -413,7 +413,7 @@ export default function FenceSwingGatePage() {
             <div>
               {/* Primary Structure */}
               <div className="mb-14">
-                <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                   {isRTL ? "الهيكل الأساسي" : "Primary Structure"}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -439,7 +439,7 @@ export default function FenceSwingGatePage() {
                         </div>
                         <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
@@ -452,7 +452,7 @@ export default function FenceSwingGatePage() {
               
               {/* Fastening System */}
               <div className="mb-14">
-                <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                   {isRTL ? "نظام التثبيت" : "Fastening System"}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -478,7 +478,7 @@ export default function FenceSwingGatePage() {
                         </div>
                         <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
@@ -491,7 +491,7 @@ export default function FenceSwingGatePage() {
               
               {/* Security Enhancement */}
               <div className="mb-8">
-                <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+                <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                   {isRTL ? "تعزيز الأمان" : "Security Enhancement"}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -517,7 +517,7 @@ export default function FenceSwingGatePage() {
                         </div>
                         <div>
                           <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                          <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                          <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
                           </button>
@@ -550,7 +550,7 @@ export default function FenceSwingGatePage() {
                 viewport={{ once: true }}
                 className="lg:col-span-7"
               >
-                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   {isRTL ? "حماية من الدرجة العسكرية" : "Military-Grade Protection"}
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -565,8 +565,8 @@ export default function FenceSwingGatePage() {
                 {/* Feature List */}
                 <ul className="space-y-3 sm:space-y-4 mb-8">
                   <li className="flex items-start text-left">
-                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    <div className="bg-[#00a0dc]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
                       <h3 className="text-gray-900 font-medium">
@@ -580,8 +580,8 @@ export default function FenceSwingGatePage() {
                     </div>
                   </li>
                   <li className="flex items-start text-left">
-                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    <div className="bg-[#00a0dc]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
                       <h3 className="text-gray-900 font-medium">
@@ -595,8 +595,8 @@ export default function FenceSwingGatePage() {
                     </div>
                   </li>
                   <li className="flex items-start text-left">
-                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    <div className="bg-[#00a0dc]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
                       <h3 className="text-gray-900 font-medium">
@@ -610,8 +610,8 @@ export default function FenceSwingGatePage() {
                     </div>
                   </li>
                   <li className="flex items-start text-left">
-                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    <div className="bg-[#00a0dc]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
                       <h3 className="text-gray-900 font-medium">
@@ -625,8 +625,8 @@ export default function FenceSwingGatePage() {
                     </div>
                   </li>
                   <li className="flex items-start text-left">
-                    <div className="bg-[#1576ae]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
-                      <Check className="w-4 h-4 text-[#1576ae]" />
+                    <div className="bg-[#00a0dc]/10 rounded-full p-1 mt-0.5 mr-3 flex-shrink-0">
+                      <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
                       <h3 className="text-gray-900 font-medium">
@@ -675,7 +675,7 @@ export default function FenceSwingGatePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1576ae] to-[#1576ae] relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
         
@@ -696,7 +696,7 @@ export default function FenceSwingGatePage() {
                   : "Connect with our security experts to design a custom border fence solution that meets your specific requirements."}
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Button className="bg-white text-[#1576ae] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   {isRTL ? "طلب استشارة" : "Request a Consultation"}
                 </Button>
                 <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">

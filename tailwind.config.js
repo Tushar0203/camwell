@@ -17,7 +17,7 @@ module.exports = {
       },
       colors: {
         // Industrial palette
-        'industrial-blue': '#2c5282', // Deeper blue
+        'industrial-blue': '#00a0dc', // Deeper blue
         'steel': {
           50: '#f5f7fa',
           100: '#e4e8ef',

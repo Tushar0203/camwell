@@ -127,7 +127,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
+              <div className="bg-[#00a0dc] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Image thumbnail - only show on larger screens */}
                 <div className="hidden sm:block bg-white rounded-lg h-16 w-16 mr-4 p-1 shadow-sm">
                   {component.url ? (
@@ -184,7 +184,7 @@ const PartModal = ({ component, isOpen, onClose }: PartModalProps) => {
                         <div className="sm:hidden space-y-4">
                           {component.specifications.map((spec, index) => (
                             <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-[#00a0dc] font-medium text-sm mb-1">{spec.label}</div>
                               <div className="text-gray-700 text-sm">{spec.value}</div>
                             </div>
                           ))}
@@ -292,7 +292,7 @@ export default function BorderFencePage() {
                 Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-[#1a5d90] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
                   <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Download Specifications
                 </Button>
@@ -328,7 +328,7 @@ export default function BorderFencePage() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1576ae] mb-1 sm:mb-2">{stat.value}</h3>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#00a0dc] mb-1 sm:mb-2">{stat.value}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -348,7 +348,7 @@ export default function BorderFencePage() {
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-            <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
+            <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
               System Components
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
@@ -364,7 +364,7 @@ export default function BorderFencePage() {
             {/* Components organized by category */}
             <div className="mb-12">
               {/* PRIMARY STRUCTURE */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 PRIMARY STRUCTURE
               </h3>
               
@@ -391,7 +391,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{item.name}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>View Details</span>
                           <ArrowRight className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -402,7 +402,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* FASTENING SYSTEM */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 FASTENING SYSTEM
               </h3>
               
@@ -429,7 +429,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{item.name}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>View Details</span>
                           <ArrowRight className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -440,7 +440,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* SECURITY ENHANCEMENT */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 SECURITY ENHANCEMENT
               </h3>
               
@@ -467,7 +467,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{item.name}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>View Details</span>
                           <ArrowRight className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -478,7 +478,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* HARDWARE & ACCESSORIES */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 HARDWARE & ACCESSORIES
               </h3>
               
@@ -505,7 +505,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{item.name}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>View Details</span>
                           <ArrowRight className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -543,7 +543,7 @@ export default function BorderFencePage() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   Military-Grade Protection
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
@@ -572,7 +572,7 @@ export default function BorderFencePage() {
                     >
                       <div className="flex-shrink-0">
                         <div className="h-6 w-6 sm:h-8 sm:w-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                          <Check size={16} className="text-[#1576ae] h-3 w-3 sm:h-4 sm:w-4" />
+                          <Check size={16} className="text-[#00a0dc] h-3 w-3 sm:h-4 sm:w-4" />
                         </div>
                       </div>
                       <span className="text-xs sm:text-sm md:text-base text-gray-700">{feature}</span>
@@ -590,7 +590,7 @@ export default function BorderFencePage() {
               >
                 <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                   {/* Replace with actual technical diagram */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#1576ae] to-[#1a5d90]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00a0dc] to-[#00a0dc]">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
                     </div>
@@ -616,7 +616,7 @@ export default function BorderFencePage() {
                   {[1, 2, 3].map((badge) => (
                     <div key={badge} className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gray-100 flex items-center justify-center">
                       <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                        <Shield size={14} className="text-[#1a5d90] sm:h-5 sm:w-5" />
+                        <Shield size={14} className="text-[#00a0dc] sm:h-5 sm:w-5" />
                       </div>
                     </div>
                   ))}
@@ -628,7 +628,7 @@ export default function BorderFencePage() {
       </section>
       
       {/* Call to Action Section - improved for mobile */}
-      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#1576ae] to-[#1576ae] relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
         
@@ -647,7 +647,7 @@ export default function BorderFencePage() {
                 Connect with our security experts to design a custom border fence solution that meets your specific requirements.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-[#1576ae] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   Request a Consultation
                 </Button>
                 <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">

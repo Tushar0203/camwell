@@ -123,7 +123,7 @@ const Brochure = () => {
           >
             <div className={`flex flex-col lg:flex-row bg-white rounded-2xl shadow-2xl overflow-hidden ${isRtl ? 'lg:flex-row-reverse' : ''}`}>
               {/* Left side - Information section */}
-              <div className={`lg:w-1/2 bg-gradient-to-br from-[#1576ae] to-[#0c4a75] p-8 lg:p-10 text-white ${isRtl ? 'lg:rounded-s-2xl' : 'lg:rounded-e-2xl'}`}>
+              <div className={`lg:w-1/2 bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] p-8 lg:p-10 text-white ${isRtl ? 'lg:rounded-s-2xl' : 'lg:rounded-e-2xl'}`}>
                 <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
                 
                 <motion.div
@@ -363,7 +363,7 @@ const Brochure = () => {
                       <div className="pt-2 sm:pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#1576ae] to-[#1576ae] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
+                          className="w-full text-white bg-gradient-to-r from-[#00a0dc] to-[#00a0dc] hover:from-[#00a0dc] hover:to-[#00a0dc] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (

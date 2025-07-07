@@ -102,14 +102,14 @@ const Brochure = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#1576ae] bg-blue-50 rounded-full">
+            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#00a0dc] bg-blue-50 rounded-full">
               Comprehensive Guide
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
               <span className="relative inline-block">
                 Why Request Our 
                 <span className="relative ml-2">
-                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#2B4162] to-[#1576ae]">
+                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-[#00a0dc] to-[#00a0dc]">
                     Brochure?
                   </span>
                   <motion.span 
@@ -223,7 +223,7 @@ const Brochure = () => {
           >
             <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Left side - Info section */}
-              <div className="bg-gradient-to-br from-[#1a5d90] to-[#1576ae] p-6 sm:p-8 md:p-10 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] p-6 sm:p-8 md:p-10 text-white relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
                   <svg width="100%" height="100%">
                     <pattern id="pattern-circles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse" patternContentUnits="userSpaceOnUse">
@@ -401,7 +401,7 @@ const Brochure = () => {
                       <div className="pt-2 sm:pt-4">
                         <Button
                           type="submit"
-                          className="w-full text-white bg-gradient-to-r from-[#1576ae] to-[#1576ae] hover:from-[#1a5d90] hover:to-[#1a5d90] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
+                          className="w-full text-white bg-gradient-to-r from-[#00a0dc] to-[#00a0dc] hover:from-[#00a0dc] hover:to-[#00a0dc] transition-all duration-300 h-10 sm:h-12 text-base sm:text-lg shadow-lg shadow-blue-700/20 cursor-pointer"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (

@@ -200,8 +200,8 @@ const Navbar = () => {
                       relative px-4 py-2 rounded-lg text-sm font-medium
                       transition-all duration-300 group
                       ${isActive 
-                        ? 'bg-blue-500/20 text-blue-400'
-                        : 'text-slate-300 hover:bg-blue-500/10 hover:text-blue-400'
+                        ? 'bg-[#00a0dc]/20 text-[#00a0dc]'
+                        : 'text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]'
                       }
                     `}
                   >
@@ -213,7 +213,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}                        className={`
                           absolute inset-0 rounded-lg
-                          bg-blue-500/20 border border-blue-400/50
+                          bg-[#00a0dc]/20 border border-[#00a0dc]/50
                         `}
                         transition={{ 
                           duration: 0.2,
@@ -282,7 +282,7 @@ const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
-                  className="rounded-lg transition-colors duration-300 text-slate-300 hover:bg-blue-500/10 hover:text-blue-400"
+                  className="rounded-lg transition-colors duration-300 text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]"
                   aria-label="Toggle menu"
                 >
                   <svg
@@ -315,7 +315,7 @@ const Navbar = () => {
                     </Link>
                     <button 
                       onClick={() => setIsOpen(false)}
-                      className="text-blue-400 font-medium"
+                      className="text-[#00a0dc] font-medium"
                     >
                       Close
                     </button>
@@ -336,18 +336,18 @@ const Navbar = () => {
                             className={`
                               flex items-center gap-3 px-4 py-4 text-base font-medium rounded-lg
                               ${isActive 
-                                ? 'bg-blue-600/20 text-blue-400' 
-                                : 'text-slate-300 hover:bg-blue-500/10 hover:text-blue-400'
+                                ? 'bg-[#00a0dc]/20 text-[#00a0dc]' 
+                                : 'text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]'
                               }
                             `}
                           >
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                              isActive ? 'bg-blue-600/20' : 'bg-[#1a2234]'
+                              isActive ? 'bg-[#00a0dc]/20' : 'bg-[#1a2234]'
                             }`}>
                               {getMenuIcon(item.name)}
                             </div>
                             {item.name}
-                            {isActive && <div className="ml-auto w-2 h-2 rounded-full bg-blue-400"></div>}
+                            {isActive && <div className="ml-auto w-2 h-2 rounded-full bg-[#00a0dc]"></div>}
                           </Link>
                         );
                       })}

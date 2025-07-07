@@ -139,12 +139,12 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#1576ae] rounded-full flex items-center justify-center z-10">
+              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#00a0dc] rounded-full flex items-center justify-center z-10">
                 <span className="text-white text-4xl font-bold">01</span>
               </div>
-              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1576ae] hover:shadow-[0_20px_50px_rgba(8,112,184,0.2)] transition-all duration-500">
+              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#00a0dc] hover:shadow-[0_20px_50px_rgba(8,112,184,0.2)] transition-all duration-500">
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Mission</h2>
-                <div className="w-16 h-1 bg-[#1576ae] mb-8"></div>
+                <div className="w-16 h-1 bg-[#00a0dc] mb-8"></div>
                 <p className="text-gray-700 leading-relaxed text-lg mb-6">
                   To provide innovative, high-quality security fencing solutions that enhance safety and
                   security for our customers while delivering exceptional value and service.
@@ -161,12 +161,12 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#1576ae] rounded-full flex items-center justify-center">
+              <div className="absolute -top-10 -left-5 w-20 h-20 bg-[#00a0dc] rounded-full flex items-center justify-center">
                 <span className="text-white text-4xl font-bold">02</span>
               </div>
-              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#1576ae] hover:shadow-[0_20px_50px_rgba(79,70,229,0.2)] transition-all duration-500">
+              <div className="bg-white rounded-2xl shadow-2xl p-12 border-l-4 border-[#00a0dc] hover:shadow-[0_20px_50px_rgba(79,70,229,0.2)] transition-all duration-500">
                 <h2 className="text-4xl font-bold text-gray-800 mb-6">Our Vision</h2>
-                <div className="w-16 h-1 bg-[#1576ae] mb-8"></div>
+                <div className="w-16 h-1 bg-[#00a0dc] mb-8"></div>
                 <p className="text-gray-700 leading-relaxed text-lg mb-6">
                   To be the most trusted and preferred provider of security fencing solutions in India,
                   recognized for our commitment to quality, innovation, and customer satisfaction.
@@ -191,11 +191,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-24"
           >
-            <span className="px-4 py-1 bg-[#1576ae] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
+            <span className="px-4 py-1 bg-[#00a0dc] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
               What Drives Us
             </span>
             <h2 className="text-5xl font-bold text-gray-800 mb-8">Our Core Values</h2>
-            <div className="w-24 h-1 bg-[#1576ae] mx-auto mb-10"></div>
+            <div className="w-24 h-1 bg-[#00a0dc] mx-auto mb-10"></div>
             <p className="text-gray-700 text-xl max-w-3xl mx-auto">
               These principles guide everything we do at Camwell Industries.
             </p>
@@ -213,8 +213,8 @@ export default function AboutPage() {
               variants={fadeIn}
               className="group"
             >
-              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#1576ae] h-full flex flex-col">
-                <div className="bg-gradient-to-br from-[#1576ae] to-[#1576ae] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
+              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#00a0dc] h-full flex flex-col">
+                <div className="bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
                   <FaCheckCircle className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Quality</h3>
@@ -229,8 +229,8 @@ export default function AboutPage() {
               variants={fadeIn}
               className="group"
             >
-              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#1576ae] h-full flex flex-col">
-                <div className="bg-gradient-to-br from-[#1576ae] to-[#1576ae] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
+              <div className="bg-white rounded-2xl p-10 shadow-xl group-hover:shadow-2xl transition-all duration-500 transform group-hover:-translate-y-3 border-b-4 border-[#00a0dc] h-full flex flex-col">
+                <div className="bg-gradient-to-br from-[#00a0dc] to-[#00a0dc] rounded-2xl w-20 h-20 flex items-center justify-center mx-auto mb-8 transform group-hover:scale-110 transition-transform duration-500">
                   <FaUsers className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4 text-center">Customer Focus</h3>
@@ -289,11 +289,11 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="px-4 py-1 bg-[#1576ae] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
+            <span className="px-4 py-1 bg-[#00a0dc] rounded-full text-white text-sm font-medium tracking-wider uppercase mb-6 inline-block">
               Our Story
             </span>
             <h2 className="text-5xl font-bold text-gray-800 mb-8">Our Journey</h2>
-            <div className="w-20 h-1 bg-[#1576ae] mx-auto mb-10"></div>
+            <div className="w-20 h-1 bg-[#00a0dc] mx-auto mb-10"></div>
             <p className="text-gray-700 leading-relaxed mb-12 text-lg">
               Since our establishment, Camwell Industries has been at the forefront of security fencing innovation in India. 
               We&apos;ve grown from a small local provider to one of the most trusted names in high-security fencing solutions, 

@@ -470,7 +470,7 @@
 
   .service-checkbox:hover,
   .service-checkbox.selected {
-    border-color: #1a5d90;
+    border-color: #00a0dc;
     background-color: #f0f7ff;
   }
   
@@ -486,8 +486,8 @@
   }
   
   .service-checkbox input[type="checkbox"]:checked {
-    background-color: #1a5d90;
-    border-color: #1a5d90;
+    background-color: #00a0dc;
+    border-color: #00a0dc;
   }
   
   .service-checkbox span {
@@ -527,7 +527,7 @@
   .submit-button {
     width: 100%;
     padding: 1rem;
-    background-color: #1a5d90;
+    background-color: #00a0dc;
     color: white;
     border: none;
     border-radius: 0.5rem;

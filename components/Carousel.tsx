@@ -136,7 +136,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
             
             <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-5 sm:p-6 md:p-10">
               <div className="max-w-xl">
-                <h3 className={`inline-block text-[#1576ae] text-xs sm:text-sm md:text-base font-medium tracking-wide mb-2 xs:mb-3 sm:mb-4 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] ${isRTL ? 'border-r-2' : 'border-l-2'} border-[#1576ae] -mt-6 sm:-mt-8 md:-mt-10`}>
+                <h3 className={`inline-block text-[#00a0dc] text-xs sm:text-sm md:text-base font-medium tracking-wide mb-2 xs:mb-3 sm:mb-4 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] ${isRTL ? 'border-r-2' : 'border-l-2'} border-[#00a0dc] -mt-6 sm:-mt-8 md:-mt-10`}>
                   {slides[currentSlide].subtitle}
                 </h3>
                 <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 xs:mb-3 sm:mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
@@ -156,7 +156,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
                 className={`w-6 xs:w-7 sm:w-8 h-1 mx-0.5 sm:mx-1 rounded-full transition-all duration-300 cursor-pointer ${
-                  currentSlide === index ? 'bg-[#1576ae]' : 'bg-gray-600 hover:bg-gray-400'
+                  currentSlide === index ? 'bg-[#00a0dc]' : 'bg-gray-600 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -170,7 +170,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
                 key={index}
                 onClick={() => handleIndicatorClick(index)}
                 className={`relative w-24 h-16 rounded-lg overflow-hidden transition-all duration-300 cursor-pointer ${
-                  currentSlide === index ? 'ring-2 ring-[#1576ae]' : 'opacity-70 hover:opacity-100'
+                  currentSlide === index ? 'ring-2 ring-[#00a0dc]' : 'opacity-70 hover:opacity-100'
                 }`}
               >
                 <Image

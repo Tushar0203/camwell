@@ -195,7 +195,7 @@ const WarrantyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#1576ae] text-white pt-32 pb-24">
+      <section className="relative bg-[#00a0dc] text-white pt-32 pb-24">
         {/* Image background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-3.jpg')] bg-cover bg-center"></div>
@@ -224,8 +224,8 @@ const WarrantyPage = () => {
               variants={fadeIn}
               className="mb-6"
             >
-              <div className="inline-flex items-center justify-center p-2 bg-[#1e293b]/70 rounded-full backdrop-blur-sm border border-[#1576ae]/30">
-                <Shield className={`w-5 h-5 text-[#1576ae] ${isRtl ? 'ml-2' : 'mr-2'}`} />
+              <div className="inline-flex items-center justify-center p-2 bg-[#1e293b]/70 rounded-full backdrop-blur-sm border border-[#00a0dc]/30">
+                <Shield className={`w-5 h-5 text-[#00a0dc] ${isRtl ? 'ml-2' : 'mr-2'}`} />
                 <span className="text-sm font-medium">{translations.hero.badge}</span>
               </div>
             </motion.div>
@@ -251,13 +251,13 @@ const WarrantyPage = () => {
             >
               <Link 
                 href="#standard-coverage" 
-                className="px-8 py-4 bg-[#1576ae] opacity-80 text-white rounded-lg font-medium hover:bg-[#1576ae]/90 transition-colors"
+                className="px-8 py-4 bg-[#00a0dc] opacity-80 text-white rounded-lg font-medium hover:bg-[#00a0dc]/90 transition-colors"
               >
                 {translations.hero.viewCoverage}
               </Link>
               <Link 
                 href="/contact" 
-                className="px-8 py-4 bg-[#1e293a] opacity-80 text-white rounded-lg font-medium backdrop-blur-sm hover:bg-[#1e293b]/80 transition-colors border border-[#1576ae]/20"
+                className="px-8 py-4 bg-[#1e293a] opacity-80 text-white rounded-lg font-medium backdrop-blur-sm hover:bg-[#1e293b]/80 transition-colors border border-[#00a0dc]/20"
               >
                 {translations.hero.contactSupport}
               </Link>
@@ -300,7 +300,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="bg-[#1576ae] text-white px-6 py-4">
+                <div className="bg-[#00a0dc] text-white px-6 py-4">
                   <div className="flex items-center">
                     <Award className={`w-6 h-6 ${isRtl ? 'ml-3' : 'mr-3'}`} />
                     <h3 className="text-xl font-bold">{translations.coverage.standard.title}</h3>
@@ -324,7 +324,7 @@ const WarrantyPage = () => {
                   
                   <Link 
                     href="/contact" 
-                    className="inline-flex items-center text-[#1576ae] hover:text-[#1576ae]/80 font-medium"
+                    className="inline-flex items-center text-[#00a0dc] hover:text-[#00a0dc]/80 font-medium"
                   >
                     {translations.coverage.standard.requestDetails}
                     <ArrowRight className={`w-4 h-4 ${isRtl ? 'mr-1 rtl-mirror' : 'ml-1'}`} />
@@ -337,7 +337,7 @@ const WarrantyPage = () => {
                 variants={fadeIn}
                 className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="bg-[#1576ae] text-white px-6 py-4">
+                <div className="bg-[#00a0dc] text-white px-6 py-4">
                   <div className="flex items-center">
                     <Shield className={`w-6 h-6 ${isRtl ? 'ml-3' : 'mr-3'}`} />
                     <h3 className="text-xl font-bold">{translations.coverage.extended.title}</h3>
@@ -361,7 +361,7 @@ const WarrantyPage = () => {
                   
                   <Link 
                     href="/contact" 
-                    className="inline-flex items-center text-[#1576ae] hover:text-[#1576ae]/80 font-medium"
+                    className="inline-flex items-center text-[#00a0dc] hover:text-[#00a0dc]/80 font-medium"
                   >
                     {translations.coverage.extended.requestDetails}
                     <ArrowRight className={`w-4 h-4 ${isRtl ? 'mr-1 rtl-mirror' : 'ml-1'}`} />
@@ -384,11 +384,11 @@ const WarrantyPage = () => {
               variants={fadeIn}
               className="text-center mb-16"
             >
-              <span className="inline-block px-4 py-1.5 bg-blue-50 text-[#1576ae] rounded-full text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-1.5 bg-blue-50 text-[#00a0dc] rounded-full text-sm font-medium mb-4">
                 {translations.covered.title}
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                <span className="text-[#1576ae]">{translations.covered.title}</span>
+                <span className="text-[#00a0dc]">{translations.covered.title}</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 {translations.covered.description}
@@ -486,7 +486,7 @@ const WarrantyPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#1576ae]">
+      <section className="py-16 bg-[#00a0dc]">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
@@ -498,14 +498,14 @@ const WarrantyPage = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link 
                 href="/downloads/warranty-document.pdf" 
-                className="inline-flex items-center px-6 py-3 bg-white text-[#1576ae] rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-white text-[#00a0dc] rounded-lg font-medium hover:bg-gray-100 transition-colors"
               >
                 <Download className={`w-5 h-5 ${isRtl ? 'ml-2' : 'mr-2'}`} />
                 {translations.resources.warrantyDoc}
               </Link>
               <Link 
                 href="/contact" 
-                className="px-6 py-3 bg-[#1e293a]/80 text-white rounded-lg font-medium hover:bg-[#1576ae]/70 transition-colors border border-white/20"
+                className="px-6 py-3 bg-[#1e293a]/80 text-white rounded-lg font-medium hover:bg-[#00a0dc]/70 transition-colors border border-white/20"
               >
                 {translations.contact.title}
               </Link>

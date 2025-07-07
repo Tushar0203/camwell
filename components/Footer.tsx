@@ -171,25 +171,25 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
               </div>
               <div className="space-y-4">
                 <p className="text-gray-400 flex items-start group hover:text-white transition-colors duration-200">
-                  <MapPin className={`h-5 w-5 flex-shrink-0 text-[#1a5d90] ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                  <MapPin className={`h-5 w-5 flex-shrink-0 text-[#00a0dc] ${isRTL ? 'ml-3' : 'mr-3'}`} />
                   {dict.contactUs.address}
                 </p>
                 <p className="text-gray-400 group cursor-pointer">
                   <Link href={`tel:${dict.contactUs.phone}`} className="flex items-center hover:text-white transition-colors duration-200">
-                    <Phone className={`h-5 w-5 text-[#1a5d90] group-hover:text-[#1F75B5] transition-colors ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                    <Phone className={`h-5 w-5 text-[#00a0dc] group-hover:text-[#00a0dc] transition-colors ${isRTL ? 'ml-3' : 'mr-3'}`} />
                     {dict.contactUs.phone}
                   </Link>
                 </p>
                 <p className="text-gray-400">
                   <Link href={`mailto:${dict.contactUs.email}`} className="hover:text-white transition-colors duration-200 flex items-center group">
-                    <Mail className={`h-5 w-5 text-[#1a5d90] ${isRTL ? 'ml-3' : 'mr-3'}`} />
+                    <Mail className={`h-5 w-5 text-[#00a0dc] ${isRTL ? 'ml-3' : 'mr-3'}`} />
                     {dict.contactUs.email}
                   </Link>
                 </p>
                 <div className="pt-4 sm:pt-6">
-                  <div className="bg-[#1e2432] border border-[#374151] rounded-lg p-4 space-y-3 hover:border-[#1F75B5] transition-colors duration-300">
+                  <div className="bg-[#1e2432] border border-[#374151] rounded-lg p-4 space-y-3 hover:border-[#00a0dc] transition-colors duration-300">
                     <h4 className="flex items-center text-white text-base font-medium">
-                      <Clock className={`h-5 w-5 text-[#1F75B5] ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                      <Clock className={`h-5 w-5 text-[#00a0dc] ${isRTL ? 'ml-2' : 'mr-2'}`} />
                       {dict.businessHours.title}
                     </h4>
                     <div className="space-y-2">

@@ -165,7 +165,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-[#1a5d90] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
+              <div className="bg-[#00a0dc] p-4 sm:p-5 relative flex items-center rounded-none sm:rounded-t-xl">
                 {/* Thumbnail */}
                 <div className="hidden sm:block bg-white rounded-lg h-14 w-14 ml-2 mr-4 p-1 shadow-sm overflow-hidden self-start">
                     <img src={component.url} alt={component.title}
@@ -215,7 +215,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                         <div className="sm:hidden space-y-4">
                           {component.specifications.map((spec, index) => (
                             <div key={index} className="border-b border-gray-100 pb-3 last:border-b-0 last:pb-0">
-                              <div className="text-[#1a5d90] font-medium text-sm mb-1">{spec.label}</div>
+                              <div className="text-[#00a0dc] font-medium text-sm mb-1">{spec.label}</div>
                               <div className="text-gray-700 text-sm">{spec.value}</div>
                             </div>
                           ))}
@@ -225,7 +225,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                     
                     {/* Back button - RTL aware */}
                     <div className="mt-6 w-full flex justify-end">
-                      <Button variant="ghost" className="flex items-center text-sm text-[#1576ae] hover:text-[#1a5d90] p-0" onClick={handleClose}>
+                      <Button variant="ghost" className="flex items-center text-sm text-[#00a0dc] hover:text-[#00a0dc] p-0" onClick={handleClose}>
                         <ArrowRight className="w-4 h-4 mr-1" />
                         <span>{isRTL ? "رجوع" : "Back"}</span>
                       </Button>
@@ -541,7 +541,7 @@ export default function BorderFencePage() {
                 }
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-                <Button className={`bg-white text-[#1a5d90] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium ${isRTL ? "flex-row-reverse" : ""}`}>
+                <Button className={`bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium ${isRTL ? "flex-row-reverse" : ""}`}>
                   <Download className={`${isRTL ? "ml-2" : "mr-2"} h-4 w-4 sm:h-5 sm:w-5`} />
                   {isRTL ? "تحميل المواصفات" : "Download Specifications"}
                 </Button>
@@ -589,7 +589,7 @@ export default function BorderFencePage() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#1576ae] mb-1 sm:mb-2">{stat.value}</h3>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-bold text-[#00a0dc] mb-1 sm:mb-2">{stat.value}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -610,7 +610,7 @@ export default function BorderFencePage() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-16">
-              <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
+              <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
                 {isRTL ? "مكونات النظام" : "System Components"}
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
@@ -627,7 +627,7 @@ export default function BorderFencePage() {
             {/* Components organized by category */}
             <div className="mb-12">
               {/* PRIMARY STRUCTURE */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "الهيكل الأساسي" : "PRIMARY STRUCTURE"}
               </h3>
               
@@ -654,7 +654,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                           <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -665,7 +665,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* FASTENING SYSTEM */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "نظام التثبيت" : "FASTENING SYSTEM"}
               </h3>
               
@@ -692,7 +692,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                           <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -703,7 +703,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* SECURITY ENHANCEMENT */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "تعزيز الأمان" : "SECURITY ENHANCEMENT"}
               </h3>
               
@@ -730,7 +730,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                           <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -741,7 +741,7 @@ export default function BorderFencePage() {
               </div>
 
               {/* HARDWARE & ACCESSORIES */}
-              <h3 className="text-xl md:text-2xl font-bold text-[#1576ae] mb-6 pb-2 border-b border-gray-200">
+              <h3 className="text-xl md:text-2xl font-bold text-[#00a0dc] mb-6 pb-2 border-b border-gray-200">
                 {isRTL ? "الأجهزة والملحقات" : "HARDWARE & ACCESSORIES"}
               </h3>
               
@@ -768,7 +768,7 @@ export default function BorderFencePage() {
                       </div>
                       <div>
                         <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
-                        <button className="text-[#1576ae] text-sm mt-1 flex items-center">
+                        <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                           <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                           <ArrowIcon className="w-3.5 h-3.5 ml-1" />
                         </button>
@@ -800,7 +800,7 @@ export default function BorderFencePage() {
                 viewport={{ once: true }}
                 className="lg:col-span-7"
               >
-                <span className="bg-blue-50 text-[#1576ae] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-6 inline-block">
+                <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-6 inline-block">
                   {isRTL ? "حماية بمستوى عسكري" : "Military-Grade Protection"}
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-6">
@@ -816,8 +816,8 @@ export default function BorderFencePage() {
                 <ul className="space-y-4 mb-6 sm:mb-8">
                   <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
-                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
-                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#00a0dc]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#00a0dc]" />
                       </div>
                     </div>
                     <div>
@@ -833,8 +833,8 @@ export default function BorderFencePage() {
                   </li>
                   <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
-                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
-                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#00a0dc]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#00a0dc]" />
                       </div>
                     </div>
                     <div>
@@ -850,8 +850,8 @@ export default function BorderFencePage() {
                   </li>
                   <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
-                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
-                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#00a0dc]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#00a0dc]" />
                       </div>
                     </div>
                     <div>
@@ -867,8 +867,8 @@ export default function BorderFencePage() {
                   </li>
                   <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
-                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
-                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#00a0dc]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#00a0dc]" />
                       </div>
                     </div>
                     <div>
@@ -884,8 +884,8 @@ export default function BorderFencePage() {
                   </li>
                   <li className="flex items-start text-left">
                     <div className="flex-shrink-0 mt-1 mr-3">
-                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#1576ae]/10">
-                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#1576ae]" />
+                      <div className="flex items-center justify-center h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-[#00a0dc]/10">
+                        <Check className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#00a0dc]" />
                       </div>
                     </div>
                     <div>
@@ -951,7 +951,7 @@ export default function BorderFencePage() {
                     <div className="flex items-start">
                       <div className="flex-shrink-0 bg-gray-100 rounded-lg p-1.5 sm:p-2 mr-2 sm:mr-3">
                         <div className="w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center">
-                          <span className="text-[#1576ae] text-sm sm:text-base font-medium">15+</span>
+                          <span className="text-[#00a0dc] text-sm sm:text-base font-medium">15+</span>
                         </div>
                       </div>
                       <div>
@@ -968,7 +968,7 @@ export default function BorderFencePage() {
                     <div className="flex items-start">
                       <div className="flex-shrink-0 bg-gray-100 rounded-lg p-1.5 sm:p-2 mr-2 sm:mr-3">
                         <div className="w-7 h-7 sm:w-10 sm:h-10 flex items-center justify-center">
-                          <span className="text-[#1576ae] text-sm sm:text-base font-medium">500+</span>
+                          <span className="text-[#00a0dc] text-sm sm:text-base font-medium">500+</span>
                         </div>
                       </div>
                       <div>
@@ -989,7 +989,7 @@ export default function BorderFencePage() {
       </section>
       
       {/* Call to Action Section - improved for mobile */}
-      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-[#1576ae] to-[#1a5d90] text-white relative">
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-[#00a0dc] to-[#00a0dc] text-white relative">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.3)_0%,transparent_70%)]"></div>
         
@@ -1011,7 +1011,7 @@ export default function BorderFencePage() {
                 }
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-                <Button className="bg-white text-[#1576ae] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   {isRTL ? "طلب استشارة" : "Request a Consultation"}
                 </Button>
                 <Button variant="outline" className={`bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`}>

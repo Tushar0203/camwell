@@ -154,26 +154,26 @@ const TestimonialCard = ({
       </div>
 
       {/* Divider */}
-      <div className={`w-16 sm:w-24 h-[2px] ${isRTL ? 'bg-gradient-to-l ml-auto' : 'bg-gradient-to-r'} from-[#1F75B5]/30 via-[#1F75B5]/10 to-transparent mb-4 group-hover:w-24 sm:group-hover:w-32 transition-all duration-500`} />
+      <div className={`w-16 sm:w-24 h-[2px] ${isRTL ? 'bg-gradient-to-l ml-auto' : 'bg-gradient-to-r'} from-[#00a0dc]/30 via-[#00a0dc]/10 to-transparent mb-4 group-hover:w-24 sm:group-hover:w-32 transition-all duration-500`} />
 
       {/* Author Info and Date */}
       <div className="relative space-y-3 bg-gray-50/50 p-3 rounded-xl"> {/* Applied to all screen sizes */}
         {/* Date - Moved to top */}
-        <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm group-hover:bg-[#1F75B5]/5 transition-all duration-300 w-fit">
-          <Calendar className="w-3 h-3 text-[#1F75B5]" />
+        <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-sm group-hover:bg-[#00a0dc]/5 transition-all duration-300 w-fit">
+          <Calendar className="w-3 h-3 text-[#00a0dc]" />
           <span className="text-xs text-gray-500">{testimonial.date}</span>
         </div>
 
         {/* Author and Organization Info */}
         <div className="flex items-start gap-3">
           <div className="shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1F75B5]/15 to-[#1F75B5]/5 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500 shadow-lg bg-white">
-              <Building2 className="w-5 h-5 text-[#1F75B5]" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00a0dc]/15 to-[#00a0dc]/5 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500 shadow-lg bg-white">
+              <Building2 className="w-5 h-5 text-[#00a0dc]" />
             </div>
           </div>
 
           <div className="min-w-0 flex-1">
-            <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-[#1F75B5] transition-colors duration-300 text-sm">
+            <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-[#00a0dc] transition-colors duration-300 text-sm">
               {testimonial.author}
             </h4>
             <p className="text-xs text-gray-600 leading-snug font-medium break-words">
@@ -302,7 +302,7 @@ const TestimonialsSection = ({ dictionary }: { dictionary?: typeof defaultDictio
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-16 md:mb-20">
           {/* Badge */}
-          <span className="inline-block px-3 py-1.5 bg-blue-50 text-[#1576ae] rounded-full text-sm font-medium tracking-wide mb-6">
+          <span className="inline-block px-3 py-1.5 bg-[#00a0dc]/10 text-[#00a0dc] rounded-full text-sm font-medium tracking-wide mb-6">
             {dict.badge}
           </span>
           
@@ -335,7 +335,7 @@ const TestimonialsSection = ({ dictionary }: { dictionary?: typeof defaultDictio
             className="group inline-flex items-center justify-center 
             px-6 py-3 sm:px-6 sm:py-3
             max-sm:px-5 max-sm:py-2.5 max-sm:text-sm
-            bg-[#1576ae] hover:bg-[#1864A1] text-white text-[15px] font-medium 
+            bg-[#00a0dc] hover:bg-[#00a0dc] text-white text-[15px] font-medium 
             rounded-full transition-all duration-300 shadow-sm hover:shadow-md
             sm:max-w-[280px] max-sm:max-w-[220px] w-full sm:w-auto cursor-pointer
             mx-auto"

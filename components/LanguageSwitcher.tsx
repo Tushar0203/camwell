@@ -75,7 +75,7 @@ export default function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button 
-          className="bg-blue-600 hover:bg-blue-700 text-white border-none rounded-md font-medium transition-colors duration-200 px-4 py-2 h-auto flex items-center gap-1"
+          className="bg-[#00a0dc] hover:bg-[#00a0dc]/90 text-white border-none rounded-md font-medium transition-colors duration-200 px-4 py-2 h-auto flex items-center gap-1"
         >
           <span className="mr-1 text-sm font-medium">
             {languageInfo[validLocale].code}
@@ -99,7 +99,7 @@ export default function LanguageSwitcher() {
           >
             <DropdownMenuItem className={`flex items-center gap-2 py-2 px-3 rounded-md cursor-pointer transition-colors duration-200 ${
               validLocale === locale
-                ? "bg-blue-600 text-white hover:bg-blue-700"
+                ? "bg-[#00a0dc] text-white hover:bg-[#00a0dc]/90"
                 : "text-gray-200 hover:bg-gray-800"
             }`}>
               <span className="text-sm font-medium mr-1">

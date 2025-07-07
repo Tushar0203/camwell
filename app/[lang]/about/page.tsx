@@ -154,7 +154,7 @@ export default function AboutPage() {
           >
             <motion.div
               variants={itemVariants}
-              className="inline-block mb-4 sm:mb-6 px-4 sm:px-6 py-1 sm:py-2 bg-white/10 backdrop-blur-md border-t-0 border-x-0 border-b-2 border-[#1576ae]"
+              className="inline-block mb-4 sm:mb-6 px-4 sm:px-6 py-1 sm:py-2 bg-white/10 backdrop-blur-md border-t-0 border-x-0 border-b-2 border-[#00a0dc]"
             >
               <span className="text-blue-100 tracking-widest uppercase text-xs sm:text-sm font-medium">{t.welcomeToOurStory}</span>
             </motion.div>
@@ -171,7 +171,7 @@ export default function AboutPage() {
               variants={itemVariants}
               className="flex justify-center mb-4 sm:mb-6"
             >
-              <div className="w-20 sm:w-32 h-1 bg-[#1576ae]"></div>
+              <div className="w-20 sm:w-32 h-1 bg-[#00a0dc]"></div>
             </motion.div>
             
             <motion.p 
@@ -188,19 +188,19 @@ export default function AboutPage() {
               className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mt-10 sm:mt-16"
             >
               <div className={`flex items-center gap-2 sm:gap-3 justify-center ${isRTL ? 'flex-row-reverse' : ''} mb-3 sm:mb-0`}>
-                <div className="p-1.5 sm:p-2 bg-[#1576ae]/20 border border-[#1576ae]/30">
+                <div className="p-1.5 sm:p-2 bg-[#00a0dc]/20 border border-[#00a0dc]/30">
                   <ShieldCheck size={18} className="text-blue-100" />
                 </div>
                 <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-blue-100">{t.certifiedQuality}</span>
               </div>
               <div className={`flex items-center gap-2 sm:gap-3 justify-center ${isRTL ? 'flex-row-reverse' : ''} mb-3 sm:mb-0`}>
-                <div className="p-1.5 sm:p-2 bg-[#1576ae]/20 border border-[#1576ae]/30">
+                <div className="p-1.5 sm:p-2 bg-[#00a0dc]/20 border border-[#00a0dc]/30">
                   <Truck size={18} className="text-blue-100" />
                 </div>
                 <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-blue-100">{t.nationwideDelivery}</span>
               </div>
               <div className={`flex items-center gap-2 sm:gap-3 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <div className="p-1.5 sm:p-2 bg-[#1576ae]/20 border border-[#1576ae]/30">
+                <div className="p-1.5 sm:p-2 bg-[#00a0dc]/20 border border-[#00a0dc]/30">
                   <Zap size={18} className="text-blue-100" />
                 </div>
                 <span className="text-xs sm:text-sm font-medium uppercase tracking-wider text-blue-100">{t.expertInstallation}</span>
@@ -234,21 +234,21 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative md:w-1/2 mb-10 md:mb-0"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-[#1576ae]"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1576ae]"></div>
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#1576ae]"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#1576ae]"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-[#00a0dc]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#00a0dc]"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#00a0dc]"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#00a0dc]"></div>
               
               <div className={`bg-white p-6 sm:p-8 md:p-12 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
                 <div className={`flex items-center gap-3 sm:gap-4 mb-6 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
-                  <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#1576ae] flex-shrink-0">
-                    <FaCog className="w-6 h-6 sm:w-8 sm:h-8 text-[#1576ae]" />
+                  <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#00a0dc] flex-shrink-0">
+                    <FaCog className="w-6 h-6 sm:w-8 sm:h-8 text-[#00a0dc]" />
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 uppercase tracking-wider">
                     {t.ourMission}
                   </h2>
                 </div>
-                <div className={`w-12 sm:w-16 h-[3px] bg-[#1576ae] mb-6 sm:mb-8 ${isRTL ? 'mr-auto' : ''}`}></div>
+                <div className={`w-12 sm:w-16 h-[3px] bg-[#00a0dc] mb-6 sm:mb-8 ${isRTL ? 'mr-auto' : ''}`}></div>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
                   {t.missionDescription}
                 </p>
@@ -263,21 +263,21 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
               className="relative md:w-1/2"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-[#1576ae]"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1576ae]"></div>
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#1576ae]"></div>
-              <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#1576ae]"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-[#00a0dc]"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#00a0dc]"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#00a0dc]"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-1 bg-[#00a0dc]"></div>
               
               <div className={`bg-white p-6 sm:p-8 md:p-12 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
                 <div className={`flex items-center gap-3 sm:gap-4 mb-6 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
-                  <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#1576ae] flex-shrink-0">
-                    <FaIndustry className="w-6 h-6 sm:w-8 sm:h-8 text-[#1576ae]" />
+                  <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#00a0dc] flex-shrink-0">
+                    <FaIndustry className="w-6 h-6 sm:w-8 sm:h-8 text-[#00a0dc]" />
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 uppercase tracking-wider">
                     {t.ourVision}
                   </h2>
                 </div>
-                <div className={`w-12 sm:w-16 h-[3px] bg-[#1576ae] mb-6 sm:mb-8 ${isRTL ? 'mr-auto' : ''}`}></div>
+                <div className={`w-12 sm:w-16 h-[3px] bg-[#00a0dc] mb-6 sm:mb-8 ${isRTL ? 'mr-auto' : ''}`}></div>
                 <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
                   {t.visionDescription}
                 </p>
@@ -308,14 +308,14 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className={`text-center mb-16 sm:mb-24 ${isRTL ? 'rtl' : ''}`}
           >
-            <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1576ae] border-2 border-[#1576ae]/20">
+            <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#00a0dc] border-2 border-[#00a0dc]/20">
               <span className="text-white text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">{t.whatDrivesUs}</span>
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 uppercase tracking-wide" 
                 style={{ fontFamily: "'DIN Condensed', 'Bebas Neue', sans-serif", letterSpacing: "1px" }}>
               {t.ourCoreValues}
             </h2>
-            <div className="w-24 sm:w-32 h-1 bg-[#1576ae] mx-auto mb-8 sm:mb-10"></div>
+            <div className="w-24 sm:w-32 h-1 bg-[#00a0dc] mx-auto mb-8 sm:mb-10"></div>
             <p className="text-gray-700 text-lg sm:text-xl max-w-3xl mx-auto px-2">
               {t.coreValuesDescription}
             </p>
@@ -339,7 +339,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-1000 z-10"></div>
                 
                 <div className={`bg-white p-6 sm:p-8 md:p-10 border border-gray-200 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#1576ae] flex items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#00a0dc] flex items-center justify-center">
                     <FaBolt className="text-white text-2xl sm:text-3xl" />
                   </div>
                   
@@ -353,7 +353,7 @@ export default function AboutPage() {
                       sentence && (
                         <li key={idx} className="relative">
                           <div className={`absolute ${isRTL ? 'right-[-20px] sm:right-[-24px]' : 'left-[-20px] sm:left-[-24px]'} top-1.5 w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center`}>
-                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#1576ae] rotate-45"></div>
+                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a0dc] rotate-45"></div>
                           </div>
                           {sentence + (idx < t.qualityDescription.split('. ').length - 2 ? '.' : '')}
                         </li>
@@ -375,7 +375,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-1000 z-10"></div>
                 
                 <div className={`bg-white p-6 sm:p-8 md:p-10 border border-gray-200 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#1576ae] flex items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#00a0dc] flex items-center justify-center">
                     <FaUsers className="text-white text-2xl sm:text-3xl" />
                   </div>
                   
@@ -389,7 +389,7 @@ export default function AboutPage() {
                       sentence && (
                         <li key={idx} className="relative">
                           <div className={`absolute ${isRTL ? 'right-[-20px] sm:right-[-24px]' : 'left-[-20px] sm:left-[-24px]'} top-1.5 w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center`}>
-                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#1576ae] rotate-45"></div>
+                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a0dc] rotate-45"></div>
                           </div>
                           {sentence + (idx < t.customerFocusDescription.split('. ').length - 2 ? '.' : '')}
                         </li>
@@ -411,7 +411,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-1000 z-10"></div>
                 
                 <div className={`bg-white p-6 sm:p-8 md:p-10 border border-gray-200 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#1576ae] flex items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#00a0dc] flex items-center justify-center">
                     <FaBullseye className="text-white text-2xl sm:text-3xl" />
                   </div>
                   
@@ -425,7 +425,7 @@ export default function AboutPage() {
                       sentence && (
                         <li key={idx} className="relative">
                           <div className={`absolute ${isRTL ? 'right-[-20px] sm:right-[-24px]' : 'left-[-20px] sm:left-[-24px]'} top-1.5 w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center`}>
-                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#1576ae] rotate-45"></div>
+                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a0dc] rotate-45"></div>
                           </div>
                           {sentence + (idx < t.innovationDescription.split('. ').length - 2 ? '.' : '')}
                         </li>
@@ -447,7 +447,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 -translate-x-full group-hover:translate-x-full transition-all duration-1000 z-10"></div>
                 
                 <div className={`bg-white p-6 sm:p-8 md:p-10 border border-gray-200 h-full flex flex-col ${isRTL ? 'text-right' : ''}`}>
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#1576ae] flex items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mb-6 sm:mb-8 p-2.5 sm:p-3 bg-[#00a0dc] flex items-center justify-center">
                     <FaClock className="text-white text-2xl sm:text-3xl" />
                   </div>
                   
@@ -461,7 +461,7 @@ export default function AboutPage() {
                       sentence && (
                         <li key={idx} className="relative">
                           <div className={`absolute ${isRTL ? 'right-[-20px] sm:right-[-24px]' : 'left-[-20px] sm:left-[-24px]'} top-1.5 w-3 h-3 sm:w-4 sm:h-4 flex items-center justify-center`}>
-                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#1576ae] rotate-45"></div>
+                            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#00a0dc] rotate-45"></div>
                           </div>
                           {sentence + (idx < t.reliabilityDescription.split('. ').length - 2 ? '.' : '')}
                         </li>
@@ -495,29 +495,29 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className={`md:w-1/2 ${isRTL ? 'md:order-2' : ''} border-2 border-[#1576ae]/10 p-6 sm:p-8 bg-white mb-10 md:mb-0 w-full`}
+              className={`md:w-1/2 ${isRTL ? 'md:order-2' : ''} border-2 border-[#00a0dc]/10 p-6 sm:p-8 bg-white mb-10 md:mb-0 w-full`}
             >
-              <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1576ae] border border-[#1576ae]/20">
+              <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#00a0dc] border border-[#00a0dc]/20">
                 <span className="text-white text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">{t.ourStory}</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 uppercase tracking-wide" 
                   style={{ fontFamily: "'DIN Condensed', 'Bebas Neue', sans-serif", letterSpacing: "1px" }}>
                 {t.ourJourney}
               </h2>
-              <div className="w-16 sm:w-24 h-1 bg-[#1576ae] mb-8 sm:mb-10"></div>
+              <div className="w-16 sm:w-24 h-1 bg-[#00a0dc] mb-8 sm:mb-10"></div>
               <p className={`text-gray-700 leading-relaxed mb-8 text-base sm:text-lg ${isRTL ? 'text-right' : 'text-left'}`}>
                 {t.journeyDescription}
               </p>
 
               <div className="flex">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#1576ae]/10 border border-[#1576ae]/30 flex items-center justify-center">
-                  <Bolt className="text-[#1576ae] w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#00a0dc]/10 border border-[#00a0dc]/30 flex items-center justify-center">
+                  <Bolt className="text-[#00a0dc] w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#1576ae]/5 border border-[#1576ae]/20 flex items-center justify-center ml-3">
-                  <Shield className="text-[#1576ae] w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#00a0dc]/5 border border-[#00a0dc]/20 flex items-center justify-center ml-3">
+                  <Shield className="text-[#00a0dc] w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#1576ae]/2 border border-[#1576ae]/10 flex items-center justify-center ml-3">
-                  <Wrench className="text-[#1576ae] w-6 h-6 sm:w-8 sm:h-8" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#00a0dc]/2 border border-[#00a0dc]/10 flex items-center justify-center ml-3">
+                  <Wrench className="text-[#00a0dc] w-6 h-6 sm:w-8 sm:h-8" />
                 </div>
               </div>
             </motion.div>
@@ -530,13 +530,13 @@ export default function AboutPage() {
               className={`md:w-1/2 ${isRTL ? 'md:order-1' : ''} w-full`}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-[#1576ae] transform -translate-x-2 translate-y-2 sm:-translate-x-4 sm:translate-y-4"></div>
+                <div className="absolute inset-0 bg-[#00a0dc] transform -translate-x-2 translate-y-2 sm:-translate-x-4 sm:translate-y-4"></div>
                 <img 
                   src="/images/fence-3.jpg" 
                   alt="Security Fence" 
                   className="w-full h-auto relative z-10 border-4 sm:border-8 border-white"
                 />
-                <div className="absolute top-0 left-0 w-full h-full border-8 sm:border-[16px] border-[#1576ae]/5 transform translate-x-4 -translate-y-4 sm:translate-x-6 sm:-translate-y-6"></div>
+                <div className="absolute top-0 left-0 w-full h-full border-8 sm:border-[16px] border-[#00a0dc]/5 transform translate-x-4 -translate-y-4 sm:translate-x-6 sm:-translate-y-6"></div>
               </div>
             </motion.div>
           </div>

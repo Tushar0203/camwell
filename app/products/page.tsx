@@ -231,7 +231,7 @@ const Products = () => {
               className="flex flex-wrap justify-center gap-5"
             >
               <Button 
-                className="group 2xl glow bg-white opacity-80 px-8 py-8 bg-gradient-to-r from-[#1a5d90] to-[#1a5d90] text-white text-[18px] cursor-pointer"
+                className="group 2xl glow bg-white opacity-80 px-8 py-8 bg-gradient-to-r from-[#00a0dc] to-[#00a0dc] text-white text-[18px] cursor-pointer"
                 onClick={scrollToProducts}
               >
                 <span>Browse Products</span>
