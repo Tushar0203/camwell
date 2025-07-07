@@ -32,7 +32,7 @@ const defaultDictionary: ProductDictionary = {
   sectionDescription: "Explore our comprehensive range of high-security fencing solutions designed for government and defense applications.",
   keyFeatures: "Key Features",
   borderFence: {
-    name: "Border Fence System",
+    name: "India's New Border Fence",
     description: "Advanced perimeter security solution designed for high-security installations and border protection.",
     features: [
       "Anti-climb and anti-cut design",
@@ -43,7 +43,7 @@ const defaultDictionary: ProductDictionary = {
     knowMore: "View Details"
   },
   fenceSwingGate: {
-    name: "Security Swing Gates",
+    name: "Fence Swing Gate",
     description: "Heavy-duty access control gates compatible with our fencing systems for secure entry points.",
     features: [
       "Industrial-grade construction",
@@ -143,12 +143,7 @@ const ProductCard = ({
         </div>
         
         <div className="absolute inset-0 p-6 flex flex-col justify-center items-center text-white">
-          <div className="card-icon-wrapper backdrop-blur-md p-4 mb-3 relative border border-white/20 rounded-sm">
-            <div className="absolute top-[-3px] right-[-3px] w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-            <div className="absolute bottom-[-3px] left-[-3px] w-2 h-2 bg-green-500 rounded-full"></div>
-            {icon}
-          </div>
-          <h3 className="text-xl font-bold mb-1 text-center">{product.name}</h3>
+          <h3 className="text-2xl font-bold mb-1 text-center">{product.name}</h3>
         </div>
         
         {/* Bottom diagonal caution stripes */}
@@ -200,11 +195,10 @@ const ProductCard = ({
             <span className="text-yellow-600">REF: {productId}</span>
           </div>
           <Button 
-            variant={productKey === 'borderFence' ? 'industrial' : 'warning'} 
+            variant='industrial' 
             className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-black`}
           >
             <span>{product.knowMore}</span>
-            <ArrowIcon size={16} className={`${isRTL ? 'mr-2 group-hover:-translate-x-1' : 'ml-2 group-hover:translate-x-1'} transition-transform duration-300`} />
           </Button>
         </div>
       </CardFooter>

@@ -107,11 +107,10 @@ const ProductCard = ({ name, description, features, icon }: {
       
       <CardFooter className="px-6 pb-6 pt-0">
         <Button 
-          variant="default" 
-          className="w-full bg-[#1576ae] text-white hover:bg-industrial-blue/90 group-hover:bg-industrial-blue group-hover:text-white transition-colors duration-300 flex items-center justify-center cursor-pointer"
+          variant="outline" 
+          className="w-full bg-white text-gray-800 border-gray-300 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-300 flex items-center justify-center cursor-pointer font-medium"
         >
           <span>Know more</span>
-          <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
         </Button>
       </CardFooter>
     </Card>
