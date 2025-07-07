@@ -233,7 +233,7 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
               <div className="ml-0 md:ml-4">
                 <Button 
                   onClick={() => router.push(`/${lang}/contact`)}
-                  className={`bg-[#FFD600] hover:bg-[#FFE44D] text-black font-bold px-6 py-4 text-base tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                  className={`bg-[#FFD600] hover:bg-[#FFE44D] text-[#2d2d2d] font-bold px-6 py-4 text-base tracking-wide border-2 border-[#2d2d2d] shadow-[4px_4px_0px_0px_rgba(45,45,45,1)] transition-all hover:shadow-[2px_2px_0px_0px_rgba(45,45,45,1)] flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
                 >
                   <span className="uppercase">{isRTL ? "تواصل مع فريق الحلول المخصصة" : "Contact Our Team"}</span>
                   <ArrowIcon className="h-5 w-5" strokeWidth={2.5} />

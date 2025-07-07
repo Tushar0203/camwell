@@ -173,7 +173,7 @@ const TestimonialCard = ({
           </div>
 
           <div className="min-w-0 flex-1">
-            <h4 className="font-semibold text-gray-900 mb-1 group-hover:text-[#00a0dc] transition-colors duration-300 text-sm">
+            <h4 className="font-semibold text-[#2d2d2d] mb-1 group-hover:text-[#00a0dc] transition-colors duration-300 text-sm">
               {testimonial.author}
             </h4>
             <p className="text-xs text-gray-600 leading-snug font-medium break-words">
@@ -307,7 +307,7 @@ const TestimonialsSection = ({ dictionary }: { dictionary?: typeof defaultDictio
           </span>
           
           {/* Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-[56px] font-bold text-gray-900 mb-8 tracking-tight">
+          <h2 className="text-3xl md:text-4xl lg:text-[56px] font-bold text-[#2d2d2d] mb-8 tracking-tight">
             {dict.sectionTitle}
           </h2>
           

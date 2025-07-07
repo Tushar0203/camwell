@@ -226,7 +226,7 @@ const Brochure = () => {
                   viewport={{ once: true }}
                   className="relative z-10"
                 >
-                  <h3 className={`text-xl sm:text-2xl font-semibold text-charcoal mb-4 sm:mb-6 ${isRtl ? 'text-right' : 'text-left'}`}>
+                  <h3 className={`text-xl sm:text-2xl font-semibold text-[#2d2d2d] mb-4 sm:mb-6 ${isRtl ? 'text-right' : 'text-left'}`}>
                     {dictionary.brochure?.form.title}
                   </h3>
                   
@@ -255,7 +255,7 @@ const Brochure = () => {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.4 }}
                       >
-                        <h4 className="text-2xl font-bold text-charcoal mb-2">{dictionary.brochure?.form.thankYou}</h4>
+                        <h4 className="text-2xl font-bold text-[#2d2d2d] mb-2">{dictionary.brochure?.form.thankYou}</h4>
                         <p className="text-gray-600 mb-6">
                           {dictionary.brochure?.form.confirmation}
                         </p>

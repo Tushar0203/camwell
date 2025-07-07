@@ -105,7 +105,7 @@ const Brochure = () => {
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-[#00a0dc] bg-blue-50 rounded-full">
               Comprehensive Guide
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4">
               <span className="relative inline-block">
                 Why Request Our 
                 <span className="relative ml-2">
@@ -174,7 +174,7 @@ const Brochure = () => {
                       </div>
                       
                       <div className="space-y-3 relative z-10">
-                        <h3 className={`text-xl font-bold text-gray-800 group-hover:text-gray-900 transition-colors duration-300`}>
+                        <h3 className={`text-xl font-bold text-gray-800 group-hover:text-[#2d2d2d] transition-colors duration-300`}>
                           {benefit.title}
                         </h3>
                         
@@ -190,7 +190,7 @@ const Brochure = () => {
                       >
                         <Button 
                           variant="ghost"
-                          className={`text-sm font-medium text-gray-700 group/btn flex items-center gap-1 hover:text-gray-900 hover:bg-gray-100/50`}
+                          className={`text-sm font-medium text-gray-700 group/btn flex items-center gap-1 hover:text-[#2d2d2d] hover:bg-gray-100/50`}
                         >
                           Learn more
                           <ChevronRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-1" />
@@ -282,7 +282,7 @@ const Brochure = () => {
                   viewport={{ once: true }}
                   className="relative z-10"
                 >
-                  <h3 className="text-xl sm:text-2xl font-semibold text-charcoal mb-4 sm:mb-6">Fill in your details</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-[#2d2d2d] mb-4 sm:mb-6">Fill in your details</h3>
                   
                   {submitted ? (
                     <motion.div 
@@ -309,7 +309,7 @@ const Brochure = () => {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.4 }}
                       >
-                        <h4 className="text-2xl font-bold text-charcoal mb-2">Thank You!</h4>
+                        <h4 className="text-2xl font-bold text-[#2d2d2d] mb-2">Thank You!</h4>
                         <p className="text-gray-600 mb-6">
                           Your brochure request has been received. We&apos;ll send it to your email shortly.
                         </p>

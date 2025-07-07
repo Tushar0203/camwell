@@ -311,7 +311,7 @@ export default function AboutPage() {
             <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#00a0dc] border-2 border-[#00a0dc]/20">
               <span className="text-white text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">{t.whatDrivesUs}</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 uppercase tracking-wide" 
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#2d2d2d] mb-6 sm:mb-8 uppercase tracking-wide" 
                 style={{ fontFamily: "'DIN Condensed', 'Bebas Neue', sans-serif", letterSpacing: "1px" }}>
               {t.ourCoreValues}
             </h2>
@@ -500,7 +500,7 @@ export default function AboutPage() {
               <div className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#00a0dc] border border-[#00a0dc]/20">
                 <span className="text-white text-xs sm:text-sm font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">{t.ourStory}</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 uppercase tracking-wide" 
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2d2d2d] mb-6 sm:mb-8 uppercase tracking-wide" 
                   style={{ fontFamily: "'DIN Condensed', 'Bebas Neue', sans-serif", letterSpacing: "1px" }}>
                 {t.ourJourney}
               </h2>

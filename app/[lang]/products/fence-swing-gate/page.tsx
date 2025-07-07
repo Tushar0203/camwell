@@ -399,7 +399,7 @@ export default function FenceSwingGatePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4 sm:mb-6">
                 {isRTL ? "المكونات والمواصفات" : "Components & Specifications"}
               </h2>
               <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg">
@@ -438,7 +438,7 @@ export default function FenceSwingGatePage() {
                           )}
                         </div>
                         <div>
-                          <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                          <h4 className="text-[#2d2d2d] font-medium">{translateComponentName(item.name, isRTL)}</h4>
                           <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -477,7 +477,7 @@ export default function FenceSwingGatePage() {
                           )}
                         </div>
                         <div>
-                          <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                          <h4 className="text-[#2d2d2d] font-medium">{translateComponentName(item.name, isRTL)}</h4>
                           <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -516,7 +516,7 @@ export default function FenceSwingGatePage() {
                           )}
                         </div>
                         <div>
-                          <h4 className="text-gray-900 font-medium">{translateComponentName(item.name, isRTL)}</h4>
+                          <h4 className="text-[#2d2d2d] font-medium">{translateComponentName(item.name, isRTL)}</h4>
                           <button className="text-[#00a0dc] text-sm mt-1 flex items-center">
                             <span>{isRTL ? "عرض التفاصيل" : "View Details"}</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -553,7 +553,7 @@ export default function FenceSwingGatePage() {
                 <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   {isRTL ? "حماية من الدرجة العسكرية" : "Military-Grade Protection"}
                 </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4 sm:mb-6">
                   {isRTL ? "تميز تقني في كل التفاصيل" : "Technical Excellence in Every Detail"}
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">
@@ -569,7 +569,7 @@ export default function FenceSwingGatePage() {
                       <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
-                      <h3 className="text-gray-900 font-medium">
+                      <h3 className="text-[#2d2d2d] font-medium">
                         {isRTL ? "تصميم مقاوم للتسلق والقطع" : "Anti-Climb & Anti-Cut Design"}
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
@@ -584,7 +584,7 @@ export default function FenceSwingGatePage() {
                       <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
-                      <h3 className="text-gray-900 font-medium">
+                      <h3 className="text-[#2d2d2d] font-medium">
                         {isRTL ? "تركيب سريع" : "Rapid Installation"}
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
@@ -599,7 +599,7 @@ export default function FenceSwingGatePage() {
                       <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
-                      <h3 className="text-gray-900 font-medium">
+                      <h3 className="text-[#2d2d2d] font-medium">
                         {isRTL ? "مقاوم للعوامل الجوية" : "Weather Resistant"}
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
@@ -614,7 +614,7 @@ export default function FenceSwingGatePage() {
                       <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
-                      <h3 className="text-gray-900 font-medium">
+                      <h3 className="text-[#2d2d2d] font-medium">
                         {isRTL ? "متانة طويلة الأمد" : "Long-Term Durability"}
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">
@@ -629,7 +629,7 @@ export default function FenceSwingGatePage() {
                       <Check className="w-4 h-4 text-[#00a0dc]" />
                     </div>
                     <div>
-                      <h3 className="text-gray-900 font-medium">
+                      <h3 className="text-[#2d2d2d] font-medium">
                         {isRTL ? "اختبار قوة التأثير" : "Impact Strength Testing"}
                       </h3>
                       <p className="text-gray-600 text-sm sm:text-base">

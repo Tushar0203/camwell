@@ -108,7 +108,7 @@ const ProductCard = ({ name, description, features, icon }: {
       <CardFooter className="px-6 pb-6 pt-0">
         <Button 
           variant="outline" 
-          className="w-full bg-white text-gray-800 border-gray-300 hover:bg-gray-50 hover:text-gray-900 transition-colors duration-300 flex items-center justify-center cursor-pointer font-medium"
+          className="w-full bg-white text-gray-800 border-gray-300 hover:bg-gray-50 hover:text-[#2d2d2d] transition-colors duration-300 flex items-center justify-center cursor-pointer font-medium"
         >
           <span>Know more</span>
         </Button>
@@ -264,7 +264,7 @@ const Products = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4" ref={productsRef}>Security Solutions for Every Need</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4" ref={productsRef}>Security Solutions for Every Need</h2>
             <div className="w-24 h-1 bg-industrial-blue mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
               We offer a wide range of high-quality fencing and security products designed to meet various security requirements.
@@ -297,7 +297,7 @@ const Products = () => {
             <div className="inline-block bg-industrial-blue/10 text-industrial-blue px-4 py-2 rounded-full text-sm font-semibold mb-4">
               Custom Solutions
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#2d2d2d] mb-4">
               Tailored Security Solutions
             </h2>
             <div className="w-24 h-1 bg-industrial-blue mx-auto mb-6"></div>
@@ -323,7 +323,7 @@ const Products = () => {
                     <ShieldCheck className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert Consultation</h3>
+                    <h3 className="text-xl font-semibold text-[#2d2d2d] mb-2">Expert Consultation</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Our security specialists conduct comprehensive site surveys and provide 
                       detailed technical recommendations tailored to your specific needs.
@@ -337,7 +337,7 @@ const Products = () => {
                     <Zap className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Custom Manufacturing</h3>
+                    <h3 className="text-xl font-semibold text-[#2d2d2d] mb-2">Custom Manufacturing</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Advanced manufacturing capabilities allow us to create products to your exact 
                       specifications, ensuring perfect fit and optimal performance.
@@ -351,7 +351,7 @@ const Products = () => {
                     <Truck className="text-white" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional Installation</h3>
+                    <h3 className="text-xl font-semibold text-[#2d2d2d] mb-2">Professional Installation</h3>
                     <p className="text-gray-600 leading-relaxed">
                       Our certified installation teams ensure proper setup and long-term reliability 
                       with comprehensive project management from start to finish.

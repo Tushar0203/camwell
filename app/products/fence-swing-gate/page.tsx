@@ -340,7 +340,7 @@ export default function FenceSwingGatePage() {
             <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block shadow-sm">
               System Components
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-3 sm:mb-4">
               Advanced Security Elements
             </h2>
             <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto px-2">
@@ -422,7 +422,7 @@ export default function FenceSwingGatePage() {
                 <span className="bg-blue-50 text-[#00a0dc] px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 inline-block">
                   Military-Grade Protection
                 </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4 sm:mb-6">
                   Technical Excellence in Every Detail
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed">

@@ -286,7 +286,7 @@ const WarrantyPage = () => {
               variants={fadeIn} 
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4">
                 {translations.coverage.title}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -309,7 +309,7 @@ const WarrantyPage = () => {
                 
                 <div className="p-6">
                   <div className="mb-6">
-                    <div className="text-3xl font-bold text-gray-900">{translations.coverage.standard.duration}</div>
+                    <div className="text-3xl font-bold text-[#2d2d2d]">{translations.coverage.standard.duration}</div>
                     <div className="text-gray-500">{translations.coverage.standard.components}</div>
                   </div>
                   
@@ -346,7 +346,7 @@ const WarrantyPage = () => {
                 
                 <div className="p-6">
                   <div className="mb-6">
-                    <div className="text-3xl font-bold text-gray-900">{translations.coverage.extended.duration}</div>
+                    <div className="text-3xl font-bold text-[#2d2d2d]">{translations.coverage.extended.duration}</div>
                     <div className="text-gray-500">{translations.coverage.extended.components}</div>
                   </div>
                   
@@ -387,7 +387,7 @@ const WarrantyPage = () => {
               <span className="inline-block px-4 py-1.5 bg-blue-50 text-[#00a0dc] rounded-full text-sm font-medium mb-4">
                 {translations.covered.title}
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#2d2d2d] mb-6">
                 <span className="text-[#00a0dc]">{translations.covered.title}</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -418,7 +418,7 @@ const WarrantyPage = () => {
                       {index === 2 && <AlertTriangle className={`w-8 h-8 ${index === 2 ? 'text-amber-500' : ''}`} />}
                       {index === 3 && <Shield className={`w-8 h-8 ${index === 3 ? 'text-indigo-500' : ''}`} />}
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-900 ml-4">{item.title}</h3>
+                    <h3 className="text-2xl font-bold text-[#2d2d2d] ml-4">{item.title}</h3>
                   </div>
                   <p className="text-gray-600 text-lg leading-relaxed">
                     {item.description}
@@ -447,7 +447,7 @@ const WarrantyPage = () => {
               variants={fadeIn}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#2d2d2d] mb-4">
                 {translations.faq.title}
               </h2>
               <p className="text-lg text-gray-600">
@@ -467,7 +467,7 @@ const WarrantyPage = () => {
                 >
                   <details className="group">
                     <summary className="flex justify-between items-center cursor-pointer bg-white p-6">
-                      <h3 className="text-lg font-medium text-gray-900">{faq.question}</h3>
+                      <h3 className="text-lg font-medium text-[#2d2d2d]">{faq.question}</h3>
                       <span className={`flex-shrink-0 ${isRtl ? 'mr-1.5' : 'ml-1.5'} p-1.5 text-gray-400 bg-gray-50 rounded-md group-open:rotate-180 transition-transform`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

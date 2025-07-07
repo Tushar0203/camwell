@@ -196,7 +196,7 @@ const ProductCard = ({
           </div>
           <Button 
             variant='industrial' 
-            className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-black`}
+            className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-[#2d2d2d]`}
           >
             <span>{product.knowMore}</span>
           </Button>
