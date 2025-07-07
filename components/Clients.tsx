@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { Locale } from '@/lib/dictionary';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
 import { GaugeCircle, Cog, AlertTriangle, FileText } from 'lucide-react';
 
 // Default English dictionary
@@ -125,7 +127,12 @@ const ClientCard = ({ client, index }: {
 
 const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
   const router = useRouter();
+  const params = useParams();
   const dict = dictionary || defaultDictionary;
+  const lang = params?.lang as Locale || 'en';
+  const isRTL = lang === 'ar';
+  // Choose the appropriate arrow based on direction
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
   
   // Ensure CTA is available, using default if not provided
   const cta = dict.cta || defaultDictionary.cta;
@@ -200,41 +207,43 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
         >
           <div className="w-full mx-auto">
             <Card className="bg-steel-800 border-0 shadow-xl overflow-hidden relative">
-              {/* Corner cut design */}
-              <div className="absolute top-0 right-0 border-t-[40px] border-r-[40px] border-t-steel-700 border-r-transparent"></div>
-              <div className="absolute bottom-0 left-0 border-b-[40px] border-l-[40px] border-b-steel-700 border-l-transparent"></div>
+            
               
-              {/* Warning diagonal stripes on the side */}
-              <div className="absolute left-0 top-0 h-full w-6 safety-stripes"></div>
-              
-              <CardContent className="p-8 sm:p-10 pl-12 relative">
-                <div className="flex items-center gap-2 mb-2">
-                  <GaugeCircle size={20} className="text-steel-400" />
-                  <span className="text-steel-400 text-sm font-mono">SECURITY ALERT</span>
+              {/* CTA with industrial style */}
+          <div className="mt-16 max-w-5xl mx-auto border border-steel-300 bg-steel-50">
+            {/* Top technical bar */}
+            <div className="flex justify-between items-center px-4 py-2 bg-steel-100 border-b border-steel-300 tech-specs text-xs">
+              <span className="text-steel-600">INQUIRY TYPE: CONSULTATION</span>
+              <span className="text-industrial-blue font-mono">REF: CS-1001-A</span>
+            </div>
+            
+            {/* Main content with industrial styling */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-1 h-16 bg-industrial-blue"></div>
+                <div>
+                  <h3 className="text-xl font-bold text-steel-800 uppercase">
+                    {isRTL ? "جاهزون لتأمين موقعك؟" : "Ready to secure your site?"}
+                  </h3>
+                  <p className="text-steel-600 mt-2">
+                    {isRTL ? "اتصل بنا اليوم للحصول على استشارة مجانية" : "Contact us today for a free consultation and technical assessment."}
+                  </p>
                 </div>
-                
-                <div className="relative flex flex-col items-center w-full gap-6 z-10">
-                  <div className="text-center w-full">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                      {cta.title}
-                    </h3>
-                    <div className="machine-numbers text-steel-300 mb-3">[REF:PERIMETER-SEC-1]</div>
-                    <p className="text-steel-300 border-l-2 border-steel-600 pl-3">
-                      {cta.description}
-                    </p>
-                  </div>
-                  
-                  <div className="industrial-ruler w-full my-2"></div>
-                  
-                  <Button 
-                    variant="industrial"
-                    className="whitespace-nowrap px-8 py-3 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer mt-2 shadow-industrial-lg"
-                    onClick={() => router.push('/contact')}
-                  >
-                    {cta.button}
-                  </Button>
-                </div>
-              </CardContent>
+              </div>
+              <div className="ml-0 md:ml-4">
+                <Button 
+                  onClick={() => router.push(`/${lang}/contact`)}
+                  className={`bg-[#FFD600] hover:bg-[#FFE44D] text-black font-bold px-6 py-4 text-base tracking-wide border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 cursor-pointer ${isRTL ? 'flex-row-reverse' : ''}`}
+                >
+                  <span className="uppercase">{isRTL ? "تواصل مع فريق الحلول المخصصة" : "Contact Our Team"}</span>
+                  <ArrowIcon className="h-5 w-5" strokeWidth={2.5} />
+                </Button>
+              </div>
+            </div>
+            
+            {/* Bottom safety stripe */}
+            <div className="h-2 safety-stripes"></div>
+          </div>
             </Card>
           </div>
         </motion.div>
