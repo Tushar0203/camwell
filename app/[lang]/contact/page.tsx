@@ -2,6 +2,7 @@
 import { useParams, useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from "react";
 import { FiCheck } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import { getDictionaryClient, Locale } from '@/lib/client-dictionary';
 import "@/app/styles/contact.css";
 
@@ -243,22 +244,11 @@ const ContactForm = () => {
               <h2>{dictionary.contact?.chatTitle || "Chat with us"}</h2>
               <p>{dictionary.contact?.chatDescription || "Speak to our friendly team via live chat."}</p>
               <div className="method-links">
-                <a href="#" className="method-link">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                <a href="https://wa.me/919971790811" className="method-link" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp 
+                    size={20} 
+                    className="text-[#25D366]" 
+                  />
                   <span>{dictionary.contact?.whatsapp || "Chat on WhatsApp"}</span>
                 </a>
                 <a href="#" className="method-link">
