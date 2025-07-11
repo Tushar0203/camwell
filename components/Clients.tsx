@@ -52,9 +52,9 @@ const clientLogos: Record<string, string> = {
   'CPWD': '/clients/cpwd.png',
   'Ministry of Defense': '/clients/rnd.png',
   'BSF': '/clients/bsf.png',
-  'NBCC': '/clients/railways.png',
+  'NBCC': '/clients/nbcc.png',
   'Indian Railways': '/clients/railways.png',
-  'Border Roads Organisation': '/clients/railways.png',
+  'Border Roads Organisation': '/clients/bro.png',
   // Arabic versions (using English keys for simplicity)
   'الأشغال العامة': '/clients/cpwd.png',
   'وزارة الدفاع': '/clients/rnd.png',
@@ -94,7 +94,7 @@ const ClientCard = ({ client, index }: {
             </div>
             
             {/* Logo Image */}
-            <div className="relative w-full h-full p-4">
+            <div className="relative w-full h-full">
               <Image
                 src={logo}
                 alt={client.name}
@@ -142,11 +142,7 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Blueprint background */}
-      <div className="absolute inset-0 bg-blueprint opacity-30" />
       
-      {/* Industrial ruler at top */}
-      <div className="industrial-ruler mx-auto w-3/4 max-w-4xl mb-12"></div>
       
       <div className="container mx-auto px-4 relative">
         <motion.div
@@ -249,8 +245,6 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
         </motion.div>
       </div>
       
-      {/* Industrial ruler at bottom */}
-      <div className="industrial-ruler mx-auto w-3/4 max-w-4xl mt-12"></div>
     </section>
   );
 };

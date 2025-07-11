@@ -595,8 +595,6 @@ export default function BorderFencePage() {
                       <Shield size={80} className="text-white/20 sm:h-[140px] sm:w-[140px]" />
                     </div>
                     
-                    {/* Grid overlay for technical feel */}
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:15px_15px] sm:bg-[size:20px_20px]"></div>
                     
                     {/* Technical diagram elements (simplified) */}
                     <div className="absolute inset-0 flex items-center justify-center">

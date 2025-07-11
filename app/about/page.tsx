@@ -180,8 +180,6 @@ export default function AboutPage() {
 
       {/* Core Values Section - Premium Design */}
       <section className="py-32 px-6 relative bg-gray-50">
-        {/* Background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40"></div>
         
         <div className="container mx-auto max-w-7xl relative z-10">
           <motion.div 
