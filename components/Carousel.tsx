@@ -97,7 +97,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
   };
 
   return (
-    <div className="bg-[#0f172a] min-h-[85vh] md:min-h-screen">
+    <div className="bg-white min-h-[85vh] md:min-h-screen">
       <div className="container mx-auto px-3 pt-20 pb-4 md:pt-16 md:pb-12 lg:py-24">
         {/* Carousel - wider container */}
         <div className="relative mx-auto max-w-full w-full sm:mx-0">
@@ -114,7 +114,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
                 sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, 1200px"
               />
               {/* Improved gradient overlay for better text visibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/40 to-[#0f172a]/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"></div>
             </div>
             
             {/* Navigation Arrows */}

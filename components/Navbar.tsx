@@ -148,12 +148,12 @@ const Navbar = () => {
     }
   };
 
-  return (    <nav className={`fixed w-full transition-all duration-300 bg-[#0F172A] shadow-lg py-3`}
+  return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg py-3`}
     style={{ zIndex: 40, ...navbarStyles }}>
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">          
           <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-            <div className="relative bg-[#0f172a] transition-all duration-300" style={{ 
+            <div className="relative bg-[#4d5156] transition-all duration-300" style={{ 
               borderRadius: 0,
               paddingRight: '3rem', // Increased padding on right side
             }}>
@@ -164,7 +164,7 @@ const Navbar = () => {
                 className="relative w-36 h-10 sm:w-44 sm:h-12"
               >
                 <Image
-                  src="/images/Camwell-Logo.png"
+                  src="/images/camwell.png"
                   alt="Camwell Industries Logo"
                   fill
                   className="object-contain object-left transition-all duration-300"
@@ -200,8 +200,8 @@ const Navbar = () => {
                       relative px-4 py-2 rounded-lg text-sm font-medium
                       transition-all duration-300 group
                       ${isActive 
-                        ? 'bg-[#00a0dc]/20 text-[#00a0dc]'
-                        : 'text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]'
+                        ? 'bg-[#71797e] text-white'
+                        : 'text-white hover:bg-[#71797e] hover:text-white'
                       }
                     `}
                   >
@@ -213,7 +213,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}                        className={`
                           absolute inset-0 rounded-lg
-                          bg-[#00a0dc]/20 border border-[#00a0dc]/50
+                          bg-[#71797e]
                         `}
                         transition={{ 
                           duration: 0.2,
@@ -239,7 +239,7 @@ const Navbar = () => {
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
                     >
-                      <div className="relative bg-[#0F172A]">
+                      <div className="relative bg-[#4d5156]">
                         {/* Content Grid - Two columns */}
                         <div className="grid grid-cols-2 gap-2 p-4">
                           {productCategories.map((category) => (
@@ -251,7 +251,7 @@ const Navbar = () => {
                                     <Link
                                       href={subcategory.path}
                                       onClick={handleLinkClick}
-                                      className="block text-sm text-slate-300 hover:text-white"
+                                      className="block text-sm text-white hover:bg-[#71797e] hover:text-white px-2 py-1 rounded transition-colors"
                                     >
                                       {subcategory.name}
                                     </Link>
@@ -282,7 +282,7 @@ const Navbar = () => {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <button
-                  className="rounded-lg transition-colors duration-300 text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]"
+                  className="rounded-lg transition-colors duration-300 text-white hover:bg-white hover:text-[#00a0dc]"
                   aria-label="Toggle menu"
                 >
                   <svg
@@ -298,14 +298,14 @@ const Navbar = () => {
                   </svg>
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:max-w-xs p-0 bg-[#0F172A] border-l border-gray-800" style={{ direction: 'ltr' }}>
+              <SheetContent side="right" className="w-full sm:max-w-xs p-0 bg-[#4d5156] border-l border-gray-700" style={{ direction: 'ltr' }}>
                 <div className="flex flex-col h-full">
                   {/* Header with Logo/Close text */}
-                  <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+                  <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
                     <Link href={`/${lang}`} className="flex items-center" onClick={() => setIsOpen(false)}>
                       <div className="relative w-36 h-10">
                         <Image
-                          src="/images/Camwell-Logo.png"
+                          src="/images/camwell.png"
                           alt="Camwell Industries Logo"
                           fill
                           className="object-contain object-left"
@@ -336,25 +336,25 @@ const Navbar = () => {
                             className={`
                               flex items-center gap-3 px-4 py-4 text-base font-medium rounded-lg
                               ${isActive 
-                                ? 'bg-[#00a0dc]/20 text-[#00a0dc]' 
-                                : 'text-slate-300 hover:bg-[#00a0dc]/10 hover:text-[#00a0dc]'
+                                ? 'bg-[#71797e] text-white' 
+                                : 'text-white hover:bg-[#71797e] hover:text-white'
                               }
                             `}
                           >
                             <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                              isActive ? 'bg-[#00a0dc]/20' : 'bg-[#1a2234]'
+                              isActive ? 'bg-[#71797e]' : 'bg-gray-700'
                             }`}>
                               {getMenuIcon(item.name)}
                             </div>
                             {item.name}
-                            {isActive && <div className="ml-auto w-2 h-2 rounded-full bg-[#00a0dc]"></div>}
+                            {isActive && <div className="ml-auto w-2 h-2 rounded-full bg-white"></div>}
                           </Link>
                         );
                       })}
                     </div>
                   </div>
                   
-                  <div className="mt-auto border-t border-gray-800 p-4 flex justify-between text-sm text-gray-400">
+                  <div className="mt-auto border-t border-gray-700 p-4 flex justify-between text-sm text-gray-300">
                     <span>© 2025 Camwell</span>
                     <div className="flex gap-4">
                       <Link href={`/${lang}/privacy-policy`}>Privacy</Link>
