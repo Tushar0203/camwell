@@ -250,14 +250,3 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 };
 
 export default Clients;
-
-
-
-
-
-
-
-
-
-
-
