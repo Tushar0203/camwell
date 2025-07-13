@@ -28,7 +28,7 @@ export default function LanguageSwitcher() {
   const languageInfo = {
     en: {
       name: "English",
-      code: "US"
+      code: "EN"
     },
     ar: {
       name: "العربية",
