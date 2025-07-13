@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { ArrowRight, ArrowLeft, Package, ShieldCheck, Tags, Zap, FileText, Wrench, Clipboard, Loader } from 'lucide-react';
+import Image from 'next/image';
 import { useRouter, useParams } from 'next/navigation';
 import React from 'react';
 import { Locale } from '@/lib/dictionary';
@@ -121,13 +122,15 @@ const ProductCard = ({
       className="card-industrial overflow-hidden group hover:cursor-pointer flex flex-col"
       onClick={handleClick}
     >
-      <div className={`w-full h-58 relative overflow-hidden ${
-        productKey === 'borderFence' 
-          ? 'bg-[url("/images/fence-3.jpg")] bg-cover bg-center' 
-          : productKey === 'fenceSwingGate' 
-          ? 'bg-[url("/images/fence-swing-gates.jpg")] bg-cover bg-center' 
-          : ''
-      }`}>
+      <div className="w-full h-58 relative overflow-hidden">
+        <Image
+          src={productKey === 'borderFence' ? '/images/fence-3.jpg' : '/images/fence-swing-gates.jpg'}
+          alt={product.name}
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
         
         {/* Top technical info */}
