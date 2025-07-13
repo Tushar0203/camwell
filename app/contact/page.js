@@ -251,16 +251,6 @@ const ContactForm = () => {
                   </svg>
                   <span>Shoot us an email</span>
                 </a>
-                <a href="#" className="method-link">
-                  <Image
-                    src="/images/icons/twitter.svg"
-                    alt="X (Twitter) icon"
-                    width={20}
-                    height={20}
-                    className="social-icon"
-                  />
-                  <span>Message us on X</span>
-                </a>
               </div>
             </div>
 
