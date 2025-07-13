@@ -8,7 +8,12 @@ const BackToTopButton = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300) {
+      const isBodyHidden = document.body.style.overflow === 'hidden';
+      const isHtmlHidden = document.documentElement.style.overflow === 'hidden';
+
+      if (isBodyHidden || isHtmlHidden) {
+        setIsVisible(false);
+      } else if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -16,9 +21,17 @@ const BackToTopButton = () => {
     };
 
     window.addEventListener('scroll', toggleVisibility);
+    // Also listen for changes to the body/html style (though direct style changes are less common)
+    // A more robust solution might involve a MutationObserver or a global state,
+    // but this addresses the direct style manipulation from the gallery.
+    const observer = new MutationObserver(toggleVisibility);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+
 
     return () => {
       window.removeEventListener('scroll', toggleVisibility);
+      observer.disconnect();
     };
   }, []);
 

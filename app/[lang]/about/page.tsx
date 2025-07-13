@@ -126,7 +126,7 @@ export default function AboutPage() {
   return (
     <div className={`bg-white min-h-screen overflow-hidden ${isRTL ? 'rtl' : 'ltr'}`}>
       {/* Industrial Hero Section with metal pattern background */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
+      <section className="relative min-h-screen py-20 md:py-32 overflow-hidden flex items-center justify-center">
         {/* Image background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-2.jpg')] bg-cover bg-center"></div>

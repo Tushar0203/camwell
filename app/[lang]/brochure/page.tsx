@@ -65,7 +65,7 @@ const Brochure = () => {
   return (
     <div className={`min-h-screen bg-gradient-to-b from-white via-blue-50 to-white overflow-hidden ${isRtl ? 'rtl' : 'ltr'}`}>
       
-      <section className="relative min-h-[80vh] flex items-center py-20 overflow-hidden">
+      <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
         {/* Image background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-1.jpg')] bg-cover bg-center"></div>

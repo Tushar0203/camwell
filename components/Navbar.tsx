@@ -89,184 +89,201 @@ const Navbar = () => {
       ]
     }
   ];
+ 
+   const handleMouseEnter = () => {
+     if (hoverTimeout) clearTimeout(hoverTimeout);
+     setShowMegaMenu(true);
+   };
+ 
+   const handleMouseLeave = () => {
+     const timeout = setTimeout(() => {
+       setShowMegaMenu(false);
+     }, 300); // Small delay to prevent accidental closing
+     setHoverTimeout(timeout);
+   };
+ 
+   useEffect(() => {
+     // Check initial scroll position
+     if (window.scrollY > 10) {
+       setScrolled(true);
+     }
+ 
+     const handleScroll = () => {
+       if (window.scrollY > 10) {
+         setScrolled(true);
+       } else {
+         setScrolled(false);
+       }
+     };
+ 
+     window.addEventListener('scroll', handleScroll);
+     return () => {
+       window.removeEventListener('scroll', handleScroll);
+     };
+   }, []);
+ 
+   useEffect(() => {
+     return () => {
+       if (hoverTimeout) clearTimeout(hoverTimeout);
+     };
+   }, [hoverTimeout]);
+ 
+   // Add this function to get icons for menu items
+   const getMenuIcon = (itemName: string) => {
+     const lowerName = itemName.toLowerCase();
+     if (lowerName.includes('home') || lowerName.includes('الرئيسية')) {
+       return <Home size={20} className="text-current" />;
+     } else if (lowerName.includes('product') || lowerName.includes('المنتجات')) {
+       return <Package size={20} className="text-current" />;
+     } else if (lowerName.includes('about') || lowerName.includes('من نحن')) {
+       return <Users size={20} className="text-current" />;
+     } else if (lowerName.includes('warranty') || lowerName.includes('الضمان')) {
+       return <Shield size={20} className="text-current" />;
+     } else if (lowerName.includes('brochure') || lowerName.includes('كتيب')) {
+       return <FileText size={20} className="text-current" />;
+     } else if (lowerName.includes('contact') || lowerName.includes('اتصل')) {
+       return <Phone size={20} className="text-current" />;
+     } else {
+       return <ChevronRight size={20} className="text-current" />;
+     }
+   };
+ 
+   return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg py-3`}
+     style={{ zIndex: 40, ...navbarStyles }}>
+       <div className="mx-auto px-4 sm:px-6 lg:px-8">
+         <div className="flex justify-between items-center">
+           <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
+             <div className="relative bg-[#4d5156] transition-all duration-300" style={{
+               borderRadius: 0,
+               paddingRight: '3rem', // Increased padding on right side
+             }}>
+               <motion.div
+                 initial={{ opacity: 0, scale: 0.8 }}
+                 animate={{ opacity: 1, scale: 1 }}
+                 transition={{ duration: 0.5 }}
+                 className="relative w-36 h-10 sm:w-44 sm:h-12"
+               >
+                 <Image
+                   src="/images/camwell.png"
+                   alt="Camwell Industries Logo"
+                   fill
+                   className="object-contain object-left transition-all duration-300"
+                   priority
+                   sizes="176px"
+                 />
+               </motion.div>
+             </div>
+           </Link>
+ 
+           {/* Desktop Navigation */}
+           <div className="hidden lg:flex items-center space-x-2" style={{ direction: 'ltr' }}>
+             {navItems.map((item) => {
+               const isActive = item.path === `/${lang}/products`
+                 ? pathname === item.path || pathname.startsWith(`/${lang}/products/`)
+                 : pathname === item.path;
+               
+               return (
+                 <div
+                   key={item.name}
+                   className="relative"
+                   onMouseEnter={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseEnter : undefined}
+                   onMouseLeave={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseLeave : undefined}
+                 >
+                   <Link
+                     href={item.path}
+                     onClick={() => {
+                       handleLinkClick();
+                       if (item.name === 'Products' || item.name === 'المنتجات') {
+                         setShowMegaMenu(false);
+                       }
+                     }}                    className={`
+                       relative px-4 py-2 rounded-lg text-sm font-medium
+                       transition-all duration-300 group
+                       ${isActive
+                         ? 'bg-[#71797e] text-white'
+                         : 'text-white hover:bg-[#71797e] hover:text-white'
+                       }
+                     `}
+                   >
+                     <span className="relative z-10">
+                       {item.name}
+                     </span>
+                       {isActive && (
+                       <motion.div
+                         initial={{ opacity: 0, scale: 0.95 }}
+                         animate={{ opacity: 1, scale: 1 }}                        className={`
+                           absolute inset-0 rounded-lg
+                           bg-[#71797e]
+                         `}
+                         transition={{
+                           duration: 0.2,
+                           ease: "easeOut"
+                         }}
+                       />
+                     )}
+                   </Link>
+ 
+                   {/* Invisible hover bridge to prevent menu from closing */}
+                   {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
+                     <div className="absolute left-0 w-full h-8" style={{ top: '100%' }}></div>
+                   )}
+ 
+                   {/* Mega Menu for Products */}
+                   {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
+                     <motion.div
+                       initial={{ opacity: 0, y: -10 }}
+                       animate={{ opacity: 1, y: 0 }}
+                       transition={{ duration: 0.2 }}
+                       className="absolute left-1/2 transform -translate-x-1/2 w-[800px] rounded-lg shadow-lg overflow-hidden"
+                       style={{ marginTop: '20px', zIndex: 50, direction: 'ltr' }}
+                       onMouseEnter={handleMouseEnter}
+                       onMouseLeave={handleMouseLeave}
+                     >
+                       <div className="relative bg-[#4d5156]">
+                         {/* Content Grid - Three columns */}
+                         <div className="grid grid-cols-3 gap-x-4 p-4">
+                           {/* Product Categories */}
+                           {productCategories.map((category) => (
+                             <div key={category.name} className="space-y-3">
+                               <h4 className="text-sm font-medium text-white">{category.name}</h4>
+                               <ul className="space-y-2">
+                                 {category.subcategories.map((subcategory) => (
+                                   <li key={subcategory.name}>
+                                     <Link
+                                       href={subcategory.path}
+                                       onClick={handleLinkClick}
+                                       className="block text-sm text-white hover:bg-[#71797e] hover:text-white px-2 py-1 rounded transition-colors"
+                                     >
+                                       {subcategory.name}
+                                     </Link>
+                                   </li>
+                                 ))}
+                               </ul>
+                             </div>
+                           ))}
 
-  const handleMouseEnter = () => {
-    if (hoverTimeout) clearTimeout(hoverTimeout);
-    setShowMegaMenu(true);
-  };
-
-  const handleMouseLeave = () => {
-    const timeout = setTimeout(() => {
-      setShowMegaMenu(false);
-    }, 300); // Small delay to prevent accidental closing
-    setHoverTimeout(timeout);
-  };
-
-  useEffect(() => {
-    // Check initial scroll position
-    if (window.scrollY > 10) {
-      setScrolled(true);
-    }
-
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (hoverTimeout) clearTimeout(hoverTimeout);
-    };
-  }, [hoverTimeout]);
-
-  // Add this function to get icons for menu items
-  const getMenuIcon = (itemName: string) => {
-    const lowerName = itemName.toLowerCase();
-    if (lowerName.includes('home') || lowerName.includes('الرئيسية')) {
-      return <Home size={20} className="text-current" />;
-    } else if (lowerName.includes('product') || lowerName.includes('المنتجات')) {
-      return <Package size={20} className="text-current" />;
-    } else if (lowerName.includes('about') || lowerName.includes('من نحن')) {
-      return <Users size={20} className="text-current" />;
-    } else if (lowerName.includes('warranty') || lowerName.includes('الضمان')) {
-      return <Shield size={20} className="text-current" />;
-    } else if (lowerName.includes('brochure') || lowerName.includes('كتيب')) {
-      return <FileText size={20} className="text-current" />;
-    } else if (lowerName.includes('contact') || lowerName.includes('اتصل')) {
-      return <Phone size={20} className="text-current" />;
-    } else {
-      return <ChevronRight size={20} className="text-current" />;
-    }
-  };
-
-  return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg py-3`}
-    style={{ zIndex: 40, ...navbarStyles }}>
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">          
-          <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-            <div className="relative bg-[#4d5156] transition-all duration-300" style={{ 
-              borderRadius: 0,
-              paddingRight: '3rem', // Increased padding on right side
-            }}>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="relative w-36 h-10 sm:w-44 sm:h-12"
-              >
-                <Image
-                  src="/images/camwell.png"
-                  alt="Camwell Industries Logo"
-                  fill
-                  className="object-contain object-left transition-all duration-300"
-                  priority
-                  sizes="176px"
-                />
-              </motion.div>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-2" style={{ direction: 'ltr' }}>
-            {navItems.map((item) => {
-              const isActive = item.path === `/${lang}/products` 
-                ? pathname === item.path || pathname.startsWith(`/${lang}/products/`) 
-                : pathname === item.path;
-              
-              return (
-                <div 
-                  key={item.name}
-                  className="relative"
-                  onMouseEnter={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseEnter : undefined}
-                  onMouseLeave={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseLeave : undefined}
-                >
-                  <Link
-                    href={item.path}
-                    onClick={() => {
-                      handleLinkClick();
-                      if (item.name === 'Products' || item.name === 'المنتجات') {
-                        setShowMegaMenu(false);
-                      }
-                    }}                    className={`
-                      relative px-4 py-2 rounded-lg text-sm font-medium
-                      transition-all duration-300 group
-                      ${isActive 
-                        ? 'bg-[#71797e] text-white'
-                        : 'text-white hover:bg-[#71797e] hover:text-white'
-                      }
-                    `}
-                  >
-                    <span className="relative z-10">
-                      {item.name}
-                    </span>
-                      {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}                        className={`
-                          absolute inset-0 rounded-lg
-                          bg-[#71797e]
-                        `}
-                        transition={{ 
-                          duration: 0.2,
-                          ease: "easeOut"
-                        }}
-                      />
-                    )}
-                  </Link>
-
-                  {/* Invisible hover bridge to prevent menu from closing */}
-                  {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
-                    <div className="absolute left-0 w-full h-8" style={{ top: '100%' }}></div>
-                  )}
-
-                  {/* Mega Menu for Products */}
-                  {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 transform -translate-x-1/2 w-[600px] rounded-lg shadow-lg overflow-hidden"
-                      style={{ marginTop: '20px', zIndex: 50, direction: 'ltr' }}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      <div className="relative bg-[#4d5156]">
-                        {/* Content Grid - Two columns */}
-                        <div className="grid grid-cols-2 gap-2 p-4">
-                          {productCategories.map((category) => (
-                            <div key={category.name} className="space-y-3">
-                              <h4 className="text-sm font-medium text-white">{category.name}</h4>
-                              <ul className="space-y-2">
-                                {category.subcategories.map((subcategory) => (
-                                  <li key={subcategory.name}>
-                                    <Link
-                                      href={subcategory.path}
-                                      onClick={handleLinkClick}
-                                      className="block text-sm text-white hover:bg-[#71797e] hover:text-white px-2 py-1 rounded transition-colors"
-                                    >
-                                      {subcategory.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              );
-            })}
+                           {/* Gallery Section with Vertical Divider */}
+                           <div className="space-y-3 border-l border-gray-600 pl-4">
+                             <h4 className="text-sm font-medium text-white">{lang === 'ar' ? 'المعرض' : 'Gallery'}</h4>
+                             <ul className="space-y-2">
+                               <li>
+                                 <Link
+                                   href={`/${lang}/gallery`}
+                                   onClick={handleLinkClick}
+                                   className="block text-sm text-white hover:bg-[#71797e] hover:text-white px-2 py-1 rounded transition-colors"
+                                 >
+                                   {lang === 'ar' ? 'المعرض' : 'Gallery'}
+                                 </Link>
+                               </li>
+                             </ul>
+                           </div>
+                         </div>
+                       </div>
+                     </motion.div>
+                   )}
+                 </div>
+               );
+             })}
 
             {/* Language Switcher */}
             <div className="relative">

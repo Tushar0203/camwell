@@ -195,7 +195,7 @@ const WarrantyPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-[#00a0dc] text-white pt-32 pb-24">
+      <section className="relative bg-[#00a0dc] text-white pt-32 pb-24 min-h-screen flex items-center justify-center">
         {/* Image background with overlay */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/fence-3.jpg')] bg-cover bg-center"></div>

@@ -424,5 +424,38 @@
     "callDescription": "اتصل بفريقنا من الاثنين إلى الجمعة من 9 صباحًا حتى 6 مساءً بتوقيت الهند",
     "visitTitle": "زورنا",
     "visitDescription": "تحدث معنا شخصيًا في مكتبنا"
+  },
+  "gallery": {
+    "title": "معرض المنتجات",
+    "description": "تصفح مجموعتنا الواسعة من المنتجات الأمنية عالية الجودة.",
+    "productNames": {
+      "WELD_MESH_PANEL": "لوحة شبكية ملحومة",
+      "FENCE_CHS_POST": "عمود سياج (CHS)",
+      "ANCHOR_ROD": "قضيب تثبيت",
+      "STRUT_CHS_POST_WITH_ACCESSORIES": "عمود دعامة (CHS) مع الملحقات",
+      "OMEGA_CLAMP_WITH_PROFILE_COVER_PLATE": "مشبك أوميغا مع لوحة غطاء",
+      "INTERMEDIATE_PANEL_IP_BINDER": "رابط اللوحة الوسيطة (IP)",
+      "CORNER_CLAMP": "مشبك الزاوية",
+      "STRAINING_Y_ARM": "ذراع الشد Y",
+      "INTERMEDIATE_Y_ARM": "ذراع Y الوسيط",
+      "PTCC_PUNCHED_TAPE_CONCERTINA_COIL": "لفائف PTCC الشريط المثقوب",
+      "RAZOR_WIRE_TAPE": "شريط الأسلاك الشائكة",
+      "HOG_RINGS": "حلقات هوغ",
+      "TIE_WIRE_FOR_RAZOR_TAPE": "سلك ربط لشريط الأسلاك الشائكة",
+      "EYE_BOLT_FOR_STRAINING_Y_ARM": "مسمار عين لذراع الشد Y",
+      "M8X120MM_MUSHROOM_HEAD_BOLT_NUT_WASHER": "مسمار رأس عيش الغراب M8X120MM، صامولة وغسالة",
+      "M8X75MM_MUSHROOM_HEAD_BOLT_NUT_WASHER": "مسمار رأس عيش الغراب M8X75MM، صامولة وغسالة",
+      "M8X60MM_MUSHROOM_HEAD_BOLT_NUT_WASHER": "مسمار رأس عيش الغراب M8X60MM، صامولة وغسالة",
+      "M8X35MM_MUSHROOM_HEAD_BOLT_NUT_WASHER": "مسمار رأس عيش الغراب M8X35MM، صامولة وغسالة",
+      "A_GATE_POST": "أ. عمود البوابة",
+      "B_GATE_FRAME": "ب. إطار البوابة",
+      "C_WICKET_GATE_FRAME": "ج. إطار بوابة الويكيت",
+      "D_WELD_MESH_PANEL_FOR_GATE_INFILL": "د. لوحة شبكية ملحومة لحشو البوابة",
+      "E_COIL_SUPPORT_FRAME": "هـ. إطار دعم اللفائف",
+      "H_TOP_AND_BOTTOM_HINGES": "ح. مفصلات علوية وسفلية",
+      "I_LOCK_HANDLE_ALDROP": "ط. قفل/مقبض/مفتاح",
+      "F_PTCC_850_MM_DIAMETER_16_LOOPS_3_5MM_CORE_WIRE": "و. PTCC – قطر 850 مم/16 حلقة/سلك أساسي 3.5 مم",
+      "G_FLAT_WRAP_PTCC_610_MM_DIAMETER_10_LOOPS_3_50_MM_CORE_WIRE": "ز. لفة مسطحة (PTCC): قطر 610 مم/10 حلقات/سلك أساسي 3.50 مم"
+    }
   }
-} 
+}
