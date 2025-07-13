@@ -31,7 +31,6 @@ const navbarStyles: CSSProperties = {
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  console.log(scrolled)
   const [showMegaMenu, setShowMegaMenu] = useState(false);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname() || '/';
