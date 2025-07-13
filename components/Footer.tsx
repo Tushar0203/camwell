@@ -70,7 +70,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
   return (
     <>
-      <footer className="bg-gradient-to-b bg-black text-white pt-16 pb-8 md:pt-20 md:pb-12 w-full">
+      <footer className="bg-[#E0DDDD] text-black pt-16 pb-8 md:pt-20 md:pb-12 w-full">
         <div className="container mx-auto px-4">
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-13 ${isRTL ? "flex-row-reverse" : ""}`} style={{ direction: isRTL ? 'ltr' : 'inherit' }}>
 
@@ -86,7 +86,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                     sizes="(max-width: 768px) 160px, 192px"
                   />
                 </div>
-                <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+                <p className="text-black text-sm leading-relaxed max-w-sm">
                   {dict.companyDescription}
                 </p>
               </div>
@@ -94,42 +94,42 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
             {/* Quick Links */}
             <div className="space-y-6">
-              <div className="border-b border-[#374151] pb-2">
+              <div className="border-b border-gray-400 pb-2">
                 <h3 className="font-semibold text-lg">{dict.quickLinks}</h3>
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href={`/${lang}`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.home}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/about`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/about`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.about}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/products`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/products`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.products}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/brochure`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/brochure`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.brochure}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/warranty`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/warranty`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.warranty}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/contact`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/contact`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.contact}</span>
                   </Link>
@@ -139,24 +139,24 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
             {/* Products */}
             <div className="space-y-6">
-              <div className="border-b border-[#374151] pb-2">
+              <div className="border-b border-gray-400 pb-2">
                 <h3 className="font-semibold text-lg">{dict.productLinks.title}</h3>
               </div>
               <ul className="space-y-3">
                 <li>
-                  <Link href={`/${lang}/products/border-fence`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/products/border-fence`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.productLinks.modularFence}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/products`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/products`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.productLinks.freightCorridor}</span>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/products/fence-swing-gate`} className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center group">
+                  <Link href={`/${lang}/products/fence-swing-gate`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.productLinks.fenceSwingGates}</span>
                   </Link>
@@ -166,44 +166,44 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
 
             {/* Contact Us */}
             <div className="space-y-6 2xl:w-[290px] xl:w-[290px] lg:w-[290px] md:w-full">
-              <div className="border-b border-[#374151] pb-2">
+              <div className="border-b border-gray-400 pb-2">
                 <h3 className="font-semibold text-lg">{dict.contactUs.title}</h3>
               </div>
               <div className="space-y-4">
-                <p className="text-gray-400 flex items-start group hover:text-white transition-colors duration-200">
+                <p className="text-black flex items-start group hover:text-gray-700 transition-colors duration-200">
                   <MapPin className={`h-5 w-5 flex-shrink-0 text-[#00a0dc] ${isRTL ? 'ml-3' : 'mr-3'}`} />
                   {dict.contactUs.address}
                 </p>
-                <p className="text-gray-400 group cursor-pointer">
-                  <Link href={`tel:${dict.contactUs.phone}`} className="flex items-center hover:text-white transition-colors duration-200">
+                <p className="text-black group cursor-pointer">
+                  <Link href={`tel:${dict.contactUs.phone}`} className="flex items-center hover:text-gray-700 transition-colors duration-200">
                     <Phone className={`h-5 w-5 text-[#00a0dc] group-hover:text-[#00a0dc] transition-colors ${isRTL ? 'ml-3' : 'mr-3'}`} />
                     {dict.contactUs.phone}
                   </Link>
                 </p>
-                <p className="text-gray-400">
-                  <Link href={`mailto:${dict.contactUs.email}`} className="hover:text-white transition-colors duration-200 flex items-center group">
+                <p className="text-black">
+                  <Link href={`mailto:${dict.contactUs.email}`} className="hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <Mail className={`h-5 w-5 text-[#00a0dc] ${isRTL ? 'ml-3' : 'mr-3'}`} />
                     {dict.contactUs.email}
                   </Link>
                 </p>
                 <div className="pt-4 sm:pt-6">
-                  <div className="bg-[#1e2432] border border-[#374151] rounded-lg p-4 space-y-3 hover:border-[#00a0dc] transition-colors duration-300">
-                    <h4 className="flex items-center text-white text-base font-medium">
+                  <div className="bg-gray-300 border border-gray-400 rounded-lg p-4 space-y-3 hover:border-[#00a0dc] transition-colors duration-300">
+                    <h4 className="flex items-center text-black text-base font-medium">
                       <Clock className={`h-5 w-5 text-[#00a0dc] ${isRTL ? 'ml-2' : 'mr-2'}`} />
                       {dict.businessHours.title}
                     </h4>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">{dict.businessHours.weekdays}</span>
-                        <span className="text-white">{dict.businessHours.weekdayHours}</span>
+                        <span className="text-black">{dict.businessHours.weekdays}</span>
+                        <span className="text-black">{dict.businessHours.weekdayHours}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">{dict.businessHours.saturday}</span>
-                        <span className="text-white">{dict.businessHours.saturdayHours}</span>
+                        <span className="text-black">{dict.businessHours.saturday}</span>
+                        <span className="text-black">{dict.businessHours.saturdayHours}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-400">{dict.businessHours.sunday}</span>
-                        <span className="text-white">{dict.businessHours.sundayHours}</span>
+                        <span className="text-black">{dict.businessHours.sunday}</span>
+                        <span className="text-black">{dict.businessHours.sundayHours}</span>
                       </div>
                     </div>
                   </div>
@@ -213,15 +213,15 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-[#1f2937] mt-12 md:mt-16 pt-8">
+          <div className="border-t border-gray-400 mt-12 md:mt-16 pt-8">
             <div className={`flex flex-col md:flex-row ${isRTL ? "md:flex-row-reverse" : ""} justify-between items-center`}>
-              <p className="text-gray-400 text-sm text-center md:text-left">
+              <p className="text-black text-sm text-center md:text-left">
                 {formattedCopyright}
               </p>
               <div className={`flex items-center ${isRTL ? 'space-x-0 space-x-reverse space-x-4' : 'space-x-4'} mt-4 md:mt-0`}>
                 <Link 
                   href={`/${lang}/privacy-policy`} 
-                  className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
+                  className="text-black hover:text-gray-700 text-sm transition-colors duration-200 flex items-center"
                 >
                   {isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
                   {dict.legal.privacyPolicy}
@@ -229,7 +229,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                 </Link>
                 <Link 
                   href={`/${lang}/terms-of-service`} 
-                  className="text-[#697A8D] hover:text-white text-sm transition-colors duration-200 flex items-center"
+                  className="text-black hover:text-gray-700 text-sm transition-colors duration-200 flex items-center"
                 >
                   {isRTL && <ExternalLink className="w-3 h-3 ml-1" />}
                   {dict.legal.termsOfService}
