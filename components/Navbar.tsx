@@ -175,7 +175,7 @@ const Navbar = () => {
            </Link>
  
            {/* Desktop Navigation */}
-           <div className="hidden lg:flex items-center space-x-2" style={{ direction: 'ltr' }}>
+           <div className="hidden xl:flex items-center space-x-2" style={{ direction: 'ltr' }}>
              {navItems.map((item) => {
                const isActive = item.path === `/${lang}/products`
                  ? pathname === item.path || pathname.startsWith(`/${lang}/products/`)
@@ -289,7 +289,7 @@ const Navbar = () => {
               <LanguageSwitcher />
             </div>
           </div>          {/* Mobile Navigation with Sheet */}
-          <div className="lg:hidden flex items-center gap-2" style={{ direction: 'ltr' }}>
+          <div className="xl:hidden flex items-center gap-2" style={{ direction: 'ltr' }}>
             {/* Mobile Language Switcher */}
             <div className="relative">
               <LanguageSwitcher />
