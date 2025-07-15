@@ -152,10 +152,7 @@ const Navbar = () => {
        <div className="mx-auto px-4 sm:px-6 lg:px-8">
          <div className="flex justify-between items-center">
            <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-             <div className="relative bg-[#4d5156] transition-all duration-300" style={{
-               borderRadius: 0,
-               paddingRight: '3rem', // Increased padding on right side
-             }}>
+             <div className="relative ml-4 sm:ml-6 lg:ml-8 bg-white rounded-md shadow-lg p-1">
                <motion.div
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
@@ -166,9 +163,9 @@ const Navbar = () => {
                    src="/images/camwell.png"
                    alt="Camwell Industries Logo"
                    fill
-                   className="object-contain object-left transition-all duration-300"
+                   className="object-contain"
                    priority
-                   sizes="176px"
+                   sizes="(max-width: 640px) 144px, 176px"
                  />
                </motion.div>
              </div>
