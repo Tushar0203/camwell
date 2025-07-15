@@ -147,12 +147,11 @@ const Navbar = () => {
      }
    };
  
-   return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg py-3`}
+   return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg`}
      style={{ zIndex: 40, ...navbarStyles }}>
-       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="flex justify-between items-center">
+       <div className="flex justify-between w-full">
            <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-             <div className="relative ml-4 sm:ml-6 lg:ml-8 bg-white rounded-md shadow-lg p-1">
+             <div className="relative bg-white h-full pt-2 pr-40">
                <motion.div
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
@@ -170,6 +169,7 @@ const Navbar = () => {
                </motion.div>
              </div>
            </Link>
+         <div className="flex justify-between items-center py-3 px-4">
  
            {/* Desktop Navigation */}
            <div className="hidden xl:flex items-center space-x-2" style={{ direction: 'ltr' }}>
@@ -378,6 +378,7 @@ const Navbar = () => {
               </SheetContent>
             </Sheet>
           </div>
+
         </div>
       </div>
     </nav>
