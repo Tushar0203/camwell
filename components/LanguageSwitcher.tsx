@@ -5,6 +5,7 @@ import { Locale } from "@/lib/dictionary";
 import { locales } from "@/middleware";
 import Link from "next/link";
 import { useLanguage } from "@/app/[lang]/providers";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { switchLocale } from "@/lib/locale-utils";
 import { 
   DropdownMenu, 
@@ -14,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // LocalStorage key for storing scroll position
 const SCROLL_POSITION_KEY = 'camwell_scroll_position';
@@ -22,7 +23,7 @@ const SCROLL_POSITION_KEY = 'camwell_scroll_position';
 export default function LanguageSwitcher() {
   const pathName = usePathname();
   const { lang: currentLocale } = useLanguage();
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
   // Language display info
   const languageInfo = {
@@ -48,20 +49,6 @@ export default function LanguageSwitcher() {
       window.scrollTo(0, parseInt(savedPosition));
       localStorage.removeItem(SCROLL_POSITION_KEY);
     }
-    
-    // Check if viewport width is under 400px
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 400);
-    };
-    
-    // Initial check
-    checkMobile();
-    
-    // Add resize listener
-    window.addEventListener('resize', checkMobile);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
   // Handle language change and save scroll position
