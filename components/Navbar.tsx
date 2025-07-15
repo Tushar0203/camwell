@@ -151,7 +151,7 @@ const Navbar = () => {
      style={{ zIndex: 40, ...navbarStyles }}>
        <div className="flex justify-between w-full">
            <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-             <div className="relative bg-white h-full pt-2 pr-40">
+             <div className="relative bg-white h-full pt-2 pl-40 flex justify-end">
                <motion.div
                  initial={{ opacity: 0, scale: 0.8 }}
                  animate={{ opacity: 1, scale: 1 }}
