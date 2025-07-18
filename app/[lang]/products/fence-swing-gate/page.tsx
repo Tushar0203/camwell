@@ -310,7 +310,7 @@ export default function FenceSwingGatePage() {
   return (
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center">
+      <section className="relative min-h-screen flex items-center bg-[url('/images/fence-swing-gates.jpg')] bg-cover bg-center">
         {/* Subtle overlay for better readability */}
         <div className="absolute inset-0 bg-black/25"></div>
         

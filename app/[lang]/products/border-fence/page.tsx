@@ -506,7 +506,7 @@ export default function BorderFencePage() {
       `}</style>
       
       {/* Hero Section - improved for mobile */}
-      <section className="relative pt-20 sm:pt-24 md:pt-32 pb-16 sm:pb-20 md:pb-24 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('/images/weld-mesh-fence.jpg')] bg-cover bg-center bg-no-repeat"></div>
           <div className="absolute inset-0 bg-black/50 z-10"></div>
