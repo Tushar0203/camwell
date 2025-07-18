@@ -122,10 +122,10 @@ const ProductCard = ({
       className="card-industrial overflow-hidden group hover:cursor-pointer flex flex-col"
       onClick={handleClick}
     >
-      <div className="w-full h-58 relative overflow-hidden">
+      <div className="w-full h-58 relative overflow-hidden aspect-square">
         <Image
           src={productKey === 'borderFence' ? '/images/fence-3.jpg' : '/images/fence-swing-gates.jpg'}
-          alt={product.name}
+          alt={`${product.name} - Security Fence Product Image`}
           fill
           className="object-cover object-center"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -174,11 +174,11 @@ const ProductCard = ({
         <p className="text-steel-700 mb-5 min-h-[80px]">{product.description}</p>
 
         <div className="flex-1">
-          <h4 className={`font-semibold text-industrial-blue mb-3 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
-            <Wrench size={18} className="text-industrial-blue" />
+          <h4 className={`font-bold text-industrial-blue mb-3 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
+            <Zap size={18} className="text-industrial-blue" />
             {dictionary.keyFeatures}
           </h4>
-          <ul className="industrial-list space-y-2 mb-4">
+          <ul className="industrial-list space-y-2 mb-4 bg-steel-100 px-3 py-2 rounded-sm">
             {product.features.map((feature, index) => (
               <li key={index}>
                 <span className="text-steel-700">{feature}</span>
@@ -199,7 +199,7 @@ const ProductCard = ({
           </div>
           <Button
             variant='industrial'
-            className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-[#2d2d2d]`}
+            className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-[#2d2d2d] font-bold border-2 border-[#2d2d2d] shadow-[4px_4px_0px_0px_rgba(45,45,45,1)] hover:shadow-[2px_2px_0px_0px_rgba(45,45,45,1)]`}
           >
             <span>{product.knowMore}</span>
           </Button>
