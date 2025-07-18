@@ -3,6 +3,7 @@
 A modern, responsive website for Camwell Industries, showcasing high-security fencing solutions for government and defense sectors.
 
 ## Tech Stack
+
 - **Framework:** Next.js 15.2.1
 - **Styling:** Tailwind CSS, GSAP, Framer Motion
 - **UI Components:** Radix UI, shadcn/ui
