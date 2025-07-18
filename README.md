@@ -19,7 +19,6 @@ A modern, responsive website for Camwell Industries, showcasing high-security fe
 - Custom security solutions presentation
 
 ## Getting Started
-
 1. Clone the repository:
 ```bash
 git clone [your-repo-url]
