@@ -98,11 +98,11 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
 
   return (
     <div className="bg-white min-h-[85vh] md:min-h-screen">
-      <div className="container mx-auto px-3 pt-20 pb-4 md:pt-16 md:pb-12 lg:py-24">
-        {/* Carousel - wider container */}
-        <div className="relative mx-auto max-w-full w-full sm:mx-0">
+      <div className="mt-14 md:mt-16 pb-4 md:pb-12 lg:pb-24">
+        {/* Carousel - full width edge-to-edge */}
+        <div className="relative w-full">
           {/* Current slide */}
-          <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-xl border border-gray-700">
+          <div className="relative overflow-hidden">
             {/* Taller aspect ratio for mobile */}
             <div className="aspect-[2/3] xs:aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] w-full relative">
               <Image

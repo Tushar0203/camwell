@@ -86,11 +86,11 @@ const arDictionary: ProductDictionary = {
 };
 
 // ProductCard component for displaying individual products
-const ProductCard = ({ 
-  productKey, 
-  dictionary, 
-  icon 
-}: { 
+const ProductCard = ({
+  productKey,
+  dictionary,
+  icon
+}: {
   productKey: ProductKey;
   dictionary: ProductDictionary;
   icon: React.ReactNode;
@@ -99,10 +99,10 @@ const ProductCard = ({
   const params = useParams();
   const lang = params?.lang as Locale || 'en';
   const isRTL = lang === 'ar';
-  
+
   // Choose the appropriate arrow based on direction
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
-  
+
   const handleClick = () => {
     if (productKey === 'borderFence') {
       router.push(`/${lang}/products/border-fence`);
@@ -118,7 +118,7 @@ const ProductCard = ({
   const productId = productKey === 'borderFence' ? 'BF-7540' : 'SG-3862';
 
   return (
-    <Card 
+    <Card
       className="card-industrial overflow-hidden group hover:cursor-pointer flex flex-col"
       onClick={handleClick}
     >
@@ -132,7 +132,7 @@ const ProductCard = ({
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
-        
+
         {/* Top technical info */}
         <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-3 bg-black/50 z-10 tech-specs">
           <div className="text-white text-xs flex items-center">
@@ -144,21 +144,21 @@ const ProductCard = ({
             <span>REV.2.6</span>
           </div>
         </div>
-        
+
         <div className="absolute inset-0 p-6 flex flex-col justify-center items-center text-white">
           <h3 className="text-2xl font-bold mb-1 text-center">{product.name}</h3>
         </div>
-        
+
         {/* Bottom diagonal caution stripes */}
         <div className="absolute bottom-0 left-0 right-0 h-3 safety-stripes"></div>
       </div>
-      
+
       <CardContent className={`p-3 sm:p-6 ${isRTL ? 'text-right' : ''} flex-1 flex flex-col bg-steel relative`}>
         {/* Technical corner marker */}
         <div className="absolute top-0 right-0 w-12 h-12 bg-industrial-blue clip-path-triangle"></div>
-        
+
         <div className="industrial-ruler w-full mb-4"></div>
-        
+
         {/* Specifications small table */}
         <div className="mb-3 bg-steel-100 px-2 py-1 border border-steel-300">
           <div className="flex justify-between text-xs tech-specs">
@@ -170,9 +170,9 @@ const ProductCard = ({
             <span className="text-industrial-blue font-semibold">GALV. STEEL</span>
           </div>
         </div>
-        
+
         <p className="text-steel-700 mb-5 min-h-[80px]">{product.description}</p>
-        
+
         <div className="flex-1">
           <h4 className={`font-semibold text-industrial-blue mb-3 flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Wrench size={18} className="text-industrial-blue" />
@@ -187,7 +187,7 @@ const ProductCard = ({
           </ul>
         </div>
       </CardContent>
-      
+
       <CardFooter className="px-3 sm:px-6 pb-4 sm:pb-6 pt-0 bg-steel">
         <div className="w-full flex flex-col gap-3">
           <div className="flex justify-between text-xs tech-specs">
@@ -197,8 +197,8 @@ const ProductCard = ({
             </div>
             <span className="text-yellow-600">REF: {productId}</span>
           </div>
-          <Button 
-            variant='industrial' 
+          <Button
+            variant='industrial'
             className={`w-full transition-colors duration-300 flex items-center justify-center cursor-pointer ${isRTL ? 'flex-row-reverse' : ''} text-[#2d2d2d]`}
           >
             <span>{product.knowMore}</span>
@@ -213,13 +213,13 @@ const ProductCard = ({
 const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) => {
   const params = useParams();
   const lang = params?.lang as Locale || 'en';
-  
+
   // Choose dictionary based on language
   let dict = dictionary;
   if (!dict) {
     dict = lang === 'ar' ? arDictionary : defaultDictionary;
   }
-  
+
   const products = [
     {
       key: 'borderFence' as const,
@@ -235,29 +235,29 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
     <section className="py-20 relative">
       {/* Industrial background with blueprint */}
       <div className="absolute inset-0 bg-blueprint opacity-20"></div>
-      
+
       {/* Safety stripes at top */}
       <div className="absolute top-0 left-0 right-0 h-3 safety-stripes"></div>
-      
+
       <div className="container mx-auto px-1 sm:px-4 relative pt-10">
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 border-4 border-industrial-blue">
           <Loader size={24} className="text-industrial-blue rotate-gear" />
         </div>
-        
+
         {/* Large gear background elements */}
         <div className="absolute top-1/4 right-10 bg-gear opacity-30" style={{ transform: 'scale(2)' }}></div>
         <div className="absolute bottom-20 left-10 bg-gear opacity-30" style={{ transform: 'scale(1.5)' }}></div>
-        
+
         <div className={`text-center mb-16 ${lang === 'ar' ? 'rtl' : ''}`}>
           {/* Technical section number */}
           <div className="text-xs text-steel-500 mb-1 tech-specs">SECTION 02</div>
-          
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-steel-800 mb-4">{dict.sectionTitle}</h2>
-          
+
           <p className="text-steel-600 max-w-2xl mx-auto industrial-border p-4">
             {dict.sectionDescription}
           </p>
-          
+
           {/* Technical specs */}
           <div className="flex justify-center gap-6 mt-6 mb-8">
             <div className="flex items-center gap-1">
@@ -274,7 +274,7 @@ const ProductsOverview = ({ dictionary }: { dictionary?: ProductDictionary }) =>
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mx-auto max-w-full sm:max-w-7xl">
           {products.map((product, index) => (
             <ProductCard

@@ -72,7 +72,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
     <>
       <footer className="bg-[#E0DDDD] text-black pt-16 pb-8 md:pt-20 md:pb-12 w-full">
         <div className="container mx-auto px-4">
-          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-13 ${isRTL ? "flex-row-reverse" : ""}`} style={{ direction: isRTL ? 'ltr' : 'inherit' }}>
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-6 lg:gap-8 ${isRTL ? "flex-row-reverse" : ""}`} style={{ direction: isRTL ? 'ltr' : 'inherit' }}>
 
             <div className="space-y-6">
               <div className="flex flex-col items-start">
@@ -165,7 +165,7 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
             </div>
 
             {/* Contact Us */}
-            <div className="space-y-6 2xl:w-[290px] xl:w-[290px] lg:w-[290px] md:w-full">
+            <div className="space-y-6">
               <div className="border-b border-gray-400 pb-2">
                 <h3 className="font-semibold text-lg">{dict.contactUs.title}</h3>
               </div>

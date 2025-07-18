@@ -171,20 +171,17 @@ const Gallery = ({ dictionary }: { dictionary: any }) => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative flex items-center justify-center bg-white rounded-lg sm:rounded-xl shadow-2xl p-2 sm:p-4 lg:p-6"
+                className="relative flex items-center justify-center bg-white rounded-lg sm:rounded-xl shadow-2xl p-2 sm:p-4 lg:p-6 max-w-[95vw] max-h-[95vh] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
-                style={{ 
-                  maxWidth: '95vw', 
-                  maxHeight: '95vh', 
-                  width: 'auto', 
-                  height: 'auto' 
-                }}
               >
-                <img
-                  src={allProducts[selectedImage].imageUrl}
-                  alt={allProducts[selectedImage].name}
-                  className="w-auto h-auto max-w-full max-h-full rounded-lg object-contain"
-                />
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <img
+                    src={allProducts[selectedImage].imageUrl}
+                    alt={allProducts[selectedImage].name}
+                    className="max-w-full max-h-full w-auto h-auto rounded-lg object-contain"
+                    style={{ maxWidth: '90vw', maxHeight: '80vh' }}
+                  />
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white text-center p-3 sm:p-4 rounded-b-lg sm:rounded-b-xl">
                   <p className="text-sm sm:text-base lg:text-lg font-medium">
                     {getTranslatedProductName(allProducts[selectedImage].name)}
