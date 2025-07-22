@@ -72,7 +72,6 @@ bun dev
 ```
 
 ## Configuration Files
-
 - `next.config.ts` - Next.js configuration
 - `tailwind.config.js` - Tailwind CSS configuration
 - `tsconfig.json` - TypeScript configuration
