@@ -6,6 +6,8 @@ import DirectionProvider from "@/components/DirectionProvider";
 import { Locale, getDictionary } from "@/lib/dictionary";
 import { Providers } from "./providers";
 import ScrollRestoration from "@/components/ScrollRestoration";
+import LoadingScreen from "@/components/LoadingScreen";
+import { LoadingProvider } from "@/components/LoadingProvider";
 
 // Load Roboto font for body text
 const roboto = Roboto({ 
@@ -50,15 +52,18 @@ export default async function RootLayout({
       className={`${roboto.variable} ${montserrat.variable}`}
     >
       <body className="font-body" suppressHydrationWarning>
-        <Providers lang={lang}>
-          <ScrollRestoration />
-          <DirectionProvider />
-          <Navbar />
-          <main className="w-full overflow-x-hidden">
-            {children}
-          </main>
-          <Footer dictionary={dict.footer} />
-        </Providers>
+        <LoadingProvider>
+          <Providers lang={lang}>
+            <LoadingScreen />
+            <ScrollRestoration />
+            <DirectionProvider />
+            <Navbar />
+            <main className="w-full overflow-x-hidden">
+              {children}
+            </main>
+            <Footer dictionary={dict.footer} />
+          </Providers>
+        </LoadingProvider>
       </body>
     </html>
   )

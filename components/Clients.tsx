@@ -87,7 +87,7 @@ const ClientCard = ({ client, index }: {
           style={{ borderRadius: 0 }}
         >
           <Image
-            src={logo}
+            src="/images/Camwell-Logo.png"
             alt={client.name}
             fill
             className="object-contain"
