@@ -47,6 +47,7 @@ const LoadingScreen = () => {
               alt="Camwell Industries Logo"
               width={240}
               height={96}
+              style={{ width: '100%', height: 'auto' }}
               priority
             />
             <p className="text-lg text-steel-600 text-center mt-4 tracking-wider">

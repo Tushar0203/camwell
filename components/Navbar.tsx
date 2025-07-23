@@ -10,6 +10,7 @@ import {
     ChevronRight,
     FileText,
     Home,
+    ImageIcon,
     Package,
     Phone,
     Shield,
@@ -54,6 +55,7 @@ const Navbar = () => {
   const navItems = [
     { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: `/${lang}` },
     { name: lang === 'ar' ? 'المنتجات' : 'Products', path: `/${lang}/products` },
+    { name: lang === 'ar' ? 'المعرض' : 'Gallery', path: `/${lang}/gallery` },
     { name: lang === 'ar' ? 'من نحن' : 'About Us', path: `/${lang}/about` },
     { name: lang === 'ar' ? 'الضمان' : 'Warranty', path: `/${lang}/warranty` },
     { name: lang === 'ar' ? 'طلب كتيب' : 'Request Brochure', path: `/${lang}/brochure` },
@@ -134,6 +136,8 @@ const Navbar = () => {
        return <Home size={20} className="text-current" />;
      } else if (lowerName.includes('product') || lowerName.includes('المنتجات')) {
        return <Package size={20} className="text-current" />;
+     } else if (lowerName.includes('gallery') || lowerName.includes('المعرض')) {
+       return <ImageIcon size={20} className="text-current" />;
      } else if (lowerName.includes('about') || lowerName.includes('من نحن')) {
        return <Users size={20} className="text-current" />;
      } else if (lowerName.includes('warranty') || lowerName.includes('الضمان')) {
@@ -153,20 +157,21 @@ const Navbar = () => {
            <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
              <div className="relative flex justify-start xl:justify-end xl:bg-white xl:pl-40 ml-4 xl:ml-0 xl:h-full xl:py-3">
                <motion.div
-                 initial={{ opacity: 0, scale: 0.8 }}
-                 animate={{ opacity: 1, scale: 1 }}
-                 transition={{ duration: 0.5 }}
-                 className="relative w-36 h-10 sm:w-44 sm:h-12"
-               >
-                 <Image
-                   src="/images/camwell.png"
-                   alt="Camwell Industries Logo"
-                   fill
-                   className="object-contain"
-                   priority
-                   sizes="(max-width: 640px) 144px, 176px"
-                 />
-               </motion.div>
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="relative w-36 h-10 sm:w-44 sm:h-12"
+              >
+                <Image
+                  src="/images/camwell.png"
+                  alt="Camwell Industries Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="(max-width: 640px) 144px, 176px"
+                />
+              </motion.div>
+
              </div>
            </Link>
          <div className="flex justify-between items-center py-3 px-4">
@@ -316,13 +321,14 @@ const Navbar = () => {
                   {/* Header with Logo/Close text */}
                   <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
                     <Link href={`/${lang}`} className="flex items-center" onClick={() => setIsOpen(false)}>
-                      <div className="relative w-36 h-10">
+                      <div className="relative w-36 h-10 sm:w-44 sm:h-12">
                         <Image
                           src="/images/camwell.png"
                           alt="Camwell Industries Logo"
                           fill
                           className="object-contain object-left"
                           priority
+                          sizes="(max-width: 640px) 144px, 176px"
                         />
                       </div>
                     </Link>

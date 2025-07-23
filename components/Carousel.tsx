@@ -97,14 +97,15 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
   };
 
   return (
-    <div className="bg-white min-h-[85vh] md:min-h-screen">
-      <div className="mt-14 md:mt-16 pb-4 md:pb-12 lg:pb-24">
+    <div className="bg-white h-screen sm:min-h-[85vh] w-full overflow-hidden">
+      {/* Mobile: Full screen, Desktop: Normal layout with margins */}
+      <div className="h-full sm:mt-14 md:mt-16 sm:pb-4 md:pb-12 lg:pb-24 sm:h-auto">
         {/* Carousel - full width edge-to-edge */}
-        <div className="relative w-full">
+        <div className="relative w-full h-full sm:h-auto">
           {/* Current slide */}
-          <div className="relative overflow-hidden">
-            {/* Taller aspect ratio for mobile */}
-            <div className="aspect-[2/3] xs:aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] w-full relative">
+          <div className="relative overflow-hidden h-full sm:h-auto">
+            {/* Full viewport height on mobile, aspect ratio on larger screens */}
+            <div className="h-full sm:aspect-[16/9] md:aspect-[21/9] w-full relative">
               <Image
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
@@ -134,23 +135,38 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
               <NextArrow className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
             </button>
             
+            {/* Content Overlay - Positioned at bottom with safe spacing */}
             <div className="absolute bottom-0 left-0 right-0 p-4 xs:p-5 sm:p-6 md:p-10">
               <div className="max-w-xl">
-                <h3 className={`inline-block text-[#00a0dc] text-xs sm:text-sm md:text-base font-medium tracking-wide mb-2 xs:mb-3 sm:mb-4 px-2 py-0.5 bg-black backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] ${isRTL ? 'border-r-2' : 'border-l-2'} border-[#00a0dc] -mt-6 sm:-mt-8 md:-mt-10`}>
+                <h3 className={`inline-block text-[#00a0dc] text-xs sm:text-sm md:text-base font-medium tracking-wide mb-2 xs:mb-3 sm:mb-4 px-2 py-0.5 bg-black/60 backdrop-blur-sm rounded drop-shadow-[0_2px_2px_rgba(0,0,0,1)] ${isRTL ? 'border-r-2' : 'border-l-2'} border-[#00a0dc]`}>
                   {slides[currentSlide].subtitle}
                 </h3>
                 <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 xs:mb-3 sm:mb-4 leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].title}
                 </h2>
-                <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-300 mb-3 xs:mb-4 sm:mb-5 leading-relaxed max-w-md line-clamp-2 xs:line-clamp-3 sm:line-clamp-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
+                <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-300 mb-3 xs:mb-4 sm:mb-5 leading-relaxed max-w-md drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">
                   {slides[currentSlide].description}
                 </p>
+                
+                {/* Mobile indicators - positioned within content area */}
+                <div className="flex sm:hidden justify-start mt-4 gap-2">
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleIndicatorClick(index)}
+                      className={`w-6 h-1 rounded-full transition-all duration-300 cursor-pointer ${
+                        currentSlide === index ? 'bg-[#00a0dc]' : 'bg-gray-600/70 hover:bg-gray-400'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
           
-          {/* Indicators - more compact on mobile */}
-          <div className="flex justify-center mt-3 xs:mt-4 sm:mt-6">
+          {/* Desktop Indicators - only show on sm and up */}
+          <div className="hidden sm:flex justify-center mt-3 xs:mt-4 sm:mt-6">
             {slides.map((_, index) => (
               <button
                 key={index}
@@ -163,7 +179,7 @@ const Carousel = ({ dictionary }: { dictionary?: CarouselDictionary }) => {
             ))}
           </div>
           
-          {/* Thumbnails for larger screens - unchanged */}
+          {/* Thumbnails for larger screens */}
           <div className={`hidden md:flex justify-center mt-6 gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
             {slides.map((slide, index) => (
               <button
