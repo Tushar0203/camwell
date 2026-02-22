@@ -7,6 +7,7 @@ import {
 import { useIsMobile } from '@/hooks/use-mobile';
 import { motion } from 'framer-motion';
 import {
+    ChevronDown,
     ChevronRight,
     FileText,
     Home,
@@ -36,6 +37,7 @@ const Navbar = () => {
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const pathname = usePathname() || '/';
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileProductsExpanded, setMobileProductsExpanded] = useState(false);
   const isMobile = useIsMobile();
   const params = useParams();
   const lang = params?.lang as Locale || 'en';
@@ -52,13 +54,17 @@ const Navbar = () => {
     }
   }, [isMobile]);
 
+  // Collapse mobile Products submenu when sheet closes
+  useEffect(() => {
+    if (!isOpen) setMobileProductsExpanded(false);
+  }, [isOpen]);
+
   const navItems = [
     { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: `/${lang}` },
     { name: lang === 'ar' ? 'المنتجات' : 'Products', path: `/${lang}/products` },
     { name: lang === 'ar' ? 'المعرض' : 'Gallery', path: `/${lang}/gallery` },
     { name: lang === 'ar' ? 'من نحن' : 'About Us', path: `/${lang}/about` },
     { name: lang === 'ar' ? 'الضمان' : 'Warranty', path: `/${lang}/warranty` },
-    { name: lang === 'ar' ? 'طلب كتيب' : 'Request Brochure', path: `/${lang}/brochure` },
     { name: lang === 'ar' ? 'اتصل بنا' : 'Contact Us', path: `/${lang}/contact` },
   ];
 
@@ -68,13 +74,18 @@ const Navbar = () => {
       name: lang === 'ar' ? 'سياج شبكي ملحوم' : 'Weld Mesh Fence',
       subcategories: [
         {
-          name: lang === 'ar' ? 'سياج نمطي' : 'Modular Fence',
+          name: lang === 'ar' ? 'سياج موديولار مضاد للتسلق' : 'Anti Climb Modular Fence',
           path: `/${lang}/products/border-fence`,
           description: lang === 'ar' ? 'أنظمة سياج نمطية قابلة للتخصيص' : 'Customizable modular fencing systems'
         },
         {
-          name: lang === 'ar' ? 'ممر الشحن' : 'Freight Corridor',
-          path: `/${lang}/products`,
+          name: lang === 'ar' ? 'سياج موديولار الحماية العميقة' : 'Deep Guard Modular Fence',
+          path: `/${lang}/products/deep-guard-modular-fence`,
+          description: lang === 'ar' ? 'حلول ممرات آمنة لنقل البضائع' : 'Secure corridor solutions for freight transport'
+        },
+        {
+          name: lang === 'ar' ? 'سياج زراعي' : 'Agricultural Fence',
+          path: `/${lang}/products/agricultural-fence`,
           description: lang === 'ar' ? 'حلول ممرات آمنة لنقل البضائع' : 'Secure corridor solutions for freight transport'
         }
       ]
@@ -95,14 +106,16 @@ const Navbar = () => {
      if (hoverTimeout) clearTimeout(hoverTimeout);
      setShowMegaMenu(true);
    };
- 
+
    const handleMouseLeave = () => {
-     const timeout = setTimeout(() => {
-       setShowMegaMenu(false);
-     }, 300); // Small delay to prevent accidental closing
+     const timeout = setTimeout(() => setShowMegaMenu(false), 300);
      setHoverTimeout(timeout);
    };
- 
+
+   useEffect(() => {
+     return () => { if (hoverTimeout) clearTimeout(hoverTimeout); };
+   }, [hoverTimeout]);
+
    useEffect(() => {
      // Check initial scroll position
      if (window.scrollY > 10) {
@@ -122,12 +135,6 @@ const Navbar = () => {
        window.removeEventListener('scroll', handleScroll);
      };
    }, []);
- 
-   useEffect(() => {
-     return () => {
-       if (hoverTimeout) clearTimeout(hoverTimeout);
-     };
-   }, [hoverTimeout]);
  
    // Add this function to get icons for menu items
    const getMenuIcon = (itemName: string) => {
@@ -154,27 +161,27 @@ const Navbar = () => {
    return (    <nav className={`fixed w-full transition-all duration-300 bg-[#4d5156] shadow-lg`}
      style={{ zIndex: 40, ...navbarStyles }}>
        <div className="flex justify-between items-center w-full">
-           <Link href={`/${lang}`} className="flex items-center" style={{ direction: 'ltr' }}>
-             <div className="relative flex justify-start xl:justify-end xl:bg-white xl:pl-40 ml-4 xl:ml-0 xl:h-full xl:py-3">
+           <Link href={`/${lang}`} className="flex items-center w-1/3 sm:w-1/4 max-w-48 xl:max-w-none xl:w-auto shrink-0" style={{ direction: 'ltr' }}>
+             <div className="relative flex justify-start xl:justify-center items-center w-full bg-white pl-2 pr-2 sm:pl-3 sm:pr-3 py-1 sm:py-3 ml-0 xl:ml-0 xl:px-14 xl:h-full xl:py-3">
                <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="relative w-36 h-10 sm:w-44 sm:h-12"
+                className="relative w-full xl:w-48 h-14 sm:h-13 xl:h-14"
               >
                 <Image
                   src="/images/camwell.png"
                   alt="Camwell Industries Logo"
                   fill
-                  className="object-contain"
+                  className="object-contain object-left xl:object-center"
                   priority
-                  sizes="(max-width: 640px) 144px, 176px"
+                  sizes="(max-width: 640px) 400px, 400px"
                 />
               </motion.div>
 
              </div>
            </Link>
-         <div className="flex justify-between items-center py-3 px-4">
+         <div className="flex justify-between items-center py-2 px-4 sm:py-1">
  
            {/* Desktop Navigation */}
            <div className="hidden xl:flex items-center space-x-2" style={{ direction: 'ltr' }}>
@@ -183,22 +190,19 @@ const Navbar = () => {
                  ? pathname === item.path || pathname.startsWith(`/${lang}/products/`)
                  : pathname === item.path;
                
+               const isProducts = item.name === 'Products' || item.name === 'المنتجات';
                return (
                  <div
                    key={item.name}
                    className="relative"
-                   onMouseEnter={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseEnter : undefined}
-                   onMouseLeave={item.name === 'Products' || item.name === 'المنتجات' ? handleMouseLeave : undefined}
+                   onMouseEnter={isProducts ? handleMouseEnter : undefined}
+                   onMouseLeave={isProducts ? handleMouseLeave : undefined}
                  >
                    <Link
                      href={item.path}
-                     onClick={() => {
-                       handleLinkClick();
-                       if (item.name === 'Products' || item.name === 'المنتجات') {
-                         setShowMegaMenu(false);
-                       }
-                     }}                    className={`
-                       relative px-4 py-2 rounded-lg text-sm font-medium
+                     onClick={handleLinkClick}
+                     className={`
+                       relative px-4 py-2 rounded-lg text-lg font-medium
                        transition-all duration-300 group
                        ${isActive
                          ? 'bg-[#71797e] text-white'
@@ -224,13 +228,13 @@ const Navbar = () => {
                      )}
                    </Link>
  
-                   {/* Invisible hover bridge to prevent menu from closing */}
-                   {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
-                     <div className="absolute left-0 w-full h-8" style={{ top: '100%' }}></div>
+                   {/* Invisible hover bridge to prevent menu from closing when moving to mega menu */}
+                   {isProducts && showMegaMenu && (
+                     <div className="absolute left-0 w-full h-8" style={{ top: '100%' }} />
                    )}
  
                    {/* Mega Menu for Products */}
-                   {(item.name === 'Products' || item.name === 'المنتجات') && showMegaMenu && (
+                   {isProducts && showMegaMenu && (
                      <motion.div
                        initial={{ opacity: 0, y: -10 }}
                        animate={{ opacity: 1, y: 0 }}
@@ -343,9 +347,70 @@ const Navbar = () => {
                   <div className="flex-1 overflow-y-auto py-4">
                     <div className="space-y-1 px-4">
                       {navItems.map((item) => {
+                        const isProductsItem = item.name === 'Products' || item.name === 'المنتجات';
                         const isActive = item.path === `/${lang}/products` 
                           ? pathname === item.path || pathname.startsWith(`/${lang}/products/`) 
                           : pathname === item.path;
+                        
+                        if (isProductsItem) {
+                          return (
+                            <div key={item.name}>
+                              <button
+                                type="button"
+                                onClick={() => setMobileProductsExpanded((prev) => !prev)}
+                                className={`
+                                  w-full flex items-center gap-3 px-4 py-4 text-base font-medium rounded-lg
+                                  ${isActive 
+                                    ? 'bg-[#71797e] text-white' 
+                                    : 'text-white hover:bg-[#71797e] hover:text-white'
+                                  }
+                                `}
+                              >
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                                  isActive ? 'bg-[#71797e]' : 'bg-gray-700'
+                                }`}>
+                                  {getMenuIcon(item.name)}
+                                </div>
+                                {item.name}
+                                <ChevronDown
+                                  className={`ml-auto w-5 h-5 transition-transform duration-200 ${
+                                    mobileProductsExpanded ? 'rotate-180' : ''
+                                  }`}
+                                />
+                              </button>
+                              {mobileProductsExpanded && (
+                                <div className="pl-4 pb-2 space-y-1 border-l-2 border-gray-600 ml-5 mt-1">
+                                  <Link
+                                    href={`/${lang}/products`}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block py-2.5 px-3 text-sm text-gray-300 hover:text-white hover:bg-[#71797e] rounded-lg transition-colors"
+                                  >
+                                    {lang === 'ar' ? 'المنتج' : 'All Products'}
+                                  </Link>
+                                  {productCategories.map((category) =>
+                                    category.subcategories.map((sub) => (
+                                      <Link
+                                        key={sub.name}
+                                        href={sub.path}
+                                        onClick={() => setIsOpen(false)}
+                                        className="block py-2.5 px-3 text-sm text-gray-300 hover:text-white hover:bg-[#71797e] rounded-lg transition-colors"
+                                      >
+                                        {sub.name}
+                                      </Link>
+                                    ))
+                                  )}
+                                  <Link
+                                    href={`/${lang}/gallery`}
+                                    onClick={() => setIsOpen(false)}
+                                    className="block py-2.5 px-3 text-sm text-gray-300 hover:text-white hover:bg-[#71797e] rounded-lg transition-colors"
+                                  >
+                                    {lang === 'ar' ? 'المعرض' : 'Gallery'}
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        }
                         
                         return (
                           <Link

@@ -18,7 +18,10 @@ interface CarouselDictionary {
 const slideImages = [
   '/images/fence-swing-gates.jpg',
   '/images/fence-2.jpg',
-  '/images/fence-3.jpg'
+  '/images/fence-3.jpg',
+  '/images/fence-4.jpg',
+  '/images/fence-5.jpg',
+  '/images/fence-6.jpg'
 ];
 
 // Default dictionary values to use as fallback
@@ -38,6 +41,21 @@ const defaultDictionary: CarouselDictionary = {
       title: 'Innovation First',
       subtitle: 'Smart Security',
       description: 'Cutting-edge technology meets robust protection'
+    },
+    {
+      title: 'High Durability',
+      subtitle: 'Built to Last',
+      description: 'Engineered to withstand extreme weather and terrain conditions'
+    },
+    {
+      title: 'Perimeter Protection',
+      subtitle: 'Total Area Coverage',
+      description: 'Comprehensive fencing systems for borders, industries, and infrastructure'
+    },
+    {
+      title: 'Rapid Deployment',
+      subtitle: 'Quick & Reliable',
+      description: 'Efficient installation with minimal maintenance requirements'
     }
   ]
 };

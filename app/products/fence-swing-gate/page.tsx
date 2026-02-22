@@ -281,10 +281,6 @@ export default function FenceSwingGatePage() {
               Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
-                  <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Download Specifications
-                </Button>
                 <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">
                   Request Consultation
                   <ChevronRight className="ml-1 h-4 w-4 sm:h-5 sm:w-5" />
@@ -523,10 +519,6 @@ export default function FenceSwingGatePage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
                   Request a Consultation
-                </Button>
-                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">
-                  Download Brochure
-                  <Download className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>
             </motion.div>

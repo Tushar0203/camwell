@@ -55,7 +55,7 @@ export default function Products() {
             <div className="max-w-3xl mx-auto mb-14">
               <p className="text-lg md:text-xl text-white leading-relaxed drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 {isRTL 
-                  ? "استكشف مجموعتنا الشاملة من حلول سياج الأمان عالية الجودة المصممة لتوفير أقصى درجات الحماية والمتانة والأداء في أي بيئة."
+                  ? "مزود رائد لحلول الأسوار الأمنية عالية الجودة، ملتزم بالتميز والابتكار."
                   : "Leading provider of high-quality security fencing solutions, committed to excellence and innovation."}
               </p>
             </div>

@@ -28,9 +28,10 @@ const defaultDictionary = {
   },
   productLinks: {
     title: "Products",
-    modularFence: "Modular Fence",
-    freightCorridor: "Freight Corridor",
-    fenceSwingGates: "Fence Swing Gates"
+    modularFence: "Anti Climb Modular Fence",
+    freightCorridor: "Agricultural Fence",
+    fenceSwingGates: "Fence Swing Gates",
+    deepGuardModularFence: "Deep Guard Modular Fence"
   },
   contactUs: {
     title: "Contact Us",
@@ -147,6 +148,12 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                   <Link href={`/${lang}/products/border-fence`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.productLinks.modularFence}</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`/${lang}/products`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
+                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
+                    <span>{dict.productLinks.deepGuardModularFence}</span>
                   </Link>
                 </li>
                 <li>

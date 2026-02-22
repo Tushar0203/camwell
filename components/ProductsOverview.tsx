@@ -33,7 +33,7 @@ const defaultDictionary: ProductDictionary = {
   sectionDescription: "Explore our comprehensive range of high-security fencing solutions designed for government and defense applications.",
   keyFeatures: "Key Features",
   borderFence: {
-    name: "India's New Border Fence",
+    name: "Anti Climb Modular Fence",
     description: "Advanced perimeter security solution designed for high-security installations and border protection.",
     features: [
       "Anti-climb and anti-cut design",
@@ -62,7 +62,7 @@ const arDictionary: ProductDictionary = {
   sectionDescription: "استكشف مجموعتنا الشاملة من حلول الأسوار الأمنية عالية الجودة المصممة للتطبيقات الحكومية والدفاعية.",
   keyFeatures: "الميزات الرئيسية",
   borderFence: {
-    name: "نظام سياج الحدود",
+    name: "سياج موديولار مضاد للتسلق",
     description: "حل أمني متقدم للمحيط مصمم للمنشآت عالية الأمان وحماية الحدود.",
     features: [
       "تصميم مقاوم للتسلق والقطع",

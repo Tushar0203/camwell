@@ -211,7 +211,7 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                       </h3>
                       <p className="text-steel-600 mt-2">
                         {isRTL
-                          ? "اتصل بنا اليوم للحصول على استشارة مجانية"
+                          ? "اتصل بنا اليوم للحصول على استشارة مجانية وتقييم فني"
                           : "Contact us today for a free consultation and technical assessment."}
                       </p>
                     </div>
@@ -223,7 +223,7 @@ const Clients = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                         }`}
                     >
                       <span className="uppercase">
-                        {isRTL ? "تواصل مع فريق الحلول المخصصة" : "Contact Our Team"}
+                        {isRTL ? "تواصل مع فريقنا" : "Contact Our Team"}
                       </span>
                       <ArrowIcon className="h-5 w-5" strokeWidth={2.5} />
                     </Button>

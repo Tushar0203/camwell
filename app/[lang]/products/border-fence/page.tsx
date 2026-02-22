@@ -13,6 +13,7 @@ import {
   X
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Locale } from '@/lib/dictionary';
@@ -194,6 +195,7 @@ const PartModal = ({ component, isOpen, onClose, isRTL }: PartModalProps) => {
                 </button>
               </div>
               
+              
               {/* Content - scrollable with improved mobile spacing */}
               <div className="flex-1 overflow-y-auto scrollbar-hide">
                 <div className="p-4 sm:p-6">
@@ -325,7 +327,7 @@ function translateSpecification(spec: { label: string; value: string }, isRTL: b
     "2667 mm × 955 mm (W x H), Tolerance of ± 2%.": "2667 مم × 955 مم (عرض × ارتفاع)، بتفاوت ± 2٪.",
     "76.2 mm × 3 mm × 12.7 mm × 2 mm (W × H).": "76.2 مم × 3 مم × 12.7 مم × 2 مم (عرض × ارتفاع).",
     "The average weld shear strength of 4 welds taken at random shall not be less than 50% of the breaking strength of the smallest wire (in this case the vertical wire).": "متوسط قوة قص اللحام لـ 4 لحامات تؤخذ عشوائيًا يجب ألا يقل عن 50٪ من قوة كسر السلك الأصغر (في هذه الحالة السلك العمودي).",
-    "Galvanized MS wire conforming to requirements of IS 280-2006 as well as IS:7887. Wire diameter 4.0 mm (± 0.05mm).": "سلك MS مجلفن يتوافق مع متطلبات IS 280-2006 وكذلق IS:7887. قطر السلك 4.0 مم (± 0.05 مم).",
+    "Galvanized MS wire conforming to requirements of IS 280-2006 as well as IS:7887. Wire diameter 4.0 mm (± 0.05mm).": "سلك MS مجلفن يتوافق مع متطلبات IS 280-2006 وكذلك IS:7887. قطر السلك 4.0 مم (± 0.05 مم).",
     "Min 550 N/sq.mm.": "الحد الأدنى 550 نيوتن/مم مربع.",
     "2 nos. per panel of depth 38 mm and width 107 mm and 100° angle.": "2 لكل لوحة بعمق 38 مم وعرض 107 مم وزاوية 100 درجة.",
     "75 mm overlap in horizontal direction and 167 mm overlap in vertical directions.": "تداخل بمقدار 75 مم في الاتجاه الأفقي و 167 مم تداخل في الاتجاه العمودي.",
@@ -532,7 +534,7 @@ export default function BorderFencePage() {
                 </span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-8 leading-tight tracking-tight">
-                {isRTL ? "سياج الحدود الجديد في الهند" : "India's New Border Fence"}
+                {isRTL ? "سياج موديولار مضاد للتسلق" : "Anti Climb Modular Fence"}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-10 px-2">
                 {isRTL 
@@ -541,13 +543,11 @@ export default function BorderFencePage() {
                 }
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-                <Button className={`bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium ${isRTL ? "flex-row-reverse" : ""}`}>
-                  <Download className={`${isRTL ? "ml-2" : "mr-2"} h-4 w-4 sm:h-5 sm:w-5`} />
-                  {isRTL ? "تحميل المواصفات" : "Download Specifications"}
-                </Button>
-                <Button variant="outline" className={`bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  {isRTL ? "طلب استشارة" : "Request Consultation"}
-                  <ChevronIcon className={`${isRTL ? "mr-1" : "ml-1"} h-4 w-4 sm:h-5 sm:w-5`} />
+                <Button variant="outline" className={`bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`} asChild>
+                  <Link href={`/${lang}/contact`} className="flex items-center">
+                    {isRTL ? "طلب استشارة" : "Request Consultation"}
+                    <ChevronIcon className={`${isRTL ? "mr-1" : "ml-1"} h-4 w-4 sm:h-5 sm:w-5`} />
+                  </Link>
                 </Button>
               </div>
             </motion.div>
@@ -1011,12 +1011,8 @@ export default function BorderFencePage() {
                 }
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? "sm:flex-row-reverse" : ""}`}>
-                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                  {isRTL ? "طلب استشارة" : "Request a Consultation"}
-                </Button>
-                <Button variant="outline" className={`bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300 ${isRTL ? "flex-row-reverse" : ""}`}>
-                  {isRTL ? "تحميل البروشور" : "Download Brochure"}
-                  <Download className={`${isRTL ? "mr-2" : "ml-2"} h-4 w-4 sm:h-5 sm:w-5`} />
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300" asChild>
+                  <Link href={`/${lang}/contact`}>{isRTL ? "طلب استشارة" : "Request a Consultation"}</Link>
                 </Button>
               </div>
             </motion.div>

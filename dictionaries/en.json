@@ -3,7 +3,7 @@
     "sectionTitle": "Security Solutions for Every Need",
     "sectionDescription": "We offer a wide range of high-quality fencing and security products designed to meet various security requirements.",
     "borderFence": {
-      "name": "India's New Border Fence",
+      "name": "Anti Climb Modular Fence",
       "description": "Premium quality welded mesh panels for high-security applications.",
       "features": [
         "High tensile steel construction",
@@ -42,6 +42,21 @@
         "title": "Innovation First",
         "subtitle": "Smart Security",
         "description": "Cutting-edge technology meets robust protection"
+      },
+      {
+        "title": "High Durability",
+        "subtitle": "Built to Last",
+        "description": "Engineered to withstand extreme weather and terrain conditions"
+      },
+      {
+        "title": "Perimeter Protection",
+        "subtitle": "Total Area Coverage",
+        "description": "Comprehensive fencing systems for borders, industries, and infrastructure"
+      },
+      {
+        "title": "Rapid Deployment",
+        "subtitle": "Quick & Reliable",
+        "description": "Efficient installation with minimal maintenance requirements"
       }
     ]
   },
@@ -133,8 +148,9 @@
     },
     "productLinks": {
       "title": "Products",
-      "modularFence": "Modular Fence",
-      "freightCorridor": "Freight Corridor",
+      "modularFence": "Anti Climb Modular Fence",
+      "deepGuardModularFence": "Deep Guard Modular Fence",
+      "freightCorridor": "Agricultural Fence",
       "fenceSwingGates": "Fence Swing Gates"
     },
     "contactUs": {

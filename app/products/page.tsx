@@ -43,7 +43,7 @@ const ProductCard = ({ name, description, features, icon }: {
   const router = useRouter();
   
   const handleClick = () => {
-    if (name === "India's New Border Fence") {
+    if (name === "Anti Climb Modular Fence") {
       router.push('/products/border-fence');
     }
     if (name === "Fence Swing Gate") {
@@ -76,7 +76,7 @@ const ProductCard = ({ name, description, features, icon }: {
         "--icon-color": "#fff"
       } as React.CSSProperties}>
       
-      <div className={`w-full h-58 relative overflow-hidden ${name === "India's New Border Fence" ? 'bg-[url("/products/image.png")] bg-cover bg-center' : name === "Fence Swing Gate" ? 'bg-[url("/products/image2.png")] bg-cover bg-center' : `bg-gradient-to-r ${gradientColor}`}`}>
+      <div className={`w-full h-58 relative overflow-hidden ${name === "Anti Climb Modular Fence" ? 'bg-[url("/products/image.png")] bg-cover bg-center' : name === "Fence Swing Gate" ? 'bg-[url("/products/image2.png")] bg-cover bg-center' : `bg-gradient-to-r ${gradientColor}`}`}>
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 p-6 flex flex-col justify-center items-center text-white">
           <div className="card-icon-wrapper bg-white/20 backdrop-blur-md rounded-full p-4 mb-3">
@@ -120,7 +120,7 @@ const ProductCard = ({ name, description, features, icon }: {
 const Products = () => {
   const products = [
     {
-      name: "India's New Border Fence",
+      name: "Anti Climb Modular Fence",
       description: 'Premium quality welded mesh panels for high-security applications.',
       features: [
         'High tensile steel construction',

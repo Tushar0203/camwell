@@ -12,6 +12,7 @@ import {
   Package,
   X
 } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Locale } from '@/lib/dictionary';
@@ -337,13 +338,11 @@ export default function FenceSwingGatePage() {
                   : "Advanced perimeter protection combining cutting-edge materials with smart technology for uncompromised security in the most challenging environments."}
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 font-medium">
-                  <Download className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 w-4 sm:h-5 sm:w-5`} />
-                  {isRTL ? "تحميل المواصفات" : "Download Specifications"}
-                </Button>
-                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">
-                  {isRTL ? "طلب استشارة" : "Request Consultation"}
-                  <ChevronIcon className={`${isRTL ? 'mr-1' : 'ml-1'} h-4 w-4 sm:h-5 sm:w-5`} />
+                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300" asChild>
+                  <Link href={`/${lang}/contact`} className="flex items-center">
+                    {isRTL ? "طلب استشارة" : "Request Consultation"}
+                    <ChevronIcon className={`${isRTL ? 'mr-1' : 'ml-1'} h-4 w-4 sm:h-5 sm:w-5`} />
+                  </Link>
                 </Button>
               </div>
             </motion.div>
@@ -696,12 +695,8 @@ export default function FenceSwingGatePage() {
                   : "Connect with our security experts to design a custom border fence solution that meets your specific requirements."}
               </p>
               <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
-                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
-                  {isRTL ? "طلب استشارة" : "Request a Consultation"}
-                </Button>
-                <Button variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl transition-all duration-300">
-                  {isRTL ? "تنزيل الكتيب" : "Download Brochure"}
-                  <Download className={`${isRTL ? 'mr-2' : 'ml-2'} h-4 w-4 sm:h-5 sm:w-5`} />
+                <Button className="bg-white text-[#00a0dc] hover:bg-blue-50 px-5 sm:px-8 py-3 sm:py-6 text-sm sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300" asChild>
+                  <Link href={`/${lang}/contact`}>{isRTL ? "طلب استشارة" : "Request a Consultation"}</Link>
                 </Button>
               </div>
             </motion.div>
