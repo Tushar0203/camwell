@@ -19,9 +19,9 @@ const slideImages = [
   '/images/fence-swing-gates.jpg',
   '/images/fence-2.jpg',
   '/images/fence-3.jpg',
-  '/images/fence-4.jpg',
-  '/images/fence-5.jpg',
-  '/images/fence-6.jpg'
+  '/images/fence-4.JPG',
+  '/images/fence-5.JPG',
+  '/images/fence-6.JPG'
 ];
 
 // Default dictionary values to use as fallback
