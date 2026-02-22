@@ -3,9 +3,13 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { Locale } from '@/lib/dictionary';
+
+// Image from public folder: public/images/fence-4.JPG
+const heroImageSrc = '/images/fence-4.JPG';
 
 const scrollbarHideStyles = `
   .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -26,7 +30,16 @@ export default function AgriculturalFencePage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/images/fence-4.jpg')] bg-cover bg-center bg-no-repeat" />
+          <div className="absolute inset-0">
+            <Image
+              src={heroImageSrc}
+              alt="Agricultural Fence"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="absolute inset-0 opacity-15 bg-[url('/pattern.png')] bg-repeat bg-[length:200px_200px] sm:bg-[length:300px_300px] z-20" />
           <div className="absolute top-1/4 left-1/4 h-40 sm:h-64 w-40 sm:w-64 rounded-full bg-blue-400/20 blur-3xl animate-pulse" />
