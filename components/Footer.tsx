@@ -118,12 +118,6 @@ const Footer = ({ dictionary }: { dictionary?: typeof defaultDictionary }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/${lang}/brochure`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
-                    <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
-                    <span>{dict.links.brochure}</span>
-                  </Link>
-                </li>
-                <li>
                   <Link href={`/${lang}/warranty`} className="text-black hover:text-gray-700 transition-colors duration-200 flex items-center group">
                     <ArrowIcon className={`w-4 h-4 opacity-0 ${isRTL ? '-mr-1 ml-1' : '-ml-1 mr-1'} group-hover:opacity-100 transition-all duration-200`} />
                     <span>{dict.links.warranty}</span>
