@@ -105,6 +105,55 @@ export default function AgriculturalFencePage() {
         </div>
       </section>
 
+      {/* Dual image highlight section (copied from border fence page) */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              {/* Card 1 */}
+              <div className="relative rounded-xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/ag1.png"
+                  alt="Agricultural fence detail 1"
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+
+              {/* Card 2 */}
+              <div className="relative rounded-xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/ag2.png"
+                  alt="Agricultural fence detail 2"
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+
+              {/* Card 3 */}
+              <div className="relative rounded-xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/ag3.png"
+                  alt="Agricultural fence detail 3"
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+
+              {/* Card 4 */}
+              <div className="relative rounded-xl overflow-hidden shadow-xl">
+                <img
+                  src="/images/ag4.png"
+                  alt="Agricultural fence detail 4"
+                  className="w-full h-auto object-cover aspect-[4/3]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-r from-[#00a0dc] to-[#00a0dc] text-white relative">
         <div className="absolute inset-0 bg-[url('/pattern.png')] bg-repeat opacity-5" />

@@ -322,23 +322,29 @@ const Navbar = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:max-w-xs p-0 bg-[#4d5156] border-l border-gray-700" style={{ direction: 'ltr' }}>
                 <div className="flex flex-col h-full">
-                  {/* Header with Logo/Close text */}
-                  <div className="flex items-center justify-between px-6 py-4 border-b border-gray-700">
-                    <Link href={`/${lang}`} className="flex items-center" onClick={() => setIsOpen(false)}>
-                      <div className="relative w-36 h-10 sm:w-44 sm:h-12">
-                        <Image
-                          src="/images/camwell.png"
-                          alt="Camwell Industries Logo"
-                          fill
-                          className="object-contain object-left"
-                          priority
-                          sizes="(max-width: 640px) 144px, 176px"
-                        />
+                  {/* Header with Logo/Close text - visually match main navbar */}
+                  <div className="flex items-stretch justify-between border-b border-gray-700 h-14 sm:h-16">
+                    <Link
+                      href={`/${lang}`}
+                      className="flex items-stretch w-1/3 sm:w-1/4 max-w-48 shrink-0"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <div className="relative flex justify-start items-center w-full bg-white pl-2 pr-2 sm:pl-3 sm:pr-3">
+                        <div className="relative w-full h-14 sm:h-16">
+                          <Image
+                            src="/images/camwell.png"
+                            alt="Camwell Industries Logo"
+                            fill
+                            className="object-contain object-left"
+                            priority
+                            sizes="(max-width: 640px) 400px, 400px"
+                          />
+                        </div>
                       </div>
                     </Link>
                     <button 
                       onClick={() => setIsOpen(false)}
-                      className="text-[#00a0dc] font-medium"
+                      className="px-4 text-[#00a0dc] font-medium flex items-center"
                     >
                       Close
                     </button>
